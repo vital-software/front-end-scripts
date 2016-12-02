@@ -1,0 +1,19 @@
+{
+  "name": "front-end-scripts",
+  "version": "0.9.0",
+  "description": "Configuration and scripts for Front End Stack.",
+  "license": "MIT",
+  "private": true,
+  "repository": "pixelfusion/front-end-scripts",
+  "homepage": "https://github.com/pixelfusion/front-end-stack#readme",
+  "author": "Te Riu Warren <te@pixelfusion.co.nz>",
+  "bugs": {
+    "url": "https://github.com/pixelfusion/front-end-scripts/issues"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "webpack": "^2.1.0-beta.27"
+  }
+}
