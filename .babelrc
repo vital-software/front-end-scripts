@@ -1,5 +1,9 @@
 {
   "presets": [
-    "es2015-ie"
+    "es2015-ie",
+    [
+        "es2015",
+        { "modules": false }
+    ]
   ]
 }
