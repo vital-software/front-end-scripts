@@ -1,15 +1,25 @@
 #! /usr/bin/env node
 
+const shell = require('shelljs');
+
 // var spawn = require('cross-spawn');
-var script = process.argv[2];
-var args = process.argv.slice(3);
+const script = process.argv[2];
+// const args = process.argv.slice(3);
 
 console.log('Script:', script);
 
-// switch (script) {
+switch (script) {
+    case 'start':
+        shell.exec('webpack-dev-server');
+        break;
+    default:
+        console.log(`Unknown script ${script}.`);
+        console.log('Perhaps you need to update front-end-scripts?');
+        break;
+}
+
 // case 'build':
 // case 'eject':
-// case 'start':
 // case 'test':
 //   const result = spawn.sync(
 //     'node',
@@ -22,4 +32,3 @@ console.log('Script:', script);
 //   console.log('Unknown script "' + script + '".');
 //   console.log('Perhaps you need to update react-scripts?');
 //   break;
-// }
