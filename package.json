@@ -3,7 +3,6 @@
   "version": "0.9.0",
   "description": "Configuration and scripts for Front End Stack.",
   "license": "MIT",
-  "private": true,
   "repository": "pixelfusion/front-end-scripts",
   "homepage": "https://github.com/pixelfusion/front-end-stack#readme",
   "author": "Te Riu Warren <te@pixelfusion.co.nz>",
