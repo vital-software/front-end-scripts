@@ -13,6 +13,12 @@
   "engines": {
     "node": ">=6"
   },
+  "files": [
+    ".babelrc",
+    ".editorconfig",
+    "webpack.config.babel.js",
+    "bin"
+  ],
   "bin": {
     "front-end-scripts": "bin/front-end-scripts.js"
   },
