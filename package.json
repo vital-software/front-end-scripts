@@ -16,7 +16,8 @@
     ".babelrc",
     ".editorconfig",
     "webpack.config.babel.js",
-    "bin"
+    "bin",
+    "script"
   ],
   "bin": {
     "front-end-scripts": "bin/front-end-scripts.js"
@@ -27,7 +28,7 @@
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-preset-latest": "^6.16.0",
-    "shelljs": "^0.7.5",
+    "cross-spawn": "^5.0.1",
     "webpack": "^2.1.0-beta.27",
     "webpack-dev-server": "^2.1.0-beta.12"
   }
