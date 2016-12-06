@@ -1,3 +1,4 @@
+/* eslint-disable filenames/match-regex */
 const path = require('path');
 
 const PATH_OUTPUT = '/asset/build/';
@@ -9,7 +10,7 @@ const FILE_ENTRY = `${PATH_SOURCE_JS}/app.js`;
 
 const DEFAULT_OPTIONS = {
     dev: true
-}
+};
 
 module.exports = function(options = DEFAULT_OPTIONS) {
     const { dev } = options;
@@ -60,7 +61,7 @@ module.exports = function(options = DEFAULT_OPTIONS) {
             https: true,
 
             // Hide the webpack bundle information
-            noInfo: true,
+            // noInfo: true,
 
             // Match public path with output path
             publicPath: PATH_OUTPUT,
@@ -70,5 +71,5 @@ module.exports = function(options = DEFAULT_OPTIONS) {
                 ignored: /node_modules/
             }
         }
-    }
-}
+    };
+};
