@@ -16,8 +16,11 @@ const DEFAULTS = {
 };
 
 function run() {
-    let config = options.webpack(),
-        isFirstCompile = true;
+    let isFirstCompile = true;
+
+    const config = options.webpack();
+    const compiler = webpack(config);
+    const devServer = new WebpackDevServer(compiler, options.webpack().devServer);
 
     const showInstructions = IS_INTERACTIVE || isFirstCompile;
 
@@ -34,9 +37,6 @@ function run() {
         isFirstCompile = false;
     }
 
-    let compiler = webpack(config);
-    let devServer = new WebpackDevServer(compiler, options.webpack().devServer);
-
     // Launch WebpackDevServer
     devServer.listen(DEFAULTS.PORT, (error) => {
         if (error) {
@@ -44,7 +44,7 @@ function run() {
         }
 
         if (IS_INTERACTIVE) {
-            // clearConsole();
+            clearConsole();
         }
 
         console.log(chalk.cyan('Starting the development server...'));
@@ -62,12 +62,16 @@ detect(DEFAULTS.PORT).then((port) => {
 
     if (IS_INTERACTIVE) {
         clearConsole();
+    }
 
+    console.log(chalk.red(`Something is already running on port ${DEFAULTS.PORT}.`));
+
+    if (IS_INTERACTIVE) {
         let existingProcess = getProcessForPort(DEFAULTS.PORT);
-        let question = chalk.yellow(`Something is already running on port ${DEFAULTS.PORT}.`,
-            ((existingProcess) ? ' Probably:\n  ' + existingProcess : '')) +
-            '\n\nTry clearing any processes running on that port and running the command again.';
-    } else {
-        console.log(chalk.red(`Something is already running on port ${DEFAULTS.PORT}.`));
+
+        if (existingProcess) {
+            console.log(chalk.red(`Probably:\n ${existingProcess}`));
+            console.log(chalk.red('Try clearing any processes running on that port and running the command again.'));
+        }
     }
 });
