@@ -1,6 +1,6 @@
-let chalk = require('chalk');
-let execSync = require('child_process').execSync;
-let path = require('path');
+const chalk = require('chalk');
+const execSync = require('child_process').execSync;
+const path = require('path');
 
 let execOptions = {
     encoding: 'utf8',
@@ -35,9 +35,9 @@ function getProcessCommand(processId, processDirectory) {
     if (isProcessAReactApp(command)) {
         const packageName = getPackageNameInDirectory(processDirectory);
         return (packageName) ? `${packageName}\n` : command;
-    } else {
-        return command;
     }
+
+    return command;
 }
 
 function getDirectoryOfProcessById(processId) {
@@ -46,9 +46,14 @@ function getDirectoryOfProcessById(processId) {
 
 function getProcessForPort(port) {
     try {
-        let processId = getProcessIdOnPort(port);
-        let directory = getDirectoryOfProcessById(processId);
-        let command = getProcessCommand(processId, directory);
+        let command,
+            directory,
+            processId;
+
+        processId = getProcessIdOnPort(port);
+        directory = getDirectoryOfProcessById(processId);
+        command = getProcessCommand(processId, directory);
+
         return chalk.cyan(command) + chalk.blue('  in ') + chalk.cyan(directory);
     } catch (e) {
         return null;
