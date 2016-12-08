@@ -1,13 +1,5 @@
 /* eslint-disable filenames/match-regex */
-const path = require('path');
-
-
-// Paths
-const PATH_OUTPUT = '/asset/build/';
-const PATH_DESTINATION = path.join(__dirname, './public', PATH_OUTPUT);
-const PATH_SOURCE = path.join(__dirname, './client');
-const PATH_SOURCE_JS = `${PATH_SOURCE}/js`;
-const FILE_ENTRY = `${PATH_SOURCE_JS}/app.js`;
+const paths = require('./helper/paths');
 
 
 // Options
@@ -27,20 +19,21 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        const { dev } = options;
+        // TODO: use this value
+        const { dev } = options; // eslint-disable-line
 
         return {
             // devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
 
             entry: {
-                main: [
+                index: [
                     `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`,
-                    FILE_ENTRY
+                    paths.appIndexJs
                 ]
             },
 
             output: {
-                path: PATH_DESTINATION,
+                // path: paths.appBuild,
                 filename: '[name].js'
             },
 
@@ -56,7 +49,7 @@ module.exports = {
 
             resolve: {
                 modules: [
-                    PATH_SOURCE_JS,
+                    paths.appJs,
                     'node_modules'
                 ],
             },
@@ -66,7 +59,7 @@ module.exports = {
                 compress: true,
 
                 // Use /public/ as the default content base
-                contentBase: path.join(__dirname, 'public'),
+                contentBase: paths.appPublic,
 
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
@@ -78,10 +71,11 @@ module.exports = {
                 https: true,
 
                 // Hide the webpack bundle information
-                // noInfo: true,
+                noInfo: true,
 
                 // Match public path with output path
-                publicPath: PATH_OUTPUT,
+                // TODO: Make config
+                publicPath: '/build/',
 
                 watchOptions: {
                     // Don't actively watch the node_modules folder to decrease CPU usage

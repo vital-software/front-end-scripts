@@ -37,6 +37,22 @@ function run() {
         isFirstCompile = false;
     }
 
+    compiler.plugin('invalid', function() {
+        console.log('Compiling...');
+    });
+
+    compiler.plugin('done', function(stats) {
+        if (IS_INTERACTIVE) {
+            // clearConsole();
+        }
+
+        // We have switched off the default Webpack output in WebpackDevServer
+        // options so we are going to "massage" the warnings and errors and present
+        // them in a readable focused way.
+        const messages = stats.toString('minimal', true);
+        console.log(messages);
+    });
+
     // Launch WebpackDevServer
     devServer.listen(DEFAULTS.PORT, (error) => {
         if (error) {
