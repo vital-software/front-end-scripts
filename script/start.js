@@ -39,11 +39,11 @@ function run() {
 
     compiler.plugin('invalid', function() {
         if (IS_INTERACTIVE) {
-            // clearConsole();
+            clearConsole();
         }
 
         console.log('');
-        console.log(chalk.blue('Compiling...'));
+        console.log(chalk.blue(new Date().toUTCString(), ': Compiling...'));
     });
 
     compiler.plugin('done', function(stats) {
@@ -58,12 +58,12 @@ function run() {
         const isSuccessful = !messages.errors.length && !messages.warnings.length;
 
         if (isSuccessful) {
-            console.log(chalk.green('Compiled successfully!'));
+            console.log(chalk.green(new Date().toUTCString(), ': Compiled successfully!'));
         }
 
         // If errors exist, only show errors.
         if (messages.errors.length) {
-            console.log(chalk.red('Failed to compile.'));
+            console.log(chalk.red(new Date().toUTCString(), ': Failed to compile.'));
             console.log();
             messages.errors.forEach((message) => {
                 console.log(message);
