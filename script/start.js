@@ -94,10 +94,6 @@ function run() {
             return console.log(error);
         }
 
-        if (IS_INTERACTIVE) {
-            clearConsole();
-        }
-
         console.log(chalk.cyan('Starting the development server...'));
         console.log();
     });
