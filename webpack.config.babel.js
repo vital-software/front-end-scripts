@@ -47,8 +47,8 @@ module.exports = {
                     {
                         test: /\.(css|scss)$/,
                         use: [
-                            'style-loader',
-                            'css-loader'
+                            'style-loader', // Add CSS to HTML page (uses JavaScript)
+                            'css-loader' // Process and handle CSS
                         ]
                     },
                 ]
