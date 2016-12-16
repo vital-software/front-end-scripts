@@ -69,6 +69,11 @@ module.exports = {
                 ]
             },
 
+            performance: {
+                // Disable 250kb JavaScript entry file warnings
+                hints: false
+            },
+
             devServer: {
                 // Add GZip compression
                 compress: true,
