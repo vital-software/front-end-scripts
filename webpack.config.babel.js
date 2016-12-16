@@ -54,6 +54,7 @@ module.exports = {
             resolve: {
                 modules: [
                     paths.appJs,
+                    paths.appSrc,
                     'node_modules'
                 ],
             },
