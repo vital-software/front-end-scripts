@@ -15,5 +15,6 @@ module.exports = {
     appIndexJs: resolveApp('client/js/index.js'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('client'),
+    ownNodeModules: path.resolve(__dirname, '../node_modules'),
     yarnLockFile: resolveApp('yarn.lock')
 };

@@ -58,6 +58,13 @@ module.exports = {
                 ],
             },
 
+            resolveLoader: {
+                // Ensure loaders are loaded from front-end-scripts directory
+                modules: [
+                    paths.ownNodeModules
+                ]
+            },
+
             devServer: {
                 // Add GZip compression
                 compress: true,
