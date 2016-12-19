@@ -10,7 +10,7 @@ function resolveApp(relativePath) {
 module.exports = {
     appBuild: resolveApp('build'),
     appPublic: resolveApp('public'),
-    appHtml: resolveApp('public/index.html'),
+    appHtmlTemplate: resolveApp('public/index.html'),
     appJs: resolveApp('client/js'),
     appIndexJs: resolveApp('client/js/index.js'),
     appPackageJson: resolveApp('package.json'),
