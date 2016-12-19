@@ -11,7 +11,6 @@ const BROWSER_SUPPORT = [
 
 module.exports = (context) => ({
     parser: 'postcss-scss',
-    // map: context.env === 'development' ? context.map : false,
     plugins: {
         'postcss-import': {},
         'postcss-simple-vars': {},
