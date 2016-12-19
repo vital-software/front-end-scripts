@@ -53,7 +53,7 @@ module.exports = {
 
             plugins: [
                 new HtmlWebpackPlugin({
-                    filename: paths.appBuild + '/index.html', // eslint-disable-line
+                    filename: paths.appBuild + '/index.[hash].html', // eslint-disable-line
                     template: paths.appHtmlTemplate
                 })
             ],
