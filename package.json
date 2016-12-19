@@ -33,7 +33,11 @@
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.26.1",
     "detect-port": "^1.0.6",
+    "postcss-import": "^9.0.0",
     "postcss-loader": "^1.2.1",
+    "postcss-scss": "^0.4.0",
+    "postcss-simple-vars": "^3.0.0",
+    "postcss-strip-inline-comments": "^0.1.5",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.0-rc.0",
     "webpack-dev-server": "^2.1.0-beta.12"

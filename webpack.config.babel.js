@@ -51,13 +51,16 @@ module.exports = {
                             'style-loader',
                              // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
                             { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
-                            'postcss-loader'
+                            // Process PostCSS
+                            { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
                         ]
                     },
                 ]
             },
 
             resolve: {
+                extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
+
                 modules: [
                     paths.appJs,
                     paths.appSrc,
