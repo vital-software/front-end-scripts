@@ -1,14 +1,24 @@
 /* eslint-disable filenames/match-regex */
-module.exports = (ctx) => ({
+const BROWSER_SUPPORT = [
+    'Chrome >= 54',
+    'ChromeAndroid >= 54',
+    'Safari >= 9',
+    'iOS >= 9',
+    'Firefox >= 48',
+    'Explorer >= 11',
+    'Opera >= 40'
+];
+
+module.exports = (context) => ({
     parser: 'postcss-scss',
-    // parser: ctx.sugar ? 'sugarss' : false,
-    // map: ctx.env === 'development' ? ctx.map : false,
-    // from: ctx.from,
-    // to: ctx.to,
+    // map: context.env === 'development' ? context.map : false,
     plugins: {
         'postcss-import': {},
         'postcss-simple-vars': {},
-        'postcss-strip-inline-comments': {}
-        // cssnano: ctx.env === 'production' ? {} : false
+        'postcss-strip-inline-comments': {},
+        'postcss-remify': {},
+        'precss': { browsers: BROWSER_SUPPORT },
+        'postcss-cssnext': { browsers: BROWSER_SUPPORT }
+        // cssnano: context.env === 'production' ? {} : false
     }
 });
