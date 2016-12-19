@@ -34,7 +34,7 @@ module.exports = {
 
             output: {
                 path: paths.appBuild,
-                filename: 'index.[hash].js'
+                filename: '[name].[hash].js'
             },
 
             module: {
@@ -53,7 +53,7 @@ module.exports = {
 
             plugins: [
                 new HtmlWebpackPlugin({
-                    filename: paths.appBuild + '/index.[hash].html', // eslint-disable-line
+                    filename: paths.appBuild + '/[name].[hash].html', // eslint-disable-line
                     template: paths.appHtmlTemplate
                 })
             ],

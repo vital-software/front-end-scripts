@@ -9,7 +9,7 @@ switch (script) {
     // case 'test':
     case 'build':
     case 'start':
-        process.exit(start().status);
+        process.exit(run().status);
         break;
     default:
         console.log(`Unknown script ${script}.`);
@@ -18,7 +18,7 @@ switch (script) {
 }
 
 
-function start() {
+function run() {
     const result = spawn.sync(
         'node',
         [require.resolve('../script/' + script)].concat(args), // eslint-disable-line
