@@ -16,7 +16,6 @@ The inspiration for this tool comes from the `create-react-app` package, that al
 - CSS
 	- PostCSS ready
 	- Autoprefixed
-	- 
 
 
 ## Inspired by
