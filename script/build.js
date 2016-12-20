@@ -1,13 +1,8 @@
-/* eslint-disable  */
+/* eslint-disable no-console */
 
+// TODO: Discuss this with Te
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.NODE_ENV = 'production';
-
-// Load environment variables from .env file. Suppress warnings using silent
-// if this file is missing. dotenv will never modify any environment variables
-// that have already been set.
-// https://github.com/motdotla/dotenv
-require('dotenv').config({silent: true});
 
 const chalk = require('chalk');
 const fs = require('fs-extra');
@@ -220,6 +215,6 @@ function build(previousSizeMap) {
 function copyPublicFolder() {
     fs.copySync(paths.appPublic, paths.appBuild, {
         dereference: true,
-        filter: file => file !== paths.appHtml
+        filter: (file) => file !== paths.appHtml
     });
 }
