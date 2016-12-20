@@ -12,16 +12,10 @@ const gzipSize = require('gzip-size').sync;
 const webpack = require('webpack');
 const config = require('../webpack.config.babel').webpack();
 const paths = require('../helper/paths');
-const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const recursive = require('recursive-readdir');
 const stripAnsi = require('strip-ansi');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
-
-// Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtmlTemplate, paths.appIndexJs])) {
-    process.exit(1);
-}
 
 // Input: /User/dan/app/build/static/js/main.82be8.js
 // Output: /static/js/main.js
