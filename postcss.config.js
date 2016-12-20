@@ -17,7 +17,7 @@ module.exports = (context) => ({
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
         'precss': { browsers: BROWSER_SUPPORT },
-        'postcss-cssnext': { browsers: BROWSER_SUPPORT }
-        // cssnano: context.env === 'production' ? {} : false
+        'postcss-cssnext': { browsers: BROWSER_SUPPORT },
+        'cssnano': context.env === 'production' ? {} : false
     }
 });
