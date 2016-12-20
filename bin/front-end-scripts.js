@@ -5,7 +5,6 @@ const script = process.argv[2];
 const args = process.argv.slice(3); // eslint-disable-line
 
 switch (script) {
-    // case 'eject':
     // case 'test':
     case 'build':
     case 'start':
