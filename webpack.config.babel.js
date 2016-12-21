@@ -1,6 +1,6 @@
 /* eslint-disable filenames/match-regex */
 const paths = require('./helper/paths');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Options
 const HOST = 'localhost';
@@ -33,8 +33,8 @@ module.exports = {
             },
 
             output: {
-                // path: paths.appBuild,
-                filename: '[name].js'
+                path: paths.appBuild,
+                filename: '[name].[hash].js'
             },
 
             module: {
@@ -57,6 +57,13 @@ module.exports = {
                     },
                 ]
             },
+
+            plugins: [
+                new HtmlWebpackPlugin({
+                    filename: paths.appBuild + '/[name].[hash].html', // eslint-disable-line
+                    template: paths.appHtmlTemplate
+                })
+            ],
 
             resolve: {
                 extensions: ['.css', '.js', '.json', '.jsx', '.scss'],

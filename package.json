@@ -36,6 +36,10 @@
     "css-loader": "^0.26.1",
     "cssnano": "^3.9.1",
     "detect-port": "^1.0.6",
+    "filesize": "^3.3.0",
+    "fs-extra": "^1.0.0",
+    "gzip-size": "^3.0.0",
+    "html-webpack-plugin": "^2.24.1",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.0.0",
     "postcss-loader": "^1.2.1",
@@ -44,9 +48,11 @@
     "postcss-simple-vars": "^3.0.0",
     "postcss-strip-inline-comments": "^0.1.5",
     "precss": "^1.4.0",
+    "recursive-readdir": "^2.1.0",
+    "strip-ansi": "^3.0.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.0-rc.0",
-    "webpack-dev-server": "^2.1.0-beta.12"
+    "webpack": "^2.2.0-rc",
+    "webpack-dev-server": "^2.2.0-rc"
   },
   "devDependencies": {
     "eslint": "^3.11.1",
