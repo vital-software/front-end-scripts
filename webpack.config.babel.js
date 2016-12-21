@@ -34,7 +34,8 @@ module.exports = {
 
             output: {
                 path: paths.appBuild,
-                filename: '[name].[hash].js'
+                filename: '[name].[hash].js',
+                publicPath: '/'
             },
 
             module: {
