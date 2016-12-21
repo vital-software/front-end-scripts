@@ -16,5 +16,6 @@ module.exports = {
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('client'),
     ownNodeModules: path.resolve(__dirname, '../node_modules'),
+    ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js'),
     yarnLockFile: resolveApp('yarn.lock')
 };
