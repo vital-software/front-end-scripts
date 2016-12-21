@@ -46,14 +46,24 @@ module.exports = {
                     },
                     {
                         test: /\.(css|scss)$/,
-                        use: 'css-loader'
+                        use: [
+                            // Add CSS to HTML page (uses JavaScript)
+                            'style-loader',
+                             // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
+                            { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
+                            // Process PostCSS
+                            { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
+                        ]
                     },
                 ]
             },
 
             resolve: {
+                extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
+
                 modules: [
                     paths.appJs,
+                    paths.appSrc,
                     'node_modules'
                 ],
             },
@@ -63,6 +73,11 @@ module.exports = {
                 modules: [
                     paths.ownNodeModules
                 ]
+            },
+
+            performance: {
+                // Disable 250kb JavaScript entry file warnings
+                hints: false
             },
 
             devServer: {
