@@ -4,13 +4,17 @@
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.NODE_ENV = 'production';
 
+const WEBPACK_OPTIONS = {
+    dev: false
+};
+
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const path = require('path');
 const filesize = require('filesize');
 const gzipSize = require('gzip-size').sync;
 const webpack = require('webpack');
-const config = require('../webpack.config.babel').webpack();
+const config = require('../webpack.config.babel').webpack(WEBPACK_OPTIONS);
 const paths = require('../helper/paths');
 const recursive = require('recursive-readdir');
 const stripAnsi = require('strip-ansi');

@@ -19,17 +19,20 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        // TODO: use this value
-        const { dev } = options; // eslint-disable-line
+        const { dev } = options;
+        let indexEntry = [];
+
+        if (dev) {
+            indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
+        }
+
+        indexEntry.push(paths.appIndexJs);
 
         return {
             // devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
 
             entry: {
-                index: [
-                    `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`,
-                    paths.appIndexJs
-                ]
+                index: indexEntry
             },
 
             output: {
