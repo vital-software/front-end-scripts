@@ -64,7 +64,7 @@ module.exports = {
         const plugins = generatePlugins(dev);
 
         return {
-            // devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
+            devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
             entry: {
                 index: indexEntry
