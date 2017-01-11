@@ -2,6 +2,7 @@
 const paths = require('./helper/paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 
 // Options
 const HOST = 'localhost';
@@ -25,6 +26,7 @@ module.exports = {
 
         if (dev) {
             indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
+            indexEntry.push('webpack/hot/only-dev-server');
         }
 
         indexEntry.push(paths.appIndexJs);
@@ -37,7 +39,7 @@ module.exports = {
             },
 
             output: {
-                path: paths.appPublic,
+                path: paths.appBuild,
                 filename: '[name].[hash].js',
                 publicPath: '/'
             },
@@ -66,11 +68,19 @@ module.exports = {
             },
 
             plugins: [
-                new ExtractTextPlugin('[name].[hash].css'),
-                new HtmlWebpackPlugin()
-                // new HtmlWebpackPlugin({
-                //     template: paths.appHtmlTemplate
-                // })
+                new ExtractTextPlugin({
+                    disable: dev,
+                    filename: '[name].[hash].css'
+                }),
+                new HtmlWebpackPlugin({
+                    template: paths.appHtmlTemplate
+                }),
+
+                new HotModuleReplacementPlugin(),
+                // enable HMR globally
+
+                new NamedModulesPlugin(),
+                // prints more readable module names in the browser console on HMR updates
             ],
 
             resolve: {
@@ -100,13 +110,13 @@ module.exports = {
                 compress: true,
 
                 // Use /public/ as the default content base
-                contentBase: paths.appPublic,
+                contentBase: paths.appBuild,
 
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
 
                 // Hot module replacement
-                // hot: true,
+                hot: true,
 
                 // Enable HTTPS and HTTP/2
                 https: true,
@@ -116,7 +126,7 @@ module.exports = {
 
                 // Match public path with output path
                 // TODO: Make config
-                // publicPath: '/build/',
+                publicPath: '/',
 
                 watchOptions: {
                     // Don't actively watch the node_modules folder to decrease CPU usage
