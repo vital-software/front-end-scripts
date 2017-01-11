@@ -1,6 +1,6 @@
 {
   "name": "front-end-scripts",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Configuration and scripts for Front End Stack.",
   "license": "MIT",
   "repository": "pixelfusion/front-end-scripts",
@@ -10,7 +10,7 @@
     "url": "https://github.com/pixelfusion/front-end-scripts/issues"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=7"
   },
   "files": [
     ".babelrc",
