@@ -84,7 +84,7 @@ module.exports = {
 
             performance: {
                 // Disable 250kb JavaScript entry file warnings
-                hints: false
+                // hints: false
             },
 
             devServer: {
