@@ -4,8 +4,10 @@
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.NODE_ENV = 'production';
 
+const CLI_ARGUMENTS = process.argv.slice(2);
 const WEBPACK_OPTIONS = {
-    dev: false
+    dev: false,
+    linkedInstall: CLI_ARGUMENTS.includes('--linked') // CLI Documentation
 };
 
 const chalk = require('chalk');

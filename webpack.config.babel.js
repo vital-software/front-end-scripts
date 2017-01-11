@@ -10,7 +10,8 @@ const HOST = 'localhost';
 const PORT = 3000;
 const PROTOCOL = 'https';
 const WEBPACK_DEFAULT_OPTIONS = {
-    dev: true
+    dev: true,
+    linkedInstall: false // Used for 'npm link' local installs (for debugging)
 };
 
 
@@ -59,11 +60,13 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        const { dev } = options;
+        const {
+            dev,
+            linkedInstall
+        } = options;
+
         const indexEntry = generateIndexEntry(dev);
         const plugins = generatePlugins(dev);
-
-        console.log(paths);
 
         return {
             devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
@@ -116,7 +119,7 @@ module.exports = {
             resolveLoader: {
                 // Ensure loaders are loaded from front-end-scripts directory
                 modules: [
-                    paths.ownNodeModules
+                    (linkedInstall ? paths.ownNodeModules : 'node_modules')
                 ]
             },
 

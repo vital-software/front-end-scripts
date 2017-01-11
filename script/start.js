@@ -8,6 +8,12 @@ const options = require('../webpack.config.babel.js');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
+const CLI_ARGUMENTS = process.argv.slice(2);
+const WEBPACK_OPTIONS = {
+    dev: true,
+    linkedInstall: CLI_ARGUMENTS.includes('--linked') // CLI Documentation
+};
+
 const IS_INTERACTIVE = process.stdout.isTTY;
 const DEFAULTS = {
     HOST: options.defaults.host,
@@ -18,9 +24,9 @@ const DEFAULTS = {
 function run() {
     let isFirstCompile = true;
 
-    const config = options.webpack();
+    const config = options.webpack(WEBPACK_OPTIONS);
     const compiler = webpack(config);
-    const devServer = new WebpackDevServer(compiler, options.webpack().devServer);
+    const devServer = new WebpackDevServer(compiler, config.devServer);
 
     const showInstructions = IS_INTERACTIVE || isFirstCompile;
 
