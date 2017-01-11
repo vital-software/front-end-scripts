@@ -1,5 +1,6 @@
 /* eslint-disable filenames/match-regex */
 const paths = require('./helper/paths');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Options
@@ -36,7 +37,7 @@ module.exports = {
             },
 
             output: {
-                path: paths.appBuild,
+                path: paths.appPublic,
                 filename: '[name].[hash].js',
                 publicPath: '/'
             },
@@ -50,22 +51,26 @@ module.exports = {
                     },
                     {
                         test: /\.(css|scss)$/,
-                        use: [
-                            // Add CSS to HTML page (uses JavaScript)
-                            'style-loader',
-                             // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
-                            { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
-                            // Process PostCSS
-                            { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
-                        ]
+                        // TODO: Update from 'loader' to 'use' when ExtractTextPlugin is updated to Webpack2 syntax
+                        loader: ExtractTextPlugin.extract({
+                            fallbackLoader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                            loader: [
+                                 // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
+                                { loader: 'css-loader', query: { importLoaders: 1, sourceMap: true } },
+                                // Process PostCSS
+                                { loader: 'postcss-loader', query: { config: paths.ownPostCssConfig } }
+                            ]
+                        }),
                     },
                 ]
             },
 
             plugins: [
-                new HtmlWebpackPlugin({
-                    template: paths.appHtmlTemplate
-                })
+                new ExtractTextPlugin('[name].[hash].css'),
+                new HtmlWebpackPlugin()
+                // new HtmlWebpackPlugin({
+                //     template: paths.appHtmlTemplate
+                // })
             ],
 
             resolve: {
@@ -87,7 +92,7 @@ module.exports = {
 
             performance: {
                 // Disable 250kb JavaScript entry file warnings
-                // hints: false
+                hints: false
             },
 
             devServer: {
@@ -111,7 +116,7 @@ module.exports = {
 
                 // Match public path with output path
                 // TODO: Make config
-                publicPath: '/build/',
+                // publicPath: '/build/',
 
                 watchOptions: {
                     // Don't actively watch the node_modules folder to decrease CPU usage
