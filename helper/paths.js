@@ -8,9 +8,9 @@ function resolveApp(relativePath) {
 }
 
 module.exports = {
-    appBuild: resolveApp('build'),
-    appPublic: resolveApp('public'),
-    appHtmlTemplate: resolveApp('public/index.html'),
+    appBuild: resolveApp('public'),
+    appPublic: resolveApp('static'),
+    appHtmlTemplate: resolveApp('static/index.html'),
     appJs: resolveApp('client/js'),
     appIndexJs: resolveApp('client/js/index.js'),
     appPackageJson: resolveApp('package.json'),

@@ -1,6 +1,9 @@
 /* eslint-disable filenames/match-regex */
 const paths = require('./helper/paths');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
+
 
 // Options
 const HOST = 'localhost';
@@ -11,6 +14,43 @@ const WEBPACK_DEFAULT_OPTIONS = {
 };
 
 
+// Helpers
+function generateIndexEntry(isDev) {
+    let indexEntry = [];
+
+    if (isDev) {
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
+        indexEntry.push('webpack/hot/only-dev-server');
+    }
+
+    indexEntry.push(paths.appIndexJs);
+
+    return indexEntry;
+}
+
+function generatePlugins(isDev) {
+    let plugins = [
+        new ExtractTextPlugin({
+            disable: isDev,
+            filename: '[name].[hash].css'
+        }),
+        new HtmlWebpackPlugin({
+            template: paths.appHtmlTemplate
+        })
+    ];
+
+    if (isDev) {
+        // Enable HMR globally
+        plugins.push(new HotModuleReplacementPlugin());
+
+        // Prints more readable module names in the browser console on HMR updates
+        plugins.push(new NamedModulesPlugin());
+    }
+
+    return plugins;
+}
+
+
 // Webpack config
 module.exports = {
     defaults: {
@@ -19,22 +59,21 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        // TODO: use this value
-        const { dev } = options; // eslint-disable-line
+        const { dev } = options;
+        const indexEntry = generateIndexEntry(dev);
+        const plugins = generatePlugins(dev);
 
         return {
-            // devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
+            devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
             entry: {
-                index: [
-                    `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`,
-                    paths.appIndexJs
-                ]
+                index: indexEntry
             },
 
             output: {
                 path: paths.appBuild,
-                filename: '[name].[hash].js'
+                filename: '[name].[hash].js',
+                publicPath: '/'
             },
 
             module: {
@@ -46,24 +85,21 @@ module.exports = {
                     },
                     {
                         test: /\.(css|scss)$/,
-                        use: [
-                            // Add CSS to HTML page (uses JavaScript)
-                            'style-loader',
-                             // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
-                            { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
-                            // Process PostCSS
-                            { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
-                        ]
+                        // TODO: Update from 'loader' to 'use' when ExtractTextPlugin is updated to Webpack2 syntax
+                        loader: ExtractTextPlugin.extract({
+                            fallbackLoader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                            loader: [
+                                 // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
+                                { loader: 'css-loader', query: { importLoaders: 1, sourceMap: true } },
+                                // Process PostCSS
+                                { loader: 'postcss-loader', query: { config: paths.ownPostCssConfig } }
+                            ]
+                        }),
                     },
                 ]
             },
 
-            plugins: [
-                new HtmlWebpackPlugin({
-                    filename: paths.appBuild + '/[name].[hash].html', // eslint-disable-line
-                    template: paths.appHtmlTemplate
-                })
-            ],
+            plugins: plugins,
 
             resolve: {
                 extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
@@ -92,13 +128,13 @@ module.exports = {
                 compress: true,
 
                 // Use /public/ as the default content base
-                contentBase: paths.appPublic,
+                contentBase: paths.appBuild,
 
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
 
-                // Hot module replacement
-                // hot: true,
+                // Hot module replacement (only in 'dev' mode)
+                hot: dev,
 
                 // Enable HTTPS and HTTP/2
                 https: true,
@@ -107,8 +143,7 @@ module.exports = {
                 noInfo: true,
 
                 // Match public path with output path
-                // TODO: Make config
-                publicPath: '/build/',
+                publicPath: '/',
 
                 watchOptions: {
                     // Don't actively watch the node_modules folder to decrease CPU usage

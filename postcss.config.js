@@ -9,6 +9,21 @@ const BROWSER_SUPPORT = [
     'Opera >= 40'
 ];
 
+const CSS_NANO_OPTIONS = {
+    autoprefixer: false,
+    calc: true,
+    colormin: true,
+    convertValues: true,
+    core: true,
+    discardComments: { removeAll: true },
+    discardDuplicates: true,
+    discardEmpty: true,
+    filterOptimiser: true,
+    filterPlugins: false,
+    functionOptimiser: true,
+    mergeLonghand: true
+};
+
 module.exports = (context) => ({
     parser: 'postcss-scss',
     plugins: {
@@ -18,6 +33,6 @@ module.exports = (context) => ({
         'postcss-remify': {},
         'precss': { browsers: BROWSER_SUPPORT },
         'postcss-cssnext': { browsers: BROWSER_SUPPORT },
-        'cssnano': context.env === 'production' ? {} : false
+        'cssnano': context.env === 'production' ? CSS_NANO_OPTIONS : false
     }
 });
