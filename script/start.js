@@ -31,7 +31,7 @@ function run() {
         console.log('  ', chalk.cyan(`${DEFAULTS.PROTOCOL}://${DEFAULTS.HOST}:${DEFAULTS.PORT}/`));
         console.log();
         console.log('Note that the development build is not optimized.');
-        console.log('To create a production build, use', chalk.cyan('yarn run build'), '.');
+        console.log('To create a production build, use', chalk.cyan('yarn build'), '.');
         console.log();
 
         isFirstCompile = false;

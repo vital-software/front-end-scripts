@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 
+
 // Options
 const HOST = 'localhost';
 const PORT = 3000;
@@ -11,6 +12,43 @@ const PROTOCOL = 'https';
 const WEBPACK_DEFAULT_OPTIONS = {
     dev: true
 };
+
+
+// Helpers
+function generateIndexEntry(isDev) {
+    let indexEntry = [];
+
+    if (isDev) {
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
+        indexEntry.push('webpack/hot/only-dev-server');
+    }
+
+    indexEntry.push(paths.appIndexJs);
+
+    return indexEntry;
+}
+
+function generatePlugins(isDev) {
+    let plugins = [
+        new ExtractTextPlugin({
+            disable: isDev,
+            filename: '[name].[hash].css'
+        }),
+        new HtmlWebpackPlugin({
+            template: paths.appHtmlTemplate
+        })
+    ];
+
+    if (isDev) {
+        // Enable HMR globally
+        plugins.push(new HotModuleReplacementPlugin());
+
+        // Prints more readable module names in the browser console on HMR updates
+        plugins.push(new NamedModulesPlugin());
+    }
+
+    return plugins;
+}
 
 
 // Webpack config
@@ -22,14 +60,8 @@ module.exports = {
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
         const { dev } = options;
-        let indexEntry = [];
-
-        if (dev) {
-            indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
-            indexEntry.push('webpack/hot/only-dev-server');
-        }
-
-        indexEntry.push(paths.appIndexJs);
+        const indexEntry = generateIndexEntry(dev);
+        const plugins = generatePlugins(dev);
 
         return {
             // devtool: dev ? 'cheap-module-eval-source-map' : 'hidden-source-map',
@@ -67,21 +99,7 @@ module.exports = {
                 ]
             },
 
-            plugins: [
-                new ExtractTextPlugin({
-                    disable: dev,
-                    filename: '[name].[hash].css'
-                }),
-                new HtmlWebpackPlugin({
-                    template: paths.appHtmlTemplate
-                }),
-
-                new HotModuleReplacementPlugin(),
-                // enable HMR globally
-
-                new NamedModulesPlugin(),
-                // prints more readable module names in the browser console on HMR updates
-            ],
+            plugins: plugins,
 
             resolve: {
                 extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
@@ -115,8 +133,8 @@ module.exports = {
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
 
-                // Hot module replacement
-                hot: true,
+                // Hot module replacement (only in 'dev' mode)
+                hot: dev,
 
                 // Enable HTTPS and HTTP/2
                 https: true,
@@ -125,7 +143,6 @@ module.exports = {
                 noInfo: true,
 
                 // Match public path with output path
-                // TODO: Make config
                 publicPath: '/',
 
                 watchOptions: {
