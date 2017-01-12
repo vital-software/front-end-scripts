@@ -39,7 +39,7 @@ function generatePlugins(isDev) {
     let plugins = [
         new ExtractTextPlugin({
             disable: isDev,
-            filename: '[name].[hash].css'
+            filename: '[name].[chunkhash].css'
         }),
         new HtmlWebpackPlugin({
             template: paths.appHtmlTemplate
@@ -117,7 +117,7 @@ module.exports = {
 
             output: {
                 path: paths.appBuild,
-                filename: '[name].[hash].js',
+                filename: dev ? '[name].js' : '[name].[chunkhash].js',
                 publicPath: '/'
             },
 
