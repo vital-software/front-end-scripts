@@ -1,8 +1,14 @@
-/* eslint-disable filenames/match-regex */
+/* eslint-disable camelcase, filenames/match-regex */
 const paths = require('./helper/paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
+const {
+    DefinePlugin,
+    HotModuleReplacementPlugin,
+    LoaderOptionsPlugin,
+    NamedModulesPlugin,
+    optimize
+} = require('webpack');
 
 
 // Options
@@ -46,6 +52,40 @@ function generatePlugins(isDev) {
 
         // Prints more readable module names in the browser console on HMR updates
         plugins.push(new NamedModulesPlugin());
+    } else {
+        // Set debug/minimize settings for production
+        plugins.push(new LoaderOptionsPlugin({
+            debug: false,
+            minimize: true
+        }));
+
+        // Set Node/Run settings to optimise code
+        plugins.push(new DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production'),
+                'RUN_ENV': JSON.stringify('browser')
+            }
+        }));
+
+        // Uglify Javascript
+        plugins.push(new optimize.UglifyJsPlugin({
+            beautify: false,
+            comments: false,
+            compress: {
+                conditionals: true,
+                dead_code: true,
+                drop_console: true,
+                drop_debugger: true,
+                screw_ie8: true,
+                warnings: false
+            },
+            mangle: {
+                keep_fnames: true,
+                screw_ie8: true,
+                vars: true
+            },
+            sourceMap: true
+        }));
     }
 
     return plugins;
