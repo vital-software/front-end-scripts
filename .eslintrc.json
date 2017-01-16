@@ -128,7 +128,10 @@
     "eol-last": "error",
     "func-style": [
       "error",
-      "declaration"
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
     ],
     "indent": [
       "error",
