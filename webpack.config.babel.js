@@ -1,5 +1,6 @@
 /* eslint-disable camelcase, filenames/match-regex */
 const paths = require('./helper/paths');
+const ownBabelConfig = require(paths.ownBabelConfig);
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
@@ -126,7 +127,8 @@ module.exports = {
                     {
                         test: /\.(js|jsx)$/,
                         exclude: /node_modules/,
-                        use: 'babel-loader'
+                        loader: 'babel-loader',
+                        query: ownBabelConfig
                     },
                     {
                         test: /\.(css|scss)$/,
