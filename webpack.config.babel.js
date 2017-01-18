@@ -187,8 +187,8 @@ module.exports = {
                 // Add GZip compression
                 compress: true,
 
-                // Use /public/ as the default content base
-                contentBase: paths.appBuild,
+                // Use /static/ as the default content base
+                contentBase: paths.appPublic,
 
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
