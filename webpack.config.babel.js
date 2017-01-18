@@ -155,7 +155,10 @@ module.exports = {
                         test: /\.(css|scss)$/,
                         // TODO: Update from 'loader' to 'use' when ExtractTextPlugin is updated to Webpack2 syntax
                         loader: ExtractTextPlugin.extract({
-                            fallbackLoader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                            fallbackLoader: {
+                                loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                                query: { fixUrls: true }
+                            },
                             loader: [
                                  // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
                                 { loader: 'css-loader', query: { importLoaders: 1, sourceMap: true } },
@@ -175,6 +178,7 @@ module.exports = {
                 modules: [
                     paths.appJs,
                     paths.appSrc,
+                    paths.appPublic,
                     'node_modules'
                 ],
             },

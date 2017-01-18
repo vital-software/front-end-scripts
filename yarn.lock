@@ -4534,9 +4534,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@^0.13.1:
+"style-loader@github:bendytree/style-loader":
   version "0.13.1"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.1.tgz#468280efbc0473023cd3a6cd56e33b5a1d7fc3a9"
+  resolved "https://codeload.github.com/bendytree/style-loader/tar.gz/4f9f4494184f3b8a427a381249eb0e09f3787768"
   dependencies:
     loader-utils "^0.2.7"
 
