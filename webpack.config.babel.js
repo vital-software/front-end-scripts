@@ -1,6 +1,5 @@
 /* eslint-disable camelcase, filenames/match-regex */
 const paths = require('./helper/paths');
-const appConfig = require(paths.appConfig);
 const babelConfig = require(paths.ownBabelConfig);
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,6 +10,18 @@ const {
     NamedModulesPlugin,
     optimize
 } = require('webpack');
+
+
+// Load project config, or default to local project config
+let appConfig = {
+    entry: {}
+};
+
+try {
+    appConfig = require.resolve(paths.appConfig);
+} catch (exception) {
+    // Local project config file does not exist
+}
 
 
 // Options
