@@ -9,6 +9,7 @@ function resolveApp(relativePath) {
 
 module.exports = {
     appBuild: resolveApp('public'),
+    appConfig: resolveApp('.build.config.js'),
     appHtmlTemplate: resolveApp('static/index.html'),
     appJs: resolveApp('client/js'),
     appIndexJs: resolveApp('client/js/index.js'),

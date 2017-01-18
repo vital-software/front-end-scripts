@@ -1,6 +1,7 @@
 /* eslint-disable camelcase, filenames/match-regex */
 const paths = require('./helper/paths');
-const ownBabelConfig = require(paths.ownBabelConfig);
+const appConfig = require(paths.appConfig);
+const babelConfig = require(paths.ownBabelConfig);
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
@@ -108,13 +109,14 @@ module.exports = {
 
         const indexEntry = generateIndexEntry(dev);
         const plugins = generatePlugins(dev);
+        const entry = Object.assign(
+            { index: indexEntry }, appConfig.entry
+        );
 
         return {
             devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
-            entry: {
-                index: indexEntry
-            },
+            entry: entry,
 
             output: {
                 path: paths.appBuild,
@@ -128,7 +130,7 @@ module.exports = {
                         test: /\.(js|jsx)$/,
                         exclude: /node_modules/,
                         loader: 'babel-loader',
-                        query: ownBabelConfig
+                        query: babelConfig
                     },
                     {
                         test: /\.(css|scss)$/,
