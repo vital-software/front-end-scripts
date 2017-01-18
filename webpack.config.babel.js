@@ -138,6 +138,14 @@ module.exports = {
             module: {
                 rules: [
                     {
+                        test: /\.(jpe?g|png|gif|svg|webp)$/,
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                            name: '[path][name].[ext]'
+                        }
+                    },
+                    {
                         test: /\.(js|jsx)$/,
                         exclude: /node_modules/,
                         loader: 'babel-loader',
@@ -155,7 +163,7 @@ module.exports = {
                                 { loader: 'postcss-loader', query: { config: paths.ownPostCssConfig } }
                             ]
                         }),
-                    },
+                    }
                 ]
             },
 
