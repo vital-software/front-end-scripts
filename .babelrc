@@ -4,11 +4,11 @@ module.exports = {
     "transform-object-rest-spread"
   ],
   "presets": [
-    "react",
     ["latest", {
       "es2015": {
         "modules": false
       }
-    }]
+    }],
+    "react"
   ]
 }
