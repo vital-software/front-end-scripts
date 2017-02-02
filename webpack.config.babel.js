@@ -141,7 +141,7 @@ module.exports = {
                         test: /\.(jpe?g|png|gif|svg|webp)$/,
                         loader: 'url-loader',
                         options: {
-                            limit: 10000,
+                            limit: 10000, // TODO: constantise this value
                             name: '[path][name].[ext]'
                         }
                     },
@@ -157,6 +157,7 @@ module.exports = {
                         loader: ExtractTextPlugin.extract({
                             fallbackLoader: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                                // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack/style-loader/pull/124#issuecomment-249382607)
                                 query: { fixUrls: true }
                             },
                             loader: [
