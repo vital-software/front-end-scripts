@@ -50,6 +50,16 @@ function generateIndexEntry(isDev) {
 
 function generatePlugins(isDev) {
     let plugins = [
+        new optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.js',
+
+            // The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
+            minChunks: 2,
+
+            // Minimum size of all common module before a commons chunk is created.
+            minSize: 2
+        }),
         new ExtractTextPlugin({
             disable: isDev,
             filename: '[name].[chunkhash].css'
