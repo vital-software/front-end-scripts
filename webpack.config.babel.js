@@ -137,9 +137,39 @@ module.exports = {
             {
                 path: paths.appBuild,
                 filename: dev ? '[name].js' : '[name].[chunkhash].js',
-                publicPath: ''
+                publicPath: '/'
             },
             appConfig.output
+        );
+        const devServer = Object.assign(
+            {
+                // Add GZip compression
+                compress: true,
+
+                // Use /static/ as the default content base
+                contentBase: paths.appPublic,
+
+                // index.html will catch all routes (allowing Router to do it's thing)
+                historyApiFallback: true,
+
+                // Hot module replacement (only in 'dev' mode)
+                hot: dev,
+
+                // Enable HTTPS and HTTP/2
+                https: true,
+
+                // Hide the webpack bundle information
+                noInfo: true,
+
+                // Match public path with output path
+                publicPath: '/',
+
+                watchOptions: {
+                    // Don't actively watch the node_modules folder to decrease CPU usage
+                    ignored: /node_modules/
+                }
+            },
+            appConfig.devServer
         );
 
         return {
@@ -211,33 +241,7 @@ module.exports = {
                 hints: (dev ? false : 'warning')
             },
 
-            devServer: {
-                // Add GZip compression
-                compress: true,
-
-                // Use /static/ as the default content base
-                contentBase: paths.appPublic,
-
-                // index.html will catch all routes (allowing Router to do it's thing)
-                historyApiFallback: true,
-
-                // Hot module replacement (only in 'dev' mode)
-                hot: dev,
-
-                // Enable HTTPS and HTTP/2
-                https: true,
-
-                // Hide the webpack bundle information
-                noInfo: true,
-
-                // Match public path with output path
-                publicPath: '/',
-
-                watchOptions: {
-                    // Don't actively watch the node_modules folder to decrease CPU usage
-                    ignored: /node_modules/
-                }
-            }
+            devServer: devServer
         };
     }
 };
