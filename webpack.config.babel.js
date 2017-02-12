@@ -133,6 +133,14 @@ module.exports = {
         const entry = Object.assign(
             { index: indexEntry }, appConfig.entry
         );
+        const output = Object.assign(
+            {
+                path: paths.appBuild,
+                filename: dev ? '[name].js' : '[name].[chunkhash].js',
+                publicPath: ''
+            },
+            appConfig.output
+        );
 
         return {
             devtool: dev ? 'eval-source-map' : 'source-map',
@@ -140,11 +148,7 @@ module.exports = {
 
             entry: entry,
 
-            output: {
-                path: paths.appBuild,
-                filename: dev ? '[name].js' : '[name].[chunkhash].js',
-                publicPath: '/'
-            },
+            output: output,
 
             module: {
                 rules: [
