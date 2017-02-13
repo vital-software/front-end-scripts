@@ -14,11 +14,13 @@ const {
 
 // Load project config, or default to local project config
 let appConfig = {
-    entry: {}
+    entry: {},
+    output: {},
+    devServer: {}
 };
 
 try {
-    appConfig = require.resolve(paths.appConfig);
+    appConfig = require(require.resolve(paths.appConfig));
 } catch (exception) {
     // Local project config file does not exist
 }
