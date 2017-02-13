@@ -173,7 +173,7 @@ module.exports = {
         );
 
         return {
-            devtool: dev ? 'eval-source-map' : 'source-map',
+            devtool: dev ? 'source-map' : 'source-map',
             // TODO: Change the devtool option back to 'cheap-module-eval-source-map' once the Chrome issues have been resolved.
 
             entry: entry,
