@@ -175,9 +175,10 @@ module.exports = {
         );
 
         return {
-            devtool: dev ? 'source-map' : 'source-map',
-            // TODO: Change the devtool option back to 'cheap-module-eval-source-map' once the Chrome issues have been resolved.
-
+            devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
+            // TODO: Change the devtool option back to this turnary once the Chrome issues have
+            //       been resolved. See https://github.com/webpack/webpack/issues/2145
+           
             entry: entry,
 
             output: output,
