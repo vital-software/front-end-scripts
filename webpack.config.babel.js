@@ -14,11 +14,12 @@ const {
 
 // Load project config, or default to local project config
 let appConfig = {
-    entry: {}
+    entry: {},
+    env: {}
 };
 
 try {
-    appConfig = require.resolve(paths.appConfig);
+    appConfig = require(paths.appConfig);
 } catch (exception) {
     // Local project config file does not exist
 }
@@ -50,6 +51,13 @@ function generateIndexEntry(isDev) {
 
 function generatePlugins(isDev) {
     let plugins = [
+        // Set Node/Run settings to optimise code
+        new DefinePlugin({
+            'process.env': Object.assign({
+                'NODE_ENV': isDev ? JSON.stringify('development') : JSON.stringify('production'),
+                'RUN_ENV': JSON.stringify('browser')
+            }, appConfig.env)
+        }),
         new ExtractTextPlugin({
             disable: isDev,
             filename: '[name].[chunkhash].css'
@@ -70,14 +78,6 @@ function generatePlugins(isDev) {
         plugins.push(new LoaderOptionsPlugin({
             debug: false,
             minimize: true
-        }));
-
-        // Set Node/Run settings to optimise code
-        plugins.push(new DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production'),
-                'RUN_ENV': JSON.stringify('browser')
-            }
         }));
 
         // Uglify Javascript
