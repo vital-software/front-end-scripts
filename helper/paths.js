@@ -18,6 +18,5 @@ module.exports = {
     appSrc: resolveApp('client'),
     ownBabelConfig: path.resolve(__dirname, '../.babelrc'),
     ownNodeModules: path.resolve(__dirname, '../node_modules'),
-    ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js'),
-    yarnLockFile: resolveApp('yarn.lock')
+    ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js')
 };

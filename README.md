@@ -27,6 +27,7 @@ Get a Front End project up with no external configuration
 - ES2015
 - ES2016
 - UglifyJS minification
+- Vendor chunking
 
 
 ### Code Quality

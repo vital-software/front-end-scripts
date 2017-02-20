@@ -14,8 +14,10 @@ const {
 
 // Load project config, or default to local project config
 let appConfig = {
+    devServer: {},
     entry: {},
-    env: {}
+    env: {},
+    output: {}
 };
 
 try {
@@ -51,6 +53,16 @@ function generateIndexEntry(isDev) {
 
 function generatePlugins(isDev) {
     let plugins = [
+        new optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.js',
+
+            // The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
+            minChunks: 2,
+
+            // Minimum size of all common module before a commons chunk is created.
+            minSize: 2
+        }),
         // Set Node/Run settings to optimise code
         new DefinePlugin({
             'process.env': Object.assign({
@@ -123,17 +135,53 @@ module.exports = {
         const entry = Object.assign(
             { index: indexEntry }, appConfig.entry
         );
-
-        return {
-            devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
-
-            entry: entry,
-
-            output: {
+        const output = Object.assign(
+            {
                 path: paths.appBuild,
                 filename: dev ? '[name].js' : '[name].[chunkhash].js',
                 publicPath: '/'
             },
+            appConfig.output
+        );
+        const devServer = Object.assign(
+            {
+                // Add GZip compression
+                compress: true,
+
+                // Use /static/ as the default content base
+                contentBase: paths.appPublic,
+
+                // index.html will catch all routes (allowing Router to do it's thing)
+                historyApiFallback: true,
+
+                // Hot module replacement (only in 'dev' mode)
+                hot: dev,
+
+                // Enable HTTPS and HTTP/2
+                https: true,
+
+                // Hide the webpack bundle information
+                noInfo: true,
+
+                // Match public path with output path
+                publicPath: '/',
+
+                watchOptions: {
+                    // Don't actively watch the node_modules folder to decrease CPU usage
+                    ignored: /node_modules/
+                }
+            },
+            appConfig.devServer
+        );
+
+        return {
+            // TODO: Change the devtool option back to this turnary once the Chrome issues have
+            //       been resolved. See https://github.com/webpack/webpack/issues/2145
+            devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
+
+            entry: entry,
+
+            output: output,
 
             module: {
                 rules: [
@@ -141,7 +189,7 @@ module.exports = {
                         test: /\.(jpe?g|png|gif|svg|webp)$/,
                         loader: 'url-loader',
                         options: {
-                            limit: 10000,
+                            limit: 10000, // TODO: constantise this value
                             name: '[path][name].[ext]'
                         }
                     },
@@ -157,6 +205,7 @@ module.exports = {
                         loader: ExtractTextPlugin.extract({
                             fallbackLoader: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                                // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack/style-loader/pull/124#issuecomment-249382607)
                                 query: { fixUrls: true }
                             },
                             loader: [
@@ -195,33 +244,7 @@ module.exports = {
                 hints: (dev ? false : 'warning')
             },
 
-            devServer: {
-                // Add GZip compression
-                compress: true,
-
-                // Use /static/ as the default content base
-                contentBase: paths.appPublic,
-
-                // index.html will catch all routes (allowing Router to do it's thing)
-                historyApiFallback: true,
-
-                // Hot module replacement (only in 'dev' mode)
-                hot: dev,
-
-                // Enable HTTPS and HTTP/2
-                https: true,
-
-                // Hide the webpack bundle information
-                noInfo: true,
-
-                // Match public path with output path
-                publicPath: '/',
-
-                watchOptions: {
-                    // Don't actively watch the node_modules folder to decrease CPU usage
-                    ignored: /node_modules/
-                }
-            }
+            devServer: devServer
         };
     }
 };
