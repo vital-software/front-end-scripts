@@ -14,13 +14,14 @@ const {
 
 // Load project config, or default to local project config
 let appConfig = {
+    devServer: {},
     entry: {},
-    output: {},
-    devServer: {}
+    env: {},
+    output: {}
 };
 
 try {
-    appConfig = require(require.resolve(paths.appConfig));
+    appConfig = require(paths.appConfig);
 } catch (exception) {
     // Local project config file does not exist
 }
@@ -62,6 +63,13 @@ function generatePlugins(isDev) {
             // Minimum size of all common module before a commons chunk is created.
             minSize: 2
         }),
+        // Set Node/Run settings to optimise code
+        new DefinePlugin({
+            'process.env': Object.assign({
+                'NODE_ENV': isDev ? JSON.stringify('development') : JSON.stringify('production'),
+                'RUN_ENV': JSON.stringify('browser')
+            }, appConfig.env)
+        }),
         new ExtractTextPlugin({
             disable: isDev,
             filename: '[name].[chunkhash].css'
@@ -82,14 +90,6 @@ function generatePlugins(isDev) {
         plugins.push(new LoaderOptionsPlugin({
             debug: false,
             minimize: true
-        }));
-
-        // Set Node/Run settings to optimise code
-        plugins.push(new DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production'),
-                'RUN_ENV': JSON.stringify('browser')
-            }
         }));
 
         // Uglify Javascript
@@ -175,10 +175,10 @@ module.exports = {
         );
 
         return {
-            devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
             // TODO: Change the devtool option back to this turnary once the Chrome issues have
             //       been resolved. See https://github.com/webpack/webpack/issues/2145
-           
+            devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
+
             entry: entry,
 
             output: output,
