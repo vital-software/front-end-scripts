@@ -48,5 +48,9 @@ module.exports = {
 
 ## Troubleshooting
 
+#### Environment variables on build
+Ensure that the BUILD_ENV environment variable gets set directly before the call to build otherwise the variable will fall out of scope and be undefined in the build script context.
+eg: `BUILD_ENV=production front-end-scripts build`
+
 #### Safari outputs a (WebSocket network error: OSStatus Error -9807: Invalid certificate chain)
 You need to ensure you've correctly trusted the self-signed certificate within Safari. See the guide [available here](http://blog.marcon.me/post/24874118286/secure-websockets-safari) for how to do this. If the padlock icon doesn't show in the URL bar, you will need to clear browser history for the `localhost` domain and refresh the page.
