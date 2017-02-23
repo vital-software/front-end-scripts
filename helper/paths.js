@@ -16,7 +16,6 @@ module.exports = {
     appPackageJson: resolveApp('package.json'),
     appPublic: resolveApp('static'),
     appSrc: resolveApp('client'),
-    ownBabelConfig: path.resolve(__dirname, '../.babelrc'),
     ownNodeModules: path.resolve(__dirname, '../node_modules'),
     ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js')
 };

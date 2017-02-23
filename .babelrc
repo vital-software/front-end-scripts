@@ -1,4 +1,4 @@
-module.exports = {
+{
   "plugins": [
     "transform-object-assign",
     "transform-object-rest-spread"
