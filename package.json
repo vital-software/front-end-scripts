@@ -41,6 +41,7 @@
     "file-loader": "^0.10.0",
     "filesize": "^3.3.0",
     "fs-extra": "^2.0.0",
+    "graphql-tag": "^1.2.4",
     "gzip-size": "^3.0.0",
     "html-webpack-plugin": "^2.24.1",
     "postcss-cssnext": "^2.9.0",

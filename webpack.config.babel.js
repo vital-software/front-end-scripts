@@ -194,6 +194,11 @@ module.exports = {
                         }
                     },
                     {
+                        test: /\.(graphql|gql)$/,
+                        exclude: /node_modules/,
+                        loader: 'graphql-tag/loader'
+                    },
+                    {
                         test: /\.(js|jsx)$/,
                         exclude: /node_modules/,
                         loader: 'babel-loader',
@@ -221,7 +226,7 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.js', '.json', '.jsx', '.scss'],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
                 modules: [
                     paths.appJs,
