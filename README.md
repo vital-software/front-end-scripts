@@ -49,7 +49,7 @@ module.exports = {
 
 ### Publishing
 To publish a new version to the NPM registry:
-- Ensure you have pubish privs on the NPM registry.
+- Ensure you have publishing privs on the NPM registry.
 - Run `npm login` and enter your npm user and password.
 - Navigate to the root of the project and run `npm version [patch|minor|major]`. For guidance on semver see https://docs.npmjs.com/misc/semver.
 - Run `npm publish`.
