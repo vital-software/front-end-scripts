@@ -28,6 +28,7 @@
   "dependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-preset-latest": "^6.16.0",
