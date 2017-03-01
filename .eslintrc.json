@@ -11,6 +11,7 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:jest/recommended",
     "plugin:react/recommended"
   ],
   "parserOptions": {
@@ -23,9 +24,10 @@
   },
   "plugins": [
     "babel",
-    "react",
     "filenames",
-    "import"
+    "import",
+    "jest",
+    "react"
   ],
   "rules": {
     "react/no-danger": 0,
