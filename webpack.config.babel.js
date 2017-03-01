@@ -227,6 +227,7 @@ module.exports = {
                 extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
                 modules: [
+                    paths.appCss,
                     paths.appJs,
                     paths.appSrc,
                     paths.appPublic,
