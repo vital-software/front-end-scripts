@@ -16,7 +16,8 @@ let appConfig = {
     devServer: {},
     entry: {},
     env: {},
-    output: {}
+    output: {},
+    performance: {}
 };
 
 try {
@@ -242,10 +243,10 @@ module.exports = {
                 ]
             },
 
-            performance: {
+            performance: Object.assign({
                 // Disable 250kb JavaScript entry file warnings
                 hints: (dev ? false : 'warning')
-            },
+            }, appConfig.performance),
 
             devServer: devServer
         };
