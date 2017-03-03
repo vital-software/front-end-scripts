@@ -113,8 +113,6 @@ function printErrors(summary, errors) {
 // Create the production build and print the deployment instructions.
 function build(previousSizeMap) {
     console.log('Creating an optimized production build...');
-    console.log(config);
-
     webpack(config).run((error, stats) => {
         if (error) {
             printErrors('Failed to compile.', [error]);
