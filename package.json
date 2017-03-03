@@ -16,6 +16,7 @@
     ".babelrc",
     ".editorconfig",
     ".eslintrc.json",
+    ".stylelintrc.json",
     "postcss.config.js",
     "webpack.config.babel.js",
     "bin",
