@@ -29,7 +29,6 @@ module.exports = (context) => ({
     plugins: {
         'postcss-import': {},
         'postcss-simple-vars': {},
-        'postcss-rgb-to-rgba': {},
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
         'precss': { browsers: BROWSER_SUPPORT },

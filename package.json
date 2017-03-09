@@ -49,7 +49,6 @@
     "postcss-import": "^9.0.0",
     "postcss-loader": "^1.2.1",
     "postcss-remify": "^1.0.1",
-    "postcss-rgb-to-rgba": "^0.9.0",
     "postcss-scss": "^0.4.0",
     "postcss-simple-vars": "^3.0.0",
     "postcss-strip-inline-comments": "^0.1.5",
