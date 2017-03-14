@@ -212,7 +212,8 @@ module.exports = {
                         loader: ExtractTextPlugin.extract({
                             fallback: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                                query: { convertToAbsoluteUrls: true }
+                                // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack-contrib/style-loader/pull/165)
+                                query: { fixUrls: true }
                             },
                             use: [
                                  // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
