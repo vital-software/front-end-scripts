@@ -41,7 +41,9 @@ const URL_LOADER_LIMIT = 10000; // Byte limit for URL loader conversion
 
 // Helpers
 function generateIndexEntry(isDev) {
-    let indexEntry = [];
+    let indexEntry = [
+        'react-hot-loader/patch' // React HMR
+    ];
 
     if (isDev) {
         indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
