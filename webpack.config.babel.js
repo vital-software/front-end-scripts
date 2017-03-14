@@ -36,6 +36,8 @@ const WEBPACK_DEFAULT_OPTIONS = {
     linkedInstall: false // Used for 'npm link' local installs (for debugging)
 };
 
+const URL_LOADER_LIMIT = 10000; // Byte limit for URL loader conversion
+
 
 // Helpers
 function generateIndexEntry(isDev) {
@@ -189,7 +191,7 @@ module.exports = {
                         test: /\.(jpe?g|png|gif|svg|webp)$/,
                         loader: 'url-loader',
                         options: {
-                            limit: 10000, // TODO: constantise this value
+                            limit: URL_LOADER_LIMIT,
                             name: '[path][name].[ext]'
                         }
                     },
@@ -208,8 +210,7 @@ module.exports = {
                         loader: ExtractTextPlugin.extract({
                             fallback: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                                // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack/style-loader/pull/124#issuecomment-249382607)
-                                query: { fixUrls: true }
+                                query: { convertToAbsoluteUrls: true }
                             },
                             use: [
                                  // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
