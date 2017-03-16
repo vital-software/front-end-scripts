@@ -200,7 +200,7 @@
     ],
     "semi": [
       "error",
-      "always"
+      "never"
     ],
     "semi-spacing": [
       "error",
