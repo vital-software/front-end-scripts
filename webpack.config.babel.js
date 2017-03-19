@@ -1,14 +1,14 @@
 /* eslint-disable camelcase, filenames/match-regex */
-const paths = require('./helper/paths');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./helper/paths')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
     DefinePlugin,
     HotModuleReplacementPlugin,
     LoaderOptionsPlugin,
     NamedModulesPlugin,
     optimize
-} = require('webpack');
+} = require('webpack')
 
 
 // Load project config, or default to local project config
@@ -18,41 +18,41 @@ let appConfig = {
     env: {},
     output: {},
     performance: {}
-};
+}
 
 try {
-    appConfig = require(paths.appConfig);
+    appConfig = require(paths.appConfig)
 } catch (exception) {
     // Local project config file does not exist
 }
 
 
 // Options
-const HOST = 'localhost';
-const PORT = 3000;
-const PROTOCOL = 'https';
+const HOST = 'localhost'
+const PORT = 3000
+const PROTOCOL = 'https'
 const WEBPACK_DEFAULT_OPTIONS = {
     dev: true,
     linkedInstall: false // Used for 'npm link' local installs (for debugging)
-};
+}
 
-const URL_LOADER_LIMIT = 10000; // Byte limit for URL loader conversion
+const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 
 // Helpers
 function generateIndexEntry(isDev) {
     let indexEntry = [
         'react-hot-loader/patch' // React HMR
-    ];
+    ]
 
     if (isDev) {
-        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`);
-        indexEntry.push('webpack/hot/only-dev-server');
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
+        indexEntry.push('webpack/hot/only-dev-server')
     }
 
-    indexEntry.push(paths.appIndexJs);
+    indexEntry.push(paths.appIndexJs)
 
-    return indexEntry;
+    return indexEntry
 }
 
 function generatePlugins(isDev) {
@@ -81,20 +81,20 @@ function generatePlugins(isDev) {
         new HtmlWebpackPlugin({
             template: paths.appHtmlTemplate
         })
-    ];
+    ]
 
     if (isDev) {
         // Enable HMR globally
-        plugins.push(new HotModuleReplacementPlugin());
+        plugins.push(new HotModuleReplacementPlugin())
 
         // Prints more readable module names in the browser console on HMR updates
-        plugins.push(new NamedModulesPlugin());
+        plugins.push(new NamedModulesPlugin())
     } else {
         // Set debug/minimize settings for production
         plugins.push(new LoaderOptionsPlugin({
             debug: false,
             minimize: true
-        }));
+        }))
 
         // Uglify Javascript
         plugins.push(new optimize.UglifyJsPlugin({
@@ -114,10 +114,10 @@ function generatePlugins(isDev) {
                 vars: true
             },
             sourceMap: true
-        }));
+        }))
     }
 
-    return plugins;
+    return plugins
 }
 
 
@@ -132,13 +132,13 @@ module.exports = {
         const {
             dev,
             linkedInstall
-        } = options;
+        } = options
 
-        const indexEntry = generateIndexEntry(dev);
-        const plugins = generatePlugins(dev);
+        const indexEntry = generateIndexEntry(dev)
+        const plugins = generatePlugins(dev)
         const entry = Object.assign(
             { index: indexEntry }, appConfig.entry
-        );
+        )
         const output = Object.assign(
             {
                 path: paths.appBuild,
@@ -146,7 +146,7 @@ module.exports = {
                 publicPath: '/'
             },
             appConfig.output
-        );
+        )
         const devServer = Object.assign(
             {
                 // Add GZip compression
@@ -176,7 +176,7 @@ module.exports = {
                 }
             },
             appConfig.devServer
-        );
+        )
 
         return {
             // TODO: Change the devtool option back to this turnary once the Chrome issues have
@@ -253,6 +253,6 @@ module.exports = {
             }, appConfig.performance),
 
             devServer: devServer
-        };
+        }
     }
-};
+}

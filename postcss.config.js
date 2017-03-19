@@ -7,7 +7,7 @@ const BROWSER_SUPPORT = [
     'Firefox >= 48',
     'Explorer >= 11',
     'Opera >= 40'
-];
+]
 
 const CSS_NANO_OPTIONS = {
     autoprefixer: false,
@@ -22,7 +22,7 @@ const CSS_NANO_OPTIONS = {
     filterPlugins: false,
     functionOptimiser: true,
     mergeLonghand: true
-};
+}
 
 module.exports = (context) => ({
     parser: 'postcss-scss',
@@ -35,4 +35,4 @@ module.exports = (context) => ({
         'postcss-cssnext': { browsers: BROWSER_SUPPORT },
         'cssnano': context.env === 'production' ? CSS_NANO_OPTIONS : false
     }
-});
+})
