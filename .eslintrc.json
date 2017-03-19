@@ -12,6 +12,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:react/recommended"
   ],
   "parserOptions": {
@@ -27,6 +28,7 @@
     "filenames",
     "import",
     "jest",
+    "jsx-a11y",
     "react"
   ],
   "rules": {
