@@ -1,12 +1,12 @@
 /* eslint-disable filenames/match-regex */
 const BROWSER_SUPPORT = [
-    'Chrome >= 54',
-    'ChromeAndroid >= 54',
+    'Chrome >= 56',
+    'ChromeAndroid >= 56',
     'Safari >= 9',
     'iOS >= 9',
-    'Firefox >= 48',
+    'Firefox >= 50',
     'Explorer >= 11',
-    'Opera >= 40'
+    'Opera >= 41'
 ]
 
 const CSS_NANO_OPTIONS = {
