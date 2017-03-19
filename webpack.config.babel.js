@@ -213,13 +213,13 @@ module.exports = {
                             fallback: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
                                 // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack-contrib/style-loader/pull/165)
-                                query: { fixUrls: true }
+                                options: { fixUrls: true }
                             },
                             use: [
                                  // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
-                                { loader: 'css-loader', query: { importLoaders: 1, sourceMap: true } },
+                                { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
                                 // Process PostCSS
-                                { loader: 'postcss-loader', query: { config: paths.ownPostCssConfig } }
+                                { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
                             ]
                         }),
                     }
