@@ -1,4 +1,5 @@
 /* eslint-disable camelcase, filenames/match-regex */
+const BabiliPlugin = require('babili-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -96,24 +97,12 @@ function generatePlugins(isDev) {
             minimize: true
         }))
 
-        // Uglify Javascript
-        plugins.push(new optimize.UglifyJsPlugin({
-            beautify: false,
-            comments: false,
-            compress: {
-                conditionals: true,
-                dead_code: true,
-                drop_console: true,
-                drop_debugger: true,
-                screw_ie8: true,
-                warnings: false
-            },
-            mangle: {
-                keep_fnames: true,
-                screw_ie8: true,
-                vars: true
-            },
-            sourceMap: true
+        // Optimise Javascript
+        plugins.push(new BabiliPlugin({
+            removeConsole: true,
+            removeDebugger: true
+        }, {
+            comments: false
         }))
     }
 

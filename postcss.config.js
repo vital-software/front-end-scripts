@@ -1,14 +1,4 @@
 /* eslint-disable filenames/match-regex */
-const BROWSER_SUPPORT = [
-    'Chrome >= 56',
-    'ChromeAndroid >= 56',
-    'Safari >= 9',
-    'iOS >= 9',
-    'Firefox >= 50',
-    'Explorer >= 11',
-    'Opera >= 41'
-]
-
 const CSS_NANO_OPTIONS = {
     autoprefixer: false,
     calc: true,
@@ -31,8 +21,8 @@ module.exports = (context) => ({
         'postcss-simple-vars': {},
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
-        'precss': { browsers: BROWSER_SUPPORT },
-        'postcss-cssnext': { browsers: BROWSER_SUPPORT },
+        'precss': {},
+        'postcss-cssnext': {},
         'cssnano': context.env === 'production' ? CSS_NANO_OPTIONS : false
     }
 })
