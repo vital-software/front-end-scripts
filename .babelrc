@@ -5,10 +5,14 @@
     "react-hot-loader/babel"
   ],
   "presets": [
-    ["latest", {
-      "es2015": {
-        "modules": false
-      }
+    ["env", {
+      "targets": {
+        "chrome": 56
+      },
+      "modules": false,
+      "loose": true,
+      "useBuiltIns": true,
+      "debug": true
     }],
     "react"
   ],
