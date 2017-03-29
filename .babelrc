@@ -7,7 +7,7 @@
   "presets": [
     ["env", {
       "targets": {
-        "chrome": 56
+        "browsers": ["last 2 versions"]
       },
       "modules": false,
       "loose": true,
