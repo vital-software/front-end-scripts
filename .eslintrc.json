@@ -41,8 +41,8 @@
       "^[a-z-]+$"
     ],
     "import/named": "error",
-    "jsx-no-bind": [2, {
-      "ignoreRefs":  false,
+    "jsx-no-bind": ["error", {
+      "ignoreRefs":  true,
       "allowArrowFunctions": false,
       "allowBind": false
     }],
