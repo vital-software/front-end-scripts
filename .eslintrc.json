@@ -34,13 +34,19 @@
   ],
   "rules": {
     "compat/compat": "error",
+    "react/jsx-boolean-value": [
+      "error",
+      "always"
+    ],
     "react/jsx-handler-names": ["error"],
+    "react/jsx-no-comment-textnodes": "error",
     "react/jsx-no-bind": [
       "warn",
       {
         "ignoreRefs": true
       }
     ],
+    "react/jsx-no-target-blank": "error",
     "react/jsx-pascal-case": ["error"],
     "react/no-danger": "off",
     "react/no-find-dom-node": "error",
