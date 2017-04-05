@@ -36,6 +36,15 @@
     "compat/compat": "error",
     "react/no-danger": "off",
     "react/no-find-dom-node": "error",
+    "react/no-multi-comp": [
+      "error",
+      {
+        "ignoreStateless": true
+      }
+    ],
+    "react/sort-comp": ["error"],
+    "react/sort-prop-types": ["error"],
+    "react/void-dom-elements-no-children": "error",
     "filenames/match-regex": [
       "error",
       "^[a-z-]+$"
