@@ -34,6 +34,8 @@
   ],
   "rules": {
     "compat/compat": "error",
+    "react/jsx-handler-names": ["error"],
+    "react/jsx-pascal-case": ["error"],
     "react/no-danger": "off",
     "react/no-find-dom-node": "error",
     "react/no-multi-comp": [
