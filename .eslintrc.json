@@ -35,6 +35,12 @@
   "rules": {
     "compat/compat": "error",
     "react/jsx-handler-names": ["error"],
+    "react/jsx-no-bind": [
+      "warn",
+      {
+        "ignoreRefs": true
+      }
+    ],
     "react/jsx-pascal-case": ["error"],
     "react/no-danger": "off",
     "react/no-find-dom-node": "error",
