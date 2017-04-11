@@ -61,7 +61,7 @@
     "react/void-dom-elements-no-children": "error",
     "filenames/match-regex": [
       "error",
-      "^[a-z-]+$"
+      "^[a-z-.]+$"
     ],
     "import/named": "error",
     "strict": [
