@@ -42,6 +42,12 @@
   },
   "rules": {
     "compat/compat": "error",
+    "flowtype/require-parameter-type": ["error"],
+    "flowtype/require-return-type": ["error"],
+    "flowtype/require-valid-file-annotation": ["error"],
+    "flowtype/require-variable-type": ["error"],
+    "flowtype/sort-keys": ["error"],
+    "flowtype/no-dupe-keys": ["error"],
     "react/jsx-boolean-value": [
       "error",
       "always"
