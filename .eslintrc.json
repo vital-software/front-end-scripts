@@ -11,10 +11,12 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:flowtype/recommended",
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2017,
     "ecmaFeatures": {
@@ -27,11 +29,17 @@
     "babel",
     "compat",
     "filenames",
+    "flowtype",
     "import",
     "jest",
     "jsx-a11y",
     "react"
   ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
   "rules": {
     "compat/compat": "error",
     "react/jsx-boolean-value": [
