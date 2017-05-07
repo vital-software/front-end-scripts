@@ -14,7 +14,8 @@
       "useBuiltIns": true,
       "debug": false
     }],
-    "react"
+    "react",
+    "flow"
   ],
   "env": {
     "test": {
