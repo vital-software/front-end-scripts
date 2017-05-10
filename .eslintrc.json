@@ -70,7 +70,18 @@
         "ignoreStateless": true
       }
     ],
-    "react/sort-comp": ["error"],
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "type-annotations",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ],
     "react/sort-prop-types": ["error"],
     "react/void-dom-elements-no-children": "error",
     "filenames/match-regex": [
