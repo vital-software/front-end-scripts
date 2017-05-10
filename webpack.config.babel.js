@@ -222,7 +222,6 @@ module.exports = {
 
                 modules: [
                     paths.appCss,
-                    paths.appJs,
                     paths.appSrc,
                     paths.appPublic,
                     'node_modules'
