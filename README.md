@@ -1,5 +1,5 @@
-# Front End Scripts
-Get a Front End project up with no external configuration
+# Vitalizer
+Get a Front End project up with no external configuration.
 
 ## Features
 - Yarn
@@ -8,7 +8,7 @@ Get a Front End project up with no external configuration
 - GZipping
 - Hot reloading
 - Injected JS/CSS assets
-- Tree-shaking optimisation
+- Tree-shaking optimization
 - Cache busted production assets
 - Source maps
 
