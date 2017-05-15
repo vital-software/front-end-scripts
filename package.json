@@ -1,13 +1,13 @@
 {
-  "name": "front-end-scripts",
-  "version": "1.0.3",
-  "description": "Configuration and scripts for Front End Stack.",
+  "name": "vitalizer",
+  "version": "1.0.0",
+  "description": "The Vital Software front-end asset builder.",
   "license": "MIT",
-  "repository": "pixelfusion/front-end-scripts",
-  "homepage": "https://github.com/pixelfusion/front-end-stack#readme",
+  "repository": "vital-sftware/vitalizer",
+  "homepage": "https://github.com/vital-sftware/vitalizer#readme",
   "author": "Te Riu Warren <teriu@teriu.name>",
   "bugs": {
-    "url": "https://github.com/pixelfusion/front-end-scripts/issues"
+    "url": "https://github.com/vital-sftware/vitalizer/issues"
   },
   "engines": {
     "node": ">=7"
@@ -24,7 +24,7 @@
     "script"
   ],
   "bin": {
-    "front-end-scripts": "bin/front-end-scripts.js"
+    "vitalizer": "bin/vitalizer.js"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
