@@ -8,10 +8,22 @@ const CSS_NANO_OPTIONS = {
     discardComments: { removeAll: true },
     discardDuplicates: true,
     discardEmpty: true,
-    filterOptimiser: true,
+    discardOverridden: true,
     filterPlugins: false,
     functionOptimiser: true,
-    mergeLonghand: true
+    mergeIdents: false,
+    mergeLonghand: true,
+    mergeRules: true,
+    minifyFontValues: true,
+    minifyGradients: true,
+    minifyParams: true,
+    minifySelectors: true,
+    reduceIdents: false,
+    reduceInitial: false,
+    reducePositions: true,
+    reduceTimingFunctions: true,
+    reduceTransforms: true,
+    zindex: false
 }
 
 module.exports = (context) => ({
@@ -21,8 +33,8 @@ module.exports = (context) => ({
         'postcss-simple-vars': {},
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
-        'precss': {},
+        precss: {},
         'postcss-cssnext': {},
-        'cssnano': context.env === 'production' ? CSS_NANO_OPTIONS : false
+        cssnano: context.env === 'production' ? CSS_NANO_OPTIONS : false
     }
 })
