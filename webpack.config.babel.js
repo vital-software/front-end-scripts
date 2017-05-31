@@ -11,13 +11,13 @@ const {
     optimize
 } = require('webpack')
 
-
 // Load project config, or default to local project config
 let appConfig = {
     devServer: {},
     entry: {},
     env: {},
     output: {},
+    port: null,
     performance: {}
 }
 
@@ -27,10 +27,11 @@ try {
     // Local project config file does not exist
 }
 
-
 // Options
+const DEFAULT_PORT = 3000
+
 const HOST = 'localhost'
-const PORT = 3000
+const PORT = appConfig.port || DEFAULT_PORT
 const PROTOCOL = 'https'
 const WEBPACK_DEFAULT_OPTIONS = {
     dev: true,
@@ -39,7 +40,6 @@ const WEBPACK_DEFAULT_OPTIONS = {
 
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
-
 // Helpers
 function generateIndexEntry(isDev) {
     let indexEntry = [
@@ -47,7 +47,9 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
+        indexEntry.push(
+            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
+        )
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
@@ -70,10 +72,15 @@ function generatePlugins(isDev) {
         }),
         // Set Node/Run settings to optimise code
         new DefinePlugin({
-            'process.env': Object.assign({
-                'NODE_ENV': isDev ? JSON.stringify('development') : JSON.stringify('production'),
-                'RUN_ENV': JSON.stringify('browser')
-            }, appConfig.env)
+            'process.env': Object.assign(
+                {
+                    NODE_ENV: isDev
+                        ? JSON.stringify('development')
+                        : JSON.stringify('production'),
+                    RUN_ENV: JSON.stringify('browser')
+                },
+                appConfig.env
+            )
         }),
         new ExtractTextPlugin({
             disable: isDev,
@@ -92,23 +99,29 @@ function generatePlugins(isDev) {
         plugins.push(new NamedModulesPlugin())
     } else {
         // Set debug/minimize settings for production
-        plugins.push(new LoaderOptionsPlugin({
-            debug: false,
-            minimize: true
-        }))
+        plugins.push(
+            new LoaderOptionsPlugin({
+                debug: false,
+                minimize: true
+            })
+        )
 
         // Optimise Javascript
-        plugins.push(new BabiliPlugin({
-            removeConsole: true,
-            removeDebugger: true
-        }, {
-            comments: false
-        }))
+        plugins.push(
+            new BabiliPlugin(
+                {
+                    removeConsole: true,
+                    removeDebugger: true
+                },
+                {
+                    comments: false
+                }
+            )
+        )
     }
 
     return plugins
 }
-
 
 // Webpack config
 module.exports = {
@@ -118,16 +131,11 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        const {
-            dev,
-            linkedInstall
-        } = options
+        const { dev, linkedInstall } = options
 
         const indexEntry = generateIndexEntry(dev)
         const plugins = generatePlugins(dev)
-        const entry = Object.assign(
-            { index: indexEntry }, appConfig.entry
-        )
+        const entry = Object.assign({ index: indexEntry }, appConfig.entry)
         const output = Object.assign(
             {
                 path: paths.appBuild,
@@ -205,12 +213,21 @@ module.exports = {
                                 options: { fixUrls: true }
                             },
                             use: [
-                                 // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
-                                { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
+                                // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
+                                {
+                                    loader: 'css-loader',
+                                    options: {
+                                        importLoaders: 1,
+                                        sourceMap: true
+                                    }
+                                },
                                 // Process PostCSS
-                                { loader: 'postcss-loader', options: { config: paths.ownPostCssConfig } }
+                                {
+                                    loader: 'postcss-loader',
+                                    options: { config: paths.ownPostCssConfig }
+                                }
                             ]
-                        }),
+                        })
                     }
                 ]
             },
@@ -218,27 +235,36 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
+                extensions: [
+                    '.css',
+                    '.gql',
+                    '.graphql',
+                    '.js',
+                    '.json',
+                    '.jsx',
+                    '.scss'
+                ],
 
                 modules: [
                     paths.appCss,
                     paths.appSrc,
                     paths.appPublic,
                     'node_modules'
-                ],
+                ]
             },
 
             resolveLoader: {
                 // Ensure loaders are loaded from front-end-scripts directory
-                modules: [
-                    (linkedInstall ? paths.ownNodeModules : 'node_modules')
-                ]
+                modules: [linkedInstall ? paths.ownNodeModules : 'node_modules']
             },
 
-            performance: Object.assign({
-                // Disable 250kb JavaScript entry file warnings
-                hints: (dev ? false : 'warning')
-            }, appConfig.performance),
+            performance: Object.assign(
+                {
+                    // Disable 250kb JavaScript entry file warnings
+                    hints: dev ? false : 'warning'
+                },
+                appConfig.performance
+            ),
 
             devServer: devServer
         }
