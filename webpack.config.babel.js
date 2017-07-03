@@ -224,7 +224,9 @@ module.exports = {
                                 // Process PostCSS
                                 {
                                     loader: 'postcss-loader',
-                                    options: { config: paths.ownPostCssConfig }
+                                    options: {
+                                        config: { path: paths.ownPostCssConfig }
+                                    }
                                 }
                             ]
                         })
