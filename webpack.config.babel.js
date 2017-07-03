@@ -254,7 +254,7 @@ module.exports = {
             },
 
             resolveLoader: {
-                // Ensure loaders are loaded from front-end-scripts directory
+                // Ensure loaders are loaded from vitalizer directory
                 modules: [linkedInstall ? paths.ownNodeModules : 'node_modules']
             },
 
