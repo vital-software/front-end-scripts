@@ -123,7 +123,7 @@ function generatePlugins(isDev) {
         // Generate Brotli static assets
         plugins.push(
             new BrotliPlugin({
-                test: /\.(js|css|html|svg)$/
+                test: /\.(js|css|svg)$/
             })
         )
     }
