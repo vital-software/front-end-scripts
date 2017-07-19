@@ -22,5 +22,6 @@ function run() {
         [require.resolve('../script/' + script)].concat(args), // eslint-disable-line
         { stdio: 'inherit' }
     )
+
     return result
 }
