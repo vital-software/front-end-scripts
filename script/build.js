@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 
-const CLI_ARGUMENTS = process.argv.slice(2)
 const WEBPACK_OPTIONS = {
-    dev: false,
-    linkedInstall: CLI_ARGUMENTS.includes('--linked') // CLI Documentation
+    dev: false
 }
 
 const chalk = require('chalk')

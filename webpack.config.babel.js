@@ -35,8 +35,7 @@ const HOST = 'localhost'
 const PORT = appConfig.port || DEFAULT_PORT
 const PROTOCOL = 'https'
 const WEBPACK_DEFAULT_OPTIONS = {
-    dev: true,
-    linkedInstall: false // Used for 'npm link' local installs (for debugging)
+    dev: true
 }
 
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
@@ -140,7 +139,7 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        const { dev, linkedInstall } = options
+        const { dev } = options
 
         const indexEntry = generateIndexEntry(dev)
         const plugins = generatePlugins(dev)
@@ -266,7 +265,7 @@ module.exports = {
 
             resolveLoader: {
                 // Ensure loaders are loaded from vitalizer directory
-                modules: [linkedInstall ? paths.ownNodeModules : 'node_modules']
+                modules: ['node_modules']
             },
 
             performance: Object.assign(
