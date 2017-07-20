@@ -14,7 +14,6 @@
   },
   "files": [
     ".babelrc",
-    ".editorconfig",
     ".eslintrc.json",
     ".stylelintrc.json",
     "postcss.config.js",

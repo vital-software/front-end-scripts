@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 
-const WEBPACK_OPTIONS = {
-    dev: false
-}
+const WEBPACK_OPTIONS = { dev: false }
 
 const chalk = require('chalk')
 const fs = require('fs-extra')
