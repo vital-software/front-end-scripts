@@ -143,134 +143,15 @@ function build(previousSizeMap) {
         console.log()
 
         console.log('File sizes after gzip:')
-        console.log()
         printFileSizes(stats, previousSizeMap)
         console.log()
 
-        const appPackage = require(paths.appPackageJson)
-        const homepagePath = appPackage.homepage
-        const publicPath = config.output.publicPath
-
-        if (homepagePath && homepagePath.indexOf('.github.io/') !== -1) {
-            // "homepage": "http://user.github.io/project"
-            console.log(
-                'The project was built assuming it is hosted at',
-                chalk.green(publicPath),
-                '.'
-            )
-            console.log(
-                'You can control this with the',
-                chalk.green('homepage'),
-                'field in your',
-                chalk.cyan('package.json'),
-                '.'
-            )
-            console.log()
-            console.log(
-                'The',
-                chalk.cyan('public'),
-                'folder is ready to be deployed.'
-            )
-            console.log('To publish it at', chalk.green(homepagePath), ', run:')
-
-            // If script deploy has been added to package.json, skip the instructions
-            if (typeof appPackage.scripts.deploy === 'undefined') {
-                console.log()
-                console.log(chalk.cyan('yarn'), 'add --dev gh-pages')
-
-                console.log()
-                console.log(
-                    'Add the following script in your',
-                    chalk.cyan('package.json'),
-                    '.'
-                )
-                console.log()
-                console.log(chalk.dim('// ...'))
-                console.log(chalk.yellow('"scripts"'), ': {')
-                console.log(chalk.dim('// ...'))
-                console.log(
-                    chalk.yellow('"deploy"'),
-                    ':',
-                    chalk.yellow('"yarn build && gh-pages -d build"')
-                )
-                console.log('    }')
-                console.log()
-                console.log('Then run:')
-            }
-
-            console.log()
-            console.log(chalk.cyan('yarn'), 'run deploy')
-            console.log()
-        } else if (publicPath !== '/') {
-            // eslint-disable-line
-            // "homepage": "http://mywebsite.com/project"
-            console.log(
-                'The project was built assuming it is hosted at',
-                chalk.green(publicPath),
-                '.'
-            )
-            console.log(
-                'You can control this with the',
-                chalk.green('homepage'),
-                'field in your',
-                chalk.cyan('package.json'),
-                '.'
-            )
-            console.log()
-            console.log(
-                'The',
-                chalk.cyan('public'),
-                ' folder is ready to be deployed.'
-            )
-            console.log()
-        } else {
-            // no homepage or "homepage": "http://mywebsite.com"
-            console.log(
-                'The project was built assuming it is hosted at the server root.'
-            )
-            if (homepagePath) {
-                // "homepage": "http://mywebsite.com"
-                console.log(
-                    'You can control this with the',
-                    chalk.green('homepage'),
-                    'field in your',
-                    chalk.cyan('package.json'),
-                    '.'
-                )
-                console.log()
-            } else {
-                // no homepage
-                console.log(
-                    'To override this, specify the',
-                    chalk.green('homepage'),
-                    'in your',
-                    chalk.cyan('package.json'),
-                    '.'
-                )
-                console.log(
-                    'For example, add this to build it for GitHub Pages:'
-                )
-                console.log()
-                console.log(
-                    chalk.green('"homepage"'),
-                    chalk.cyan(': '),
-                    chalk.green('"http://myname.github.io/myapp"'),
-                    chalk.cyan(',')
-                )
-                console.log()
-            }
-            console.log(
-                'The',
-                chalk.cyan('public'),
-                'folder is ready to be deployed.'
-            )
-            console.log('You may also serve it locally with a static server:')
-            console.log()
-            console.log(chalk.cyan('yarn'), 'global add pushstate-server')
-            console.log(chalk.cyan('pushstate-server'), 'public')
-            console.log('open http://localhost:9000')
-            console.log()
-        }
+        console.log(
+            'The',
+            chalk.cyan('public'),
+            'folder is ready to be deployed.'
+        )
+        console.log()
     })
 }
 
