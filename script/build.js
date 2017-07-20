@@ -78,11 +78,12 @@ function printFileSizes(stats, previousSizeMap) {
             const difference = getDifferenceLabel(size, previousSize)
 
             return {
-                folder: path.join('build', path.dirname(asset.name)),
+                folder: path.join('public', path.dirname(asset.name)),
                 name: path.basename(asset.name),
                 size: size,
-                sizeLabel:
-                    filesize(size) + (difference ? ` (${difference})` : '')
+                sizeLabel: `  ${filesize(size)}${difference
+                    ? ` (${difference})`
+                    : ''}`
             }
         })
 
