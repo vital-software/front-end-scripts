@@ -31,8 +31,16 @@ try {
 // Options
 const DEFAULT_PORT = 3000
 
-const HOST = 'localhost'
+const API = Object.assign(
+    {
+        prefix: '/api',
+        prefixRewrite: '^/api',
+        proxyUrl: 'http://localhost:9000'
+    },
+    appConfig.api
+)
 const PORT = appConfig.port || DEFAULT_PORT
+const HOST = 'localhost'
 const PROTOCOL = 'https'
 const WEBPACK_DEFAULT_OPTIONS = {
     dev: true,
@@ -172,6 +180,14 @@ module.exports = {
 
                 // Hide the webpack bundle information
                 noInfo: true,
+
+                // Proxy API to /api
+                proxy: {
+                    [API.prefix]: {
+                        pathRewrite: { [API.prefixRewrite]: '' },
+                        target: API.proxyUrl
+                    }
+                },
 
                 // Match public path with output path
                 publicPath: '/',
