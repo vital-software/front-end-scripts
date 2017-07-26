@@ -92,7 +92,7 @@
       "eqeqeq": "error",
       "for-direction": "error",
       "no-console": "warn",
-      "no-debugger": "error",
+      "no-debugger": "warn",
       "no-div-regex": "error",
       "no-else-return": "error",
       "no-empty-function": "error",
