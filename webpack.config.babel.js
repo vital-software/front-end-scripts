@@ -1,6 +1,6 @@
 /* eslint-disable camelcase, filenames/match-regex */
 const BabiliPlugin = require('babili-webpack-plugin')
-const BrotliPlugin = require('brotli-webpack-plugin')
+// const BrotliPlugin = require('brotli-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -121,12 +121,12 @@ function generatePlugins(isDev) {
         )
 
         // Generate Brotli static assets
-        plugins.push(
-            new BrotliPlugin({
-                test: /\.(js|css|svg)$/,
-                threshold: 10240
-            })
-        )
+        // plugins.push(
+        //     new BrotliPlugin({
+        //         test: /\.(js|css|svg)$/,
+        //         threshold: 10240
+        //     })
+        // )
     }
 
     return plugins
