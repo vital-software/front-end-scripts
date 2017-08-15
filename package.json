@@ -22,6 +22,9 @@
     "helper",
     "script"
   ],
+  "scripts": {
+    "test": "./test/task/local-test.sh"
+  },
   "bin": {
     "vitalizer": "bin/vitalizer.js"
   },

@@ -56,6 +56,9 @@ eg: `BUILD_ENV=production vitalizer build`
 You need to ensure you've correctly trusted the self-signed certificate within Safari. See the guide [available here](http://blog.marcon.me/post/24874118286/secure-websockets-safari) for how to do this. If the padlock icon doesn't show in the URL bar, you will need to clear browser history for the `localhost` domain and refresh the page.
 
 
-## Building
+## Contributing
 
-Use the command `bin/vitalizer.js build --test` when developing this package to run it locally.
+#### Running tests locally
+Use the following command to run the tests on your local environment:
+
+    yarn test
