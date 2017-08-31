@@ -49,7 +49,11 @@
       "flowtype/sort-keys": ["error"],
       "flowtype/no-dupe-keys": ["error"],
       "jsx-a11y/anchor-is-valid": ["error"],
-      "jsx-a11y/label-has-for": ["warn"],
+      "jsx-a11y/label-has-for": ["warn", {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }],
       "react/jsx-boolean-value": ["error", "always"],
       "react/jsx-handler-names": ["error"],
       "react/jsx-no-comment-textnodes": "error",
