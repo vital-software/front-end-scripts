@@ -9,6 +9,14 @@ temp_cli_path=`mktemp -d 2>/dev/null || mktemp -d -t 'temp_cli_path'`
 temp_app_path=`mktemp -d 2>/dev/null || mktemp -d -t 'temp_app_path'`
 temp_module_path=`mktemp -d 2>/dev/null || mktemp -d -t 'temp_module_path'`
 
+function cleanup {
+  echo 'Cleaning up.'
+  cd "$root_path"
+  # Uncomment when snapshot testing is enabled by default:
+  # rm ./packages/react-scripts/template/src/__snapshots__/App.test.js.snap
+  rm -rf "$temp_cli_path" $temp_app_path
+}
+
 # Error messages are redirected to stderr
 function handle_error {
   echo "$(basename $0): ERROR! An error was encountered executing line $1." 1>&2;
@@ -67,3 +75,15 @@ fi
 npm install -g yarn
 yarn cache clean
 yarn install
+
+# Test local build
+../bin/vitalizer.js build
+
+# Check for expected output
+exists public/index.html
+exists public/*.js
+exists public/*.js.map
+#exists public/*.css
+
+# Diff output files
+diff public/index.html stub/index.html
