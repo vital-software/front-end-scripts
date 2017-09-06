@@ -1,6 +1,5 @@
 {
   "plugins": [
-    "babel-plugin-inline-import-graphql-ast",
     "transform-class-properties",
     "transform-object-assign",
     "transform-object-rest-spread",
