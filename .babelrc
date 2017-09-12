@@ -10,9 +10,8 @@
         "browsers": ["Chrome >= 60"]
       },
       "modules": false,
-      "loose": true,
       "useBuiltIns": true,
-      "debug": false
+      "debug": true
     }],
     "react",
     "flow"
