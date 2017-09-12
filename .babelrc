@@ -6,9 +6,12 @@
   ],
   "presets": [
     ["env", {
+      "targets": {
+        "browsers": ["Chrome >= 60"]
+      },
       "modules": false,
       "loose": true,
-      "useBuiltIns": "entry",
+      "useBuiltIns": true,
       "debug": false
     }],
     "react",
