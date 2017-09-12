@@ -1,18 +1,14 @@
 {
   "plugins": [
     "transform-class-properties",
-    "transform-object-assign",
     "transform-object-rest-spread",
     "react-hot-loader/babel"
   ],
   "presets": [
     ["env", {
-      "targets": {
-        "browsers": ["last 2 versions"]
-      },
       "modules": false,
       "loose": true,
-      "useBuiltIns": true,
+      "useBuiltIns": "entry",
       "debug": false
     }],
     "react",
