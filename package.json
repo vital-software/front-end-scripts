@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "1.1.6",
+  "version": "2.1.1",
   "description": "The Vital Software front-end asset builder.",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
@@ -29,18 +29,17 @@
     "vitalizer": "bin/vitalizer.js"
   },
   "dependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-object-assign": "^6.8.0",
-    "babel-plugin-transform-object-rest-spread": "^6.19.0",
-    "babel-preset-env": "^1.5.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
-    "brotli-webpack-plugin": "^0.4.0",
-    "chalk": "^2.0.1",
+    "brotli-webpack-plugin": "^0.4.1",
+    "chalk": "^2.1.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.1",
     "cssnano": "^3.9.1",
@@ -49,6 +48,8 @@
     "file-loader": "^0.11.2",
     "filesize": "^3.5.10",
     "fs-extra": "^3.0.1",
+    "graphql": "^0.10.5",
+    "graphql-tag": "^2.4.2",
     "gzip-size": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
     "postcss-cssnext": "^2.11.0",
@@ -59,7 +60,6 @@
     "postcss-simple-vars": "^4.0.0",
     "postcss-strip-inline-comments": "^0.1.5",
     "precss": "^1.4.0",
-    "raw-loader": "^0.5.1",
     "react-hot-loader": "3.0.0-beta.7",
     "recursive-readdir": "^2.2.1",
     "strip-ansi": "^4.0.0",
@@ -70,15 +70,15 @@
     "webpack-dev-server": "^2.5.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.1.1",
-    "eslint-plugin-babel": "^4.0.0",
+    "babel-eslint": "^8.0.0",
+    "eslint": "^4.6.1",
+    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-compat": "^1.0.4",
     "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-flowtype": "^2.34.1",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-flowtype": "^2.35.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.0.2",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-react": "^7.3.0"
   }
 }

@@ -34,7 +34,15 @@ module.exports = (context) => ({
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
         precss: {},
-        'postcss-cssnext': {},
+        'postcss-cssnext': {
+            features: {
+                autoprefixer: {
+                    flexbox: false,
+                    grid: false
+                    // remove: false // Enable for 10% performance improvement
+                }
+            }
+        },
         cssnano: context.env === 'production' ? CSS_NANO_OPTIONS : false
     }
 })

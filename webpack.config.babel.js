@@ -1,6 +1,6 @@
 /* eslint-disable camelcase, filenames/match-regex */
 const BabiliPlugin = require('babili-webpack-plugin')
-const BrotliPlugin = require('brotli-webpack-plugin')
+// const BrotliPlugin = require('brotli-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -31,8 +31,16 @@ try {
 // Options
 const DEFAULT_PORT = 3000
 
-const HOST = 'localhost'
+const API = Object.assign(
+    {
+        prefix: '/api',
+        prefixRewrite: '^/api',
+        proxyUrl: 'http://localhost:9000'
+    },
+    appConfig.api
+)
 const PORT = appConfig.port || DEFAULT_PORT
+const HOST = 'localhost'
 const PROTOCOL = 'https'
 const WEBPACK_DEFAULT_OPTIONS = {
     dev: true
@@ -120,12 +128,12 @@ function generatePlugins(isDev) {
         )
 
         // Generate Brotli static assets
-        plugins.push(
-            new BrotliPlugin({
-                test: /\.(js|css|svg)$/,
-                threshold: 10240
-            })
-        )
+        // plugins.push(
+        //     new BrotliPlugin({
+        //         test: /\.(js|css|svg)$/,
+        //         threshold: 10240
+        //     })
+        // )
     }
 
     return plugins
@@ -172,6 +180,14 @@ module.exports = {
                 // Hide the webpack bundle information
                 noInfo: true,
 
+                // Proxy API to /api
+                proxy: {
+                    [API.prefix]: {
+                        pathRewrite: { [API.prefixRewrite]: '' },
+                        target: API.proxyUrl
+                    }
+                },
+
                 // Match public path with output path
                 publicPath: '/',
 
@@ -205,7 +221,7 @@ module.exports = {
                     {
                         test: /\.(graphql|gql)$/,
                         exclude: /node_modules/,
-                        loader: 'raw-loader'
+                        loader: 'graphql-tag/loader'
                     },
                     {
                         test: /\.(js|jsx)$/,
