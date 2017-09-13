@@ -195,7 +195,12 @@
       {
         "emptyLineBefore": "always",
         "properties": [
+          "backface-visibility",
+          "perspective",
+          "perspective-origin",
           "transform",
+          "transform-origin",
+          "transform-style",
           "animation",
           "animation-delay",
           "animation-duration",
@@ -210,7 +215,6 @@
           "transition-property",
           "transition-timing-function",
           "background-clip",
-          "backface-visibility",
           "resize",
           "appearance",
           "user-select",

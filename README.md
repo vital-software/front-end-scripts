@@ -42,7 +42,7 @@ Style property order uses a version of the 'Outside In' ordering approach, with 
 - Box model properties (`display`, `width`, `height`, `padding`, `margin`)
 - Text properties (`color`, `font-family`, `line-height`)
 - Visual properties (`cursor`, `background`, `border`)
-- Animation properties (`transform`, `animation`, `transition`)
+- Animation & misc properties (`transform`, `animation`, `transition`)
 
 
 
