@@ -37,6 +37,8 @@
         width: rem(25);
         height: rem(25);
 
+        color: color($color-error a(90%));
+
         border-radius: var(--radius-small);
 
         animation-duration: 0.6s;

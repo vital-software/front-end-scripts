@@ -97,6 +97,7 @@
 .input-check-box input[type='checkbox'], .input-check-box .icon {
     width: 1.5625rem;
     height: 1.5625rem;
+    color: rgba(250, 0, 0, .9);
     border-radius: 3px;
     animation-duration: 0.6s;
     animation-iteration-count: infinite;
