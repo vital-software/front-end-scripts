@@ -62,7 +62,7 @@ root_path=$PWD
 #yarn install
 
 # Test local build
-node ../bin/vitalizer.js build
+../bin/vitalizer.js build
 
 # Check for expected output
 exists public/index.html
