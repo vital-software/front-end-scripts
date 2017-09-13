@@ -37,6 +37,7 @@ function getProcessCommand(processId, processDirectory) {
 
     if (isProcessAReactApp(command)) {
         const packageName = getPackageNameInDirectory(processDirectory)
+
         return packageName ? `${packageName}\n` : command
     }
 

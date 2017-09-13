@@ -1,0 +1,6 @@
+{
+  "license": "MIT",
+  "dependencies": {
+    "cross-spawn": "^5.1.0"
+  }
+}

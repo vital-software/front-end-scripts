@@ -1,10 +1,17 @@
-const fs = require('fs');
-const path = require('path');
+/*
+    Get CLI arguments, and use local 'test' directory if --test is set
+ */
+const CLI_ARGUMENTS = process.argv.slice(2)
+const TEST_MODE = CLI_ARGUMENTS.includes('--test')
 
-const appDirectory = fs.realpathSync(process.cwd());
+const fs = require('fs')
+const path = require('path')
+const appDirectory = fs.realpathSync(process.cwd())
 
 function resolveApp(relativePath) {
-    return path.resolve(appDirectory, relativePath);
+    const relative = TEST_MODE ? `test/${relativePath}` : relativePath
+
+    return path.resolve(appDirectory, relative)
 }
 
 module.exports = {
@@ -18,4 +25,4 @@ module.exports = {
     appSrc: resolveApp('app'),
     ownNodeModules: path.resolve(__dirname, '../node_modules'),
     ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js')
-};
+}

@@ -42,11 +42,6 @@ const API = Object.assign(
 const PORT = appConfig.port || DEFAULT_PORT
 const HOST = 'localhost'
 const PROTOCOL = 'https'
-const WEBPACK_DEFAULT_OPTIONS = {
-    dev: true,
-    linkedInstall: false // Used for 'npm link' local installs (for debugging)
-}
-
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 // Helpers
@@ -147,8 +142,12 @@ module.exports = {
         port: PORT,
         protocol: PROTOCOL
     },
-    webpack: function(options = WEBPACK_DEFAULT_OPTIONS) {
-        const { dev, linkedInstall } = options
+    webpack: function(options) {
+        const { dev, shortName } = Object.assign(
+            { dev: true, shortName: false },
+            options,
+            appConfig.options
+        )
 
         const indexEntry = generateIndexEntry(dev)
         const plugins = generatePlugins(dev)
@@ -156,7 +155,7 @@ module.exports = {
         const output = Object.assign(
             {
                 path: paths.appBuild,
-                filename: dev ? '[name].js' : '[name].[chunkhash].js',
+                filename: shortName ? '[name].js' : '[name].[chunkhash].js',
                 publicPath: '/'
             },
             appConfig.output
@@ -282,7 +281,7 @@ module.exports = {
 
             resolveLoader: {
                 // Ensure loaders are loaded from vitalizer directory
-                modules: [linkedInstall ? paths.ownNodeModules : 'node_modules']
+                modules: ['node_modules']
             },
 
             performance: Object.assign(

@@ -1,4 +1,4 @@
-# Vitalizer
+# Vitalizer [![Build Status](https://travis-ci.org/vital-software/vitalizer.svg?branch=master)](https://travis-ci.org/vital-software/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
 Get a Front End project up with no external configuration.
 
 ## Features
@@ -54,3 +54,11 @@ eg: `BUILD_ENV=production vitalizer build`
 
 #### Safari outputs a (WebSocket network error: OSStatus Error -9807: Invalid certificate chain)
 You need to ensure you've correctly trusted the self-signed certificate within Safari. See the guide [available here](http://blog.marcon.me/post/24874118286/secure-websockets-safari) for how to do this. If the padlock icon doesn't show in the URL bar, you will need to clear browser history for the `localhost` domain and refresh the page.
+
+
+## Contributing
+
+#### Running tests locally
+Use the following command to run the tests on your local environment:
+
+    yarn test

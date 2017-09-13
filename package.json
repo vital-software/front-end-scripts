@@ -10,11 +10,10 @@
     "url": "https://github.com/vital-software/vitalizer/issues"
   },
   "engines": {
-    "node": ">=7"
+    "node": ">=8.1.3"
   },
   "files": [
     ".babelrc",
-    ".editorconfig",
     ".eslintrc.json",
     ".stylelintrc.json",
     "postcss.config.js",
@@ -23,6 +22,9 @@
     "helper",
     "script"
   ],
+  "scripts": {
+    "test": "./test/task/local-test.sh"
+  },
   "bin": {
     "vitalizer": "bin/vitalizer.js"
   },
