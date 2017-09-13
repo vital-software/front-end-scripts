@@ -52,7 +52,7 @@
     "file-loader": "^0.11.2",
     "filesize": "^3.5.10",
     "fs-extra": "^4.0.2",
-    "graphql": "^0.10.5",
+    "graphql": "^0.11.3",
     "graphql-tag": "^2.4.2",
     "gzip-size": "^4.0.0",
     "html-webpack-plugin": "^2.30.1",
