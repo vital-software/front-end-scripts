@@ -16,6 +16,7 @@ install:
 before_script:
   - greenkeeper-lockfile-update
 script:
+  - yarn test-lint
   - test/task/e2e-simple.sh
 after_script:
   - greenkeeper-lockfile-upload
