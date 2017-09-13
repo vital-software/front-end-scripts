@@ -10,7 +10,7 @@
 @keyframes IconLoaderAnimation {
     0% {
         transform: rotate(0deg);
-    },
+    }
     100% {
         transform: rotate(360deg);
     }
@@ -36,6 +36,8 @@
     .icon {
         width: rem(25);
         height: rem(25);
+
+        color: color($color-error a(90%));
 
         border-radius: var(--radius-small);
 

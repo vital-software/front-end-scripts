@@ -1,5 +1,5 @@
 /* eslint-disable camelcase, filenames/match-regex */
-const BabiliPlugin = require('babili-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 // const BrotliPlugin = require('brotli-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -117,7 +117,7 @@ function generatePlugins(isDev, isTest, filename) {
 
         // Optimise Javascript
         plugins.push(
-            new BabiliPlugin(
+            new MinifyPlugin(
                 {
                     removeConsole: true,
                     removeDebugger: true
@@ -241,8 +241,7 @@ module.exports = {
                         loader: ExtractTextPlugin.extract({
                             fallback: {
                                 loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                                // TODO: Keep an eye on this PR to fix sourceMap and relative images (https://github.com/webpack-contrib/style-loader/pull/165)
-                                options: { fixUrls: true }
+                                options: { sourceMap: true }
                             },
                             use: [
                                 // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
