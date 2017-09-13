@@ -1,0 +1,69 @@
+@import '../variables.scss';
+
+/*
+    Input - Checkbox
+ */
+.input-check-box {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    cursor: pointer;
+
+
+    // Elements
+    input[type='checkbox'],
+    .icon {
+        width: rem(25);
+        height: rem(25);
+
+        border-radius: var(--radius-small);
+    }
+
+    input[type='checkbox'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: rem(25);
+        height: rem(25);
+        padding: 0;
+
+        cursor: pointer;
+
+        appearance: none;
+
+
+        // States
+        &:checked + .icon {
+            background-color: $color-primary;
+            background-image: url('$(folder-icon)/form/check.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            border-color: $color-primary;
+        }
+    }
+
+    .icon {
+        position: relative;
+
+        display: block;
+        flex-shrink: 0;
+
+        padding: 0;
+
+        background-color: $color-tertiary;
+        border: 2px solid $color-tertiary;
+    }
+
+    .label {
+        padding-left: rem(10);
+        margin-bottom: 0;
+
+        font-weight: var(--weight-medium);
+        line-height: 1;
+
+        cursor: pointer;
+    }
+}

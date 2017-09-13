@@ -1,0 +1,140 @@
+/*
+    Variables
+    - Breakpoints (Horizontal)
+    - Asset Locations
+    - Colors
+    - Typography
+    - Widths
+    - Heights
+ */
+
+
+
+/*
+    Breakpoints
+ */
+@custom-media --to-tiny-screen-w (max-width: 400px);
+@custom-media --to-small-screen-w (max-width: 600px);
+@custom-media --to-medium-screen-w (max-width: 800px);
+@custom-media --to-normal-screen-w (max-width: 1000px);
+@custom-media --to-large-screen-w (max-width: 1200px);
+
+@custom-media --from-tiny-screen-w (min-width: 401px);
+@custom-media --from-small-screen-w (min-width: 601px);
+@custom-media --from-medium-screen-w (min-width: 801px);
+@custom-media --from-normal-screen-w (min-width: 1001px);
+@custom-media --from-large-screen-w (min-width: 1201px);
+
+
+
+/*
+    Asset Locations
+ */
+$folder-font: /fonts;
+$folder-icon: /icons;
+$folder-image: /images;
+
+
+
+/*
+    Color Naming Conventions:
+    - primary
+    - secondary
+    - tertiary
+    - quaternary
+    - quinary
+
+    // Lighter
+    - tint-1
+    - tint-2
+
+    // Darker
+    - shade-1
+    - shade-2
+
+    Color names generated at http://chir.ag/projects/name-that-color/
+ */
+$color-white:             rgb(255, 255, 255);
+$color-gallery:           rgb(235, 235, 235);
+$color-silver:            rgb(204, 204, 204);
+$color-dusty-gray:        rgb(155, 155, 155);
+$color-azure-radiance:    rgb(0, 119, 236);
+$color-science-blue:      rgb(0, 96, 190);
+$color-anakiwa:           rgb(164, 210, 255);
+$color-red:               rgb(250, 0, 0);
+$color-tundora:           rgb(74, 74, 74);
+$color-black-060:         rgba(0, 0, 0, 0.6);
+$color-black:             rgb(0, 0, 0);
+
+$color-primary:           $color-azure-radiance;
+$color-primary-shade-1:   $color-science-blue;
+$color-primary-tint-1:    $color-anakiwa;
+$color-secondary:         $color-tundora;
+$color-secondary-tint-1:  $color-dusty-gray;
+$color-secondary-tint-2:  $color-silver;
+$color-secondary-tint-3:  $color-gallery;
+$color-tertiary:          $color-white;
+
+$color-error:             $color-red;
+
+
+
+/*
+    Typography
+    - Typefaces
+    - Weights
+ */
+// TODO: Add webfont to project
+$font-avenir: 'Avenir', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+$font-primary: $font-avenir;
+
+$weight-light:  300;
+$weight-normal: 400;
+$weight-bold:   600;
+
+
+
+/*
+    Widths
+ */
+$constrain-width:         rem(960);
+$constrain-width-medium:  rem(740);
+$constrain-width-small:   rem(540);
+
+
+:root {
+    // Shadows
+    --shadow-primary:          4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+    --shadow-primary-hover:    4px 4px 20px 0 rgba(0, 0, 0, 0.2);
+
+    // Typography (typefaces, weights)
+    --font-avenir: 'Avenir', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    --font-primary: var(--font-avenir);
+
+    --weight-light:  300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-heavy:  800;
+    --weight-black:  900;
+
+    // Widths
+    --constrain-width:         rem(1240);
+    --constrain-width-medium:  rem(1080);
+    --constrain-width-small:   rem(920);
+
+    // Radius
+    --radius-small:  3px;
+    --radius-medium: 5px;
+    --radius-large:  10px;
+
+    // Padding
+    --padding-overlay: rem(30);
+
+    // Dialog (Used in dialog and patient detail to set min-height on content)
+    --dialog-vertical-margin: rem(60);
+
+    // Patient, Titles
+    --patient-head-height: rem(80);
+    --titles-height: rem(60);
+}
