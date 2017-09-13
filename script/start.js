@@ -8,10 +8,9 @@ const options = require('../webpack.config.babel.js')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 
-const CLI_ARGUMENTS = process.argv.slice(2)
 const WEBPACK_OPTIONS = {
     dev: true,
-    linkedInstall: CLI_ARGUMENTS.includes('--linked') // CLI Documentation
+    shortName: true
 }
 
 const IS_INTERACTIVE = process.stdout.isTTY
