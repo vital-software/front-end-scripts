@@ -17,6 +17,7 @@ before_script:
   - greenkeeper-lockfile-update
 script:
   - test/task/e2e-simple.sh
+  - yarn test-lint
 after_script:
   - greenkeeper-lockfile-upload
 notifications:
