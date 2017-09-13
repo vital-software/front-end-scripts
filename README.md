@@ -1,6 +1,9 @@
 # Vitalizer [![Build Status](https://travis-ci.org/vital-software/vitalizer.svg?branch=master)](https://travis-ci.org/vital-software/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
 Get a Front End project up with no external configuration.
 
+## Upgrade from version 2 to 3
+- Move `:root` statement out of common files, and load in at root level instead (once per app)
+
 ## Features
 - Yarn
 - HTTP/2
