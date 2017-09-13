@@ -26,7 +26,8 @@ Get a Front End project up with no external configuration.
 - Babel
 - ES2015
 - ES2016
-- UglifyJS minification
+- ES2017
+- Babili minification
 - Vendor chunking
 
 
