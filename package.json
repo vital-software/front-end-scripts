@@ -55,7 +55,7 @@
     "fs-extra": "^4.0.2",
     "graphql": "^0.10.5",
     "graphql-tag": "^2.4.2",
-    "gzip-size": "^3.0.0",
+    "gzip-size": "^4.0.0",
     "html-webpack-plugin": "^2.29.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
