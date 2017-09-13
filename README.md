@@ -33,7 +33,17 @@ Get a Front End project up with no external configuration.
 
 ### Code Quality
 - [ESLint](http://eslint.org/)
-- [styleLint](http://stylelint.io/)
+- [Stylelint](http://stylelint.io/)
+
+#### Style property ordering
+Style property order uses a version of the 'Outside In' ordering approach, with all direction properties in clockwise order (TRBL). The order is as follows:
+
+- Position properties (`position`, `top`, `left`)
+- Box model properties (`display`, `width`, `height`, `padding`, `margin`)
+- Text properties (`color`, `font-family`, `line-height`)
+- Visual properties (`cursor`, `background`, `border`)
+- Animation properties (`transform`, `animation`, `transition`)
+
 
 
 ## Configuration
