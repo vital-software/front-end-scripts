@@ -1,18 +1,24 @@
 {
   "plugins": [
     "transform-class-properties",
-    "transform-object-assign",
     "transform-object-rest-spread",
     "react-hot-loader/babel"
   ],
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["last 2 versions"]
+        "browsers": [
+          "Chrome >= 59",
+          "Firefox >= 55",
+          "Safari >= 10.1",
+          "iOS >= 10.3"
+        ],
+        "node": "8.1.3"
       },
       "modules": false,
       "useBuiltIns": true,
-      "debug": true
+      "debug": true,
+      "include": ["transform-es2015-classes"]
     }],
     "react",
     "flow"
