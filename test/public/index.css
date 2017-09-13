@@ -57,31 +57,9 @@
 
 
 
-@-webkit-keyframes SavingAnimation {
-    to {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg)
-    }
-}
-
-
-
 @keyframes SavingAnimation {
     to {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg)
-    }
-}
-
-
-
-@-webkit-keyframes IconLoaderAnimation {
-    0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-    }100% {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg)
     }
 }
 
@@ -89,11 +67,9 @@
 
 @keyframes IconLoaderAnimation {
     0% {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
+        transform: rotate(0deg);
     }100% {
-        -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -113,27 +89,19 @@
 
     cursor: pointer;
 
-    -webkit-animation: SavingAnimation 0.7s linear infinite;
-
-            animation: SavingAnimation 0.7s linear infinite;
+    animation: SavingAnimation 0.7s linear infinite;
 }
 
 
 
 .input-check-box input[type='checkbox'], .input-check-box .icon {
-    width: 25px;
     width: 1.5625rem;
-    height: 25px;
     height: 1.5625rem;
     border-radius: 3px;
-    -webkit-animation-duration: 0.6s;
-            animation-duration: 0.6s;
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
-    -webkit-animation-name: IconLoaderAnimation;
-            animation-name: IconLoaderAnimation;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-name: IconLoaderAnimation;
+    animation-timing-function: linear;
 }
 
 
@@ -142,9 +110,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 25px;
     width: 1.5625rem;
-    height: 25px;
     height: 1.5625rem;
     padding: 0;
     cursor: pointer;
@@ -177,7 +143,6 @@
 
 
 .input-check-box .label {
-    padding-left: 10px;
     padding-left: 0.625rem;
     margin-bottom: 0;
     font-weight: 500;
@@ -185,7 +150,6 @@
     cursor: pointer;
 }
 .constrain-width.medium {
-        max-width: 740px;
         max-width: 46.25rem;
 }/*
     Dependencies
@@ -245,8 +209,7 @@ figure {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box; /* 1 */
+  box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
@@ -420,8 +383,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; /* 1 */
+  box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
   max-width: 100%; /* 1 */
@@ -447,8 +409,7 @@ textarea {
  * 2. Remove the padding in IE 10-.
  */
 [type="checkbox"], [type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; /* 1 */
+  box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
 /**
@@ -562,17 +523,13 @@ template {
     - Constraint
  */
 .constrain-width {
-    max-width: 960px;
     max-width: 60rem;
-    padding-right: 20px;
     padding-right: 1.25rem;
-    padding-left: 20px;
     padding-left: 1.25rem;
     margin-right: auto;
     margin-left: auto
 }
 .constrain-width.small {
-        max-width: 540px;
         max-width: 33.75rem;
 }
 
