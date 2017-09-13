@@ -13,8 +13,8 @@ before_install:
   - yarn global add greenkeeper-lockfile@1 # Greenkeeper lockfile support
 install:
   - yarn install
-before_script:
-  - greenkeeper-lockfile-update
+# before_script:
+#   - greenkeeper-lockfile-update
 script:
   - test/task/e2e-simple.sh
 after_script:
