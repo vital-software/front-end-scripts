@@ -62,7 +62,7 @@ function generateIndexEntry(isDev) {
     return indexEntry
 }
 
-function generatePlugins(isDev, filename) {
+function generatePlugins(isDev, isTest, filename) {
     let plugins = [
         new optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -78,9 +78,10 @@ function generatePlugins(isDev, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV: isDev
-                        ? JSON.stringify('development')
-                        : JSON.stringify('production'),
+                    NODE_ENV:
+                        isDev && !isTest
+                            ? JSON.stringify('development')
+                            : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -94,6 +95,10 @@ function generatePlugins(isDev, filename) {
             template: paths.appHtmlTemplate
         })
     ]
+
+    if (isTest) {
+        return plugins
+    }
 
     if (isDev) {
         // Enable HMR globally
@@ -143,8 +148,8 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options) {
-        const { dev, shortName } = Object.assign(
-            { dev: true, shortName: false },
+        const { dev, shortName, test } = Object.assign(
+            { dev: true, shortName: false, test: false },
             options,
             appConfig.options
         )
@@ -153,7 +158,7 @@ module.exports = {
         const filename = shortName ? '[name]' : '[name].[chunkhash]'
 
         const indexEntry = generateIndexEntry(dev)
-        const plugins = generatePlugins(dev, filename)
+        const plugins = generatePlugins(dev, test, filename)
         const entry = Object.assign({ index: indexEntry }, appConfig.entry)
         const output = Object.assign(
             {

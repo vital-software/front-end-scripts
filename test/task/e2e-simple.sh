@@ -72,5 +72,5 @@ exists public/*.css.map
 
 # Diff output files
 diff public/index.html stub/index.html
-diff -b public/index.js stub/index.js
-diff -b public/index.css stub/index.css
+diff -b -y --suppress-common-lines public/index.js stub/index.js
+diff -b -y --suppress-common-lines public/index.css stub/index.css
