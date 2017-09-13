@@ -1,13 +1,14 @@
 {
   "plugins": [
     "transform-class-properties",
+    "transform-object-assign",
     "transform-object-rest-spread",
     "react-hot-loader/babel"
   ],
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["Chrome >= 60"]
+        "browsers": ["last 2 versions"]
       },
       "modules": false,
       "useBuiltIns": true,
