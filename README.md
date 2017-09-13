@@ -1,4 +1,4 @@
-# Vitalizer
+# Vitalizer [![Build Status](https://travis-ci.org/vital-software/vitalizer.svg?branch=master)](https://travis-ci.org/vital-software/vitalizer)
 Get a Front End project up with no external configuration.
 
 ## Features
