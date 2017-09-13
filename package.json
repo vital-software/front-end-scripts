@@ -73,7 +73,7 @@
     "stylelint-order": "^0.6.0",
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.0",
