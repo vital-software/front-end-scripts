@@ -101,3 +101,40 @@ $weight-bold:   600;
 $constrain-width:         rem(960);
 $constrain-width-medium:  rem(740);
 $constrain-width-small:   rem(540);
+
+
+:root {
+    // Shadows
+    --shadow-primary:          4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+    --shadow-primary-hover:    4px 4px 20px 0 rgba(0, 0, 0, 0.2);
+
+    // Typography (typefaces, weights)
+    --font-avenir: 'Avenir', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    --font-primary: var(--font-avenir);
+
+    --weight-light:  300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-heavy:  800;
+    --weight-black:  900;
+
+    // Widths
+    --constrain-width:         rem(1240);
+    --constrain-width-medium:  rem(1080);
+    --constrain-width-small:   rem(920);
+
+    // Radius
+    --radius-small:  3px;
+    --radius-medium: 5px;
+    --radius-large:  10px;
+
+    // Padding
+    --padding-overlay: rem(30);
+
+    // Dialog (Used in dialog and patient detail to set min-height on content)
+    --dialog-vertical-margin: rem(60);
+
+    // Patient, Titles
+    --patient-head-height: rem(80);
+    --titles-height: rem(60);
+}

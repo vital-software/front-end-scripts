@@ -1,3 +1,135 @@
+/*
+    Variables
+    - Breakpoints (Horizontal)
+    - Asset Locations
+    - Colors
+    - Typography
+    - Widths
+    - Heights
+ */
+
+
+
+/*
+    Breakpoints
+ */
+
+
+
+/*
+    Asset Locations
+ */
+
+
+
+/*
+    Color Naming Conventions:
+    - primary
+    - secondary
+    - tertiary
+    - quaternary
+    - quinary
+
+    // Lighter
+    - tint-1
+    - tint-2
+
+    // Darker
+    - shade-1
+    - shade-2
+
+    Color names generated at http://chir.ag/projects/name-that-color/
+ */
+
+
+
+/*
+    Typography
+    - Typefaces
+    - Weights
+ */
+
+
+
+/*
+    Widths
+ */
+
+
+
+/*
+    Input - Checkbox
+ */
+
+
+
+.input-check-box {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+
+
+.input-check-box input[type='checkbox'], .input-check-box .icon {
+    width: 25px;
+    width: 1.5625rem;
+    height: 25px;
+    height: 1.5625rem;
+    border-radius: 3px;
+}
+
+
+
+.input-check-box input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    width: 1.5625rem;
+    height: 25px;
+    height: 1.5625rem;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none
+}
+
+
+
+.input-check-box input[type='checkbox']:checked + .icon {
+    background-color: rgb(0, 119, 236);
+    background-image: url('/icons/form/check.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: rgb(0, 119, 236);
+}
+
+
+
+.input-check-box .icon {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+
+
+.input-check-box .label {
+    padding-left: 10px;
+    padding-left: 0.625rem;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+}
 .constrain-width.medium {
         max-width: 740px;
         max-width: 46.25rem;
