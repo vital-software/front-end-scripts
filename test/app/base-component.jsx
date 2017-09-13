@@ -21,7 +21,7 @@ export default class Base extends Component {
     }
 
     async testAsyncFunction(): * {
-        const result: * = await fetch('thing')
+        const result: * = await fetch('thing') // eslint-disable-line
 
         return result
     }

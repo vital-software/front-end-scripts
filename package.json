@@ -23,7 +23,11 @@
     "script"
   ],
   "scripts": {
-    "test": "./test/task/local-test.sh"
+    "precommit": "yarn test-lint",
+    "test": "./test/task/local-test.sh && yarn test-lint",
+    "test-lint": "yarn test-lint-css && yarn test-lint-js",
+    "test-lint-css": "stylelint \"test/app/sass/**/*.{css,scss}\" --syntax scss",
+    "test-lint-js": "eslint \"test/app/**/*.{js,jsx}\" --quiet"
   },
   "bin": {
     "vitalizer": "bin/vitalizer.js"
@@ -80,6 +84,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.0.2",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-react": "^7.3.0",
+    "husky": "^0.14.3"
   }
 }
