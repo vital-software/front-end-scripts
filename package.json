@@ -65,7 +65,7 @@
     "recursive-readdir": "^2.2.1",
     "strip-ansi": "^4.0.0",
     "style-loader": "github:bendytree/style-loader",
-    "stylelint-order": "^0.5.0",
+    "stylelint-order": "^0.6.0",
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.5.0"
