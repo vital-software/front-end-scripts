@@ -13641,17 +13641,6 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_dom__["render"])(__WEBPA
     { store: {} },
     __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router__["c" /* Router */], { history: history, routes: routes })
 ), document.getElementById('root') || document.createElement('div'));
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(routes, 'routes', '/var/vitalizer/test/app/index.js');
-}();
-
-;
 
 /***/ }),
 /* 122 */
@@ -13703,21 +13692,7 @@ var Base = function (_Component) {
     return Base;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-var _default = Base;
-/* harmony default export */ __webpack_exports__["a"] = (_default);
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(Base, 'Base', '/var/vitalizer/test/app/base-component.jsx');
-
-    __REACT_HOT_LOADER__.register(_default, 'default', '/var/vitalizer/test/app/base-component.jsx');
-}();
-
-;
+/* harmony default export */ __webpack_exports__["a"] = (Base);
 
 /***/ }),
 /* 124 */

@@ -257,7 +257,10 @@ module.exports = {
                                 {
                                     loader: 'postcss-loader',
                                     options: {
-                                        config: { path: paths.ownPostCssConfig }
+                                        config: {
+                                            ctx: { isTest: test },
+                                            path: paths.ownPostCssConfig
+                                        }
                                     }
                                 }
                             ]

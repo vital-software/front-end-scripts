@@ -61,7 +61,7 @@ yarn cache clean
 yarn install
 
 # Test local build
-../bin/vitalizer.js build
+NODE_ENV=production ../bin/vitalizer.js build
 
 # Check for expected output
 exists public/index.html
