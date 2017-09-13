@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "The Vital Software front-end asset builder.",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
@@ -33,6 +33,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
