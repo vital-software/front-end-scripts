@@ -13665,7 +13665,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var routes = __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(
+const routes = __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_4_react_router__["b" /* Route */],
     { path: '/', component: __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* default */] },
     __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router__["a" /* IndexRedirect */], { to: 'test' })
@@ -13689,8 +13689,6 @@ Object(__WEBPACK_IMPORTED_MODULE_3_react_dom__["render"])(__WEBPACK_IMPORTED_MOD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_core_scss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13701,7 +13699,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Base = function (_Component) {
+let Base = function (_Component) {
     _inherits(Base, _Component);
 
     function Base() {
@@ -13720,34 +13718,11 @@ var Base = function (_Component) {
         }
     }, {
         key: 'testAsyncFunction',
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var result;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return fetch('thing');
+        value: async function testAsyncFunction() {
+            const result = await fetch('thing'); // eslint-disable-line
 
-                            case 2:
-                                result = _context.sent;
-                                return _context.abrupt('return', result);
-
-                            case 4:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function testAsyncFunction() {
-                return _ref.apply(this, arguments);
-            }
-
-            return testAsyncFunction;
-        }()
+            return result;
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -13792,7 +13767,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Checkbox = function (_Component) {
+let Checkbox = function (_Component) {
     _inherits(Checkbox, _Component);
 
     function Checkbox() {
