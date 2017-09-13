@@ -3583,7 +3583,7 @@ loader-runner@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
-loader-utils@^0.2.16, loader-utils@^0.2.7:
+loader-utils@^0.2.16:
   version "0.2.17"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.17.tgz#f86e6374d43205a6e6c60e9196f17c0299bfb348"
   dependencies:
@@ -5682,11 +5682,11 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-"style-loader@github:bendytree/style-loader":
-  version "0.13.1"
-  resolved "https://codeload.github.com/bendytree/style-loader/tar.gz/4f9f4494184f3b8a427a381249eb0e09f3787768"
+"style-loader@github:mgol/style-loader#always-inline-styles":
+  version "0.17.0"
+  resolved "https://codeload.github.com/mgol/style-loader/tar.gz/d16fecadaf6c064b95603660ec8f433369f4bba0"
   dependencies:
-    loader-utils "^0.2.7"
+    loader-utils "^1.0.2"
 
 style-search@^0.1.0:
   version "0.1.0"
