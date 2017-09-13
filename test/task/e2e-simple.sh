@@ -56,25 +56,10 @@ set -x
 cd ..
 root_path=$PWD
 
-# Clear cache to avoid issues with incorrect packages being used
-if hash yarnpkg 2>/dev/null
-then
-  yarnpkg cache clean
-fi
-
-if hash npm 2>/dev/null
-then
-  # npm 5 is too buggy right now
-  if [ $(npm -v | head -c 1) -eq 5 ]; then
-    npm i -g npm@^4.x
-  fi;
-  npm cache clean || npm cache verify
-fi
-
 # Install Yarn so that the test can use it to install packages.
-npm install -g yarn
-yarn cache clean
-yarn install
+#npm install -g yarn
+#yarn cache clean
+#yarn install
 
 # Test local build
 ../bin/vitalizer.js build
@@ -87,3 +72,4 @@ exists public/*.js.map
 
 # Diff output files
 diff public/index.html stub/index.html
+diff -b public/index.js stub/index.js

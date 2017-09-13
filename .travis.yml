@@ -6,10 +6,8 @@ cache:
   - node_modules
 install: true
 script:
-- if [ $TEST_SUITE = "simple" ]; then test/task/e2e-simple.sh; fi
+- test/task/e2e-simple.sh
 env:
-  global:
-  - USE_YARN=yes
   matrix:
   - TEST_SUITE=simple
 matrix:

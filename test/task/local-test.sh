@@ -1,7 +1,6 @@
 docker run \
   --env CI=true \
   --env NPM_CONFIG_QUIET=true \
-  --env USE_YARN=true \
   --tty \
   --volume ${PWD}/vitalizer/..:/var/vitalizer \
   --workdir /var/vitalizer \
