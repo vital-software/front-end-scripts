@@ -57,6 +57,48 @@
 
 
 
+@-webkit-keyframes SavingAnimation {
+    to {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+    }
+}
+
+
+
+@keyframes SavingAnimation {
+    to {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg)
+    }
+}
+
+
+
+@-webkit-keyframes IconLoaderAnimation {
+    0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+
+
+@keyframes IconLoaderAnimation {
+    0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+
+
 /*
     Input - Checkbox
  */
@@ -70,6 +112,10 @@
     align-items: center;
 
     cursor: pointer;
+
+    -webkit-animation: SavingAnimation 0.7s linear infinite;
+
+            animation: SavingAnimation 0.7s linear infinite;
 }
 
 
@@ -80,6 +126,14 @@
     height: 25px;
     height: 1.5625rem;
     border-radius: 3px;
+    -webkit-animation-duration: 0.6s;
+            animation-duration: 0.6s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-name: IconLoaderAnimation;
+            animation-name: IconLoaderAnimation;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
 }
 
 
@@ -106,7 +160,7 @@
     background-image: url('/icons/form/check.svg');
     background-position: center;
     background-repeat: no-repeat;
-    border-color: rgb(0, 119, 236);
+    border-color: rgb(0, 119, 236)
 }
 
 
