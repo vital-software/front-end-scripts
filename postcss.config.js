@@ -33,7 +33,8 @@ module.exports = (context) => ({
         'postcss-simple-vars': {},
         'postcss-strip-inline-comments': {},
         'postcss-remify': {},
-        precss: {},
+        'postcss-nesting': {},
+        'postcss-nested': {},
         'postcss-cssnext': {
             features: {
                 autoprefixer: {
