@@ -56,10 +56,9 @@ set -x
 cd ..
 root_path=$PWD
 
-# Install Yarn so that the test can use it to install packages.
-#npm install -g yarn
-#yarn cache clean
-#yarn install
+# Install packages
+yarn cache clean
+yarn install
 
 # Test local build
 ../bin/vitalizer.js build
