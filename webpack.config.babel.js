@@ -62,7 +62,7 @@ function generateIndexEntry(isDev) {
     return indexEntry
 }
 
-function generatePlugins(isDev) {
+function generatePlugins(isDev, filename) {
     let plugins = [
         new optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -88,7 +88,7 @@ function generatePlugins(isDev) {
         }),
         new ExtractTextPlugin({
             disable: isDev,
-            filename: '[name].[chunkhash].css'
+            filename: `${filename}.css`
         }),
         new HtmlWebpackPlugin({
             template: paths.appHtmlTemplate
@@ -149,13 +149,16 @@ module.exports = {
             appConfig.options
         )
 
+        // Setup filename
+        const filename = shortName ? '[name]' : '[name].[chunkhash]'
+
         const indexEntry = generateIndexEntry(dev)
-        const plugins = generatePlugins(dev)
+        const plugins = generatePlugins(dev, filename)
         const entry = Object.assign({ index: indexEntry }, appConfig.entry)
         const output = Object.assign(
             {
                 path: paths.appBuild,
-                filename: shortName ? '[name].js' : '[name].[chunkhash].js',
+                filename: `${filename}.js`,
                 publicPath: '/'
             },
             appConfig.output

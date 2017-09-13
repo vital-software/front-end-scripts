@@ -1,0 +1,24 @@
+/*
+    Layout
+    - Constraint
+ */
+
+
+// Constraint
+.constrain-width {
+    max-width: $constrain-width;
+    padding-right: rem(20);
+    padding-left: rem(20);
+    margin-right: auto;
+    margin-left: auto;
+
+
+    // Types
+    &.small {
+        max-width: $constrain-width-small;
+    }
+
+    &.medium {
+        max-width: $constrain-width-medium;
+    }
+}

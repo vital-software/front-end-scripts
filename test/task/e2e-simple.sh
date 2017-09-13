@@ -68,8 +68,10 @@ root_path=$PWD
 exists public/index.html
 exists public/*.js
 exists public/*.js.map
-#exists public/*.css
+exists public/*.css
+exists public/*.css.map
 
 # Diff output files
 diff public/index.html stub/index.html
 diff -b public/index.js stub/index.js
+diff -b public/index.css stub/index.css
