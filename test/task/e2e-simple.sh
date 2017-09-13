@@ -56,20 +56,21 @@ set -x
 cd ..
 root_path=$PWD
 
-# Install Yarn so that the test can use it to install packages.
-#npm install -g yarn
-#yarn cache clean
-#yarn install
+# Install packages
+yarn cache clean
+yarn install
 
 # Test local build
-../bin/vitalizer.js build
+NODE_ENV=production ../bin/vitalizer.js build
 
 # Check for expected output
 exists public/index.html
 exists public/*.js
 exists public/*.js.map
-#exists public/*.css
+exists public/*.css
+exists public/*.css.map
 
 # Diff output files
 diff public/index.html stub/index.html
-diff -b public/index.js stub/index.js
+diff -b -y --suppress-common-lines public/index.js stub/index.js
+diff -b -y --suppress-common-lines public/index.css stub/index.css

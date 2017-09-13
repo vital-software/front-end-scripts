@@ -62,7 +62,7 @@ function generateIndexEntry(isDev) {
     return indexEntry
 }
 
-function generatePlugins(isDev) {
+function generatePlugins(isDev, isTest, filename) {
     let plugins = [
         new optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -78,9 +78,10 @@ function generatePlugins(isDev) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV: isDev
-                        ? JSON.stringify('development')
-                        : JSON.stringify('production'),
+                    NODE_ENV:
+                        isDev && !isTest
+                            ? JSON.stringify('development')
+                            : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -88,12 +89,16 @@ function generatePlugins(isDev) {
         }),
         new ExtractTextPlugin({
             disable: isDev,
-            filename: '[name].[chunkhash].css'
+            filename: `${filename}.css`
         }),
         new HtmlWebpackPlugin({
             template: paths.appHtmlTemplate
         })
     ]
+
+    if (isTest) {
+        return plugins
+    }
 
     if (isDev) {
         // Enable HMR globally
@@ -143,19 +148,22 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options) {
-        const { dev, shortName } = Object.assign(
-            { dev: true, shortName: false },
+        const { dev, shortName, test } = Object.assign(
+            { dev: true, shortName: false, test: false },
             options,
             appConfig.options
         )
 
+        // Setup filename
+        const filename = shortName ? '[name]' : '[name].[chunkhash]'
+
         const indexEntry = generateIndexEntry(dev)
-        const plugins = generatePlugins(dev)
+        const plugins = generatePlugins(dev, test, filename)
         const entry = Object.assign({ index: indexEntry }, appConfig.entry)
         const output = Object.assign(
             {
                 path: paths.appBuild,
-                filename: shortName ? '[name].js' : '[name].[chunkhash].js',
+                filename: `${filename}.js`,
                 publicPath: '/'
             },
             appConfig.output
@@ -249,7 +257,10 @@ module.exports = {
                                 {
                                     loader: 'postcss-loader',
                                     options: {
-                                        config: { path: paths.ownPostCssConfig }
+                                        config: {
+                                            ctx: { isTest: test },
+                                            path: paths.ownPostCssConfig
+                                        }
                                     }
                                 }
                             ]

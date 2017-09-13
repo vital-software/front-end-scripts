@@ -43,6 +43,9 @@ module.exports = (context) => ({
                 }
             }
         },
-        cssnano: context.env === 'production' ? CSS_NANO_OPTIONS : false
+        cssnano:
+            context.env === 'production' && !context.options.isTest
+                ? CSS_NANO_OPTIONS
+                : false
     }
 })
