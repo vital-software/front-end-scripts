@@ -46,7 +46,7 @@
     "brotli-webpack-plugin": "^0.4.1",
     "chalk": "^2.1.0",
     "cross-spawn": "^5.0.1",
-    "css-loader": "^0.28.1",
+    "css-loader": "^0.28.7",
     "cssnano": "^3.9.1",
     "detect-port": "^1.2.1",
     "extract-text-webpack-plugin": "^2.1.2",
