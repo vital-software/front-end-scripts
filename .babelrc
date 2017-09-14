@@ -17,7 +17,6 @@
       },
       "modules": false,
       "useBuiltIns": true,
-      "debug": true,
       "include": ["transform-es2015-classes"]
     }],
     "react",
@@ -25,8 +24,7 @@
   ],
   "env": {
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs"],
-      "presets": [["env", { "debug": false }]]
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }
