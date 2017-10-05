@@ -36,6 +36,9 @@ module.exports = (context) => ({
         'postcss-nesting': {},
         'postcss-nested': {},
         'postcss-cssnext': {
+            customProperties: {
+                warnings: false
+            },
             features: {
                 autoprefixer: {
                     flexbox: false,
