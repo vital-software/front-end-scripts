@@ -282,10 +282,10 @@ module.exports = {
                 ],
 
                 modules: [
+                    'node_modules',
                     paths.appCss,
                     paths.appSrc,
-                    paths.appPublic,
-                    'node_modules'
+                    paths.appPublic
                 ]
             },
 
