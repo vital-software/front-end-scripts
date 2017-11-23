@@ -76,15 +76,15 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.0",
-    "eslint": "^4.6.1",
+    "eslint": "^4.11.0",
     "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-compat": "^1.0.4",
+    "eslint-plugin-compat": "^2.1.0",
     "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-flowtype": "^2.35.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.0.2",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3"
   }
 }
