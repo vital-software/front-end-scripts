@@ -167,7 +167,6 @@
       "vars-on-top": "error",
       "wrap-iife": "error",
       "yoda": "error",
-
       "array-bracket-spacing": "error",
       "block-spacing": "error",
       "brace-style": [
@@ -187,6 +186,7 @@
       ],
       "comma-style": "error",
       "computed-property-spacing": "error",
+      "curly": "error",
       "eol-last": "error",
       "func-style": [
           "error",
