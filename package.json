@@ -58,7 +58,7 @@
     "html-webpack-plugin": "^2.30.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.0.6",
+    "postcss-loader": "^2.0.8",
     "postcss-nested": "^2.1.2",
     "postcss-nesting": "^4.2.1",
     "postcss-remify": "^1.0.1",
@@ -70,7 +70,7 @@
     "strip-ansi": "^4.0.0",
     "style-loader": "github:mgol/style-loader#always-inline-styles",
     "stylelint-order": "^0.6.0",
-    "url-loader": "^0.5.9",
+    "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },
