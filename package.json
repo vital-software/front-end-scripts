@@ -60,7 +60,7 @@
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-nested": "^2.1.2",
-    "postcss-nesting": "^4.1.0",
+    "postcss-nesting": "^4.2.1",
     "postcss-remify": "^1.0.1",
     "postcss-scss": "^1.0.2",
     "postcss-simple-vars": "^4.1.0",
