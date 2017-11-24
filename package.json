@@ -75,7 +75,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
+    "babel-eslint": "8.0.0",
     "eslint": "^4.11.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-compat": "^2.1.0",
