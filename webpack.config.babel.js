@@ -1,5 +1,5 @@
 /* eslint-disable camelcase, filenames/match-regex */
-const MinifyPlugin = require('babel-minify-webpack-plugin')
+const MinifyPlugin = require('babili-webpack-plugin')
 // const BrotliPlugin = require('brotli-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
