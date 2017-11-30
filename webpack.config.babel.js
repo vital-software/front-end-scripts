@@ -51,9 +51,7 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(
-            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
-        )
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
@@ -78,10 +76,7 @@ function generatePlugins(isDev, isTest, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV:
-                        isDev && !isTest
-                            ? JSON.stringify('development')
-                            : JSON.stringify('production'),
+                    NODE_ENV: isDev && !isTest ? JSON.stringify('development') : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -271,22 +266,9 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: [
-                    '.css',
-                    '.gql',
-                    '.graphql',
-                    '.js',
-                    '.json',
-                    '.jsx',
-                    '.scss'
-                ],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
-                modules: [
-                    'node_modules',
-                    paths.appCss,
-                    paths.appSrc,
-                    paths.appPublic
-                ]
+                modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
 
             resolveLoader: {
