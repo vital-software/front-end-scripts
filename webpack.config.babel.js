@@ -41,7 +41,7 @@ const API = Object.assign(
 )
 const PORT = appConfig.port || DEFAULT_PORT
 const HOST = 'localhost'
-const PROTOCOL = 'https'
+const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 // Helpers
@@ -171,6 +171,9 @@ module.exports = {
                 // Use /static/ as the default content base
                 contentBase: paths.appPublic,
 
+                // Support a proxy server
+                disableHostCheck: true,
+
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
 
@@ -178,7 +181,7 @@ module.exports = {
                 hot: dev,
 
                 // Enable HTTPS and HTTP/2
-                https: true,
+                https: false,
 
                 // Hide the webpack bundle information
                 noInfo: true,
