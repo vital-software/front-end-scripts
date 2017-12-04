@@ -42,20 +42,21 @@
   },
   "rules": {
       "compat/compat": "error",
-      "flowtype/require-parameter-type": ["error"],
-      "flowtype/require-return-type": ["error"],
-      "flowtype/require-valid-file-annotation": ["error"],
-      "flowtype/require-variable-type": ["error"],
-      "flowtype/sort-keys": ["error"],
-      "flowtype/no-dupe-keys": ["error"],
-      "jsx-a11y/anchor-is-valid": ["error"],
+      "flowtype/require-parameter-type": "error",
+      "flowtype/require-return-type": "error",
+      "flowtype/require-valid-file-annotation": "error",
+      "flowtype/require-variable-type": "error",
+      "flowtype/sort-keys": "error",
+      "flowtype/no-dupe-keys": "error",
+      "jest/no-disabled-tests": "error",
+      "jsx-a11y/anchor-is-valid": "error",
       "jsx-a11y/label-has-for": ["warn", {
         "required": {
           "some": ["nesting", "id"]
         }
       }],
       "react/jsx-boolean-value": ["error", "always"],
-      "react/jsx-handler-names": ["error"],
+      "react/jsx-handler-names": "error",
       "react/jsx-no-comment-textnodes": "error",
       "react/jsx-no-bind": [
           "warn",
@@ -64,7 +65,7 @@
           }
       ],
       "react/jsx-no-target-blank": "error",
-      "react/jsx-pascal-case": ["error"],
+      "react/jsx-pascal-case": "error",
       "react/no-danger": "off",
       "react/no-find-dom-node": "error",
       "react/no-multi-comp": [
@@ -85,7 +86,7 @@
               ]
           }
       ],
-      "react/sort-prop-types": ["error"],
+      "react/sort-prop-types": "error",
       "react/void-dom-elements-no-children": "error",
       "filenames/match-regex": ["error", "^[a-z-.]+$"],
       "import/named": "error",
@@ -162,19 +163,15 @@
         { "blankLine": "always", "prev": "directive", "next": "*" },
         { "blankLine": "any",    "prev": "directive", "next": "directive" }
       ],
-      "switch-colon-spacing": ["error"],
+      "switch-colon-spacing": "error",
       "vars-on-top": "error",
       "wrap-iife": "error",
       "yoda": "error",
-
       "array-bracket-spacing": "error",
       "block-spacing": "error",
       "brace-style": [
           "error",
-          "1tbs",
-          {
-              "allowSingleLine": true
-          }
+          "1tbs"
       ],
       "camelcase": "error",
       "comma-spacing": [
@@ -186,6 +183,7 @@
       ],
       "comma-style": "error",
       "computed-property-spacing": "error",
+      "curly": "error",
       "eol-last": "error",
       "func-style": [
           "error",

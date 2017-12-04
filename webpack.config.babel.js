@@ -1,5 +1,5 @@
 /* eslint-disable camelcase, filenames/match-regex */
-const MinifyPlugin = require('babel-minify-webpack-plugin')
+const MinifyPlugin = require('babili-webpack-plugin')
 // const BrotliPlugin = require('brotli-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -41,7 +41,7 @@ const API = Object.assign(
 )
 const PORT = appConfig.port || DEFAULT_PORT
 const HOST = 'localhost'
-const PROTOCOL = 'https'
+const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 // Helpers
@@ -51,9 +51,7 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(
-            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
-        )
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
@@ -78,10 +76,7 @@ function generatePlugins(isDev, isTest, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV:
-                        isDev && !isTest
-                            ? JSON.stringify('development')
-                            : JSON.stringify('production'),
+                    NODE_ENV: isDev && !isTest ? JSON.stringify('development') : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -176,6 +171,9 @@ module.exports = {
                 // Use /static/ as the default content base
                 contentBase: paths.appPublic,
 
+                // Support a proxy server
+                disableHostCheck: true,
+
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
 
@@ -183,7 +181,7 @@ module.exports = {
                 hot: dev,
 
                 // Enable HTTPS and HTTP/2
-                https: true,
+                https: false,
 
                 // Hide the webpack bundle information
                 noInfo: true,
@@ -271,22 +269,9 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: [
-                    '.css',
-                    '.gql',
-                    '.graphql',
-                    '.js',
-                    '.json',
-                    '.jsx',
-                    '.scss'
-                ],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
-                modules: [
-                    'node_modules',
-                    paths.appCss,
-                    paths.appSrc,
-                    paths.appPublic
-                ]
+                modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
 
             resolveLoader: {
