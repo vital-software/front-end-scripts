@@ -5872,11 +5872,12 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-"style-loader@github:mgol/style-loader#always-inline-styles":
-  version "0.17.0"
-  resolved "https://codeload.github.com/mgol/style-loader/tar.gz/d16fecadaf6c064b95603660ec8f433369f4bba0"
+"style-loader@github:webpack-contrib/style-loader#master":
+  version "0.19.0"
+  resolved "https://codeload.github.com/webpack-contrib/style-loader/tar.gz/57c457d043b7e8a03a06a87995d2ef2b74495893"
   dependencies:
     loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 style-search@^0.1.0:
   version "0.1.0"
