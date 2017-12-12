@@ -17,6 +17,7 @@ let appConfig = {
     devServer: {},
     entry: {},
     env: {},
+    jsMinifyOpts: {},
     output: {},
     port: null,
     performance: {}
@@ -43,6 +44,14 @@ const PORT = appConfig.port || DEFAULT_PORT
 const HOST = 'localhost'
 const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
+
+const JS_MINIFY_OPTS = Object.assign(
+    {
+        removeConsole: true,
+        removeDebugger: true
+    },
+    appConfig.jsMinifyOpts
+)
 
 // Helpers
 function generateIndexEntry(isDev) {
@@ -112,15 +121,9 @@ function generatePlugins(isDev, isTest, filename) {
 
         // Optimise Javascript
         plugins.push(
-            new MinifyPlugin(
-                {
-                    removeConsole: true,
-                    removeDebugger: true
-                },
-                {
-                    comments: false
-                }
-            )
+            new MinifyPlugin(JS_MINIFY_OPTS, {
+                comments: false
+            })
         )
 
         // Generate Brotli static assets
