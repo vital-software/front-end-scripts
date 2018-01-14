@@ -31,6 +31,7 @@ try {
 
 // Options
 const DEFAULT_PORT = 3000
+const DEFAULT_HOST = 'localhost'
 
 const API = Object.assign(
     {
@@ -41,7 +42,7 @@ const API = Object.assign(
     appConfig.api
 )
 const PORT = appConfig.port || DEFAULT_PORT
-const HOST = 'localhost'
+const HOST = appConfig.host || DEFAULT_HOST
 const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
