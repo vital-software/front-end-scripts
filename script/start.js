@@ -122,7 +122,7 @@ function run() {
     })
 
     // Launch WebpackDevServer
-    devServer.listen(DEFAULTS.PORT, (error) => {
+    devServer.listen(DEFAULTS.PORT, DEFAULTS.HOST, (error) => {
         if (error) {
             return console.log(error)
         }
