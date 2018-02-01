@@ -235,7 +235,7 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx)$/,
-                        exclude: /node_modules/,
+                        include: [/node_modules\/@vital-software\/web-utils/, /app/],
                         loader: 'babel-loader'
                     },
                     {
