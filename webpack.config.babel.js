@@ -273,7 +273,7 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
                 modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
