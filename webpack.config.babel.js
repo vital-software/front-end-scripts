@@ -31,7 +31,7 @@ try {
 
 // Options
 const DEFAULT_PORT = 3000
-const DEFAULT_HOST = 'localhost'
+const DEFAULT_HOST = '0.0.0.0'
 
 const API = Object.assign(
     {
@@ -234,8 +234,8 @@ module.exports = {
                         loader: 'graphql-tag/loader'
                     },
                     {
-                        test: /\.(js|jsx)$/,
-                        exclude: /node_modules/,
+                        test: /\.(js|jsx|flow)$/,
+                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /trackboard\/app/],
                         loader: 'babel-loader'
                     },
                     {
@@ -273,7 +273,7 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
 
                 modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
