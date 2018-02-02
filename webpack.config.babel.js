@@ -217,9 +217,9 @@ module.exports = {
             //       been resolved. See https://github.com/webpack/webpack/issues/2145
             devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
 
-            entry,
+            entry: entry,
 
-            output,
+            output: output,
 
             module: {
                 rules: [
@@ -237,7 +237,7 @@ module.exports = {
                         loader: 'graphql-tag/loader'
                     },
                     {
-                        test: /\.(js|jsx|flow)$/,
+                        test: /\.(js|jsx)$/,
                         // include: [/node_modules\/@vital-software\/web-utils\/lib/, /app\/app/],
                         exclude: /node_modules/,
                         loader: 'babel-loader'
@@ -274,10 +274,10 @@ module.exports = {
                 ]
             },
 
-            plugins,
+            plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss'],
 
                 modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
@@ -295,7 +295,7 @@ module.exports = {
                 appConfig.performance
             ),
 
-            devServer
+            devServer: devServer
         }
     }
 }
