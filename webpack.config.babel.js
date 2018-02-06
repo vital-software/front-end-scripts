@@ -238,7 +238,7 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx|flow)$/,
-                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /trackboard\/app/],
+                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
                         loader: 'babel-loader'
                     },
                     {
