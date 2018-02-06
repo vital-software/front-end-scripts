@@ -184,6 +184,9 @@ module.exports = {
                 // Hot module replacement (only in 'dev' mode)
                 hot: dev,
 
+                // Allow serving externally
+                host: '0.0.0.0',
+
                 // Enable HTTPS and HTTP/2
                 https: false,
 
@@ -235,6 +238,7 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx)$/,
+                        // include: [/node_modules\/@vital-software\/web-utils\/lib/, /app\/app/],
                         exclude: /node_modules/,
                         loader: 'babel-loader'
                     },
