@@ -31,7 +31,7 @@ try {
 
 // Options
 const DEFAULT_PORT = 3000
-const DEFAULT_HOST = 'localhost'
+const DEFAULT_HOST = '0.0.0.0'
 
 const API = Object.assign(
     {
@@ -61,7 +61,9 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
+        indexEntry.push(
+            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
+        )
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
@@ -86,7 +88,10 @@ function generatePlugins(isDev, isTest, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV: isDev && !isTest ? JSON.stringify('development') : JSON.stringify('production'),
+                    NODE_ENV:
+                        isDev && !isTest
+                            ? JSON.stringify('development')
+                            : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -238,7 +243,10 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx|flow)$/,
-                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
+                        include: [
+                            /node_modules\/@vital-software\/web-utils\/lib/,
+                            /.*\/app/
+                        ],
                         loader: 'babel-loader'
                     },
                     {
@@ -276,9 +284,23 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
+                extensions: [
+                    '.css',
+                    '.gql',
+                    '.graphql',
+                    '.js',
+                    '.json',
+                    '.jsx',
+                    '.scss',
+                    '.flow'
+                ],
 
-                modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
+                modules: [
+                    'node_modules',
+                    paths.appCss,
+                    paths.appSrc,
+                    paths.appPublic
+                ]
             },
 
             resolveLoader: {
