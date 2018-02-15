@@ -61,7 +61,9 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`)
+        indexEntry.push(
+            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
+        )
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
@@ -86,7 +88,10 @@ function generatePlugins(isDev, isTest, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV: isDev && !isTest ? JSON.stringify('development') : JSON.stringify('production'),
+                    NODE_ENV:
+                        isDev && !isTest
+                            ? JSON.stringify('development')
+                            : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -170,7 +175,7 @@ module.exports = {
         const devServer = Object.assign(
             {
                 // Add GZip compression
-                compress: true,
+                compress: false,
 
                 // Use /static/ as the default content base
                 contentBase: paths.appPublic,
@@ -183,6 +188,9 @@ module.exports = {
 
                 // Hot module replacement (only in 'dev' mode)
                 hot: dev,
+
+                // Allow serving externally
+                host: '0.0.0.0',
 
                 // Enable HTTPS and HTTP/2
                 https: false,
@@ -235,7 +243,10 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx|flow)$/,
-                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /trackboard\/app/],
+                        include: [
+                            /node_modules\/@vital-software\/web-utils\/lib/,
+                            /.*\/app/
+                        ],
                         loader: 'babel-loader'
                     },
                     {
@@ -273,9 +284,23 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
+                extensions: [
+                    '.css',
+                    '.gql',
+                    '.graphql',
+                    '.js',
+                    '.json',
+                    '.jsx',
+                    '.scss',
+                    '.flow'
+                ],
 
-                modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
+                modules: [
+                    'node_modules',
+                    paths.appCss,
+                    paths.appSrc,
+                    paths.appPublic
+                ]
             },
 
             resolveLoader: {
