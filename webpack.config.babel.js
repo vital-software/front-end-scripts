@@ -169,8 +169,8 @@ module.exports = {
         )
         const devServer = Object.assign(
             {
-                // Add GZip compression
-                compress: true,
+                // Can't use gzip compression, because it causes SSE buffering
+                compress: false,
 
                 // Use /static/ as the default content base
                 contentBase: paths.appPublic,
