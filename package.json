@@ -85,6 +85,7 @@
     "eslint-plugin-jest": "^21.0.2",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.3.0",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "semantic-release": "^12.4.1"
   }
 }
