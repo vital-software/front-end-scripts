@@ -1,4 +1,4 @@
-# Vitalizer [![Build Status](https://travis-ci.org/vital-software/vitalizer.svg?branch=master)](https://travis-ci.org/vital-software/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
+# Vitalizer [ ![Codeship Status for vital-software/vitalizer](https://app.codeship.com/projects/d1e97e30-f4f5-0135-8b1f-4a1efb3ae25c/status?branch=master)](https://app.codeship.com/projects/273449) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
 Get a Front End project up with no external configuration.
 
 ## TODO Notes
