@@ -1,0 +1,93 @@
+fragment Node on Node {
+    id
+    title
+    childIds
+    nodeType
+    meta {
+        mappings {
+            mapType
+            path
+        }
+        triggers {
+            action
+            operand
+            value
+        }
+    }
+    content {
+        ... on CheckBox {
+            isChecked
+        }
+        ... on File {
+            uris
+        }
+        ... on ImageMap {
+            clicks {
+                x
+                y
+            }
+            list {
+                name
+            }
+            notes
+        }
+        ... on Measurement {
+            value
+        }
+        ... on Paragraph {
+            text
+        }
+        ... on SelectList {
+            list {
+                name
+                value
+            }
+        }
+        ... on SingleDateTime {
+            timestamp
+        }
+        ... on StringList {
+            values
+        }
+        ... on Text {
+            text
+        }
+    }
+    settings {
+        ... on DateSettings {
+            isRequired
+            minDateTime
+            maxDateTime
+        }
+        ... on FileSettings {
+            isRequired
+            maxAllowed
+            maxHeight
+            maxWidth
+            mimeTypes
+        }
+        ... on ImageMapSettings {
+            isRequired
+            placeholder
+        }
+        ... on MeasurementSettings {
+            isRequired
+            min
+            max
+            unit
+        }
+        ... on SelectSettings {
+            placeholder
+            allowMultiple
+            options {
+                name
+                value
+            }
+        }
+        ... on TextSettings {
+            isRequired
+            maxLength
+            placeholder
+        }
+    }
+}

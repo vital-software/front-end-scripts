@@ -13665,9 +13665,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+const path = '/';
+
 const routes = __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_4_react_router__["b" /* Route */],
-    { path: '/', component: __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* default */] },
+    { path: path, component: __WEBPACK_IMPORTED_MODULE_0__base_component__["a" /* default */] },
     __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_router__["a" /* IndexRedirect */], { to: 'test' })
 );
 
