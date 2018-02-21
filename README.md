@@ -1,7 +1,6 @@
-# Vitalizer [ ![Codeship Status for vital-software/vitalizer](https://app.codeship.com/projects/d1e97e30-f4f5-0135-8b1f-4a1efb3ae25c/status?branch=master)](https://app.codeship.com/projects/273449) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
+# Vitalizer [ ![Codeship Status for vital-software/vitalizer](https://app.codeship.com/projects/d1e97e30-f4f5-0135-8b1f-4a1efb3ae25c/status?branch=master)](https://app.codeship.com/projects/273449) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer) [![Greenkeeper badge](https://badges.greenkeeper.io/vital-software/vitalizer.svg)](https://greenkeeper.io/)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/vital-software/vitalizer.svg)](https://greenkeeper.io/)
-Get a Front End project up with no external configuration.
+> Get a Front End project up with no external configuration.
 
 ## TODO Notes
 - Move `:root` statement out of common files (dashboard/checkin), and load in at root level instead (once per app)
