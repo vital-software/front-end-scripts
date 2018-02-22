@@ -71,8 +71,8 @@
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
     "url-loader": "0.6.2",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.4"
+    "webpack": "3.11.0",
+    "webpack-dev-server": "2.11.1"
   },
   "devDependencies": {
     "babel-eslint": "8.2.2",
