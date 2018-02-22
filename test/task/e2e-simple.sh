@@ -31,17 +31,12 @@ function handle_exit {
   exit
 }
 
-# function create_react_app {
-#   node "$temp_cli_path"/node_modules/create-react-app/index.js "$@"
-# }
-
 # Check for the existence of one or more files.
 function exists {
   for f in $*; do
     test -e "$f"
   done
 }
-
 
 # Exit the script with a helpful error message when any error is encountered
 trap 'set +x; handle_error $LINENO $BASH_COMMAND' ERR
@@ -60,7 +55,22 @@ root_path=$PWD
 yarn cache clean
 yarn install
 
-# Test local build
+# Create vitalizer server log file
+tmp_server_log='vitalizer-start-temp.log'
+rm -f $tmp_server_log
+
+# Test local development mode
+(../bin/vitalizer.js start 2>&1 > $tmp_server_log) &
+pid=$!
+sleep 25
+cat $tmp_server_log
+grep -q 'Compiled successfully!' $tmp_server_log
+kill $pid
+
+# Clean up server log
+rm -f $tmp_server_log
+
+# Test local build mode
 NODE_ENV=production ../bin/vitalizer.js build
 
 # Check for expected output

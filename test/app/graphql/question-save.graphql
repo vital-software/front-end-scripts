@@ -1,0 +1,7 @@
+#import 'graphql/fragment/node'
+
+mutation QuestionSave($content: AllContent!, $id: UUID!, $parentId: UUID!) {
+    updateCheckin(nodeUpdate: { id: $id, content: $content }, parentId: $parentId) {
+        ...Node
+    }
+}
