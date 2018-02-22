@@ -62,7 +62,7 @@ rm -f $tmp_server_log
 # Test local development mode
 (../bin/vitalizer.js start 2>&1 > $tmp_server_log) &
 pid=$!
-sleep 25
+sleep 30
 cat $tmp_server_log
 grep -q 'Compiled successfully!' $tmp_server_log
 kill $pid
