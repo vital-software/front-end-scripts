@@ -1,0 +1,7 @@
+version: "2.3"
+
+services:
+  base:
+    build:
+      context: .
+    image: quay.io/vital/build-cache:vitalizer-latest
