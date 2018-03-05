@@ -1,20 +1,15 @@
-FROM node:8.9-alpine
+FROM node:8.9
 
-# Install common Alpine dependencies
-#   - bash because e2e-simple.sh needs it
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache \
-      ca-certificates \
-      git \
-      openssl \
-      bash \
-      diffutils \
-      tzdata && \
-    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
-    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.27-r0/glibc-2.27-r0.apk && \
-    apk add --no-cache glibc-2.27-r0.apk && \
-    rm glibc-2.27-r0.apk
+# Install common dependencies
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get install -y \
+        ca-certificates \
+        git \
+        openssl \
+        tzdata && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
 
 # Set timezone
 ENV TZ=Pacific/Auckland
