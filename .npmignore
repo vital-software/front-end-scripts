@@ -3,3 +3,4 @@ test/
 Dockerfile
 docker-compose.*
 .buildkite
+.dockerignore
