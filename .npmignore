@@ -1,2 +1,5 @@
 .travis.yml
 test/
+Dockerfile
+docker-compose.*
+.buildkite
