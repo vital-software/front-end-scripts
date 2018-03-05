@@ -96,6 +96,19 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
 
+"@semantic-release/git@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-3.0.1.tgz#65a2cd7c8bdac74b91de2bd368957cf55033871f"
+  dependencies:
+    "@semantic-release/error" "^2.1.0"
+    debug "^3.1.0"
+    dir-glob "^2.0.0"
+    execa "^0.9.0"
+    fs-extra "^5.0.0"
+    lodash "^4.17.4"
+    micromatch "^3.1.4"
+    p-reduce "^1.0.0"
+
 "@semantic-release/github@^3.0.1":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-3.0.3.tgz#a986fa36111a34b3cc42b1a7f41fe4f019df570b"
