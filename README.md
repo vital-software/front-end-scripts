@@ -1,4 +1,4 @@
-# Vitalizer [ ![Codeship Status for vital-software/vitalizer](https://app.codeship.com/projects/d1e97e30-f4f5-0135-8b1f-4a1efb3ae25c/status?branch=master)](https://app.codeship.com/projects/273449) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer) [![Greenkeeper badge](https://badges.greenkeeper.io/vital-software/vitalizer.svg)](https://greenkeeper.io/)
+# Vitalizer [![Build status](https://badge.buildkite.com/06a3e85c8806f7f481e77bc9c9905f967c5c68dfd5aceb69c5.svg)](https://buildkite.com/vital/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer) [![Greenkeeper badge](https://badges.greenkeeper.io/vital-software/vitalizer.svg)](https://greenkeeper.io/)
 
 > Get a Front End project up with no external configuration.
 
