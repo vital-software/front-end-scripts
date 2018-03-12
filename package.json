@@ -104,7 +104,7 @@
     "eslint-plugin-filenames": "1.2.0",
     "eslint-plugin-flowtype": "2.45.0",
     "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jest": "21.12.2",
+    "eslint-plugin-jest": "21.14.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
     "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#2fcba1e7cd0e5975ad2cb572e7beb0c8b740c5f6",
