@@ -1,7 +1,8 @@
 {
   "globals": {
       "__dirname": true,
-      "process": true
+      "process": true,
+      "cypress/globals": true
   },
   "env": {
       "browser": true,
@@ -33,7 +34,8 @@
       "import",
       "jest",
       "jsx-a11y",
-      "react"
+      "react",
+      "cypress"
   ],
   "settings": {
       "flowtype": {

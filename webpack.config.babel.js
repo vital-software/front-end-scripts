@@ -61,9 +61,7 @@ function generateIndexEntry(isDev) {
     ]
 
     if (isDev) {
-        indexEntry.push(
-            `webpack-dev-server/client?${PROTOCOL}://${HOST}:${PORT}/`
-        )
+        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}/`)
         indexEntry.push('webpack/hot/only-dev-server')
     }
 
