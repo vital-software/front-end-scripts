@@ -1,16 +1,16 @@
 /* eslint-disable camelcase, filenames/match-regex */
-const MinifyPlugin = require('babili-webpack-plugin')
 // const BrotliPlugin = require('brotli-webpack-plugin')
+// const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
 const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SplitChunksPlugin = require('webpack/lib/optimize/SplitChunksPlugin')
 const {
     DefinePlugin,
     HotModuleReplacementPlugin,
     LoaderOptionsPlugin,
     NamedModulesPlugin,
-    SourceMapDevToolPlugin,
-    optimize
+    SourceMapDevToolPlugin
 } = require('webpack')
 
 // Load project config, or default to local project config
@@ -47,13 +47,13 @@ const HOST = appConfig.host || DEFAULT_HOST
 const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
-const JS_MINIFY_OPTS = Object.assign(
-    {
-        removeConsole: true,
-        removeDebugger: true
-    },
-    appConfig.jsMinifyOpts
-)
+// const JS_MINIFY_OPTS = Object.assign(
+//     {
+//         removeConsole: true,
+//         removeDebugger: true
+//     },
+//     appConfig.jsMinifyOpts
+// )
 
 // Helpers
 function generateIndexEntry(isDev) {
@@ -73,7 +73,7 @@ function generateIndexEntry(isDev) {
 
 function generatePlugins(isDev, isTest, filename) {
     let plugins = [
-        new optimize.CommonsChunkPlugin({
+        new SplitChunksPlugin({
             name: 'vendor',
             filename: 'vendor.js',
 
@@ -122,16 +122,18 @@ function generatePlugins(isDev, isTest, filename) {
         )
 
         // Optimise Javascript
-        plugins.push(
-            new MinifyPlugin(JS_MINIFY_OPTS, {
-                comments: false
-            })
-        )
+        // Waiting on Webpack 4 support: https://github.com/webpack-contrib/babel-minify-webpack-plugin/pull/70
+        // plugins.push(
+        //     new BabelMinifyPlugin(JS_MINIFY_OPTS, {
+        //         comments: false,
+        //         sourceMaps: 'eval'
+        //     })
+        // )
 
         plugins.push(
             new SourceMapDevToolPlugin({
                 test: /\.(js|jsx)$/,
-                filename: `${filename}.js.map`,
+                filename: `../source-maps/${filename}.js.map`,
                 noSources: true,
                 append: false
             })
@@ -223,8 +225,7 @@ module.exports = {
         )
 
         return {
-            // TODO: Change the devtool option back to this turnary once the Chrome issues have
-            //       been resolved. See https://github.com/webpack/webpack/issues/2145
+            // TODO: Webpack source maps are... rubbish. -> https://github.com/webpack/webpack/issues/2145
             devtool: dev ? 'source-map' : false,
 
             entry: entry,
