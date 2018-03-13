@@ -76,9 +76,8 @@ NODE_ENV=production ../bin/vitalizer.js build
 # Check for expected output
 exists public/index.html
 exists public/*.js
-exists public/*.js.map
+exists source-map/*.js.map
 exists public/*.css
-exists public/*.css.map
 
 # Diff output files
 diff public/index.html stub/index.html
