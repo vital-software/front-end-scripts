@@ -1,21 +1,18 @@
 // @flow
 import BaseComponent from './base-component'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import React from 'react'
 import { render } from 'react-dom'
-import { IndexRedirect, Route, Router } from 'react-router'
+import { Route } from 'react-router'
 
 const path: string = '/'
 
-const routes: * = (
-    <Route path={path} component={BaseComponent}>
-        <IndexRedirect to="test" />
-    </Route>
-)
-
 render(
     <Provider store={{}}>
-        <Router history={history} routes={routes} />
+        <BrowserRouter>
+            <Route exact={true} path={path} component={BaseComponent} />
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root') || document.createElement('div')
 )

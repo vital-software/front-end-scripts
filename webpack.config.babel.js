@@ -102,6 +102,26 @@ function generatePlugins(isDev, isTest, filename) {
         })
     ]
 
+    if (!isDev) {
+        plugins.push(
+            new SourceMapDevToolPlugin({
+                test: /\.js$/,
+                filename: `../sourcemap/${filename}.js.map`,
+                noSources: true,
+                append: false
+            })
+        )
+
+        plugins.push(
+            new SourceMapDevToolPlugin({
+                test: /\.css$/,
+                filename: `../sourcemap/${filename}.css.map`,
+                noSources: true,
+                append: false
+            })
+        )
+    }
+
     if (isTest) {
         return plugins
     }
@@ -109,9 +129,6 @@ function generatePlugins(isDev, isTest, filename) {
     if (isDev) {
         // Enable HMR globally
         plugins.push(new HotModuleReplacementPlugin())
-
-        // Prints more readable module names in the browser console on HMR updates
-        plugins.push(new NamedModulesPlugin())
     } else {
         // Set debug/minimize settings for production
         plugins.push(
@@ -129,15 +146,6 @@ function generatePlugins(isDev, isTest, filename) {
         //         sourceMaps: 'eval'
         //     })
         // )
-
-        plugins.push(
-            new SourceMapDevToolPlugin({
-                test: /\.(js|jsx)$/,
-                filename: `../source-maps/${filename}.js.map`,
-                noSources: true,
-                append: false
-            })
-        )
 
         // Generate Brotli static assets
         // plugins.push(
@@ -224,8 +232,10 @@ module.exports = {
             appConfig.devServer
         )
 
+        const mode = dev ? 'development' : 'production'
+
         return {
-            mode: dev ? 'development' : 'production',
+            mode,
 
             // TODO: Webpack source maps are... rubbish. -> https://github.com/webpack/webpack/issues/2145
             devtool: dev ? 'source-map' : false,
@@ -233,6 +243,10 @@ module.exports = {
             entry: entry,
 
             output: output,
+
+            optimization: {
+                minimize: !(dev || test)
+            },
 
             module: {
                 rules: [
