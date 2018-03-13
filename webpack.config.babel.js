@@ -225,6 +225,7 @@ module.exports = {
         )
 
         return {
+            mode: dev ? 'development' : 'production',
             // TODO: Webpack source maps are... rubbish. -> https://github.com/webpack/webpack/issues/2145
             devtool: dev ? 'source-map' : false,
 
