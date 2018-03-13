@@ -9,6 +9,7 @@ const {
     HotModuleReplacementPlugin,
     LoaderOptionsPlugin,
     NamedModulesPlugin,
+    SourceMapDevToolPlugin,
     optimize
 } = require('webpack')
 
@@ -86,10 +87,7 @@ function generatePlugins(isDev, isTest, filename) {
         new DefinePlugin({
             'process.env': Object.assign(
                 {
-                    NODE_ENV:
-                        isDev && !isTest
-                            ? JSON.stringify('development')
-                            : JSON.stringify('production'),
+                    NODE_ENV: isDev && !isTest ? JSON.stringify('development') : JSON.stringify('production'),
                     RUN_ENV: JSON.stringify('browser')
                 },
                 appConfig.env
@@ -127,6 +125,15 @@ function generatePlugins(isDev, isTest, filename) {
         plugins.push(
             new MinifyPlugin(JS_MINIFY_OPTS, {
                 comments: false
+            })
+        )
+
+        plugins.push(
+            new SourceMapDevToolPlugin({
+                test: /\.(js|jsx)$/,
+                filename: `${filename}.js.map`,
+                noSources: true,
+                append: false
             })
         )
 
@@ -218,7 +225,7 @@ module.exports = {
         return {
             // TODO: Change the devtool option back to this turnary once the Chrome issues have
             //       been resolved. See https://github.com/webpack/webpack/issues/2145
-            devtool: 'source-map', // dev ? 'cheap-module-eval-source-map' : 'source-map',
+            devtool: dev ? 'source-map' : false,
 
             entry: entry,
 
@@ -241,10 +248,7 @@ module.exports = {
                     },
                     {
                         test: /\.(js|jsx|flow)$/,
-                        include: [
-                            /node_modules\/@vital-software\/web-utils\/lib/,
-                            /.*\/app/
-                        ],
+                        include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
                         loader: 'babel-loader'
                     },
                     {
@@ -282,23 +286,9 @@ module.exports = {
             plugins: plugins,
 
             resolve: {
-                extensions: [
-                    '.css',
-                    '.gql',
-                    '.graphql',
-                    '.js',
-                    '.json',
-                    '.jsx',
-                    '.scss',
-                    '.flow'
-                ],
+                extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
 
-                modules: [
-                    'node_modules',
-                    paths.appCss,
-                    paths.appSrc,
-                    paths.appPublic
-                ]
+                modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
             },
 
             resolveLoader: {
