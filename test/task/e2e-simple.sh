@@ -104,5 +104,5 @@ diff public/index.html stub/index.html
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.js stub/index.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
 
-# Check the build time doesn;t breach the threshold
+# Check the build time doesn't breach the threshold
 perf_within_bounds
