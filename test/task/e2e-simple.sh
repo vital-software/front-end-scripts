@@ -38,6 +38,24 @@ function exists {
   done
 }
 
+# Check for a rise in the build speed
+function perf_within_bounds {
+    bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
+    latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
+    # Max build time is %5 increase on bench
+    max_increase=$((bench_build_time/20))
+    max_build_time=$((bench_build_time+max_increase))
+
+    echo $max_build_time
+    echo $latest_build_time
+
+    if ((max_build_time < latest_build_time ))
+    then
+        exit 1
+    fi
+    exit 0
+}
+
 # Exit the script with a helpful error message when any error is encountered
 trap 'set +x; handle_error $LINENO $BASH_COMMAND' ERR
 
@@ -62,9 +80,21 @@ rm -f $tmp_server_log
 # Test local development mode
 (../bin/vitalizer.js start 2>&1 > $tmp_server_log) &
 pid=$!
-sleep 30
+
+# Wait for compilation to complete
+retries=0
+max_retries=30
+while [ ! grep -q 'Compiled successfully!' $tmp_server_log ]
+do
+   echo $((++retries))
+   if ((retries>max_retries))
+   then
+       echo "Compilation took longer than 30 secs, exiting..."
+       exit 1
+   fi
+   sleep 1
+done
 cat $tmp_server_log
-grep -q 'Compiled successfully!' $tmp_server_log
 kill $pid
 
 # Clean up server log
@@ -84,3 +114,6 @@ exists public/*.css.map
 diff public/index.html stub/index.html
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.js stub/index.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
+
+# Check the build time doesn't breach the threshold
+perf_within_bounds

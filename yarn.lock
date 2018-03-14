@@ -3652,9 +3652,9 @@ graphql@0.11.7:
   dependencies:
     iterall "1.1.3"
 
-"greenkeeper-lockfile@https://github.com/vital-software/greenkeeper-lockfile#2fcba1e7cd0e5975ad2cb572e7beb0c8b740c5f6":
+"greenkeeper-lockfile@https://github.com/vital-software/greenkeeper-lockfile#3749a633323a7aed1f1f193168c85958cb2d2638":
   version "0.0.0-development"
-  resolved "https://github.com/vital-software/greenkeeper-lockfile#2fcba1e7cd0e5975ad2cb572e7beb0c8b740c5f6"
+  resolved "https://github.com/vital-software/greenkeeper-lockfile#3749a633323a7aed1f1f193168c85958cb2d2638"
   dependencies:
     lodash "^4.17.4"
     require-relative "^0.8.7"
@@ -7156,6 +7156,12 @@ spdy@^3.4.1:
 specificity@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.3.1.tgz#f1b068424ce317ae07478d95de3c21cf85e8d567"
+
+speed-measure-webpack-plugin@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/speed-measure-webpack-plugin/-/speed-measure-webpack-plugin-1.1.1.tgz#e2fd63705c6163f159e6e7e51d15270b63df1113"
+  dependencies:
+    chalk "^2.0.1"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
