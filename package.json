@@ -90,8 +90,7 @@
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
     "url-loader": "0.6.2",
-    "webpack": "4.1.1",
-    "webpack-dev-server": "3.1.1"
+    "webpack": "4.1.1"
   },
   "devDependencies": {
     "@semantic-release/git": "4.0.0",
@@ -110,6 +109,7 @@
     "husky": "0.14.3",
     "react": "16.2.0",
     "semantic-release": "15.0.0",
-    "speed-measure-webpack-plugin": "1.1.1"
+    "speed-measure-webpack-plugin": "1.1.1",
+    "webpack-serve": "0.2.0"
   }
 }
