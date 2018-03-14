@@ -107,7 +107,7 @@
     "eslint-plugin-jest": "21.14.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
-    "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#3749a633323a7aed1f1f193168c85958cb2d2638",
+    "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#master",
     "husky": "0.14.3",
     "semantic-release": "15.0.0",
     "speed-measure-webpack-plugin": "1.1.1"
