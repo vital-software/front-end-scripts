@@ -90,7 +90,6 @@ rm -f $tmp_server_log
 
 # Test local build mode
 NODE_ENV=production ../bin/vitalizer.js build
-MEASURE=true
 
 # Check for expected output
 exists public/index.html
