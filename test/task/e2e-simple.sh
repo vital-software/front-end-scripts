@@ -80,9 +80,24 @@ rm -f $tmp_server_log
 # Test local development mode
 (../bin/vitalizer.js start 2>&1 > $tmp_server_log) &
 pid=$!
-sleep 30
+
+# Wait for compilation to complete
+retries=0
+max_retries=30
+
+while [ ! grep -q 'Compiled successfully!' $tmp_server_log ]
+do
+   echo $((++retries))
+   if ((retries>max_retries))
+   then
+       echo "Compilation took longer than 30 secs, exiting..."
+       exit 1
+   fi
+   sleep 1
+done
+
 cat $tmp_server_log
-grep -q 'Compiled successfully!' $tmp_server_log
+
 kill $pid
 
 # Clean up server log
