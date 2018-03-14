@@ -84,7 +84,6 @@ pid=$!
 # Wait for compilation to complete
 retries=0
 max_retries=30
-
 while [ ! grep -q 'Compiled successfully!' $tmp_server_log ]
 do
    echo $((++retries))
@@ -95,9 +94,7 @@ do
    fi
    sleep 1
 done
-
 cat $tmp_server_log
-
 kill $pid
 
 # Clean up server log
