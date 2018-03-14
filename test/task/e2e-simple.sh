@@ -42,12 +42,14 @@ function exists {
 function perf_within_bounds {
     bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
     latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
-    max_build_time=$(($latest_build_time+1000))
+    # Max build time is %5 increase on bench
+    max_increase=$((bench_build_time/20))
+    max_build_time=$((bench_build_time+max_increase))
 
     echo $max_build_time
     echo $latest_build_time
 
-    if (($max_build_time < $latest_build_time ))
+    if ((max_build_time < latest_build_time ))
     then
         exit 1
     fi

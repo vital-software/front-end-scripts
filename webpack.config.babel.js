@@ -6,12 +6,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
-const smp = new SpeedMeasurePlugin({
-    disable: !process.env.MEASURE,
-    outputFormat: 'json',
-    outputTarget: 'perf/webpack.speed.json'
-})
-
 const {
     DefinePlugin,
     HotModuleReplacementPlugin,
@@ -219,6 +213,13 @@ module.exports = {
                 }
             },
             appConfig.devServer
+        )
+
+        const smp = new SpeedMeasurePlugin(
+            test && {
+                outputFormat: 'json',
+                outputTarget: 'perf/webpack.speed.json'
+            }
         )
 
         return smp.wrap({
