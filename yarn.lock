@@ -7157,7 +7157,7 @@ specificity@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.3.1.tgz#f1b068424ce317ae07478d95de3c21cf85e8d567"
 
-speed-measure-webpack-plugin@^1.1.1:
+speed-measure-webpack-plugin@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/speed-measure-webpack-plugin/-/speed-measure-webpack-plugin-1.1.1.tgz#e2fd63705c6163f159e6e7e51d15270b63df1113"
   dependencies:

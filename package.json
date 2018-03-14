@@ -110,6 +110,6 @@
     "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#3749a633323a7aed1f1f193168c85958cb2d2638",
     "husky": "0.14.3",
     "semantic-release": "15.0.0",
-    "speed-measure-webpack-plugin": "^1.1.1"
+    "speed-measure-webpack-plugin": "1.1.1"
   }
 }
