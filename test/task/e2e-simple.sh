@@ -38,6 +38,22 @@ function exists {
   done
 }
 
+# Check for a rise in the build speed
+function perf_within_bounds {
+    bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
+    latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
+    max_build_time=$(($latest_build_time+1000))
+
+    echo $max_build_time
+    echo $latest_build_time
+
+    if (($max_build_time < $latest_build_time ))
+    then
+        exit 1
+    fi
+    exit 0
+}
+
 # Exit the script with a helpful error message when any error is encountered
 trap 'set +x; handle_error $LINENO $BASH_COMMAND' ERR
 
@@ -72,6 +88,7 @@ rm -f $tmp_server_log
 
 # Test local build mode
 NODE_ENV=production ../bin/vitalizer.js build
+MEASURE=true
 
 # Check for expected output
 exists public/index.html
@@ -84,3 +101,6 @@ exists public/*.css.map
 diff public/index.html stub/index.html
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.js stub/index.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
+
+# Check the build time doesn;t breach the threshold
+perf_within_bounds

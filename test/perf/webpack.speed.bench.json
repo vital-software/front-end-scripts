@@ -1,0 +1,103 @@
+{
+  "misc": {
+    "compileTime": 3734
+  },
+  "plugins": {
+    "CommonsChunkPlugin": 1,
+    "ExtractTextPlugin": 237,
+    "DefinePlugin": 8,
+    "HtmlWebpackPlugin": 56
+  },
+  "loaders": {
+    "build": [
+      {
+        "averages": {
+          "dataPoints": 1,
+          "median": 17,
+          "mean": 17,
+          "range": {
+            "start": 17,
+            "end": 17
+          }
+        },
+        "activeTime": 17,
+        "loaders": [
+          "html-webpack-plugin"
+        ],
+        "subLoadersTime": {}
+      },
+      {
+        "averages": {
+          "dataPoints": 106,
+          "median": 26,
+          "mean": 148,
+          "range": {
+            "start": 0,
+            "end": 1705
+          },
+          "variance": 180091
+        },
+        "activeTime": 3168,
+        "loaders": [
+          "modules with no loaders"
+        ],
+        "subLoadersTime": {}
+      },
+      {
+        "averages": {
+          "dataPoints": 4,
+          "median": 587,
+          "mean": 179,
+          "range": {
+            "start": 29,
+            "end": 587
+          },
+          "variance": 74136
+        },
+        "activeTime": 717,
+        "loaders": [
+          "babel-loader"
+        ],
+        "subLoadersTime": {}
+      },
+      {
+        "averages": {
+          "dataPoints": 4,
+          "median": 56,
+          "mean": 27,
+          "range": {
+            "start": 6,
+            "end": 56
+          },
+          "variance": 444
+        },
+        "activeTime": 82,
+        "loaders": [
+          "extract-text-webpack-plugin",
+          "style-loader",
+          "css-loader",
+          "postcss-loader"
+        ],
+        "subLoadersTime": {}
+      },
+      {
+        "averages": {
+          "dataPoints": 4,
+          "median": 2342,
+          "mean": 1071,
+          "range": {
+            "start": 21,
+            "end": 2342
+          },
+          "variance": 1466114
+        },
+        "activeTime": 2393,
+        "loaders": [
+          "css-loader",
+          "postcss-loader"
+        ],
+        "subLoadersTime": {}
+      }
+    ]
+  }
+}
