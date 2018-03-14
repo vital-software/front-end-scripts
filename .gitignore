@@ -3,3 +3,4 @@
 node_modules
 test/public
 test/sourcemap
+test/perf/webpack.speed.json

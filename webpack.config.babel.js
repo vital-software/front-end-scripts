@@ -5,6 +5,8 @@ const paths = require('./helper/paths')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SplitChunksPlugin = require('webpack/lib/optimize/SplitChunksPlugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+
 const {
     DefinePlugin,
     HotModuleReplacementPlugin,
@@ -154,6 +156,7 @@ function generatePlugins(isDev, isTest, filename) {
         //         threshold: 10240
         //     })
         // )
+        //
     }
 
     return plugins
@@ -234,7 +237,14 @@ module.exports = {
 
         const mode = dev ? 'development' : 'production'
 
-        return {
+        const smp = new SpeedMeasurePlugin(
+            test && {
+                outputFormat: 'json',
+                outputTarget: 'perf/webpack.speed.json'
+            }
+        )
+
+        return smp.wrap({
             mode,
 
             // TODO: Webpack source maps are... rubbish. -> https://github.com/webpack/webpack/issues/2145
@@ -322,6 +332,6 @@ module.exports = {
             ),
 
             devServer: devServer
-        }
+        })
     }
 }
