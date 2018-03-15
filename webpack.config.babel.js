@@ -75,16 +75,16 @@ function generateIndexEntry(isDev) {
 
 function generatePlugins(isDev, isTest, filename) {
     let plugins = [
-        new SplitChunksPlugin({
-            name: 'vendor',
-            filename: 'vendor.js',
-
-            // The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
-            minChunks: 2,
-
-            // Minimum size of all common module before a commons chunk is created.
-            minSize: 2
-        }),
+        // new SplitChunksPlugin({
+        //     name: 'vendor',
+        //     filename: 'vendor.js',
+        //
+        //     // The minimum number of chunks which need to contain a module before it's moved into the commons chunk.
+        //     minChunks: 2,
+        //
+        //     // Minimum size of all common module before a commons chunk is created.
+        //     minSize: 2
+        // }),
         // Set Node/Run settings to optimise code
         new DefinePlugin({
             'process.env': Object.assign(
@@ -133,13 +133,12 @@ function generatePlugins(isDev, isTest, filename) {
         plugins.push(new HotModuleReplacementPlugin())
     } else {
         // Set debug/minimize settings for production
-        plugins.push(
-            new LoaderOptionsPlugin({
-                debug: false,
-                minimize: true
-            })
-        )
-
+        // plugins.push(
+        //     new LoaderOptionsPlugin({
+        //         debug: false,
+        //         minimize: true
+        //     })
+        // )
         // Optimise Javascript
         // Waiting on Webpack 4 support: https://github.com/webpack-contrib/babel-minify-webpack-plugin/pull/70
         // plugins.push(
@@ -148,7 +147,6 @@ function generatePlugins(isDev, isTest, filename) {
         //         sourceMaps: 'eval'
         //     })
         // )
-
         // Generate Brotli static assets
         // plugins.push(
         //     new BrotliPlugin({
@@ -255,7 +253,8 @@ module.exports = {
             output: output,
 
             optimization: {
-                minimize: !(dev || test)
+                minimize: !test,
+                minimizer:
             },
 
             module: {

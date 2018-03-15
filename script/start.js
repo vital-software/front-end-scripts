@@ -33,19 +33,10 @@ function run() {
         console.log()
         console.log('The app is running at:')
         console.log()
-        console.log(
-            '  ',
-            chalk.cyan(
-                `${DEFAULTS.PROTOCOL}://${DEFAULTS.HOST}:${DEFAULTS.PORT}/`
-            )
-        )
+        console.log('  ', chalk.cyan(`${DEFAULTS.PROTOCOL}://${DEFAULTS.HOST}:${DEFAULTS.PORT}/`))
         console.log()
         console.log('Note that the development build is not optimized.')
-        console.log(
-            'To create a production build, use',
-            chalk.cyan('yarn build'),
-            '.'
-        )
+        console.log('To create a production build, use', chalk.cyan('yarn build'), '.')
         console.log()
 
         isFirstCompile = false
@@ -69,23 +60,15 @@ function run() {
         // options so we are going to "massage" the warnings and errors and present
         // them in a readable focused way.
         const messages = stats.toJson('minimal', true)
-        const isSuccessful =
-            !messages.errors.length && !messages.warnings.length
+        const isSuccessful = !messages.errors.length && !messages.warnings.length
 
         if (isSuccessful) {
-            console.log(
-                chalk.green(
-                    new Date().toUTCString(),
-                    ': Compiled successfully!'
-                )
-            )
+            console.log(chalk.green(new Date().toUTCString(), ': Compiled successfully!'))
         }
 
         // If errors exist, only show errors.
         if (messages.errors.length) {
-            console.log(
-                chalk.red(new Date().toUTCString(), ': Failed to compile.')
-            )
+            console.log(chalk.red(new Date().toUTCString(), ': Failed to compile.'))
             console.log()
             messages.errors.forEach((message) => {
                 console.log(message)
@@ -105,19 +88,9 @@ function run() {
             })
 
             // Teach some ESLint tricks.
-            console.log(
-                'You may use special comments to disable some warnings.'
-            )
-            console.log(
-                'Use',
-                chalk.yellow('// eslint-disable-next-line'),
-                'to ignore the next line.'
-            )
-            console.log(
-                'Use',
-                chalk.yellow('/* eslint-disable */'),
-                'to ignore all warnings in a file.'
-            )
+            console.log('You may use special comments to disable some warnings.')
+            console.log('Use', chalk.yellow('// eslint-disable-next-line'), 'to ignore the next line.')
+            console.log('Use', chalk.yellow('/* eslint-disable */'), 'to ignore all warnings in a file.')
         }
     })
 
@@ -144,20 +117,14 @@ detect(DEFAULTS.PORT).then((port) => {
         clearConsole()
     }
 
-    console.log(
-        chalk.red(`Something is already running on port ${DEFAULTS.PORT}.`)
-    )
+    console.log(chalk.red(`Something is already running on port ${DEFAULTS.PORT}.`))
 
     if (IS_INTERACTIVE) {
         let existingProcess = getProcessForPort(DEFAULTS.PORT)
 
         if (existingProcess) {
             console.log(chalk.red(`Probably:\n ${existingProcess}`))
-            console.log(
-                chalk.red(
-                    'Try clearing any processes running on that port and running the command again.'
-                )
-            )
+            console.log(chalk.red('Try clearing any processes running on that port and running the command again.'))
         }
     }
 })
