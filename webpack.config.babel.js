@@ -249,7 +249,7 @@ module.exports = {
             output: output,
 
             optimization: {
-                minimize: !test,
+                minimize: isProd,
                 minimizer: [new UglifyJsPlugin(JS_MINIFY_OPTS)]
             },
 
