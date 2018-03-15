@@ -44,7 +44,7 @@ const HOST = appConfig.host || DEFAULT_HOST
 const PROTOCOL = 'http'
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
-const prod = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production'
 
 const JS_MINIFY_OPTS = Object.assign(
     {
@@ -54,8 +54,8 @@ const JS_MINIFY_OPTS = Object.assign(
             compress: true,
             ecma: 8,
             mangle: true,
-            drop_console: prod,
-            drop_debugger: prod
+            drop_console: isProd,
+            drop_debugger: isProd
         },
         sourceMap: true
     },
