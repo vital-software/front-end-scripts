@@ -89,6 +89,7 @@
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
+    "uglifyjs-webpack-plugin": "1.2.3",
     "url-loader": "0.6.2",
     "webpack": "4.1.1"
   },
