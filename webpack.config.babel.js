@@ -70,22 +70,22 @@ module.exports = {
         protocol: PROTOCOL
     },
     webpack: function(options) {
-        const { dev, shortName, test } = Object.assign(
+        const { dev: isDev, shortName, test: isTest } = Object.assign(
             { dev: true, shortName: false, test: false },
             options,
             appConfig.options
         )
 
         // Mode
-        const mode = dev ? 'development' : 'production'
+        const mode = isDev ? 'development' : 'production'
 
         // Devtool
-        const devtool = dev ? 'cheap-module-source-map' : false
+        const devtool = isDev ? 'cheap-module-source-map' : false
 
         // Entry
         const indexEntry = []
 
-        if (dev) {
+        if (isDev) {
             indexEntry.unshift(
                 'react-hot-loader/patch',
                 `webpack-dev-server/client?${PROTOCOL}://${HOST}/`,
@@ -108,7 +108,7 @@ module.exports = {
 
         // Optimization
         const optimization = {
-            minimize: isProd,
+            minimize: isProd && !isTest,
             minimizer: [new UglifyJsPlugin(JS_MINIFY_OPTS)]
         }
 
@@ -154,7 +154,7 @@ module.exports = {
                                 loader: 'postcss-loader',
                                 options: {
                                     config: {
-                                        ctx: { isTest: test },
+                                        ctx: { isTest },
                                         path: paths.ownPostCssConfig
                                     }
                                 }
@@ -166,7 +166,7 @@ module.exports = {
         }
 
         // Plugins
-        const plugins = generatePlugins(dev, test, filename)
+        const plugins = generatePlugins(isDev, isTest, filename)
 
         // Resolve
         const resolve = {
@@ -183,11 +183,12 @@ module.exports = {
         const performance = Object.assign(
             {
                 // Disable 250kb JavaScript entry file warnings
-                hints: dev ? false : 'warning'
+                hints: isDev ? false : 'warning'
             },
             appConfig.performance
         )
 
+        // Webpack Dev Server
         const devServer = Object.assign(
             {
                 // Can't use gzip compression, because it causes SSE buffering
@@ -198,8 +199,8 @@ module.exports = {
                 disableHostCheck: true,
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
-                // Hot module replacement (only in 'dev' mode)
-                hot: dev,
+                // Hot module replacement (only in 'development' mode)
+                hot: isDev,
                 // Allow serving externally
                 host: '0.0.0.0',
                 // Enable HTTPS and HTTP/2
@@ -221,7 +222,7 @@ module.exports = {
 
         // Measure the speed of the build
         const smp = new SpeedMeasurePlugin(
-            test && {
+            isTest && {
                 outputFormat: 'json',
                 outputTarget: 'perf/webpack.speed.json'
             }
