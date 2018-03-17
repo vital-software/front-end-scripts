@@ -113,6 +113,26 @@ module.exports = {
         }
 
         // Module
+        const cssLoaders = [
+            {
+                loader: 'css-loader',
+                options: {
+                    importLoaders: 1,
+                    sourceMap: true
+                }
+            },
+            // Process PostCSS
+            {
+                loader: 'postcss-loader',
+                options: {
+                    config: {
+                        ctx: { isTest },
+                        path: paths.ownPostCssConfig
+                    }
+                }
+            }
+        ]
+
         const module = {
             rules: [
                 {
@@ -135,32 +155,23 @@ module.exports = {
                 },
                 {
                     test: /\.(css|scss)$/,
-                    loader: ExtractTextPlugin.extract({
-                        fallback: {
-                            loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                            options: { sourceMap: true }
-                        },
-                        use: [
-                            // Process and handle CSS (importLoaders ensures @import files use the next loader - PostCSS)
+                    loader: isDev
+                        ? [
                             {
-                                loader: 'css-loader',
-                                options: {
-                                    importLoaders: 1,
-                                    sourceMap: true
-                                }
+                                loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                                options: { sourceMap: true }
                             },
-                            // Process PostCSS
-                            {
-                                loader: 'postcss-loader',
-                                options: {
-                                    config: {
-                                        ctx: { isTest },
-                                        path: paths.ownPostCssConfig
-                                    }
-                                }
-                            }
+                            ...cssLoaders
                         ]
-                    })
+                        : ExtractTextPlugin.extract({
+                            // TODO: Use this fallback with the disable option in the plugin when this gets fixed:
+                            // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/750
+                            // fallback: {
+                            //     loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                            //     options: { sourceMap: true }
+                            // },
+                            use: cssLoaders
+                        })
                 }
             ]
         }
@@ -265,16 +276,21 @@ function generatePlugins(isDev, isTest, filename) {
                 appConfig.env
             )
         }),
-        new ExtractTextPlugin({
-            disable: isDev,
-            filename: `${filename}.css`
-        }),
         new HtmlWebpackPlugin({
             template: paths.appHtmlTemplate
         })
     ]
 
     if (!isDev) {
+        plugins.push(
+            new ExtractTextPlugin({
+                // TODO: Move this back into the base plugins and use the disable and fallback when this gets fixed:
+                // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/750
+                // disable: isDev,
+                filename: `${filename}.css`
+            })
+        )
+
         plugins.push(
             new SourceMapDevToolPlugin({
                 test: /\.js$/,
