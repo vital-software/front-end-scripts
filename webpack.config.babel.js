@@ -92,7 +92,8 @@ module.exports = {
                 'webpack/hot/only-dev-server'
             )
         }
-        const entry = { index: [paths.appIndexJs] }
+        indexEntry.push(paths.appIndexJs)
+        const entry = { index: indexEntry }
 
         // Output
         const filename = shortName ? '[name]' : '[name].[chunkhash]'
@@ -191,28 +192,20 @@ module.exports = {
             {
                 // Can't use gzip compression, because it causes SSE buffering
                 compress: false,
-
                 // Use /static/ as the default content base
                 contentBase: paths.appPublic,
-
                 // Support a proxy server
                 disableHostCheck: true,
-
                 // index.html will catch all routes (allowing Router to do it's thing)
                 historyApiFallback: true,
-
                 // Hot module replacement (only in 'dev' mode)
                 hot: dev,
-
                 // Allow serving externally
                 host: '0.0.0.0',
-
                 // Enable HTTPS and HTTP/2
                 https: false,
-
                 // Hide the webpack bundle information
                 noInfo: true,
-
                 // Proxy API to /api
                 proxy: {
                     [API.prefix]: {
@@ -220,7 +213,6 @@ module.exports = {
                         target: API.proxyUrl
                     }
                 },
-
                 // Match public path with output path
                 publicPath: '/'
             },
