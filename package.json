@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "3.5.0",
+  "version": "3.6.1",
   "description": "The Vital Software front-end asset builder.",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
@@ -86,6 +86,7 @@
     "postcss-strip-inline-comments": "0.1.5",
     "react-hot-loader": "4.0.0",
     "recursive-readdir": "2.2.1",
+    "speed-measure-webpack-plugin": "1.1.1",
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
