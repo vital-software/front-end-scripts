@@ -24,6 +24,13 @@ function run() {
     let isFirstCompile = true
 
     const config = options.webpack(WEBPACK_OPTIONS)
+
+    config.entry.index.unshift(
+        'react-hot-loader/patch',
+        `webpack-dev-server/client?${DEFAULTS.PROTOCOL}://${DEFAULTS.HOST}/`,
+        'webpack/hot/only-dev-server'
+    )
+
     const compiler = webpack(config)
     const devServer = new WebpackDevServer(compiler, config.devServer)
 

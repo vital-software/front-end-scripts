@@ -62,20 +62,17 @@ const JS_MINIFY_OPTS = Object.assign(
 )
 
 // Helpers
-function generateIndexEntry(isDev) {
-    let indexEntry = [
-        'react-hot-loader/patch' // React HMR
-    ]
-
-    if (isDev) {
-        indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}/`)
-        indexEntry.push('webpack/hot/only-dev-server')
-    }
-
-    indexEntry.push(paths.appIndexJs)
-
-    return indexEntry
-}
+// function generateIndexEntry(isDev) {
+//     // let indexEntry = [
+//     //     'react-hot-loader/patch' // React HMR
+//     // ]
+//     indexEntry.push(`webpack-dev-server/client?${PROTOCOL}://${HOST}/`)
+//     indexEntry.push('webpack/hot/only-dev-server')
+//
+//     indexEntry.push(paths.appIndexJs)
+//
+//     return indexEntry
+// }
 
 function generatePlugins(isDev, isTest, filename) {
     let plugins = [
@@ -173,9 +170,9 @@ module.exports = {
         // Setup filename
         const filename = shortName ? '[name]' : '[name].[chunkhash]'
 
-        const indexEntry = generateIndexEntry(dev)
+        // const indexEntry = generateIndexEntry(dev)
         const plugins = generatePlugins(dev, test, filename)
-        const entry = Object.assign({ index: indexEntry }, appConfig.entry)
+        const entry = { index: [paths.appIndexJs] } // Object.assign({ index: paths.appIndexJs }, appConfig.entry)
         const output = Object.assign(
             {
                 path: paths.appBuild,
@@ -219,12 +216,12 @@ module.exports = {
                 },
 
                 // Match public path with output path
-                publicPath: '/',
+                publicPath: '/'
 
-                watchOptions: {
-                    // Don't actively watch the node_modules folder to decrease CPU usage
-                    ignored: /node_modules/
-                }
+                // watchOptions: {
+                //     // Don't actively watch the node_modules folder to decrease CPU usage
+                //     ignored: /node_modules/
+                // }
             },
             appConfig.devServer
         )
@@ -241,8 +238,7 @@ module.exports = {
         return smp.wrap({
             mode,
 
-            // TODO: Webpack source maps are... rubbish. -> https://github.com/webpack/webpack/issues/2145
-            devtool: dev ? 'source-map' : false,
+            devtool: dev ? 'cheap-module-source-map' : false,
 
             entry: entry,
 
