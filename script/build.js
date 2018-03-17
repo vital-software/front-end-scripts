@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+process.env.NODE_ENV = 'production'
 
 const WEBPACK_OPTIONS = { dev: false, shortName: false }
 
