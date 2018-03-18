@@ -165,6 +165,7 @@
 
         cursor: pointer;
     }
+
 /*
     Dependencies
 */
@@ -603,3 +604,4 @@ template {
     --patient-head-height: 5rem;
     --titles-height: 3.75rem;
 }
+
