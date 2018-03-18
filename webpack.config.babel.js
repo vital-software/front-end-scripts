@@ -1,13 +1,12 @@
 /* eslint-disable camelcase */
 const paths = require('./helper/paths')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SplitChunksPlugin = require('webpack/lib/optimize/SplitChunksPlugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { DefinePlugin, HotModuleReplacementPlugin, SourceMapDevToolPlugin } = require('webpack')
-
 const isProd = process.env.NODE_ENV === 'production'
 
 // Load project config, or default to local project config
@@ -163,15 +162,7 @@ module.exports = {
                             },
                             ...cssLoaders
                         ]
-                        : ExtractTextPlugin.extract({
-                            // TODO: Use this fallback with the disable option in the plugin when this gets fixed:
-                            // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/750
-                            // fallback: {
-                            //     loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                            //     options: { sourceMap: true }
-                            // },
-                            use: cssLoaders
-                        })
+                        : [MiniCssExtractPlugin.loader, ...cssLoaders]
                 }
             ]
         }
@@ -283,10 +274,7 @@ function generatePlugins(isDev, isTest, filename) {
 
     if (!isDev) {
         plugins.push(
-            new ExtractTextPlugin({
-                // TODO: Move this back into the base plugins and use the disable and fallback when this gets fixed:
-                // https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/750
-                // disable: isDev,
+            new MiniCssExtractPlugin({
                 filename: `${filename}.css`
             })
         )

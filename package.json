@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "3.6.1",
+  "version": "4.0.0-beta.5",
   "description": "The Vital Software front-end asset builder.",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
@@ -67,7 +67,6 @@
     "css-loader": "0.28.7",
     "cssnano": "3.10.0",
     "detect-port": "1.2.2",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "1.1.5",
     "filesize": "3.5.11",
     "fs-extra": "4.0.2",
@@ -110,6 +109,7 @@
     "eslint-plugin-react": "7.7.0",
     "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#master",
     "husky": "0.14.3",
+    "mini-css-extract-plugin": "0.2.0",
     "react": "16.2.0",
     "semantic-release": "15.0.0",
     "speed-measure-webpack-plugin": "1.1.1"
