@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+process.env.NODE_ENV = 'production'
 
 const WEBPACK_OPTIONS = { dev: false, shortName: false }
 
@@ -16,9 +17,7 @@ const stripAnsi = require('strip-ansi')
 // Input: /User/dan/app/build/static/js/main.82be8.js
 // Output: /static/js/main.js
 function removeFileNameHash(fileName) {
-    return fileName
-        .replace(paths.appBuild, '')
-        .replace(/\/?(.*)(\.\w+)(\.js|\.css)/, (match, p1, p2, p3) => p1 + p3)
+    return fileName.replace(paths.appBuild, '').replace(/\/?(.*)(\.\w+)(\.js|\.css)/, (match, p1, p2, p3) => p1 + p3)
 }
 
 // Input: 1024, 2048
@@ -56,6 +55,7 @@ recursive(paths.appBuild, (err, fileNames) => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild)
+    fs.emptyDirSync(paths.appSourceMaps)
 
     // Start the webpack build
     build(previousSizeMap)
@@ -70,9 +70,7 @@ function printFileSizes(stats, previousSizeMap) {
         .toJson()
         .assets.filter((asset) => (/\.(js|css)$/).test(asset.name))
         .map((asset) => {
-            const fileContents = fs.readFileSync(
-                `${paths.appBuild}/${asset.name}`
-            )
+            const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`)
             const size = gzipSize(fileContents)
             const previousSize = previousSizeMap[removeFileNameHash(asset.name)]
             const difference = getDifferenceLabel(size, previousSize)
@@ -81,18 +79,13 @@ function printFileSizes(stats, previousSizeMap) {
                 folder: path.join('public', path.dirname(asset.name)),
                 name: path.basename(asset.name),
                 size: size,
-                sizeLabel: `  ${filesize(size)}${difference
-                    ? ` (${difference})`
-                    : ''}`
+                sizeLabel: `  ${filesize(size)}${difference ? ` (${difference})` : ''}`
             }
         })
 
     assets.sort((a, b) => b.size - a.size)
 
-    const longestSizeLabelLength = Math.max.apply(
-        null,
-        assets.map((a) => stripAnsi(a.sizeLabel).length)
-    )
+    const longestSizeLabelLength = Math.max.apply(null, assets.map((a) => stripAnsi(a.sizeLabel).length))
 
     assets.forEach((asset) => {
         let sizeLabel = asset.sizeLabel
@@ -103,10 +96,7 @@ function printFileSizes(stats, previousSizeMap) {
 
             sizeLabel += rightPadding
         }
-        console.log(
-            sizeLabel,
-            chalk.dim(asset.folder + path.sep) + chalk.cyan(asset.name)
-        )
+        console.log(sizeLabel, chalk.dim(asset.folder + path.sep) + chalk.cyan(asset.name))
     })
 }
 
@@ -122,7 +112,13 @@ function printErrors(summary, errors) {
 
 // Create the production build and print the deployment instructions.
 function build(previousSizeMap) {
-    console.log('Creating an optimized production build...')
+    const buildMessage = {
+        production: 'Creating an optimized production build...',
+        development: 'Creating a development build...'
+    }
+
+    console.log(buildMessage[config.mode])
+
     webpack(config).run((error, stats) => {
         if (error) {
             printErrors('Failed to compile.', [error])
@@ -146,11 +142,7 @@ function build(previousSizeMap) {
         printFileSizes(stats, previousSizeMap)
         console.log()
 
-        console.log(
-            'The',
-            chalk.cyan('public'),
-            'folder is ready to be deployed.'
-        )
+        console.log('The', chalk.cyan('public'), 'folder is ready to be deployed.')
         console.log()
     })
 }

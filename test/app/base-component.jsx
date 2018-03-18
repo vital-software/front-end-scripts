@@ -30,13 +30,7 @@ export default class Base extends Component {
         return (
             <div className="container">
                 {this.props.children}
-                <img
-                    src="/images/logo.svg"
-                    alt="Vital Logo"
-                    className="logo"
-                    width="18"
-                    height="18"
-                />
+                <img src="/images/logo.svg" alt="Vital Logo" className="logo" width="18" height="18" />
                 <Input />
             </div>
         )

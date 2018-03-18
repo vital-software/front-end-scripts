@@ -105,10 +105,11 @@ NODE_ENV=production ../bin/vitalizer.js build
 
 # Check for expected output
 exists public/index.html
+exists public/images/logo.svg
 exists public/*.js
-exists public/*.js.map
+exists sourcemap/*.js.map
+exists sourcemap/*.css.map
 exists public/*.css
-exists public/*.css.map
 
 # Diff output files
 diff public/index.html stub/index.html
