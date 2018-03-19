@@ -283,7 +283,6 @@ function generatePlugins(isDev, isTest, filename) {
             new SourceMapDevToolPlugin({
                 test: /\.js$/,
                 filename: `../sourcemap/${filename}.js.map`,
-                noSources: true,
                 append: false
             })
         )
@@ -292,7 +291,6 @@ function generatePlugins(isDev, isTest, filename) {
             new SourceMapDevToolPlugin({
                 test: /\.css$/,
                 filename: `../sourcemap/${filename}.css.map`,
-                noSources: true,
                 append: false
             })
         )
