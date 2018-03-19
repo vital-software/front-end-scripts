@@ -55,7 +55,6 @@ recursive(paths.appBuild, (err, fileNames) => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild)
-    fs.emptyDirSync(paths.appSourceMaps)
 
     // Start the webpack build
     build(previousSizeMap)
