@@ -107,8 +107,8 @@ NODE_ENV=production ../bin/vitalizer.js build
 exists public/index.html
 exists public/images/logo.svg
 exists public/*.js
-exists sourcemap/*.js.map
-exists sourcemap/*.css.map
+exists public/*.js.map
+exists public/*.css.map
 exists public/*.css
 
 # Diff output files

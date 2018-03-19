@@ -22,7 +22,6 @@ module.exports = {
     appIndexJs: resolveApp('app/index.js'),
     appPackageJson: resolveApp('package.json'),
     appPublic: resolveApp('static'),
-    appSourceMaps: resolveApp('sourcemap'),
     appSrc: resolveApp('app'),
     ownNodeModules: path.resolve(__dirname, '../node_modules'),
     ownPostCssConfig: path.resolve(__dirname, '../postcss.config.js')

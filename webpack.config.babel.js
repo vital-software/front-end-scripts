@@ -282,14 +282,14 @@ function generatePlugins(isDev, isTest, filename) {
         plugins.push(
             new SourceMapDevToolPlugin({
                 test: /\.js$/,
-                filename: `../sourcemap/${filename}.js.map`
+                filename: `${filename}.js.map`
             })
         )
 
         plugins.push(
             new SourceMapDevToolPlugin({
                 test: /\.css$/,
-                filename: `../sourcemap/${filename}.css.map`
+                filename: `${filename}.css.map`
             })
         )
     }
