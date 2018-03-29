@@ -48,7 +48,8 @@ const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 const JS_MINIFY_OPTS = Object.assign(
     {
         removeDebugger: true,
-        removeConsole: true
+        removeConsole: true,
+        mangle: false
     },
     appConfig.jsMinifyOpts
 )
