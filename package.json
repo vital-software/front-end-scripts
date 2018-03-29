@@ -55,6 +55,7 @@
   "dependencies": {
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
+    "babel-minify-webpack-plugin": "0.3.1",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
@@ -86,11 +87,9 @@
     "postcss-strip-inline-comments": "0.1.5",
     "react-hot-loader": "4.0.0",
     "recursive-readdir": "2.2.1",
-    "speed-measure-webpack-plugin": "1.1.1",
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
-    "uglifyjs-webpack-plugin": "1.2.3",
     "url-loader": "0.6.2",
     "webpack": "4.1.1",
     "webpack-dev-server": "3.1.1"
@@ -112,6 +111,9 @@
     "husky": "0.14.3",
     "react": "16.2.0",
     "semantic-release": "15.0.0",
-    "speed-measure-webpack-plugin": "1.1.1"
+    "speed-measure-webpack-plugin": "1.2.0"
+  },
+  "resolutions": {
+    "webpack-sources": "1.0.1"
   }
 }
