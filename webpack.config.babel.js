@@ -3,7 +3,7 @@ const paths = require('./helper/paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const SplitChunksPlugin = require('webpack/lib/optimize/SplitChunksPlugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { DefinePlugin, HotModuleReplacementPlugin, SourceMapDevToolPlugin } = require('webpack')
@@ -47,19 +47,15 @@ const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 // Uglify JS Pulgin Options
 const JS_MINIFY_OPTS = Object.assign(
     {
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-            compress: true,
-            ecma: 8,
-            mangle: true,
-            drop_console: isProd,
-            drop_debugger: isProd
-        },
-        sourceMap: true
+        removeDebugger: true,
+        removeConsole: true
     },
     appConfig.jsMinifyOpts
 )
+
+const JS_MINIFY_PLUGIN_OPTS = {
+    sourceMap: true
+}
 
 // Webpack config
 module.exports = {
@@ -108,7 +104,7 @@ module.exports = {
         // Optimization
         const optimization = {
             minimize: isProd && !isTest,
-            minimizer: [new UglifyJsPlugin(JS_MINIFY_OPTS)]
+            minimizer: [new MinifyPlugin(JS_MINIFY_OPTS, JS_MINIFY_PLUGIN_OPTS)]
         }
 
         // Module
