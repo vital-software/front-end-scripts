@@ -87,6 +87,7 @@
     "postcss-strip-inline-comments": "0.1.5",
     "react-hot-loader": "4.0.0",
     "recursive-readdir": "2.2.1",
+    "speed-measure-webpack-plugin": "1.2.0",
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
     "stylelint-order": "0.6.0",
@@ -110,8 +111,7 @@
     "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#master",
     "husky": "0.14.3",
     "react": "16.2.0",
-    "semantic-release": "15.0.0",
-    "speed-measure-webpack-plugin": "1.2.0"
+    "semantic-release": "15.0.0"
   },
   "resolutions": {
     "webpack-sources": "1.0.1"
