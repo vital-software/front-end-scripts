@@ -42,7 +42,7 @@ const API = Object.assign(
 
 const PORT = appConfig.port || DEFAULT_PORT
 const HOST = appConfig.host || DEFAULT_HOST
-const PROTOCOL = appConfig.host || DEFAULT_PROTOCOL
+const PROTOCOL = appConfig.protocol || DEFAULT_PROTOCOL
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 // Uglify JS Pulgin Options
