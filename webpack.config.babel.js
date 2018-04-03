@@ -27,7 +27,7 @@ try {
 }
 
 // Default Config
-const DEFAULT_PORT = 80
+const DEFAULT_PORT = 443
 const DEFAULT_HOST = 'trackboard.vital'
 const DEFAULT_PROTOCOL = 'https'
 
