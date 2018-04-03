@@ -27,8 +27,9 @@ try {
 }
 
 // Default Config
-const DEFAULT_PORT = 3000
-const DEFAULT_HOST = '0.0.0.0'
+const DEFAULT_PORT = 443
+const DEFAULT_HOST = 'trackboard.vital'
+const DEFAULT_PROTOCOL = 'https'
 
 const API = Object.assign(
     {
@@ -41,7 +42,7 @@ const API = Object.assign(
 
 const PORT = appConfig.port || DEFAULT_PORT
 const HOST = appConfig.host || DEFAULT_HOST
-const PROTOCOL = 'http'
+const PROTOCOL = appConfig.protocol || DEFAULT_PROTOCOL
 const URL_LOADER_LIMIT = 10000 // Byte limit for URL loader conversion
 
 // Uglify JS Pulgin Options
