@@ -93,7 +93,7 @@
     "stylelint-order": "0.6.0",
     "url-loader": "0.6.2",
     "webpack": "4.1.1",
-    "webpack-dev-server": "3.1.1"
+    "webpack-dev-server": "3.1.4"
   },
   "devDependencies": {
     "@semantic-release/git": "4.0.0",
