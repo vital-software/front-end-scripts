@@ -83,9 +83,9 @@ module.exports = {
 
         if (isDev) {
             indexEntry.unshift(
-                'react-hot-loader/patch',
-                `webpack-dev-server/client?${PROTOCOL}://${HOST}/`,
-                'webpack/hot/only-dev-server'
+                `${paths.ownNodeModules}/react-hot-loader/patch`,
+                `${paths.ownNodeModules}/webpack-dev-server/client?${PROTOCOL}://${HOST}/`,
+                `${paths.ownNodeModules}/webpack/hot/only-dev-server`
             )
         }
         indexEntry.push(paths.appIndexJs)
