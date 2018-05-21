@@ -2294,27 +2294,27 @@ var react_default = /*#__PURE__*/__webpack_require__.n(react);
 var input_checkbox = __webpack_require__(44);
 
 // CONCATENATED MODULE: ./app/input-component.jsx
-var input_component_createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function input_component_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function input_component_possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function input_component_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
 let input_component_Checkbox = function (_Component) {
-    input_component_inherits(Checkbox, _Component);
+    _inherits(Checkbox, _Component);
 
     function Checkbox() {
-        input_component_classCallCheck(this, Checkbox);
+        _classCallCheck(this, Checkbox);
 
-        return input_component_possibleConstructorReturn(this, (Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).apply(this, arguments));
     }
 
-    input_component_createClass(Checkbox, [{
+    _createClass(Checkbox, [{
         key: 'render',
         value: function render() {
             return react_default.a.createElement(
@@ -2403,7 +2403,7 @@ var invariant_browser = __webpack_require__(3);
 var invariant_browser_default = /*#__PURE__*/__webpack_require__.n(invariant_browser);
 
 // CONCATENATED MODULE: ./node_modules/react-router/es/Router.js
-var Router_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function Router_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2439,7 +2439,7 @@ var Router_Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: Router_extends({}, this.context.router, {
+      router: _extends({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -2629,7 +2629,7 @@ var node_modules_invariant_browser_default = /*#__PURE__*/__webpack_require__.n(
 // CONCATENATED MODULE: ./node_modules/react-router-dom/es/Link.js
 var Link_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function Link_objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function Link_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2641,7 +2641,7 @@ function Link_inherits(subClass, superClass) { if (typeof superClass !== "functi
 
 
 
-var Link_isModifiedEvent = function isModifiedEvent(event) {
+var isModifiedEvent = function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 };
 
@@ -2667,7 +2667,7 @@ var Link_Link = function (_React$Component) {
       if (!event.defaultPrevented && // onClick prevented default
       event.button === 0 && // ignore right clicks
       !_this.props.target && // let browser handle "target=_blank" etc.
-      !Link_isModifiedEvent(event) // ignore clicks with modifier keys
+      !isModifiedEvent(event) // ignore clicks with modifier keys
       ) {
           event.preventDefault();
 
@@ -2691,7 +2691,7 @@ var Link_Link = function (_React$Component) {
         replace = _props.replace,
         to = _props.to,
         innerRef = _props.innerRef,
-        props = Link_objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
+        props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
 
     node_modules_invariant_browser_default()(this.context.router, 'You should not use <Link> outside a <Router>');
 
@@ -2794,13 +2794,13 @@ var path_to_regexp_default = /*#__PURE__*/__webpack_require__.n(path_to_regexp);
 // CONCATENATED MODULE: ./node_modules/react-router/es/matchPath.js
 
 
-var matchPath_patternCache = {};
-var matchPath_cacheLimit = 10000;
-var matchPath_cacheCount = 0;
+var patternCache = {};
+var cacheLimit = 10000;
+var cacheCount = 0;
 
 var matchPath_compilePath = function compilePath(pattern, options) {
   var cacheKey = '' + options.end + options.strict + options.sensitive;
-  var cache = matchPath_patternCache[cacheKey] || (matchPath_patternCache[cacheKey] = {});
+  var cache = patternCache[cacheKey] || (patternCache[cacheKey] = {});
 
   if (cache[pattern]) return cache[pattern];
 
@@ -2808,9 +2808,9 @@ var matchPath_compilePath = function compilePath(pattern, options) {
   var re = path_to_regexp_default()(pattern, keys, options);
   var compiledPattern = { re: re, keys: keys };
 
-  if (matchPath_cacheCount < matchPath_cacheLimit) {
+  if (cacheCount < cacheLimit) {
     cache[pattern] = compiledPattern;
-    matchPath_cacheCount++;
+    cacheCount++;
   }
 
   return compiledPattern;
@@ -2819,7 +2819,7 @@ var matchPath_compilePath = function compilePath(pattern, options) {
 /**
  * Public API for matching a URL pathname to a path pattern.
  */
-var matchPath_matchPath = function matchPath(pathname) {
+var matchPath = function matchPath(pathname) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   if (typeof options === 'string') options = { path: options };
@@ -2860,7 +2860,7 @@ var matchPath_matchPath = function matchPath(pathname) {
   };
 };
 
-/* harmony default export */ var es_matchPath = (matchPath_matchPath);
+/* harmony default export */ var es_matchPath = (matchPath);
 // CONCATENATED MODULE: ./node_modules/react-router/es/Route.js
 var Route_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -3004,7 +3004,7 @@ Route_Route.childContextTypes = {
 // CONCATENATED MODULE: ./node_modules/react-router-dom/es/NavLink.js
 var NavLink_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var NavLink_typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function NavLink_objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -3030,7 +3030,7 @@ var NavLink_NavLink = function NavLink(_ref) {
       rest = NavLink_objectWithoutProperties(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive', 'ariaCurrent']);
 
   return react_default.a.createElement(react_router_dom_es_Route, {
-    path: (typeof to === 'undefined' ? 'undefined' : NavLink_typeof(to)) === 'object' ? to.pathname : to,
+    path: (typeof to === 'undefined' ? 'undefined' : _typeof(to)) === 'object' ? to.pathname : to,
     exact: exact,
     strict: strict,
     location: location,
@@ -3434,10 +3434,10 @@ var createBrowserHistory_extends = Object.assign || function (target) { for (var
 
 
 
-var createBrowserHistory_PopStateEvent = 'popstate';
-var createBrowserHistory_HashChangeEvent = 'hashchange';
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
 
-var createBrowserHistory_getHistoryState = function getHistoryState() {
+var getHistoryState = function getHistoryState() {
   try {
     return window.history.state || {};
   } catch (e) {
@@ -3511,7 +3511,7 @@ var createBrowserHistory_createBrowserHistory = function createBrowserHistory() 
   };
 
   var handleHashChange = function handleHashChange() {
-    handlePop(getDOMLocation(createBrowserHistory_getHistoryState()));
+    handlePop(getDOMLocation(getHistoryState()));
   };
 
   var forceNextPop = false;
@@ -3556,7 +3556,7 @@ var createBrowserHistory_createBrowserHistory = function createBrowserHistory() 
     }
   };
 
-  var initialLocation = getDOMLocation(createBrowserHistory_getHistoryState());
+  var initialLocation = getDOMLocation(getHistoryState());
   var allKeys = [initialLocation.key];
 
   // Public interface
@@ -3653,13 +3653,13 @@ var createBrowserHistory_createBrowserHistory = function createBrowserHistory() 
     listenerCount += delta;
 
     if (listenerCount === 1) {
-      addEventListener(window, createBrowserHistory_PopStateEvent, handlePopState);
+      addEventListener(window, PopStateEvent, handlePopState);
 
-      if (needsHashChangeListener) addEventListener(window, createBrowserHistory_HashChangeEvent, handleHashChange);
+      if (needsHashChangeListener) addEventListener(window, HashChangeEvent, handleHashChange);
     } else if (listenerCount === 0) {
-      removeEventListener(window, createBrowserHistory_PopStateEvent, handlePopState);
+      removeEventListener(window, PopStateEvent, handlePopState);
 
-      if (needsHashChangeListener) removeEventListener(window, createBrowserHistory_HashChangeEvent, handleHashChange);
+      if (needsHashChangeListener) removeEventListener(window, HashChangeEvent, handleHashChange);
     }
   };
 
@@ -3725,7 +3725,7 @@ var createHashHistory_extends = Object.assign || function (target) { for (var i 
 
 var createHashHistory_HashChangeEvent = 'hashchange';
 
-var createHashHistory_HashPathCoders = {
+var HashPathCoders = {
   hashbang: {
     encodePath: function encodePath(path) {
       return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
@@ -3744,7 +3744,7 @@ var createHashHistory_HashPathCoders = {
   }
 };
 
-var createHashHistory_getHashPath = function getHashPath() {
+var getHashPath = function getHashPath() {
   // We can't use window.location.hash here because it's not
   // consistent across browsers - Firefox will pre-decode it!
   var href = window.location.href;
@@ -3752,11 +3752,11 @@ var createHashHistory_getHashPath = function getHashPath() {
   return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
 };
 
-var createHashHistory_pushHashPath = function pushHashPath(path) {
+var pushHashPath = function pushHashPath(path) {
   return window.location.hash = path;
 };
 
-var createHashHistory_replaceHashPath = function replaceHashPath(path) {
+var replaceHashPath = function replaceHashPath(path) {
   var hashIndex = window.location.href.indexOf('#');
 
   window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
@@ -3777,13 +3777,13 @@ var createHashHistory_createHashHistory = function createHashHistory() {
 
   var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
 
-  var _HashPathCoders$hashT = createHashHistory_HashPathCoders[hashType],
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
       encodePath = _HashPathCoders$hashT.encodePath,
       decodePath = _HashPathCoders$hashT.decodePath;
 
 
   var getDOMLocation = function getDOMLocation() {
-    var path = decodePath(createHashHistory_getHashPath());
+    var path = decodePath(getHashPath());
 
     browser_default()(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
@@ -3806,12 +3806,12 @@ var createHashHistory_createHashHistory = function createHashHistory() {
   var ignorePath = null;
 
   var handleHashChange = function handleHashChange() {
-    var path = createHashHistory_getHashPath();
+    var path = getHashPath();
     var encodedPath = encodePath(path);
 
     if (path !== encodedPath) {
       // Ensure we always have a properly-encoded hash.
-      createHashHistory_replaceHashPath(encodedPath);
+      replaceHashPath(encodedPath);
     } else {
       var location = getDOMLocation();
       var prevLocation = history.location;
@@ -3867,10 +3867,10 @@ var createHashHistory_createHashHistory = function createHashHistory() {
   };
 
   // Ensure the hash is encoded properly before doing anything else.
-  var path = createHashHistory_getHashPath();
+  var path = getHashPath();
   var encodedPath = encodePath(path);
 
-  if (path !== encodedPath) createHashHistory_replaceHashPath(encodedPath);
+  if (path !== encodedPath) replaceHashPath(encodedPath);
 
   var initialLocation = getDOMLocation();
   var allPaths = [createPath(initialLocation)];
@@ -3892,14 +3892,14 @@ var createHashHistory_createHashHistory = function createHashHistory() {
 
       var path = createPath(location);
       var encodedPath = encodePath(basename + path);
-      var hashChanged = createHashHistory_getHashPath() !== encodedPath;
+      var hashChanged = getHashPath() !== encodedPath;
 
       if (hashChanged) {
         // We cannot tell if a hashchange was caused by a PUSH, so we'd
         // rather setState here and ignore the hashchange. The caveat here
         // is that other hash histories in the page will consider it a POP.
         ignorePath = path;
-        createHashHistory_pushHashPath(encodedPath);
+        pushHashPath(encodedPath);
 
         var prevIndex = allPaths.lastIndexOf(createPath(history.location));
         var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
@@ -3927,14 +3927,14 @@ var createHashHistory_createHashHistory = function createHashHistory() {
 
       var path = createPath(location);
       var encodedPath = encodePath(basename + path);
-      var hashChanged = createHashHistory_getHashPath() !== encodedPath;
+      var hashChanged = getHashPath() !== encodedPath;
 
       if (hashChanged) {
         // We cannot tell if a hashchange was caused by a REPLACE, so we'd
         // rather setState here and ignore the hashchange. The caveat here
         // is that other hash histories in the page will consider it a POP.
         ignorePath = path;
-        createHashHistory_replaceHashPath(encodedPath);
+        replaceHashPath(encodedPath);
       }
 
       var prevIndex = allPaths.indexOf(createPath(history.location));
@@ -4031,7 +4031,7 @@ var createMemoryHistory_extends = Object.assign || function (target) { for (var 
 
 
 
-var createMemoryHistory_clamp = function clamp(n, lowerBound, upperBound) {
+var clamp = function clamp(n, lowerBound, upperBound) {
   return Math.min(Math.max(n, lowerBound), upperBound);
 };
 
@@ -4063,7 +4063,7 @@ var createMemoryHistory_createMemoryHistory = function createMemoryHistory() {
     return Math.random().toString(36).substr(2, keyLength);
   };
 
-  var index = createMemoryHistory_clamp(initialIndex, 0, initialEntries.length - 1);
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
   var entries = initialEntries.map(function (entry) {
     return typeof entry === 'string' ? LocationUtils_createLocation(entry, undefined, createKey()) : LocationUtils_createLocation(entry, undefined, entry.key || createKey());
   });
@@ -4116,7 +4116,7 @@ var createMemoryHistory_createMemoryHistory = function createMemoryHistory() {
   };
 
   var go = function go(n) {
-    var nextIndex = createMemoryHistory_clamp(history.index + n, 0, history.entries.length - 1);
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
 
     var action = 'POP';
     var location = history.entries[nextIndex];
@@ -4309,7 +4309,7 @@ function StaticRouter_inherits(subClass, superClass) { if (typeof superClass !==
 
 
 
-var StaticRouter_normalizeLocation = function normalizeLocation(object) {
+var normalizeLocation = function normalizeLocation(object) {
   var _object$pathname = object.pathname,
       pathname = _object$pathname === undefined ? '/' : _object$pathname,
       _object$search = object.search,
@@ -4346,7 +4346,7 @@ var StaticRouter_stripBasename = function stripBasename(basename, location) {
 };
 
 var StaticRouter_createLocation = function createLocation(location) {
-  return typeof location === 'string' ? Object(PathUtils["parsePath"])(location) : StaticRouter_normalizeLocation(location);
+  return typeof location === 'string' ? Object(PathUtils["parsePath"])(location) : normalizeLocation(location);
 };
 
 var StaticRouter_createURL = function createURL(location) {
@@ -4359,7 +4359,7 @@ var StaticRouter_staticHandler = function staticHandler(methodName) {
   };
 };
 
-var StaticRouter_noop = function noop() {};
+var noop = function noop() {};
 
 /**
  * The public top-level API for a "static" <Router>, so-called because it
@@ -4399,9 +4399,9 @@ var StaticRouter_StaticRouter = function (_React$Component) {
       context.location = StaticRouter_addBasename(basename, StaticRouter_createLocation(location));
       context.url = StaticRouter_createURL(context.location);
     }, _this.handleListen = function () {
-      return StaticRouter_noop;
+      return noop;
     }, _this.handleBlock = function () {
-      return StaticRouter_noop;
+      return noop;
     }, _temp), StaticRouter_possibleConstructorReturn(_this, _ret);
   }
 
@@ -4625,14 +4625,14 @@ var withRouter_withRouter = function withRouter(Component) {
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/PropTypes.js
 
 
-var PropTypes_subscriptionShape = prop_types_default.a.shape({
+var subscriptionShape = prop_types_default.a.shape({
   trySubscribe: prop_types_default.a.func.isRequired,
   tryUnsubscribe: prop_types_default.a.func.isRequired,
   notifyNestedSubs: prop_types_default.a.func.isRequired,
   isSubscribed: prop_types_default.a.func.isRequired
 });
 
-var PropTypes_storeShape = prop_types_default.a.shape({
+var storeShape = prop_types_default.a.shape({
   subscribe: prop_types_default.a.func.isRequired,
   dispatch: prop_types_default.a.func.isRequired,
   getState: prop_types_default.a.func.isRequired
@@ -4671,17 +4671,17 @@ function Provider_inherits(subClass, superClass) { if (typeof superClass !== "fu
 
 
 
-var Provider_didWarnAboutReceivingStore = false;
-function Provider_warnAboutReceivingStore() {
-  if (Provider_didWarnAboutReceivingStore) {
+var didWarnAboutReceivingStore = false;
+function warnAboutReceivingStore() {
+  if (didWarnAboutReceivingStore) {
     return;
   }
-  Provider_didWarnAboutReceivingStore = true;
+  didWarnAboutReceivingStore = true;
 
   warning('<Provider> does not support changing `store` on the fly. ' + 'It is most likely that you see this error because you updated to ' + 'Redux 2.x and React Redux 2.x which no longer hot reload reducers ' + 'automatically. See https://github.com/reactjs/react-redux/releases/' + 'tag/v2.0.0 for the migration instructions.');
 }
 
-function Provider_createProvider() {
+function createProvider() {
   var _Provider$childContex;
 
   var storeKey = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'store';
@@ -4717,15 +4717,15 @@ function Provider_createProvider() {
   if (false) {}
 
   Provider.propTypes = {
-    store: PropTypes_storeShape.isRequired,
+    store: storeShape.isRequired,
     children: prop_types_default.a.element.isRequired
   };
-  Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[storeKey] = PropTypes_storeShape.isRequired, _Provider$childContex[subscriptionKey] = PropTypes_subscriptionShape, _Provider$childContex);
+  Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[storeKey] = storeShape.isRequired, _Provider$childContex[subscriptionKey] = subscriptionShape, _Provider$childContex);
 
   return Provider;
 }
 
-/* harmony default export */ var components_Provider = (Provider_createProvider());
+/* harmony default export */ var components_Provider = (createProvider());
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/Subscription.js
 function Subscription_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4837,10 +4837,10 @@ function connectAdvanced_objectWithoutProperties(obj, keys) { var target = {}; f
 
 
 
-var connectAdvanced_hotReloadingVersion = 0;
-var connectAdvanced_dummyState = {};
+var hotReloadingVersion = 0;
+var dummyState = {};
 function connectAdvanced_noop() {}
-function connectAdvanced_makeSelectorStateful(sourceSelector, store) {
+function makeSelectorStateful(sourceSelector, store) {
   // wrap the selector in an object that tracks its results between runs.
   var selector = {
     run: function runComponentSelector(props) {
@@ -4861,7 +4861,7 @@ function connectAdvanced_makeSelectorStateful(sourceSelector, store) {
   return selector;
 }
 
-function connectAdvanced_connectAdvanced(
+function connectAdvanced(
 /*
   selectorFactory is a func that is responsible for returning the selector function used to
   compute new props from state, props, and dispatch. For example:
@@ -4897,10 +4897,10 @@ selectorFactory) {
       connectOptions = connectAdvanced_objectWithoutProperties(_ref, ['getDisplayName', 'methodName', 'renderCountProp', 'shouldHandleStateChanges', 'storeKey', 'withRef']);
 
   var subscriptionKey = storeKey + 'Subscription';
-  var version = connectAdvanced_hotReloadingVersion++;
+  var version = hotReloadingVersion++;
 
-  var contextTypes = (_contextTypes = {}, _contextTypes[storeKey] = PropTypes_storeShape, _contextTypes[subscriptionKey] = PropTypes_subscriptionShape, _contextTypes);
-  var childContextTypes = (_childContextTypes = {}, _childContextTypes[subscriptionKey] = PropTypes_subscriptionShape, _childContextTypes);
+  var contextTypes = (_contextTypes = {}, _contextTypes[storeKey] = storeShape, _contextTypes[subscriptionKey] = subscriptionShape, _contextTypes);
+  var childContextTypes = (_childContextTypes = {}, _childContextTypes[subscriptionKey] = subscriptionShape, _childContextTypes);
 
   return function wrapWithConnect(WrappedComponent) {
     node_modules_invariant_browser_default_0()(typeof WrappedComponent == 'function', 'You must pass a component to the function returned by ' + (methodName + '. Instead received ' + JSON.stringify(WrappedComponent)));
@@ -4996,7 +4996,7 @@ selectorFactory) {
 
       Connect.prototype.initSelector = function initSelector() {
         var sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions);
-        this.selector = connectAdvanced_makeSelectorStateful(sourceSelector, this.store);
+        this.selector = makeSelectorStateful(sourceSelector, this.store);
         this.selector.run(this.props);
       };
 
@@ -5024,7 +5024,7 @@ selectorFactory) {
           this.notifyNestedSubs();
         } else {
           this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate;
-          this.setState(connectAdvanced_dummyState);
+          this.setState(dummyState);
         }
       };
 
@@ -5118,12 +5118,12 @@ var _freeGlobal = __webpack_require__(18);
 
 
 /** Detect free variable `self`. */
-var _root_freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var _root_root = _freeGlobal["a" /* default */] || _root_freeSelf || Function('return this')();
+var root = _freeGlobal["a" /* default */] || freeSelf || Function('return this')();
 
-/* harmony default export */ var _root = (_root_root);
+/* harmony default export */ var _root = (root);
 
 // CONCATENATED MODULE: ./node_modules/redux/node_modules/lodash-es/_Symbol.js
 
@@ -5137,20 +5137,20 @@ var _Symbol_Symbol = _root.Symbol;
 
 
 /** Used for built-in method references. */
-var _getRawTag_objectProto = Object.prototype;
+var objectProto = Object.prototype;
 
 /** Used to check objects for own properties. */
-var _getRawTag_hasOwnProperty = _getRawTag_objectProto.hasOwnProperty;
+var _getRawTag_hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
  * Used to resolve the
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var _getRawTag_nativeObjectToString = _getRawTag_objectProto.toString;
+var nativeObjectToString = objectProto.toString;
 
 /** Built-in value references. */
-var _getRawTag_symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -5159,27 +5159,27 @@ var _getRawTag_symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
  * @param {*} value The value to query.
  * @returns {string} Returns the raw `toStringTag`.
  */
-function _getRawTag_getRawTag(value) {
-  var isOwn = _getRawTag_hasOwnProperty.call(value, _getRawTag_symToStringTag),
-      tag = value[_getRawTag_symToStringTag];
+function getRawTag(value) {
+  var isOwn = _getRawTag_hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
 
   try {
-    value[_getRawTag_symToStringTag] = undefined;
+    value[symToStringTag] = undefined;
     var unmasked = true;
   } catch (e) {}
 
-  var result = _getRawTag_nativeObjectToString.call(value);
+  var result = nativeObjectToString.call(value);
   if (unmasked) {
     if (isOwn) {
-      value[_getRawTag_symToStringTag] = tag;
+      value[symToStringTag] = tag;
     } else {
-      delete value[_getRawTag_symToStringTag];
+      delete value[symToStringTag];
     }
   }
   return result;
 }
 
-/* harmony default export */ var _getRawTag = (_getRawTag_getRawTag);
+/* harmony default export */ var _getRawTag = (getRawTag);
 
 // CONCATENATED MODULE: ./node_modules/redux/node_modules/lodash-es/_objectToString.js
 /** Used for built-in method references. */
@@ -5211,8 +5211,8 @@ function objectToString(value) {
 
 
 /** `Object#toString` result references. */
-var _baseGetTag_nullTag = '[object Null]',
-    _baseGetTag_undefinedTag = '[object Undefined]';
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
 
 /** Built-in value references. */
 var _baseGetTag_symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
@@ -5224,16 +5224,16 @@ var _baseGetTag_symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
  * @param {*} value The value to query.
  * @returns {string} Returns the `toStringTag`.
  */
-function _baseGetTag_baseGetTag(value) {
+function baseGetTag(value) {
   if (value == null) {
-    return value === undefined ? _baseGetTag_undefinedTag : _baseGetTag_nullTag;
+    return value === undefined ? undefinedTag : nullTag;
   }
   return (_baseGetTag_symToStringTag && _baseGetTag_symToStringTag in Object(value))
     ? _getRawTag(value)
     : _objectToString(value);
 }
 
-/* harmony default export */ var _baseGetTag = (_baseGetTag_baseGetTag);
+/* harmony default export */ var _baseGetTag = (baseGetTag);
 
 // CONCATENATED MODULE: ./node_modules/redux/node_modules/lodash-es/_overArg.js
 /**
@@ -5256,9 +5256,9 @@ function overArg(func, transform) {
 
 
 /** Built-in value references. */
-var _getPrototype_getPrototype = _overArg(Object.getPrototypeOf, Object);
+var getPrototype = _overArg(Object.getPrototypeOf, Object);
 
-/* harmony default export */ var _getPrototype = (_getPrototype_getPrototype);
+/* harmony default export */ var _getPrototype = (getPrototype);
 
 // CONCATENATED MODULE: ./node_modules/redux/node_modules/lodash-es/isObjectLike.js
 /**
@@ -5297,20 +5297,20 @@ function isObjectLike(value) {
 
 
 /** `Object#toString` result references. */
-var isPlainObject_objectTag = '[object Object]';
+var objectTag = '[object Object]';
 
 /** Used for built-in method references. */
-var isPlainObject_funcProto = Function.prototype,
+var funcProto = Function.prototype,
     isPlainObject_objectProto = Object.prototype;
 
 /** Used to resolve the decompiled source of functions. */
-var isPlainObject_funcToString = isPlainObject_funcProto.toString;
+var funcToString = funcProto.toString;
 
 /** Used to check objects for own properties. */
 var isPlainObject_hasOwnProperty = isPlainObject_objectProto.hasOwnProperty;
 
 /** Used to infer the `Object` constructor. */
-var isPlainObject_objectCtorString = isPlainObject_funcToString.call(Object);
+var objectCtorString = funcToString.call(Object);
 
 /**
  * Checks if `value` is a plain object, that is, an object created by the
@@ -5340,8 +5340,8 @@ var isPlainObject_objectCtorString = isPlainObject_funcToString.call(Object);
  * _.isPlainObject(Object.create(null));
  * // => true
  */
-function isPlainObject_isPlainObject(value) {
-  if (!lodash_es_isObjectLike(value) || _baseGetTag(value) != isPlainObject_objectTag) {
+function isPlainObject(value) {
+  if (!lodash_es_isObjectLike(value) || _baseGetTag(value) != objectTag) {
     return false;
   }
   var proto = _getPrototype(value);
@@ -5350,10 +5350,10 @@ function isPlainObject_isPlainObject(value) {
   }
   var Ctor = isPlainObject_hasOwnProperty.call(proto, 'constructor') && proto.constructor;
   return typeof Ctor == 'function' && Ctor instanceof Ctor &&
-    isPlainObject_funcToString.call(Ctor) == isPlainObject_objectCtorString;
+    funcToString.call(Ctor) == objectCtorString;
 }
 
-/* harmony default export */ var lodash_es_isPlainObject = (isPlainObject_isPlainObject);
+/* harmony default export */ var lodash_es_isPlainObject = (isPlainObject);
 
 // EXTERNAL MODULE: ./node_modules/symbol-observable/index.js
 var symbol_observable = __webpack_require__(13);
@@ -5369,7 +5369,7 @@ var symbol_observable_default = /*#__PURE__*/__webpack_require__.n(symbol_observ
  * If the current state is undefined, you must return the initial state.
  * Do not reference these action types directly in your code.
  */
-var createStore_ActionTypes = {
+var ActionTypes = {
   INIT: '@@redux/INIT'
 
   /**
@@ -5554,7 +5554,7 @@ var createStore_ActionTypes = {
     }
 
     currentReducer = nextReducer;
-    dispatch({ type: createStore_ActionTypes.INIT });
+    dispatch({ type: ActionTypes.INIT });
   }
 
   /**
@@ -5599,7 +5599,7 @@ var createStore_ActionTypes = {
   // When a store is created, an "INIT" action is dispatched so that every
   // reducer returns their initial state. This effectively populates
   // the initial state tree.
-  dispatch({ type: createStore_ActionTypes.INIT });
+  dispatch({ type: ActionTypes.INIT });
 
   return _ref2 = {
     dispatch: dispatch,
@@ -5635,16 +5635,16 @@ function warning_warning(message) {
 
 
 
-function combineReducers_getUndefinedStateErrorMessage(key, action) {
+function getUndefinedStateErrorMessage(key, action) {
   var actionType = action && action.type;
   var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
 
   return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state. ' + 'If you want this reducer to hold no value, you can return null instead of undefined.';
 }
 
-function combineReducers_getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
+function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
   var reducerKeys = Object.keys(reducers);
-  var argumentName = action && action.type === createStore_ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
+  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
 
   if (reducerKeys.length === 0) {
     return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
@@ -5667,10 +5667,10 @@ function combineReducers_getUnexpectedStateShapeWarningMessage(inputState, reduc
   }
 }
 
-function combineReducers_assertReducerShape(reducers) {
+function assertReducerShape(reducers) {
   Object.keys(reducers).forEach(function (key) {
     var reducer = reducers[key];
-    var initialState = reducer(undefined, { type: createStore_ActionTypes.INIT });
+    var initialState = reducer(undefined, { type: ActionTypes.INIT });
 
     if (typeof initialState === 'undefined') {
       throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined. If you don\'t want to set a value for this reducer, ' + 'you can use null instead of undefined.');
@@ -5678,7 +5678,7 @@ function combineReducers_assertReducerShape(reducers) {
 
     var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
     if (typeof reducer(undefined, { type: type }) === 'undefined') {
-      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + createStore_ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
+      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
     }
   });
 }
@@ -5699,7 +5699,7 @@ function combineReducers_assertReducerShape(reducers) {
  * @returns {Function} A reducer function that invokes every reducer inside the
  * passed object, and builds a state object with the same shape.
  */
-function combineReducers_combineReducers(reducers) {
+function combineReducers(reducers) {
   var reducerKeys = Object.keys(reducers);
   var finalReducers = {};
   for (var i = 0; i < reducerKeys.length; i++) {
@@ -5718,7 +5718,7 @@ function combineReducers_combineReducers(reducers) {
 
   var shapeAssertionError = void 0;
   try {
-    combineReducers_assertReducerShape(finalReducers);
+    assertReducerShape(finalReducers);
   } catch (e) {
     shapeAssertionError = e;
   }
@@ -5741,7 +5741,7 @@ function combineReducers_combineReducers(reducers) {
       var previousStateForKey = state[_key];
       var nextStateForKey = reducer(previousStateForKey, action);
       if (typeof nextStateForKey === 'undefined') {
-        var errorMessage = combineReducers_getUndefinedStateErrorMessage(_key, action);
+        var errorMessage = getUndefinedStateErrorMessage(_key, action);
         throw new Error(errorMessage);
       }
       nextState[_key] = nextStateForKey;
@@ -5860,7 +5860,7 @@ var applyMiddleware_extends = Object.assign || function (target) {
  * @param {...Function} middlewares The middleware chain to be applied.
  * @returns {Function} A store enhancer applying the middleware.
  */
-function applyMiddleware_applyMiddleware() {
+function applyMiddleware() {
   for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
     middlewares[_key] = arguments[_key];
   }
@@ -5912,12 +5912,12 @@ var lodash_es_freeGlobal = __webpack_require__(47);
 
 
 /** Detect free variable `self`. */
-var lodash_es_root_freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+var _root_freeSelf = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var lodash_es_root_root = lodash_es_freeGlobal["a" /* default */] || lodash_es_root_freeSelf || Function('return this')();
+var _root_root = lodash_es_freeGlobal["a" /* default */] || _root_freeSelf || Function('return this')();
 
-/* harmony default export */ var lodash_es_root = (lodash_es_root_root);
+/* harmony default export */ var lodash_es_root = (_root_root);
 
 // CONCATENATED MODULE: ./node_modules/lodash-es/_Symbol.js
 
@@ -5931,20 +5931,20 @@ var lodash_es_Symbol_Symbol = lodash_es_root.Symbol;
 
 
 /** Used for built-in method references. */
-var lodash_es_getRawTag_objectProto = Object.prototype;
+var _getRawTag_objectProto = Object.prototype;
 
 /** Used to check objects for own properties. */
-var lodash_es_getRawTag_hasOwnProperty = lodash_es_getRawTag_objectProto.hasOwnProperty;
+var lodash_es_getRawTag_hasOwnProperty = _getRawTag_objectProto.hasOwnProperty;
 
 /**
  * Used to resolve the
  * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
  * of values.
  */
-var lodash_es_getRawTag_nativeObjectToString = lodash_es_getRawTag_objectProto.toString;
+var _getRawTag_nativeObjectToString = _getRawTag_objectProto.toString;
 
 /** Built-in value references. */
-var lodash_es_getRawTag_symToStringTag = lodash_es_Symbol ? lodash_es_Symbol.toStringTag : undefined;
+var _getRawTag_symToStringTag = lodash_es_Symbol ? lodash_es_Symbol.toStringTag : undefined;
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -5953,27 +5953,27 @@ var lodash_es_getRawTag_symToStringTag = lodash_es_Symbol ? lodash_es_Symbol.toS
  * @param {*} value The value to query.
  * @returns {string} Returns the raw `toStringTag`.
  */
-function lodash_es_getRawTag_getRawTag(value) {
-  var isOwn = lodash_es_getRawTag_hasOwnProperty.call(value, lodash_es_getRawTag_symToStringTag),
-      tag = value[lodash_es_getRawTag_symToStringTag];
+function _getRawTag_getRawTag(value) {
+  var isOwn = lodash_es_getRawTag_hasOwnProperty.call(value, _getRawTag_symToStringTag),
+      tag = value[_getRawTag_symToStringTag];
 
   try {
-    value[lodash_es_getRawTag_symToStringTag] = undefined;
+    value[_getRawTag_symToStringTag] = undefined;
     var unmasked = true;
   } catch (e) {}
 
-  var result = lodash_es_getRawTag_nativeObjectToString.call(value);
+  var result = _getRawTag_nativeObjectToString.call(value);
   if (unmasked) {
     if (isOwn) {
-      value[lodash_es_getRawTag_symToStringTag] = tag;
+      value[_getRawTag_symToStringTag] = tag;
     } else {
-      delete value[lodash_es_getRawTag_symToStringTag];
+      delete value[_getRawTag_symToStringTag];
     }
   }
   return result;
 }
 
-/* harmony default export */ var lodash_es_getRawTag = (lodash_es_getRawTag_getRawTag);
+/* harmony default export */ var lodash_es_getRawTag = (_getRawTag_getRawTag);
 
 // CONCATENATED MODULE: ./node_modules/lodash-es/_objectToString.js
 /** Used for built-in method references. */
@@ -6005,8 +6005,8 @@ function _objectToString_objectToString(value) {
 
 
 /** `Object#toString` result references. */
-var lodash_es_baseGetTag_nullTag = '[object Null]',
-    lodash_es_baseGetTag_undefinedTag = '[object Undefined]';
+var _baseGetTag_nullTag = '[object Null]',
+    _baseGetTag_undefinedTag = '[object Undefined]';
 
 /** Built-in value references. */
 var lodash_es_baseGetTag_symToStringTag = lodash_es_Symbol ? lodash_es_Symbol.toStringTag : undefined;
@@ -6018,16 +6018,16 @@ var lodash_es_baseGetTag_symToStringTag = lodash_es_Symbol ? lodash_es_Symbol.to
  * @param {*} value The value to query.
  * @returns {string} Returns the `toStringTag`.
  */
-function lodash_es_baseGetTag_baseGetTag(value) {
+function _baseGetTag_baseGetTag(value) {
   if (value == null) {
-    return value === undefined ? lodash_es_baseGetTag_undefinedTag : lodash_es_baseGetTag_nullTag;
+    return value === undefined ? _baseGetTag_undefinedTag : _baseGetTag_nullTag;
   }
   return (lodash_es_baseGetTag_symToStringTag && lodash_es_baseGetTag_symToStringTag in Object(value))
     ? lodash_es_getRawTag(value)
     : lodash_es_objectToString(value);
 }
 
-/* harmony default export */ var lodash_es_baseGetTag = (lodash_es_baseGetTag_baseGetTag);
+/* harmony default export */ var lodash_es_baseGetTag = (_baseGetTag_baseGetTag);
 
 // CONCATENATED MODULE: ./node_modules/lodash-es/_overArg.js
 /**
@@ -6050,9 +6050,9 @@ function _overArg_overArg(func, transform) {
 
 
 /** Built-in value references. */
-var lodash_es_getPrototype_getPrototype = lodash_es_overArg(Object.getPrototypeOf, Object);
+var _getPrototype_getPrototype = lodash_es_overArg(Object.getPrototypeOf, Object);
 
-/* harmony default export */ var lodash_es_getPrototype = (lodash_es_getPrototype_getPrototype);
+/* harmony default export */ var lodash_es_getPrototype = (_getPrototype_getPrototype);
 
 // CONCATENATED MODULE: ./node_modules/lodash-es/isObjectLike.js
 /**
@@ -6091,20 +6091,20 @@ function isObjectLike_isObjectLike(value) {
 
 
 /** `Object#toString` result references. */
-var lodash_es_isPlainObject_objectTag = '[object Object]';
+var isPlainObject_objectTag = '[object Object]';
 
 /** Used for built-in method references. */
-var lodash_es_isPlainObject_funcProto = Function.prototype,
+var isPlainObject_funcProto = Function.prototype,
     lodash_es_isPlainObject_objectProto = Object.prototype;
 
 /** Used to resolve the decompiled source of functions. */
-var lodash_es_isPlainObject_funcToString = lodash_es_isPlainObject_funcProto.toString;
+var isPlainObject_funcToString = isPlainObject_funcProto.toString;
 
 /** Used to check objects for own properties. */
 var lodash_es_isPlainObject_hasOwnProperty = lodash_es_isPlainObject_objectProto.hasOwnProperty;
 
 /** Used to infer the `Object` constructor. */
-var lodash_es_isPlainObject_objectCtorString = lodash_es_isPlainObject_funcToString.call(Object);
+var isPlainObject_objectCtorString = isPlainObject_funcToString.call(Object);
 
 /**
  * Checks if `value` is a plain object, that is, an object created by the
@@ -6134,8 +6134,8 @@ var lodash_es_isPlainObject_objectCtorString = lodash_es_isPlainObject_funcToStr
  * _.isPlainObject(Object.create(null));
  * // => true
  */
-function lodash_es_isPlainObject_isPlainObject(value) {
-  if (!node_modules_lodash_es_isObjectLike(value) || lodash_es_baseGetTag(value) != lodash_es_isPlainObject_objectTag) {
+function isPlainObject_isPlainObject(value) {
+  if (!node_modules_lodash_es_isObjectLike(value) || lodash_es_baseGetTag(value) != isPlainObject_objectTag) {
     return false;
   }
   var proto = lodash_es_getPrototype(value);
@@ -6144,16 +6144,16 @@ function lodash_es_isPlainObject_isPlainObject(value) {
   }
   var Ctor = lodash_es_isPlainObject_hasOwnProperty.call(proto, 'constructor') && proto.constructor;
   return typeof Ctor == 'function' && Ctor instanceof Ctor &&
-    lodash_es_isPlainObject_funcToString.call(Ctor) == lodash_es_isPlainObject_objectCtorString;
+    isPlainObject_funcToString.call(Ctor) == isPlainObject_objectCtorString;
 }
 
-/* harmony default export */ var node_modules_lodash_es_isPlainObject = (lodash_es_isPlainObject_isPlainObject);
+/* harmony default export */ var node_modules_lodash_es_isPlainObject = (isPlainObject_isPlainObject);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/verifyPlainObject.js
 
 
 
-function verifyPlainObject_verifyPlainObject(value, displayName, methodName) {
+function verifyPlainObject(value, displayName, methodName) {
   if (!node_modules_lodash_es_isPlainObject(value)) {
     warning(methodName + '() in ' + displayName + ' must return a plain object. Instead received ' + value + '.');
   }
@@ -6230,37 +6230,37 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 
 
 
-function mapDispatchToProps_whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
+function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
   return typeof mapDispatchToProps === 'function' ? wrapMapToPropsFunc(mapDispatchToProps, 'mapDispatchToProps') : undefined;
 }
 
-function mapDispatchToProps_whenMapDispatchToPropsIsMissing(mapDispatchToProps) {
+function whenMapDispatchToPropsIsMissing(mapDispatchToProps) {
   return !mapDispatchToProps ? wrapMapToPropsConstant(function (dispatch) {
     return { dispatch: dispatch };
   }) : undefined;
 }
 
-function mapDispatchToProps_whenMapDispatchToPropsIsObject(mapDispatchToProps) {
+function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
   return mapDispatchToProps && typeof mapDispatchToProps === 'object' ? wrapMapToPropsConstant(function (dispatch) {
     return bindActionCreators(mapDispatchToProps, dispatch);
   }) : undefined;
 }
 
-/* harmony default export */ var connect_mapDispatchToProps = ([mapDispatchToProps_whenMapDispatchToPropsIsFunction, mapDispatchToProps_whenMapDispatchToPropsIsMissing, mapDispatchToProps_whenMapDispatchToPropsIsObject]);
+/* harmony default export */ var connect_mapDispatchToProps = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
 // CONCATENATED MODULE: ./node_modules/react-redux/es/connect/mapStateToProps.js
 
 
-function mapStateToProps_whenMapStateToPropsIsFunction(mapStateToProps) {
+function whenMapStateToPropsIsFunction(mapStateToProps) {
   return typeof mapStateToProps === 'function' ? wrapMapToPropsFunc(mapStateToProps, 'mapStateToProps') : undefined;
 }
 
-function mapStateToProps_whenMapStateToPropsIsMissing(mapStateToProps) {
+function whenMapStateToPropsIsMissing(mapStateToProps) {
   return !mapStateToProps ? wrapMapToPropsConstant(function () {
     return {};
   }) : undefined;
 }
 
-/* harmony default export */ var connect_mapStateToProps = ([mapStateToProps_whenMapStateToPropsIsFunction, mapStateToProps_whenMapStateToPropsIsMissing]);
+/* harmony default export */ var connect_mapStateToProps = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
 // CONCATENATED MODULE: ./node_modules/react-redux/es/connect/mergeProps.js
 var mergeProps_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -6310,7 +6310,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 // CONCATENATED MODULE: ./node_modules/react-redux/es/connect/verifySubselectors.js
 
 
-function verifySubselectors_verify(selector, methodName, displayName) {
+function verify(selector, methodName, displayName) {
   if (!selector) {
     throw new Error('Unexpected value for ' + methodName + ' in ' + displayName + '.');
   } else if (methodName === 'mapStateToProps' || methodName === 'mapDispatchToProps') {
@@ -6320,10 +6320,10 @@ function verifySubselectors_verify(selector, methodName, displayName) {
   }
 }
 
-function verifySubselectors_verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
-  verifySubselectors_verify(mapStateToProps, 'mapStateToProps', displayName);
-  verifySubselectors_verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
-  verifySubselectors_verify(mergeProps, 'mergeProps', displayName);
+function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
+  verify(mapStateToProps, 'mapStateToProps', displayName);
+  verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
+  verify(mergeProps, 'mergeProps', displayName);
 }
 // CONCATENATED MODULE: ./node_modules/react-redux/es/connect/selectorFactory.js
 function selectorFactory_objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -6466,16 +6466,16 @@ function connect_match(arg, factories, name) {
   };
 }
 
-function connect_strictEqual(a, b) {
+function strictEqual(a, b) {
   return a === b;
 }
 
 // createConnect with default args builds the 'official' connect behavior. Calling it with
 // different options opens up some testing and extensibility scenarios
-function connect_createConnect() {
+function createConnect() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       _ref$connectHOC = _ref.connectHOC,
-      connectHOC = _ref$connectHOC === undefined ? connectAdvanced_connectAdvanced : _ref$connectHOC,
+      connectHOC = _ref$connectHOC === undefined ? connectAdvanced : _ref$connectHOC,
       _ref$mapStateToPropsF = _ref.mapStateToPropsFactories,
       mapStateToPropsFactories = _ref$mapStateToPropsF === undefined ? connect_mapStateToProps : _ref$mapStateToPropsF,
       _ref$mapDispatchToPro = _ref.mapDispatchToPropsFactories,
@@ -6490,7 +6490,7 @@ function connect_createConnect() {
         _ref2$pure = _ref2.pure,
         pure = _ref2$pure === undefined ? true : _ref2$pure,
         _ref2$areStatesEqual = _ref2.areStatesEqual,
-        areStatesEqual = _ref2$areStatesEqual === undefined ? connect_strictEqual : _ref2$areStatesEqual,
+        areStatesEqual = _ref2$areStatesEqual === undefined ? strictEqual : _ref2$areStatesEqual,
         _ref2$areOwnPropsEqua = _ref2.areOwnPropsEqual,
         areOwnPropsEqual = _ref2$areOwnPropsEqua === undefined ? shallowEqual : _ref2$areOwnPropsEqua,
         _ref2$areStatePropsEq = _ref2.areStatePropsEqual,
@@ -6529,7 +6529,7 @@ function connect_createConnect() {
   };
 }
 
-/* harmony default export */ var connect_connect = (connect_createConnect());
+/* harmony default export */ var connect_connect = (createConnect());
 // CONCATENATED MODULE: ./node_modules/react-redux/es/index.js
 
 
