@@ -43,7 +43,7 @@ function run() {
         isFirstCompile = false
     }
 
-    compiler.plugin('invalid', function() {
+    compiler.hooks.invalid.tap('invalid', () => {
         if (IS_INTERACTIVE) {
             clearConsole()
         }
@@ -52,7 +52,7 @@ function run() {
         console.log(chalk.blue(new Date().toUTCString(), ': Compiling...'))
     })
 
-    compiler.plugin('done', function(stats) {
+    compiler.hooks.done.tap('done', (stats) => {
         if (IS_INTERACTIVE) {
             // clearConsole();
         }
