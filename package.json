@@ -108,7 +108,7 @@
     "eslint-plugin-jest": "21.14.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
-    "greenkeeper-lockfile": "https://github.com/vital-software/greenkeeper-lockfile#master",
+    "greenkeeper-lockfile": "1.15.1",
     "husky": "0.14.3",
     "react": "16.2.0",
     "semantic-release": "15.0.0"
