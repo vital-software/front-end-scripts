@@ -6,7 +6,7 @@ steps:
     agents:
       queue: docker-build
     plugins:
-      vital-software/docker-compose#master
+      vital-software/docker-compose#master:
         build:            base
         image_repository: quay.io/vital/build-cache
         image-name:       ${COMMIT_TAG}
