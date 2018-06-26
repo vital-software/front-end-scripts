@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10
 
 # Set timezone
 ENV TZ=Pacific/Auckland
