@@ -4,4 +4,6 @@ services:
   base:
     build:
       context: .
+      args:
+        - NPM_TOKEN
     image: quay.io/vital/build-cache:vitalizer-latest

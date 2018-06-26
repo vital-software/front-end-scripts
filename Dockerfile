@@ -13,7 +13,7 @@ COPY package.json yarn.lock /vitalizer/
 # Install node_modules
 ARG NPM_TOKEN
 RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc && \
-    yarn install --ignore-scripts && \
+    yarn install && \
     rm .npmrc
 ENV PATH=./node_modules/.bin:$PATH
 
