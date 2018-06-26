@@ -30,10 +30,7 @@ function getPackageNameInDirectory(directory) {
 }
 
 function getProcessCommand(processId, processDirectory) {
-    let command = execSync(
-        `ps -o command -p ${processId} | sed -n 2p`,
-        execOptions
-    )
+    let command = execSync(`ps -o command -p ${processId} | sed -n 2p`, execOptions)
 
     if (isProcessAReactApp(command)) {
         const packageName = getPackageNameInDirectory(processDirectory)
@@ -45,10 +42,7 @@ function getProcessCommand(processId, processDirectory) {
 }
 
 function getDirectoryOfProcessById(processId) {
-    return execSync(
-        `lsof -p ${processId} | grep cwd | awk '{print $9}'`,
-        execOptions
-    ).trim()
+    return execSync(`lsof -p ${processId} | grep cwd | awk '{print $9}'`, execOptions).trim()
 }
 
 function getProcessForPort(port) {
