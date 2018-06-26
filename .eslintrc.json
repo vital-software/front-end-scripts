@@ -1,3 +1,6 @@
 {
-  "extends": "@vital-software"
+  "extends": "@vital-software",
+  "rules": {
+    "no-console": "off"
+  }
 }
