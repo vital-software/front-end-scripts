@@ -1,6 +1,7 @@
 {
   "extends": "@vital-software",
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "no-magic-numbers": "off"
   }
 }
