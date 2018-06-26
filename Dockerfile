@@ -1,17 +1,21 @@
 FROM node:10
 
-# Set timezone
+# Set timezone - required for any time related tests
 ENV TZ=Pacific/Auckland
 
-# Add npm-auth-env helper
-RUN echo -e "#/bin/bash\necho \"//registry.npmjs.org/:_authToken=\\\${NPM_TOKEN}\" > /vitalizer/.npmrc" > /usr/local/bin/npm-auth-env && \
-    chmod +x /usr/local/bin/npm-auth-env
-
+# Set working directory
 RUN mkdir -p /vitalizer
 WORKDIR /vitalizer
+
+# Prepare for node_modules install
+COPY package.json yarn.lock /vitalizer/
+
+# Install node_modules
+ARG NPM_TOKEN
+RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc && \
+    yarn install --ignore-scripts && \
+    rm .npmrc
 ENV PATH=./node_modules/.bin:$PATH
 
-ADD package.json yarn.lock /vitalizer/
-RUN yarn install
-
+# Add project files
 ADD . /vitalizer
