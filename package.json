@@ -40,7 +40,7 @@
     "test": "./test/task/local-test.sh"
   },
   "bin": {
-    "vitalizer": "bin/vitalizer.js"
+    "vitalizer": "./bin/vitalizer.js"
   },
   "dependencies": {
     "babel-core": "6.26.0",
