@@ -1,6 +1,6 @@
-node_modules
-.idea/
 .buildkite/
-Dockerfile
+.idea/
+node_modules
 .dockerignore
 docker-compose.*
+Dockerfile

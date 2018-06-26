@@ -1,6 +1,5 @@
-.travis.yml
 test/
-Dockerfile
-docker-compose.*
 .buildkite
 .dockerignore
+docker-compose.*
+Dockerfile
