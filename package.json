@@ -52,7 +52,6 @@
     "babel-preset-env": "1.6.0",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react": "6.24.1",
-    "brotli-webpack-plugin": "0.4.1",
     "chalk": "2.3.0",
     "cross-spawn": "5.1.0",
     "css-loader": "0.28.7",
@@ -88,7 +87,6 @@
   "devDependencies": {
     "@semantic-release/git": "5.0.0",
     "@vital-software/babel-preset-vital-software": "^1.0.0",
-    "greenkeeper-lockfile": "1.15.1",
     "react": "16.2.0",
     "semantic-release": "15.6.0"
   },
