@@ -13,17 +13,8 @@ steps:
 
   - wait
 
-  - label:   ":eslint: Lint JS"
-    command: yarn test-lint-js
-    plugins:
-      docker-compose#master:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
-
-  - label:   ":stylelint: Lint CSS"
-    command: yarn test-lint-css
+  - label:   ":eslint: Lint"
+    command: yarn lint
     plugins:
       docker-compose#master:
         config:
