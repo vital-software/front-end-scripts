@@ -4,10 +4,14 @@
 - [ ] Add lint CI task for Vitalizer
 - [ ] Fix webpack messages (https://github.com/webpack/webpack/pull/6542/files)
 - [ ] Switch to webpack serve https://github.com/webpack-contrib/webpack-serve
+- [ ] Separate App and Vendor Entries (https://webpack.js.org/concepts/entry-points/#separate-app-and-vendor-entries)
+- [ ] Add webpack-stylish (https://github.com/webpack-contrib/webpack-stylish)
 
 
 ### Code Splitting
 - https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
+- https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+- https://twitter.com/wSokra/status/969633336732905474
 
 
 ### PWA
