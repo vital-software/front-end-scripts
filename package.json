@@ -101,8 +101,5 @@
     "eslint-plugin-react": "7.10.0",
     "react": "16.2.0",
     "semantic-release": "15.6.0"
-  },
-  "resolutions": {
-    "webpack-sources": "1.0.1"
   }
 }
