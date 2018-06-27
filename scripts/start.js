@@ -27,9 +27,7 @@ const PORT = parseInt(process.env.PORT, 10) || 3000
 const HOST = process.env.HOST || '0.0.0.0'
 
 checkBrowsers(paths.appPath)
-    .then(() => {
-        serve(config(HOST, PORT))
-    })
+    .then(() => serve(config(HOST, PORT)))
     .catch((error) => {
         if (error && error.message) {
             console.log(error.message)
