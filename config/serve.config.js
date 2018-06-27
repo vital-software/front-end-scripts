@@ -1,3 +1,6 @@
+// Load in ENV values
+require('./env')
+
 const config = require('./webpack.config.dev')
 const paths = require('./paths')
 

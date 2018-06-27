@@ -8,7 +8,6 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 
 module.exports = {
     dotenv: resolveApp('.env'),
-    appCss: resolveApp('app/sass'), // TODO: Remove
     appPath: resolveApp('.'),
     appBuild: resolveApp('build'),
     appPublic: resolveApp('static'),
@@ -19,4 +18,4 @@ module.exports = {
     appNodeModules: resolveApp('node_modules')
 }
 
-module.exports.srcPaths = [module.exports.appSrc]
+module.exports.resolveApp = resolveApp

@@ -1,3 +1,6 @@
+// Load in ENV values
+require('./env')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
@@ -54,13 +57,11 @@ module.exports = {
     },
 
     resolve: {
-        // TODO: Make this project specific configurable
-        modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic],
+        modules: ['node_modules']
+            .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
+            .map(paths.resolveApp),
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        // We also include JSX as a common component filename extension to support
-        // some tools, although we do not recommend using it, see:
-        // https://github.com/facebook/create-react-app/issues/290
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
 
         alias: {
