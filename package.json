@@ -79,13 +79,12 @@
     "postcss-scss": "1.0.3",
     "postcss-simple-vars": "4.1.0",
     "postcss-strip-inline-comments": "0.1.5",
-    "react-hot-loader": "4.0.0",
     "recursive-readdir": "2.2.1",
     "speed-measure-webpack-plugin": "1.2.0",
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
     "url-loader": "0.6.2",
-    "webpack": "4.12.1",
+    "webpack": "4.12.2",
     "webpack-dev-server": "3.1.4",
     "webpack-serve": "1.0.4",
     "webpack-stylish": "0.1.8"
@@ -104,7 +103,6 @@
     "eslint-plugin-jest": "21.17.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.10.0",
-    "react": "16.2.0",
     "semantic-release": "15.6.0"
   }
 }
