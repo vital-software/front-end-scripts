@@ -3,9 +3,9 @@
 - [ ] Add lint pre hook for Vitalizer
 - [ ] Add lint CI task for Vitalizer
 - [ ] Fix webpack messages (https://github.com/webpack/webpack/pull/6542/files)
-- [ ] Switch to webpack serve https://github.com/webpack-contrib/webpack-serve
+- [x] Switch to webpack serve https://github.com/webpack-contrib/webpack-serve
 - [ ] Separate App and Vendor Entries (https://webpack.js.org/concepts/entry-points/#separate-app-and-vendor-entries)
-- [ ] Add webpack-stylish (https://github.com/webpack-contrib/webpack-stylish)
+- [x] Add webpack-stylish (https://github.com/webpack-contrib/webpack-stylish)
 
 
 ### Code Splitting

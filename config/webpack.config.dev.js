@@ -2,6 +2,7 @@
 require('./env')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const StylishWebpackPlugin = require('webpack-stylish')
 const path = require('path')
 const paths = require('./paths')
 
@@ -123,6 +124,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: paths.appHtml
-        })
+        }),
+
+        // Custom format webpack stats output so it doesn't look shit.
+        new StylishWebpackPlugin()
     ]
 }

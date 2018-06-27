@@ -88,7 +88,8 @@
     "url-loader": "0.6.2",
     "webpack": "4.12.1",
     "webpack-dev-server": "3.1.4",
-    "webpack-serve": "1.0.4"
+    "webpack-serve": "1.0.4",
+    "webpack-stylish": "0.1.8"
   },
   "devDependencies": {
     "@semantic-release/git": "5.0.0",

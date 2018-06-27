@@ -24,6 +24,12 @@ module.exports = (host, port) => ({
     // The port the server should listen on.
     port,
 
+    // WebpackDevMiddleware configuration.
+    dev: {
+        // Turn off default stats output as we are using StylishWebpackPlugin to format output.
+        stats: false
+    },
+
     add: (app, middleware) => {
         // Just a note, the order of statements matters here.
 
