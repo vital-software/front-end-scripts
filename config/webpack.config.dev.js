@@ -112,7 +112,7 @@ module.exports = {
                         options: {
                             config: {
                                 ctx: { isTest: false },
-                                path: path.join(__dirname, '../postcss.config.js')
+                                path: path.join(__dirname, './postcss.config.js')
                             }
                         }
                     }
