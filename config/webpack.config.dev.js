@@ -2,10 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
 
-// Webpack uses `publicPath` to determine where the app is being served from.
-// In development, we always serve from the root. This makes config easier.
-const publicPath = '/'
-
 /*
     This is the development configuration.
     It is focused on developer experience and fast rebuilds.
@@ -35,8 +31,9 @@ module.exports = {
         // There are also additional JS chunk files if you use code splitting.
         chunkFilename: '[name].chunk.js',
 
-        // This is the URL that app is served from. We use "/" in development.
-        publicPath: publicPath,
+        // Webpack uses `publicPath` to determine where the app is being served from.
+        // in development, we always serve from the root. This makes config easier.
+        publicPath: '/',
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
         devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
@@ -64,11 +61,10 @@ module.exports = {
         // We also include JSX as a common component filename extension to support
         // some tools, although we do not recommend using it, see:
         // https://github.com/facebook/create-react-app/issues/290
-        // `web` extension prefixes have been added for better support
-        // for React Native Web.
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
 
         alias: {
+            // Ensure webpack-hot-client uses the correct node_modules
             'webpack-hot-client/client': path.join(__dirname, '../node_modules/webpack-hot-client/client')
         }
     },
