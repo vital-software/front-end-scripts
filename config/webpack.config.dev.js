@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
 
@@ -41,9 +42,90 @@ module.exports = {
         devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
     },
 
+    optimization: {
+        // Automatically split vendor and commons
+        // https://twitter.com/wSokra/status/969633336732905474
+        // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+        splitChunks: {
+            chunks: 'all',
+            name: 'vendors'
+        },
+
+        // Keep the runtime chunk seperated to enable long term caching
+        // https://twitter.com/wSokra/status/969679223278505985
+        runtimeChunk: true
+    },
+
     resolve: {
+        // TODO: Make this project specific configurable
+        modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic],
+
+        // These are the reasonable defaults supported by the Node ecosystem.
+        // We also include JSX as a common component filename extension to support
+        // some tools, although we do not recommend using it, see:
+        // https://github.com/facebook/create-react-app/issues/290
+        // `web` extension prefixes have been added for better support
+        // for React Native Web.
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
+
         alias: {
             'webpack-hot-client/client': path.join(__dirname, '../node_modules/webpack-hot-client/client')
         }
-    }
+    },
+
+    // TODO: Once over
+    module: {
+        rules: [
+            {
+                test: /\.(jpe?g|png|gif|svg|webp)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000, // Byte limit for URL loader conversion
+                    name: '[path][name].[ext]'
+                }
+            },
+            {
+                test: /\.(graphql|gql)$/,
+                exclude: /node_modules/,
+                loader: 'graphql-tag/loader'
+            },
+            {
+                test: /\.(js|jsx|flow)$/,
+                include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.(css|scss)$/,
+                loader: [
+                    {
+                        loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            sourceMap: true
+                        }
+                    },
+                    // Process PostCSS
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                ctx: { isTest: false },
+                                path: path.join(__dirname, '../postcss.config.js')
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: paths.appHtml
+        })
+    ]
 }
