@@ -11,7 +11,6 @@ process.on('unhandledRejection', (error) => {
     throw error
 })
 
-const chalk = require('chalk')
 const serve = require('webpack-serve')
 const paths = require('../config/paths')
 const config = require('../config/serve.config.js')
@@ -27,17 +26,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const PORT = parseInt(process.env.PORT, 10) || 3000
 const HOST = process.env.HOST || '0.0.0.0'
 
-if (process.env.HOST) {
-    console.log(
-        chalk.cyan(`Attempting to bind to HOST environment variable: ${chalk.yellow(chalk.bold(process.env.HOST))}`)
-    )
-    console.log('If this was unintentional, check that you haven\'t mistakenly set it in your shell.')
-    console.log()
-}
-
 checkBrowsers(paths.appPath)
-    // We attempt to use the default port but if it is busy, we offer the user to
-    // run on a different port. `choosePort()` Promise resolves to the next free port.
     .then(() => {
         serve(config(HOST, PORT))
     })
