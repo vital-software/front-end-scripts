@@ -1,5 +1,5 @@
 ## Tasks
-- [ ] Remove 'compat' plugin from main ESLint config, only use in Check In/Trackboard
+- [x] Remove 'compat' plugin from main ESLint config, only use in Check In/Trackboard
 - [ ] Add lint pre hook for Vitalizer
 - [ ] Add lint CI task for Vitalizer
 - [ ] Fix webpack messages (https://github.com/webpack/webpack/pull/6542/files)
