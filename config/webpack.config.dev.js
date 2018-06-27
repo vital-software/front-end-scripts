@@ -1,4 +1,9 @@
+const path = require('path')
 const paths = require('./paths')
+
+// Webpack uses `publicPath` to determine where the app is being served from.
+// In development, we always serve from the root. This makes config easier.
+const publicPath = '/'
 
 /*
     This is the development configuration.
@@ -11,21 +16,34 @@ module.exports = {
     devtool: 'cheap-module-source-map',
 
     entry: [
-        // Include an alternative client for WebpackDevServer. A client's job is to
-        // connect to WebpackDevServer by a socket and get notified about changes.
-        // When you save a file, the client will either apply hot updates (in case
-        // of CSS changes), or refresh the page (in case of JS changes). When you
-        // make a syntax error, this client will display a syntax error overlay.
-        // Note: instead of the default WebpackDevServer client, we use a custom one
-        // to bring better experience for Create React App users. You can replace
-        // the line below with these two lines if you prefer the stock client:
-        // require.resolve('webpack-dev-server/client') + '?/',
-        // require.resolve('webpack/hot/dev-server'),
-        // require.resolve('react-dev-utils/webpackHotDevClient'),
-        // Finally, this is your app's code:
         paths.appIndexJs
         // We include the app code last so that if there is a runtime error during
-        // initialization, it doesn't blow up the WebpackDevServer client, and
+        // initialization, it doesn't blow up Webpack Serve, and
         // changing JS code would still trigger a refresh.
-    ]
+    ],
+
+    output: {
+        // The output directory as an absolute path.
+        path: paths.appBuild,
+
+        // This does not produce a real file. It's just the virtual path that is
+        // served by Webpack Serve in development. This is the JS bundle
+        // containing code from all our entry points, and the Webpack runtime.
+        filename: '[name].js',
+
+        // There are also additional JS chunk files if you use code splitting.
+        chunkFilename: '[name].chunk.js',
+
+        // This is the URL that app is served from. We use "/" in development.
+        publicPath: publicPath,
+
+        // Point sourcemap entries to original disk location (format as URL on Windows)
+        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+    },
+
+    resolve: {
+        alias: {
+            'webpack-hot-client/client': path.join(__dirname, '../node_modules/webpack-hot-client/client')
+        }
+    }
 }
