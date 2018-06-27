@@ -1,6 +1,10 @@
 const config = require('./webpack.config.dev')
 const paths = require('./paths')
 
+const convert = require('koa-connect')
+const history = require('connect-history-api-fallback')
+const proxy = require('http-proxy-middleware')
+
 /*
     This is the webpack-serve configuration.
  */
@@ -15,5 +19,31 @@ module.exports = (host, port) => ({
     host,
 
     // The port the server should listen on.
-    port
+    port,
+
+    add: (app, middleware) => {
+        // Just a note, the order of statements matters here.
+
+        // Set up API proxy
+        app.use(
+            convert(
+                proxy('/api', {
+                    headers: {
+                        host: 'api.vital'
+                    },
+                    pathRewrite: { ['^/api']: '' },
+                    secure: false,
+                    target: 'https://api.vital'
+                })
+            )
+        )
+
+        // History fallback (this needs to be declared before middleware)
+        app.use(convert(history()))
+
+        // Ensure webpack files are loaded before static content
+        // we need index.js to exist before HtmlWebpackPlugin run on static/index.html
+        middleware.webpack()
+        middleware.content()
+    }
 })
