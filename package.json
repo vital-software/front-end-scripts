@@ -10,11 +10,10 @@
     "url": "https://github.com/vital-software/vitalizer/issues"
   },
   "files": [
-    "postcss.config.js",
-    "webpack.config.babel.js",
     "bin",
+    "config",
     "helper",
-    "script"
+    "scripts"
   ],
   "release": {
     "verifyConditions": [
