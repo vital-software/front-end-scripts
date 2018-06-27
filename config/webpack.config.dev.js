@@ -2,16 +2,20 @@
 require('./env')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const path = require('path')
 const paths = require('./paths')
+
+// Measure the speed of the build
+const smp = new SpeedMeasurePlugin()
 
 /*
     This is the development configuration.
     It is focused on developer experience and fast rebuilds.
     The production configuration is different and lives in a separate file.
  */
-module.exports = {
+module.exports = smp.wrap({
     mode: 'development',
 
     devtool: 'cheap-module-source-map',
@@ -129,4 +133,4 @@ module.exports = {
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin()
     ]
-}
+})
