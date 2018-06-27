@@ -32,11 +32,11 @@ module.exports = (host, port) => ({
             convert(
                 proxy('/api', {
                     headers: {
-                        host: 'api.vital'
+                        host: process.env.API_PROXY_HOST
                     },
                     pathRewrite: { ['^/api']: '' },
                     secure: false,
-                    target: 'https://api.vital'
+                    target: process.env.API_PROXY_URL
                 })
             )
         )
