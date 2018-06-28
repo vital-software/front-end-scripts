@@ -75,11 +75,11 @@ module.exports = smp.wrap({
         }
     },
 
-    // TODO: Once over
     module: {
         rules: [
             {
                 test: /\.(jpe?g|png|gif|svg|webp)$/,
+                exclude: [/[/\\\\]node_modules[/\\\\]/],
                 loader: 'url-loader',
                 options: {
                     limit: 10000, // Byte limit for URL loader conversion
@@ -87,14 +87,20 @@ module.exports = smp.wrap({
                 }
             },
             {
-                test: /\.(graphql|gql)$/,
-                exclude: /node_modules/,
+                test: /\.(graphql)$/,
+                exclude: [/[/\\\\]node_modules[/\\\\]/],
                 loader: 'graphql-tag/loader'
             },
             {
-                test: /\.(js|jsx|flow)$/,
+                test: /\.(js|jsx|flow|mjs)$/,
                 include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
-                loader: 'babel-loader'
+                loader: require.resolve('babel-loader'),
+                options: {
+                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                    // directory for faster rebuilds.
+                    cacheDirectory: true
+                }
             },
             {
                 test: /\.(css|scss)$/,
