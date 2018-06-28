@@ -1,154 +1,152 @@
-/* eslint-disable no-console */
+process.traceDeprecation = true
+
+// Do this as the first thing so that any code reading it knows the right env.
+process.env.BABEL_ENV = 'production'
 process.env.NODE_ENV = 'production'
 
-const WEBPACK_OPTIONS = { dev: false, shortName: false }
+/*
+    Makes the script crash on unhandled rejections instead of silently
+    ignoring them. In the future, promise rejections that are not handled will
+    terminate the Node.js process with a non-zero exit code.
+ */
+process.on('unhandledRejection', (error) => {
+    throw error
+})
 
 const chalk = require('chalk')
 const fs = require('fs-extra')
-const path = require('path')
-const filesize = require('filesize')
-const gzipSize = require('gzip-size').sync
 const webpack = require('webpack')
-const config = require('../webpack.config.babel').webpack(WEBPACK_OPTIONS)
-const paths = require('../helper/paths')
-const recursive = require('recursive-readdir')
-const stripAnsi = require('strip-ansi')
+// const bfj = require('bfj')
+const config = require('../config/webpack.config.prod')
+const paths = require('../config/paths')
 
-// Input: /User/dan/app/build/static/js/main.82be8.js
-// Output: /static/js/main.js
-function removeFileNameHash(fileName) {
-    return fileName.replace(paths.appBuild, '').replace(/\/?(.*)(\.\w+)(\.js|\.css)/, (match, p1, p2, p3) => p1 + p3)
-}
+// const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
+// const printHostingInstructions = require('react-dev-utils/printHostingInstructions')
+const FileSizeReporter = require('../helper/file-size-reporter')
+// const printBuildError = require('react-dev-utils/printBuildError')
+const { checkBrowsers, printBrowsers } = require('../helper/browsers')
+const checkRequiredFiles = require('../helper/check-required-files')
 
-// Input: 1024, 2048
-// Output: "(+1 KB)"
-function getDifferenceLabel(currentSize, previousSize) {
-    const FIFTY_KILOBYTES = 1024 * 50 // eslint-disable-line no-magic-numbers
-    const difference = currentSize - previousSize
-    const fileSize = !Number.isNaN(difference) ? filesize(difference) : 0 // eslint-disable-line
+const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild
+const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild
 
-    if (difference >= FIFTY_KILOBYTES) {
-        return chalk.red(`+${fileSize}`)
-    } else if (difference < FIFTY_KILOBYTES && difference > 0) {
-        return chalk.yellow(`+${fileSize}`)
-    } else if (difference < 0) {
-        return chalk.green(fileSize)
-    }
-
-    return ''
-}
-
-// First, read the current file sizes in build directory.
-// This lets us display how much they changed later.
-recursive(paths.appBuild, (err, fileNames) => {
-    const previousSizeMap = (fileNames || [])
-        .filter((fileName) => (/\.(js|css)$/).test(fileName))
-        .reduce((memo, fileName) => {
-            const contents = fs.readFileSync(fileName)
-            const key = removeFileNameHash(fileName)
-
-            memo[key] = gzipSize(contents)
-
-            return memo
-        }, {})
-
-    // Remove all content but keep the directory so that
-    // if you're in it, you don't end up in Trash
-    fs.emptyDirSync(paths.appBuild)
-
-    // Start the webpack build
-    build(previousSizeMap)
-
-    // Merge with the public folder
-    copyPublicFolder()
-})
-
-// Print a detailed summary of build files.
-function printFileSizes(stats, previousSizeMap) {
-    const assets = stats
-        .toJson()
-        .assets.filter((asset) => (/\.(js|css)$/).test(asset.name))
-        .map((asset) => {
-            const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`)
-            const size = gzipSize(fileContents)
-            const previousSize = previousSizeMap[removeFileNameHash(asset.name)]
-            const difference = getDifferenceLabel(size, previousSize)
-
-            return {
-                folder: path.join('public', path.dirname(asset.name)),
-                name: path.basename(asset.name),
-                size: size,
-                sizeLabel: `  ${filesize(size)}${difference ? ` (${difference})` : ''}`
-            }
-        })
-
-    assets.sort((a, b) => b.size - a.size)
-
-    const longestSizeLabelLength = Math.max.apply(null, assets.map((a) => stripAnsi(a.sizeLabel).length))
-
-    assets.forEach((asset) => {
-        let sizeLabel = asset.sizeLabel
-        const sizeLength = stripAnsi(sizeLabel).length
-
-        if (sizeLength < longestSizeLabelLength) {
-            const rightPadding = ' '.repeat(longestSizeLabelLength - sizeLength)
-
-            sizeLabel += rightPadding
-        }
-        console.log(sizeLabel, chalk.dim(asset.folder + path.sep) + chalk.cyan(asset.name))
-    })
-}
-
-// Print out errors
-function printErrors(summary, errors) {
-    console.log(chalk.red(summary))
-    console.log()
-    errors.forEach((error) => {
-        console.log(error.message || error)
-        console.log()
-    })
-}
-
-// Create the production build and print the deployment instructions.
-function build(previousSizeMap) {
-    const buildMessage = {
-        production: 'Creating an optimized production build...',
-        development: 'Creating a development build...'
-    }
-
-    console.log(buildMessage[config.mode])
-
-    webpack(config).run((error, stats) => {
-        if (error) {
-            printErrors('Failed to compile.', [error])
-            process.exit(1)
-        }
-
-        if (stats.compilation.errors.length) {
-            printErrors('Failed to compile.', stats.compilation.errors)
-            process.exit(1)
-        }
-
-        if (process.env.CI && stats.compilation.warnings.length) {
-            printErrors('Failed to compile.', stats.compilation.warnings)
-            process.exit(1)
-        }
-
-        console.log(chalk.green('Compiled successfully.'))
-        console.log()
-
-        console.log('File sizes after gzip:')
-        printFileSizes(stats, previousSizeMap)
-        console.log()
-
-        console.log('The', chalk.cyan('public'), 'folder is ready to be deployed.')
-        console.log()
-    })
-}
+// These sizes are pretty large. We'll warn for bundles exceeding them.
+const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024
+const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
 
 function copyPublicFolder() {
     fs.copySync(paths.appPublic, paths.appBuild, {
         dereference: true,
         filter: (file) => file !== paths.appHtml
+    })
+}
+
+// Warn and crash if required files are missing
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+    process.exit(1)
+}
+
+checkBrowsers(paths.appPath)
+    .then(() => {
+        // First, read the current file sizes in build directory.
+        // This lets us display how much they changed later.
+        return measureFileSizesBeforeBuild(paths.appBuild)
+    })
+    .then((previousFileSizes) => {
+        // Remove all content but keep the directory so that
+        // if you're in it, you don't end up in Trash
+        fs.emptyDirSync(paths.appBuild)
+        // Merge with the public folder
+        copyPublicFolder()
+
+        // Start the webpack build
+        return build(previousFileSizes)
+    })
+    .then(
+        ({ stats, previousFileSizes, warnings }) => {
+            if (warnings.length) {
+                console.log(chalk.yellow('Compiled with warnings.\n'))
+                console.log(warnings.join('\n\n'))
+                console.log(
+                    `\nSearch for the ${chalk.underline(chalk.yellow('keywords'))} to learn more about each warning.`
+                )
+                console.log(`To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.\n`)
+            } else {
+                console.log(chalk.green('Compiled successfully.\n'))
+            }
+
+            console.log('File sizes after gzip:\n')
+            printFileSizesAfterBuild(
+                stats,
+                previousFileSizes,
+                paths.appBuild,
+                WARN_AFTER_BUNDLE_GZIP_SIZE,
+                WARN_AFTER_CHUNK_GZIP_SIZE
+            )
+            console.log()
+
+            printBrowsers(paths.appPath)
+        },
+        (error) => {
+            console.log(chalk.red('Failed to compile.\n'))
+            console.log(error)
+
+            process.exit(1)
+        }
+    )
+    .catch((error) => {
+        if (error && error.message) {
+            console.log(error.message)
+        }
+
+        process.exit(1)
+    })
+
+// Create the production build
+function build(previousFileSizes) {
+    console.log('Creating an optimized production build...')
+
+    const compiler = webpack(config)
+
+    return new Promise((resolve, reject) => {
+        compiler.run((error, stats) => {
+            if (error) {
+                return reject(error)
+            }
+
+            const messages = stats.toJson({})
+
+            if (messages.errors.length) {
+                // Only keep the first error. Others are often indicative
+                // of the same problem, but confuse the reader with noise.
+                if (messages.errors.length > 1) {
+                    messages.errors.length = 1
+                }
+
+                return reject(new Error(messages.errors.join('\n\n')))
+            }
+            if (
+                process.env.CI &&
+                (typeof process.env.CI !== 'string' || process.env.CI.toLowerCase() !== 'false') &&
+                messages.warnings.length
+            ) {
+                console.log(
+                    chalk.yellow(
+                        '\nTreating warnings as errors because process.env.CI = true.\n' +
+                            'Most CI servers set it automatically.\n'
+                    )
+                )
+
+                return reject(new Error(messages.warnings.join('\n\n')))
+            }
+
+            const resolveArgs = {
+                stats,
+                previousFileSizes,
+                warnings: messages.warnings
+            }
+
+            return resolve(resolveArgs)
+        })
     })
 }
