@@ -14,7 +14,7 @@ process.on('unhandledRejection', (error) => {
 const serve = require('webpack-serve')
 const paths = require('../config/paths')
 const config = require('../config/serve.config.js')
-const { checkBrowsers } = require('../helper/browsers')
+const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 
 // Warn and crash if required files are missing
@@ -27,6 +27,7 @@ const PORT = parseInt(process.env.PORT, 10) || 3000
 const HOST = process.env.HOST || '0.0.0.0'
 
 checkBrowsers(paths.appPath)
+    .then(() => printBrowsers(paths.appPath))
     .then(() => serve(config(HOST, PORT)))
     .catch((error) => {
         if (error && error.message) {

@@ -30,15 +30,15 @@ function checkBrowsers(dir, retry = true) {
 function printBrowsers(dir) {
     return checkBrowsers(dir).then((browsers) => {
         if (browsers === null) {
-            console.log('Built the bundle with default browser support.')
+            console.log('Compiling with default browser support.')
 
             return
         }
 
-        const browsersList = browsers[process.env.NODE_ENV] || browsers
+        const browsersList = browsers[process.env.NODE_ENV] || browsers.defaults
         const output = Array.isArray(browsersList) ? browsersList.join(', ') : browsersList
 
-        console.log(`Built the bundle with browser support for ${chalk.cyan(output)}.`)
+        console.log(`Compiling with browser support for ${chalk.cyan(output)}.`)
     })
 }
 
