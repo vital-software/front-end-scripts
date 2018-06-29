@@ -40,7 +40,7 @@ module.exports = smp.wrap({
         chunkFilename: '[name].chunk.js',
 
         // Webpack uses `publicPath` to determine where the app is being served from.
-        // in development, we always serve from the root. This makes config easier.
+        // We always serve from the root. This makes config easier.
         publicPath: '/',
 
         // Point sourcemap entries to original disk location (format as URL on Windows)

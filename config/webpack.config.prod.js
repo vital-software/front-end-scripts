@@ -11,36 +11,39 @@ const paths = require('./paths')
 const smp = new SpeedMeasurePlugin()
 
 /*
-    This is the development configuration.
-    It is focused on developer experience and fast rebuilds.
-    The production configuration is different and lives in a separate file.
+    This is the production configuration.
+    It compiles slowly and is focused on producing a fast and minimal bundle.
+    The development configuration is different and lives in a separate file.
  */
 module.exports = smp.wrap({
-    mode: 'development',
+    mode: 'production',
 
-    devtool: 'cheap-module-source-map',
+    // Don't attempt to continue if there are any errors.
+    bail: true,
 
-    entry: [
-        paths.appIndexJs
-        // We include the app code last so that if there is a runtime error during
-        // initialization, it doesn't blow up Webpack Serve, and
-        // changing JS code would still trigger a refresh.
-    ],
+    // We generate sourcemaps in production. This is slow but gives good results.
+    devtool: 'source-map',
+
+    // Turn off performance processing because we utilize
+    // our own hints via the FileSizeReporter
+    performance: false,
+
+    // In production, we only want to the app code.
+    entry: [paths.appIndexJs],
 
     output: {
         // The output directory as an absolute path.
         path: paths.appBuild,
 
-        // This does not produce a real file. It's just the virtual path that is
-        // served by Webpack Serve in development. This is the JS bundle
-        // containing code from all our entry points, and the Webpack runtime.
-        filename: '[name].js',
+        // Generated JS file names (with nested folders).
+        // There will be one main bundle, and one file per asynchronous chunk.
+        filename: '[name].[chunkhash:8].js',
 
         // There are also additional JS chunk files if you use code splitting.
-        chunkFilename: '[name].chunk.js',
+        chunkFilename: '[name].[chunkhash:8].chunk.js',
 
         // Webpack uses `publicPath` to determine where the app is being served from.
-        // in development, we always serve from the root. This makes config easier.
+        // We always serve from the root. This makes config easier.
         publicPath: '/',
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
