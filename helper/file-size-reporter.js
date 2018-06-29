@@ -22,7 +22,7 @@ function printFileSizesAfterBuild(webpackStats, previousSizeMap, buildFolder, ma
             .map((stats) =>
                 stats
                     .toJson()
-                    .assets.filter((asset) => (/\.(js|css)$/).test(asset.name))
+                    .assets.filter((asset) => (/\.(css|html|js)$/).test(asset.name))
                     .map((asset) => {
                         const fileContents = fs.readFileSync(path.join(root, asset.name))
                         const size = gzipSize(fileContents)
