@@ -1,6 +1,7 @@
 {
   "extends": "@vital-software",
   "rules": {
+    "camelcase": ["error", {"properties": "never"}],
     "no-console": "off",
     "no-magic-numbers": "off"
   }

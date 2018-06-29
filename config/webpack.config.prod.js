@@ -56,9 +56,40 @@ module.exports = smp.wrap({
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
+                uglifyOptions: {
+                    // Supported ECMAScript Version.
+                    ecma: 8,
+
+                    compress: {
+                        // Discard calls to console.* functions.
+                        drop_console: true
+                    },
+
+                    mangle: {
+                        // Work around the Safari 10 loop iterator bug.
+                        safari10: true,
+                        toplevel: true
+                    },
+
+                    output: {
+                        // Turned on because emoji and regex is not minified properly using default
+                        ascii_only: true
+                    }
+                },
+
                 // Extract comments (i.e. licenses) to a separate file.
                 // https://github.com/webpack/webpack/commit/71933e979e51c533b432658d5e37917f9e71595a
-                extractComments: true
+                extractComments: true,
+
+                // Use multi-process parallel running to improve the build speed
+                // Default number of concurrent runs: os.cpus().length - 1
+                parallel: true,
+
+                // Enable file caching
+                cache: true,
+
+                // Use source maps to map error message locations to module
+                sourceMap: true
             })
         ],
 
