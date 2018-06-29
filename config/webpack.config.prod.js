@@ -1,11 +1,14 @@
 // Load in ENV values
-require('./env')
+const getClientEnvironment = require('./env')
+const env = getClientEnvironment()
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const path = require('path')
 const paths = require('./paths')
+const webpack = require('webpack')
 
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
@@ -51,6 +54,14 @@ module.exports = smp.wrap({
     },
 
     optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                // Extract comments (i.e. licenses) to a separate file.
+                // https://github.com/webpack/webpack/commit/71933e979e51c533b432658d5e37917f9e71595a
+                extractComments: true
+            })
+        ],
+
         // Automatically split vendor and commons
         // https://twitter.com/wSokra/status/969633336732905474
         // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
@@ -135,9 +146,24 @@ module.exports = smp.wrap({
     },
 
     plugins: [
+        // Generates an `index.html` file with the <script> injected.
         new HtmlWebpackPlugin({
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            },
             template: paths.appHtml
         }),
+
+        new webpack.DefinePlugin(env.stringified),
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin()

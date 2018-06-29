@@ -83,6 +83,7 @@
     "speed-measure-webpack-plugin": "1.2.2",
     "strip-ansi": "4.0.0",
     "style-loader": "github:webpack-contrib/style-loader#master",
+    "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "0.6.2",
     "webpack": "4.12.2",
     "webpack-dev-server": "3.1.4",
