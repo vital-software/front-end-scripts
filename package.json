@@ -50,7 +50,6 @@
     "connect-history-api-fallback": "1.5.0",
     "cross-spawn": "6.0.5",
     "css-loader": "0.28.7",
-    "detect-port-alt": "1.1.6",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "file-loader": "1.1.5",
@@ -81,7 +80,6 @@
     "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "0.6.2",
     "webpack": "4.14.0",
-    "webpack-dev-server": "3.1.4",
     "webpack-manifest-plugin": "2.0.3",
     "webpack-serve": "1.0.4",
     "webpack-stylish": "0.1.8"
