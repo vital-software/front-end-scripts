@@ -6,6 +6,7 @@
 - [x] Switch to webpack serve https://github.com/webpack-contrib/webpack-serve
 - [ ] Separate App and Vendor Entries (https://webpack.js.org/concepts/entry-points/#separate-app-and-vendor-entries)
 - [x] Add webpack-stylish (https://github.com/webpack-contrib/webpack-stylish)
+- [ ] Use project browserslist file
 
 
 ### Code Splitting
