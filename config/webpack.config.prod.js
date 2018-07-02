@@ -119,9 +119,11 @@ module.exports = smp.wrap({
     },
 
     resolve: {
-        modules: ['node_modules']
-            .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
-            .map(paths.resolveApp),
+        modules: process.env.RESOLVE_MODULES
+            ? ['node_modules']
+                .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
+                .map(paths.resolveApp)
+            : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
