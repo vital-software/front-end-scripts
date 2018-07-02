@@ -3,9 +3,13 @@ const getClientEnvironment = require('./env')
 const env = getClientEnvironment()
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
 const webpack = require('webpack')
@@ -28,7 +32,7 @@ module.exports = smp.wrap({
     devtool: 'source-map',
 
     // Turn off performance processing because we utilize
-    // our own hints via the FileSizeReporter
+    // our own hints via the FileSizeReporter.
     performance: false,
 
     // In production, we only want to the app code.
@@ -90,6 +94,11 @@ module.exports = smp.wrap({
 
                 // Use source maps to map error message locations to module
                 sourceMap: true
+            }),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorOptions: {
+                    autoprefixer: true
+                }
             })
         ],
 
@@ -97,8 +106,11 @@ module.exports = smp.wrap({
         // https://twitter.com/wSokra/status/969633336732905474
         // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
         splitChunks: {
-            chunks: 'all',
-            name: 'vendors'
+            chunks(chunk) {
+                // exclude `polyfills`
+                return chunk.name !== 'polyfills'
+            },
+            name: 'vendor'
         },
 
         // Keep the runtime chunk seperated to enable long term caching
@@ -150,10 +162,7 @@ module.exports = smp.wrap({
             {
                 test: /\.(css|scss)$/,
                 loader: [
-                    {
-                        loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                        options: { sourceMap: true }
-                    },
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -194,7 +203,59 @@ module.exports = smp.wrap({
             template: paths.appHtml
         }),
 
+        // Makes some environment variables available to the JS code.
+        // It is absolutely essential that NODE_ENV was set to production here.
+        // Otherwise React will be compiled in the very slow development mode.
         new webpack.DefinePlugin(env.stringified),
+
+        // CSS extractor.
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            filename: '[name].[contenthash:8].css',
+            chunkFilename: '[name].[contenthash:8].chunk.css'
+        }),
+
+        // Generate a manifest file which contains a mapping of all asset filenames
+        // to their corresponding output file so that tools can pick it up without
+        // having to parse `index.html`.
+        new ManifestPlugin({
+            fileName: 'asset-manifest.json'
+        }),
+
+        // Generate a service worker script that will precache, and keep up to date,
+        // the HTML & assets that are part of the Webpack build.
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'vitalizer-cache',
+
+            // By default, a cache-busting query parameter is appended to requests
+            // used to populate the caches, to ensure the responses are fresh.
+            // If a URL is already hashed by Webpack, then there is no concern
+            // about it being stale, and the cache-busting can be skipped.
+            dontCacheBustUrlsMatching: /\.\w{8}\./,
+
+            filename: 'service-worker.js',
+
+            logger(message) {
+                if (message.indexOf('Total precache size is') === 0) {
+                    // This message occurs for every build and is a bit too noisy.
+                    return
+                }
+                if (message.indexOf('Skipping static resource') === 0) {
+                    // This message obscures real errors so we ignore it.
+                    // https://github.com/facebook/create-react-app/issues/2612
+                    return
+                }
+                console.log(message)
+            },
+
+            minify: true,
+
+            // Don't precache licenses, sourcemaps (they're large) and build asset manifest:
+            staticFileGlobsIgnorePatterns: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
+
+            // Sets an HTML document to use as a fallback for URLs not found in the cache.
+            navigateFallback: '/index.html'
+        }),
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin()
