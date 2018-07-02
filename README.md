@@ -2,9 +2,6 @@
 
 > Get a Front End project up with no external configuration.
 
-## TODO Notes
-- Move `:root` statement out of common files (dashboard/checkin), and load in at root level instead (once per app)
-- Update the 'babili-webpack-plugin' when https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68 fixed
 
 ## Features
 - Yarn
