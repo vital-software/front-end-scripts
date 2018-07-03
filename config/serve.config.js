@@ -12,6 +12,9 @@ const proxy = require('http-proxy-middleware')
     This is the webpack-serve configuration.
  */
 module.exports = (host, port) => ({
+    // If true, the server will copy the server URI to the clipboard when the server is started.
+    clipboard: false,
+
     // An object containing the configuration for creating a new webpack compiler instance.
     config,
 
