@@ -1,6 +1,9 @@
 {
   "license": "MIT",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
     "cross-spawn": "^5.1.0",
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",
@@ -8,6 +11,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "webpack-hot-client": "^4.0.4"
   }
 }
