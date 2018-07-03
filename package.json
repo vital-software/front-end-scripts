@@ -87,7 +87,7 @@
     "webpack-stylish": "0.1.8"
   },
   "devDependencies": {
-    "@semantic-release/git": "5.0.0",
+    "@semantic-release/git": "6.0.1",
     "@vital-software/eslint-config": "1.5.0",
     "babel-eslint": "8.2.5",
     "eslint": "5.0.1",
@@ -100,7 +100,7 @@
     "eslint-plugin-jsx-a11y": "6.1.0",
     "eslint-plugin-react": "7.10.0",
     "husky": "0.14.3",
-    "semantic-release": "15.6.1"
+    "semantic-release": "15.6.3"
   },
   "peerDependencies": {
     "webpack-hot-client": "^4.0.4"
