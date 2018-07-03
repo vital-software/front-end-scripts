@@ -38,24 +38,6 @@ function exists {
   done
 }
 
-# Check for a rise in the build speed
-# function perf_within_bounds {
-#     bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
-#     latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
-#     # Max build time is %5 increase on bench
-#     max_increase=$((bench_build_time/20))
-#     max_build_time=$((bench_build_time+max_increase))
-#
-#     echo $max_build_time
-#     echo $latest_build_time
-#
-#     if ((max_build_time < latest_build_time ))
-#     then
-#         exit 1
-#     fi
-#     exit 0
-# }
-
 # Exit the script with a helpful error message when any error is encountered
 trap 'set +x; handle_error $LINENO $BASH_COMMAND' ERR
 
@@ -122,6 +104,3 @@ diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/m
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.a6d503f4.chunk.js stub/main.a6d503f4.chunk.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.ec26e76c.js stub/runtime~main.ec26e76c.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.7f5e23f2.chunk.js stub/vendor.7f5e23f2.chunk.js
-
-# Check the build time doesn't breach the threshold
-# perf_within_bounds
