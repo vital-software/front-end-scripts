@@ -98,5 +98,8 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.10.0",
     "semantic-release": "15.6.1"
+  },
+  "peerDependencies": {
+    "webpack-hot-client": "^4.0.4"
   }
 }
