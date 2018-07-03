@@ -131,52 +131,109 @@ module.exports = smp.wrap({
 
     module: {
         rules: [
+            // Disable require.ensure as it's not a standard language feature.
+            { parser: { requireEnsure: false } },
+
             {
-                test: /\.(jpe?g|png|gif|svg|webp)$/,
-                exclude: [/[/\\\\]node_modules[/\\\\]/],
-                loader: 'url-loader',
-                options: {
-                    limit: 10000, // Byte limit for URL loader conversion
-                    name: '[path][name].[ext]'
-                }
-            },
-            {
-                test: /\.(graphql)$/,
-                exclude: [/[/\\\\]node_modules[/\\\\]/],
-                loader: 'graphql-tag/loader'
-            },
-            {
-                test: /\.(js|jsx|flow|mjs)$/,
-                include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
-                loader: require.resolve('babel-loader'),
-                options: {
-                    // This is a feature of `babel-loader` for webpack (not Babel itself).
-                    // It enables caching results in ./node_modules/.cache/babel-loader/
-                    // directory for faster rebuilds.
-                    cacheDirectory: true
-                }
-            },
-            {
-                test: /\.(css|scss)$/,
-                loader: [
-                    MiniCssExtractPlugin.loader,
+                // "oneOf" will traverse all following loaders until one will
+                // match the requirements. When no loader matches it will fall
+                // back to the "file" loader at the end of the loader list.
+                oneOf: [
+                    // "url" loader works just like "file" loader but it also embeds
+                    // assets smaller than specified size as data URLs to avoid requests.
                     {
-                        loader: 'css-loader',
+                        test: /\.(gif|jpe?g|png|svg|webp)$/,
+                        loader: require.resolve('url-loader'),
                         options: {
-                            importLoaders: 1,
-                            sourceMap: true
+                            limit: 10000, // Byte limit for URL loader conversion
+                            name: 'static/media/[name].[hash:8].[ext]'
                         }
                     },
-                    // Process PostCSS
+
+                    // Process application JS with Babel.
+                    // The preset includes JSX, Flow, and some ESnext features.
                     {
-                        loader: 'postcss-loader',
-                        options: {
-                            config: {
-                                ctx: { isTest: false },
-                                path: path.join(__dirname, './postcss.config.js')
+                        test: /\.(flow|js|jsx|mjs)$/,
+                        include: paths.srcPaths,
+                        exclude: [/[/\\\\]node_modules[/\\\\]/],
+                        use: [
+                            // This loader parallelizes code compilation, it is optional but
+                            // improves compile time on larger projects
+                            require.resolve('thread-loader'),
+                            {
+                                loader: require.resolve('babel-loader'),
+                                options: {
+                                    compact: true,
+                                    highlightCode: true
+                                }
                             }
+                        ]
+                    },
+
+                    // "postcss" loader applies autoprefixer to our CSS.
+                    // "css" loader resolves paths in CSS and adds assets as dependencies.
+                    // `MiniCSSExtractPlugin` extracts styles into CSS
+                    // files. If you use code splitting, async bundles will have their own separate CSS chunk file.
+                    // By default we support CSS Modules with the extension .module.css
+                    {
+                        test: /\.(css|scss)$/,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: require.resolve('css-loader'),
+                                options: {
+                                    importLoaders: 1,
+                                    sourceMap: true
+                                }
+                            },
+                            {
+                                // Options for PostCSS as we reference these options twice
+                                // Adds vendor prefixing based on your specified browser support in
+                                // package.json
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    config: {
+                                        path: path.join(__dirname, './postcss.config.js')
+                                    },
+
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebook/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    // plugins: () => [
+                                    //     require('postcss-flexbugs-fixes'),
+                                    //     autoprefixer({
+                                    //         flexbox: 'no-2009'
+                                    //     })
+                                    // ],
+                                    sourceMap: true
+                                }
+                            }
+                        ]
+                    },
+
+                    // The GraphQL loader preprocesses GraphQL queries in .graphql files.
+                    {
+                        test: /\.(graphql)$/,
+                        loader: 'graphql-tag/loader'
+                    },
+
+                    // "file" loader makes sure assets end up in the `build` folder.
+                    // When you `import` an asset, you get its filename.
+                    // This loader doesn't use a "test" so it will catch all modules
+                    // that fall through the other loaders.
+                    {
+                        loader: require.resolve('file-loader'),
+                        // Exclude `js` files to keep "css" loader working as it injects
+                        // it's runtime that would otherwise be processed through "file" loader.
+                        // Also exclude `html` and `json` extensions so they get processed
+                        // by webpacks internal loaders.
+                        exclude: [/\.(flow|js|jsx|mjs)$/, /\.html$/, /\.json$/],
+                        options: {
+                            name: '[path][name].[hash:8].[ext]'
                         }
                     }
+                    // ** STOP ** Are you adding a new loader?
+                    // Make sure to add the new loader(s) before the "file" loader.
                 ]
             }
         ]
