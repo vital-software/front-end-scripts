@@ -4,9 +4,12 @@
 - [x] Add lint CI task for Vitalizer
 - [x] Fix webpack messages (https://github.com/webpack/webpack/pull/6542/files)
 - [x] Switch to webpack serve https://github.com/webpack-contrib/webpack-serve
-- [ ] Separate App and Vendor Entries (https://webpack.js.org/concepts/entry-points/#separate-app-and-vendor-entries)
+- [x] Separate App and Vendor Entries (https://webpack.js.org/concepts/entry-points/#separate-app-and-vendor-entries)
 - [x] Add webpack-stylish (https://github.com/webpack-contrib/webpack-stylish)
-- [ ] Use project browserslist file
+- [x] Use project browserslist file
+- [ ] Remove old webpack file
+- [ ] Add source-map-explorer plugin instructions to project https://www.npmjs.com/package/source-map-explorer
+- [ ] Update readme
 
 
 ### Code Splitting
