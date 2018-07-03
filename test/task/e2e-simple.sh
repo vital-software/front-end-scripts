@@ -104,8 +104,13 @@ rm -f $tmp_server_log
 ../bin/vitalizer.js build
 
 # Check for expected output
-exists public/index.html
 exists public/images/logo.svg
+exists public/asset-manifest.json
+exists public/index.html
+exists public/manifest.json
+exists public/robots.txt
+exists public/service-worker.js
+
 exists public/*.js
 exists public/*.js.map
 exists public/*.css.map
@@ -113,8 +118,10 @@ exists public/*.css
 
 # Diff output files
 diff public/index.html stub/index.html
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.js stub/index.js
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.6bad2280.chunk.css stub/main.6bad2280.chunk.css
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.a6d503f4.chunk.js stub/main.a6d503f4.chunk.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.ec26e76c.js stub/runtime~main.ec26e76c.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.7f5e23f2.chunk.js stub/vendor.7f5e23f2.chunk.js
 
 # Check the build time doesn't breach the threshold
 # perf_within_bounds
