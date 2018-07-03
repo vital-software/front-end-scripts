@@ -126,12 +126,7 @@ module.exports = smp.wrap({
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
-
-        alias: {
-            // Ensure webpack-hot-client uses the correct node_modules
-            'webpack-hot-client/client': path.join(__dirname, '../node_modules/webpack-hot-client/client')
-        }
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss']
     },
 
     module: {
