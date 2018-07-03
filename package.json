@@ -37,6 +37,7 @@
   },
   "scripts": {
     "lint": "eslint \"{bin,config,helper,scripts}/**/*.js\" --quiet",
+    "precommit": "yarn lint",
     "test": "./test/task/local-test.sh"
   },
   "bin": {
@@ -49,7 +50,7 @@
     "chalk": "2.4.1",
     "connect-history-api-fallback": "1.5.0",
     "cross-spawn": "6.0.5",
-    "css-loader": "0.28.7",
+    "css-loader": "0.28.11",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "file-loader": "1.1.11",
@@ -77,6 +78,7 @@
     "strip-ansi": "4.0.0",
     "style-loader": "0.21.0",
     "sw-precache-webpack-plugin": "0.11.5",
+    "thread-loader": "1.1.5",
     "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "1.0.1",
     "webpack": "4.14.0",
@@ -95,8 +97,9 @@
     "eslint-plugin-flowtype": "2.49.3",
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jest": "21.17.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-jsx-a11y": "6.1.0",
     "eslint-plugin-react": "7.10.0",
+    "husky": "0.14.3",
     "semantic-release": "15.6.1"
   },
   "peerDependencies": {
