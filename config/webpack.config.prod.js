@@ -97,7 +97,10 @@ module.exports = smp.wrap({
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
-                    autoprefixer: true
+                    autoprefixer: true,
+                    map: {
+                        inline: false
+                    }
                 }
             })
         ],
