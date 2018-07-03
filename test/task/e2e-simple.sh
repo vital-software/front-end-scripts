@@ -39,22 +39,22 @@ function exists {
 }
 
 # Check for a rise in the build speed
-function perf_within_bounds {
-    bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
-    latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
-    # Max build time is %5 increase on bench
-    max_increase=$((bench_build_time/20))
-    max_build_time=$((bench_build_time+max_increase))
-
-    echo $max_build_time
-    echo $latest_build_time
-
-    if ((max_build_time < latest_build_time ))
-    then
-        exit 1
-    fi
-    exit 0
-}
+# function perf_within_bounds {
+#     bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
+#     latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
+#     # Max build time is %5 increase on bench
+#     max_increase=$((bench_build_time/20))
+#     max_build_time=$((bench_build_time+max_increase))
+#
+#     echo $max_build_time
+#     echo $latest_build_time
+#
+#     if ((max_build_time < latest_build_time ))
+#     then
+#         exit 1
+#     fi
+#     exit 0
+# }
 
 # Exit the script with a helpful error message when any error is encountered
 trap 'set +x; handle_error $LINENO $BASH_COMMAND' ERR
@@ -117,4 +117,4 @@ diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/i
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
 
 # Check the build time doesn't breach the threshold
-perf_within_bounds
+# perf_within_bounds
