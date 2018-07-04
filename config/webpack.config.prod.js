@@ -6,12 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path')
+const paths = require('./paths')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
-const path = require('path')
-const paths = require('./paths')
 const webpack = require('webpack')
 
 // Measure the speed of the build
@@ -38,8 +38,8 @@ module.exports = smp.wrap({
     // our own hints via the FileSizeReporter.
     performance: false,
 
-    // In production, we only want to the app code.
-    entry: [paths.appIndexJs],
+    // In production, we only want the app code.
+    entry: paths.appIndexJs,
 
     output: {
         // The output directory as an absolute path.
@@ -62,6 +62,7 @@ module.exports = smp.wrap({
 
     optimization: {
         minimizer: [
+            // JavaScript minfier
             new UglifyJsPlugin({
                 uglifyOptions: {
                     // Supported ECMAScript Version.
@@ -98,9 +99,14 @@ module.exports = smp.wrap({
                 // Use source maps to map error message locations to module
                 sourceMap: true
             }),
+
+            // CSS Minifier (uses cssnano)
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
+                    // Removes unnecessary prefixes based on browser support.
                     autoprefixer: true,
+
+                    // Ensure external source map file is used.
                     map: {
                         inline: false
                     }
@@ -125,6 +131,7 @@ module.exports = smp.wrap({
     },
 
     resolve: {
+        // Support multiple path module lookup (i.e. app/sass module root support).
         modules: process.env.RESOLVE_MODULES
             ? ['node_modules']
                 .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
@@ -288,8 +295,10 @@ module.exports = smp.wrap({
             // about it being stale, and the cache-busting can be skipped.
             dontCacheBustUrlsMatching: /\.\w{8}\./,
 
+            // Set custom filename.
             filename: 'service-worker.js',
 
+            // Clean up logger output.
             logger(message) {
                 if (message.indexOf('Total precache size is') === 0) {
                     // This message occurs for every build and is a bit too noisy.
@@ -303,6 +312,7 @@ module.exports = smp.wrap({
                 console.log(message)
             },
 
+            // Set to true to minify and uglify the generated service-worker.
             minify: true,
 
             // Don't precache licenses, sourcemaps (they're large) and build asset manifest:

@@ -4,11 +4,11 @@ const env = getClientEnvironment()
 
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const paths = require('./paths')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const WatchMissingNodeModulesPlugin = require('../helper/watch-missing-node-modules-plugin')
-const path = require('path')
-const paths = require('./paths')
 const webpack = require('webpack')
 
 // Measure the speed of the build
@@ -22,6 +22,7 @@ const smp = new SpeedMeasurePlugin()
 module.exports = smp.wrap({
     mode: 'development',
 
+    // Set development source mapping.
     devtool: 'cheap-module-source-map',
 
     entry: [
@@ -66,9 +67,12 @@ module.exports = smp.wrap({
     },
 
     resolve: {
-        modules: ['node_modules']
-            .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
-            .map(paths.resolveApp),
+        // Support multiple path module lookup (i.e. app/sass module root support).
+        modules: process.env.RESOLVE_MODULES
+            ? ['node_modules']
+                .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
+                .map(paths.resolveApp)
+            : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss']
