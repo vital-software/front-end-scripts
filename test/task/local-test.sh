@@ -5,5 +5,5 @@ docker run \
   --volume ${PWD}/vitalizer/..:/var/vitalizer \
   --workdir /var/vitalizer \
   --interactive \
-  node:10 \
+  node:10.5.0 \
   bash -c "./test/task/e2e-simple.sh"
