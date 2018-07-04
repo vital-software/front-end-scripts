@@ -24,6 +24,17 @@ module.exports = (host, port) => ({
     // Sets the host that the server will listen on.
     host,
 
+    // Hot Module Replacement settings.
+    hot: {
+        // Enable HMR.
+        hmr: true,
+
+        // Don't automatically reload the page if HMR fails.
+        // Opinionated setting, we can remove this when we are
+        // happy with how HMR operates in our stack.
+        reload: false
+    },
+
     // The port the server should listen on.
     port,
 
