@@ -20,13 +20,13 @@ function cleanup {
 # Error messages are redirected to stderr
 function handle_error {
   echo "$(basename $0): ERROR! An error was encountered executing line $1." 1>&2;
-  cleanup
+  # cleanup
   echo 'Exiting with error.' 1>&2;
   exit 1
 }
 
 function handle_exit {
-  cleanup
+  # cleanup
   echo 'Exiting without error.' 1>&2;
   exit
 }
@@ -34,7 +34,7 @@ function handle_exit {
 # Check for the existence of one or more files.
 function exists {
   for f in $*; do
-    test -e "$f"
+    test -f "$f"
   done
 }
 
