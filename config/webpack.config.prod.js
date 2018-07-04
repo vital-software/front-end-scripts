@@ -17,6 +17,9 @@ const webpack = require('webpack')
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
 
+// Configure file names to use hashing or not
+const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[chunkhash:8]'
+
 /*
     This is the production configuration.
     It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -44,10 +47,10 @@ module.exports = smp.wrap({
 
         // Generated JS file names (with nested folders).
         // There will be one main bundle, and one file per asynchronous chunk.
-        filename: '[name].[chunkhash:8].js',
+        filename: `${fileName}.js`,
 
         // There are also additional JS chunk files if you use code splitting.
-        chunkFilename: '[name].[chunkhash:8].chunk.js',
+        chunkFilename: `${fileName}.chunk.js`,
 
         // Webpack uses `publicPath` to determine where the app is being served from.
         // We always serve from the root. This makes config easier.
@@ -149,7 +152,7 @@ module.exports = smp.wrap({
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000, // Byte limit for URL loader conversion
-                            name: '[path][name].[chunkhash:8].[ext]'
+                            name: `[path]${fileName}.[ext]`
                         }
                     },
 
@@ -227,7 +230,7 @@ module.exports = smp.wrap({
                         // by webpacks internal loaders.
                         exclude: [/\.(flow|js|jsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
-                            name: '[path][name].[chunkhash:8].[ext]'
+                            name: `[path]${fileName}.[ext]`
                         }
                     }
                     // ** STOP ** Are you adding a new loader?
@@ -263,8 +266,8 @@ module.exports = smp.wrap({
         // CSS extractor.
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
-            filename: '[name].[contenthash:8].css',
-            chunkFilename: '[name].[contenthash:8].chunk.css'
+            filename: `${fileName}.css`,
+            chunkFilename: `${fileName}.chunk.css`
         }),
 
         // Generate a manifest file which contains a mapping of all asset filenames

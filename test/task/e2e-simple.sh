@@ -20,13 +20,13 @@ function cleanup {
 # Error messages are redirected to stderr
 function handle_error {
   echo "$(basename $0): ERROR! An error was encountered executing line $1." 1>&2;
-  # cleanup
+  cleanup
   echo 'Exiting with error.' 1>&2;
   exit 1
 }
 
 function handle_exit {
-  # cleanup
+  cleanup
   echo 'Exiting without error.' 1>&2;
   exit
 }
@@ -100,7 +100,7 @@ exists public/*.css
 
 # Diff output files
 diff public/index.html stub/index.html
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.6bad2280.chunk.css stub/main.6bad2280.chunk.css
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.a6d503f4.chunk.js stub/main.a6d503f4.chunk.js
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.ec26e76c.js stub/runtime~main.ec26e76c.js
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.7f5e23f2.chunk.js stub/vendor.7f5e23f2.chunk.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.css stub/main.chunk.css
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.js stub/main.chunk.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.js stub/runtime~main.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.chunk.js stub/vendor.chunk.js

@@ -1,4 +1,4 @@
-FROM node:10.5.0
+FROM node:10
 
 # Set timezone - required for any time related tests
 ENV TZ=Pacific/Auckland
