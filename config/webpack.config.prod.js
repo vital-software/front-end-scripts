@@ -149,7 +149,7 @@ module.exports = smp.wrap({
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000, // Byte limit for URL loader conversion
-                            name: 'static/media/[name].[hash:8].[ext]'
+                            name: '[path][name].[chunkhash:8].[ext]'
                         }
                     },
 
@@ -227,7 +227,7 @@ module.exports = smp.wrap({
                         // by webpacks internal loaders.
                         exclude: [/\.(flow|js|jsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
-                            name: '[path][name].[hash:8].[ext]'
+                            name: '[path][name].[chunkhash:8].[ext]'
                         }
                     }
                     // ** STOP ** Are you adding a new loader?
