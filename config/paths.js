@@ -13,7 +13,6 @@ module.exports = {
     appPublic: resolveApp('static'),
     appHtml: resolveApp('static/index.html'),
     appIndexJs: resolveApp('app/index.js'),
-    appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('app'),
     appNodeModules: resolveApp('node_modules')
 }
