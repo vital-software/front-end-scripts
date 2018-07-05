@@ -8,16 +8,6 @@ const paths = require('./paths')
 const proxy = require('http-proxy-middleware')
 const Router = require('koa-router')
 
-// Proxy options
-const proxyOptions = {
-    headers: {
-        host: process.env.API_PROXY_HOST
-    },
-    pathRewrite: { ['^/api']: '' },
-    secure: false,
-    target: process.env.API_PROXY_URL
-}
-
 // Create router definition
 const router = new Router()
 
@@ -28,9 +18,6 @@ router.get('/healthcheck', (ctx) => {
         service: 'vitalizer'
     }
 })
-
-// Set up API proxy
-router.use('/api', convert(proxy(proxyOptions)))
 
 // History fallback (this needs to be declared before middleware)
 router.get('*', convert(history()))
@@ -74,7 +61,21 @@ module.exports = (host, port) => ({
     add: (app, middleware) => {
         // Just a note, the order of statements matters here.
 
-        // Router needs to be added first.
+        // Set up API proxy first
+        app.use(
+            convert(
+                proxy('/api', {
+                    headers: {
+                        host: process.env.API_PROXY_HOST
+                    },
+                    pathRewrite: { ['^/api']: '' },
+                    secure: false,
+                    target: process.env.API_PROXY_URL
+                })
+            )
+        )
+
+        // Router needs to be added in this order.
         app.use(router.routes())
 
         // since we're manipulating the order of middleware added, we need to handle
