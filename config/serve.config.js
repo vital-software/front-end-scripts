@@ -46,6 +46,14 @@ module.exports = (host, port) => ({
     add: (app, middleware) => {
         // Just a note, the order of statements matters here.
 
+        // Emulate healthcheck like nginx
+        app.get('/healthcheck', (request, response) => {
+            response.json({
+                org: 'vital',
+                service: 'vitalizer'
+            })
+        })
+
         // Set up API proxy
         app.use(
             convert(
