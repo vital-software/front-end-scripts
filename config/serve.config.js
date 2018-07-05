@@ -6,6 +6,34 @@ const convert = require('koa-connect')
 const history = require('connect-history-api-fallback')
 const paths = require('./paths')
 const proxy = require('http-proxy-middleware')
+const Router = require('koa-router')
+
+// Proxy options
+const proxyOptions = {
+    headers: {
+        host: process.env.API_PROXY_HOST
+    },
+    pathRewrite: { ['^/api']: '' },
+    secure: false,
+    target: process.env.API_PROXY_URL
+}
+
+// Create router definition
+const router = new Router()
+
+// Emulate healthcheck like nginx
+router.get('/healthcheck', (ctx) => {
+    ctx.body = {
+        org: 'vital',
+        service: 'vitalizer'
+    }
+})
+
+// Set up API proxy
+router.use('/api', convert(proxy(proxyOptions)))
+
+// History fallback (this needs to be declared before middleware)
+router.get('*', convert(history()))
 
 /*
     This is the webpack-serve configuration.
@@ -46,33 +74,11 @@ module.exports = (host, port) => ({
     add: (app, middleware) => {
         // Just a note, the order of statements matters here.
 
-        // Emulate healthcheck like nginx
-        app.get('/healthcheck', (request, response) => {
-            response.json({
-                org: 'vital',
-                service: 'vitalizer'
-            })
-        })
+        // Router needs to be added first.
+        app.use(router.routes())
 
-        // Set up API proxy
-        app.use(
-            convert(
-                proxy('/api', {
-                    headers: {
-                        host: process.env.API_PROXY_HOST
-                    },
-                    pathRewrite: { ['^/api']: '' },
-                    secure: false,
-                    target: process.env.API_PROXY_URL
-                })
-            )
-        )
-
-        // History fallback (this needs to be declared before middleware)
-        app.use(convert(history()))
-
-        // Ensure webpack files are loaded before static content
-        // we need index.js to exist before HtmlWebpackPlugin run on static/index.html
+        // since we're manipulating the order of middleware added, we need to handle
+        // adding these two internal middleware functions.
         middleware.webpack()
         middleware.content()
     }
