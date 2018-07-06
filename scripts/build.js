@@ -16,14 +16,10 @@ process.on('unhandledRejection', (error) => {
 const chalk = require('chalk')
 const fs = require('fs-extra')
 const webpack = require('webpack')
-// const bfj = require('bfj')
 const config = require('../config/webpack.config.prod')
 const paths = require('../config/paths')
 
-// const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
-// const printHostingInstructions = require('react-dev-utils/printHostingInstructions')
 const FileSizeReporter = require('../helper/file-size-reporter')
-// const printBuildError = require('react-dev-utils/printBuildError')
 const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 
