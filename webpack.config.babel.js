@@ -169,7 +169,7 @@ module.exports = {
 
         // Resolve
         const resolve = {
-            extensions: ['.css', '.gql', '.graphql', '.js', '.json', '.jsx', '.scss', '.flow'],
+            extensions: ['.css', '.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.scss', '.flow'],
             modules: ['node_modules', paths.appCss, paths.appSrc, paths.appPublic]
         }
 
