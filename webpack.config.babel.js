@@ -145,6 +145,11 @@ module.exports = {
                     loader: 'graphql-tag/loader'
                 },
                 {
+                    test: /\.mjs$/,
+                    include: /node_modules/,
+                    type: "javascript/auto"
+                },
+                {
                     test: /\.(js|jsx|flow)$/,
                     include: [/node_modules\/@vital-software\/web-utils\/lib/, /.*\/app/],
                     loader: 'babel-loader'
