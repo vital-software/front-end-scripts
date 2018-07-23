@@ -6,37 +6,17 @@ steps:
     agents:
       queue: docker-build
     plugins:
-      docker-compose#v1.8.2:
+      vital-software/docker-compose#master:
         build:            base
         image_repository: quay.io/vital/build-cache
         image-name:       ${COMMIT_TAG}
 
   - wait
 
-  - label:    ":golf: Update and Push lockfile"
-    command:  sh -c 'npm-auth-env && greenkeeper-lockfile-update && greenkeeper-lockfile-upload'
-    branches: greenkeeper/*
+  - label:   ":eslint: Lint"
+    command: yarn lint
     plugins:
-      # master version because of https://github.com/buildkite-plugins/docker-compose-buildkite-plugin/issues/59#issuecomment-367895573
-      docker-compose#master:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
-
-  - label:   ":eslint: Lint JS"
-    command: yarn test-lint-js
-    plugins:
-      docker-compose#master:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
-
-  - label:   ":stylelint: Lint CSS"
-    command: yarn test-lint-css
-    plugins:
-      docker-compose#master:
+      vital-software/docker-compose#master:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml
@@ -45,7 +25,7 @@ steps:
   - label:   ":yarn: Simple e2e test"
     command: test/task/e2e-simple.sh
     plugins:
-      docker-compose#master:
+      vital-software/docker-compose#master:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml
@@ -57,7 +37,7 @@ steps:
     branches: master
     command: semantic-release
     plugins:
-      docker-compose#master:
+      vital-software/docker-compose#master:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml

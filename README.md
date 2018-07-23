@@ -1,80 +1,70 @@
-# Vitalizer [![Build status](https://badge.buildkite.com/06a3e85c8806f7f481e77bc9c9905f967c5c68dfd5aceb69c5.svg)](https://buildkite.com/vital/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer) [![Greenkeeper badge](https://badges.greenkeeper.io/vital-software/vitalizer.svg)](https://greenkeeper.io/)
+# Vitalizer [![Build status](https://badge.buildkite.com/06a3e85c8806f7f481e77bc9c9905f967c5c68dfd5aceb69c5.svg)](https://buildkite.com/vital/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
 
-> Get a Front End project up with no external configuration.
+Webpack development and bundling tool for Vital Software.
 
-## TODO Notes
-- Move `:root` statement out of common files (dashboard/checkin), and load in at root level instead (once per app)
-- Update the 'babili-webpack-plugin' when https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68 fixed
-
-## Features
-- Yarn
-- HTTP/2
-- HTTPS
-- GZipping
+### Features
 - Hot reloading
 - Injected JS/CSS assets
 - Tree-shaking optimization
 - Cache busted production assets
-- Source maps
-
-
-### CSS Support
-- PostCSS
-- Autoprefixer
-- SCSS style syntax
-- [cssnext](http://cssnext.io/)
-- CSS Nano minification
+- Source map support
+- PostCSS (Autoprefixer, cssnext, SCSS style syntax)
+- cssnano minification
 - rem() function support
 
+### Installing
 
-### JavaScript Support
-- Babel
-- ES2015
-- ES2016
-- ES2017
-- Babili minification
-- Vendor chunking
-
-
-### Code Quality
-- [ESLint](http://eslint.org/)
-- [Stylelint](http://stylelint.io/)
-
-#### Style property ordering
-Style property order uses a version of the 'Outside In' ordering approach, with all direction properties in clockwise order (TRBL). The order is as follows:
-
-- Position properties (`position`, `top`, `left`)
-- Box model properties (`display`, `width`, `height`, `padding`, `margin`)
-- Text properties (`color`, `font-family`, `line-height`)
-- Visual properties (`cursor`, `background`, `border`)
-- Animation & misc properties (`transform`, `animation`, `transition`)
-
-
-
-## Configuration
-If you need project specific configuration for the build/watch tasks, create a `.build.config.js` in the root folder of your project. It uses the following syntax:
+To install, run the following commands:
 
 ```
-module.exports = {
-    entry: {
-    }
-};
+yarn add vitalizer -D
 ```
 
+### Usage
 
-## Troubleshooting
+**Development**
 
-#### Environment variables on build
-Ensure that the BUILD_ENV environment variable gets set directly before the call to build otherwise the variable will fall out of scope and be undefined in the build script context.
-eg: `BUILD_ENV=production vitalizer build`
+To run Vitalizer in development mode (using webpack-serve), run the following command:
 
-#### Safari outputs a (WebSocket network error: OSStatus Error -9807: Invalid certificate chain)
-You need to ensure you've correctly trusted the self-signed certificate within Safari. See the guide [available here](http://blog.marcon.me/post/24874118286/secure-websockets-safari) for how to do this. If the padlock icon doesn't show in the URL bar, you will need to clear browser history for the `localhost` domain and refresh the page.
+```sh
+vitalizer start
+```
+
+To build your project files for production, run the following command:
+
+```sh
+vitalizer build
+```
+
+### Configuration
+
+To configure Vitalizer, create a file called `.env` in the root of your project:
+
+```
+VARIABLE=name
+```
+
+And set any of the following variables:
+
+Variable | Development | Production | Usage
+:--- | :---: | :---: | :---
+`API_PROXY_HOST` | :white_check_mark: | :x: | Set this value to configure the API proxy host (i.e. `api.vital`)
+`API_PROXY_URL` | :white_check_mark: | :x: | Set this value to configure the API proxy url (i.e. `https://api.vital`)
+`CI` | :large_orange_diamond: | :white_check_mark: | When set to `true`, Vitalizer treats warnings as failures in the build. Most CIs set this flag by default.
+`DISABLE_HASH` | :x: | :white_check_mark: | When set to `true`, production assets are output as `[name].[ext]` rather than `[name][hash].[ext]`. Useful for debugging and test purposes.
+`HOST` | :white_check_mark: | :x: | By default, the development web server binds to `localhost`. You may use this variable to specify a different host.
+`PORT` | :white_check_mark: | :x: | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port.
+`RESOLVE_MODULES` | :white_check_mark: | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`
 
 
-## Contributing
+#### Expanding Environment Variables In .env
 
-#### Running tests locally
-Use the following command to run the tests on your local environment:
+Expand variables already on your machine for use in your `.env` file (using [dotenv-expand](https://github.com/motdotla/dotenv-expand)).
 
-    yarn test
+For example, to use the `DOMAIN` variable:
+
+```
+DOMAIN=www.example.com
+FOO=$DOMAIN/foo
+BAR=$DOMAIN/bar
+```

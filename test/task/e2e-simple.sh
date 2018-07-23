@@ -34,26 +34,8 @@ function handle_exit {
 # Check for the existence of one or more files.
 function exists {
   for f in $*; do
-    test -e "$f"
+    test -f "$f"
   done
-}
-
-# Check for a rise in the build speed
-function perf_within_bounds {
-    bench_build_time=$(cat ./perf/webpack.speed.bench.json | jq '.misc.compileTime')
-    latest_build_time=$(cat ./perf/webpack.speed.json | jq '.misc.compileTime')
-    # Max build time is %5 increase on bench
-    max_increase=$((bench_build_time/20))
-    max_build_time=$((bench_build_time+max_increase))
-
-    echo $max_build_time
-    echo $latest_build_time
-
-    if ((max_build_time < latest_build_time ))
-    then
-        exit 1
-    fi
-    exit 0
 }
 
 # Exit the script with a helpful error message when any error is encountered
@@ -84,7 +66,7 @@ pid=$!
 # Wait for compilation to complete
 retries=0
 max_retries=30
-while [ ! grep -q 'Compiled successfully!' $tmp_server_log ]
+while ! grep -q 'Compiled successfully' $tmp_server_log
 do
    echo $((++retries))
    if ((retries>max_retries))
@@ -101,11 +83,16 @@ kill $pid
 rm -f $tmp_server_log
 
 # Test local build mode
-NODE_ENV=production ../bin/vitalizer.js build
+../bin/vitalizer.js build
 
 # Check for expected output
-exists public/index.html
 exists public/images/logo.svg
+exists public/asset-manifest.json
+exists public/index.html
+exists public/manifest.json
+exists public/robots.txt
+exists public/service-worker.js
+
 exists public/*.js
 exists public/*.js.map
 exists public/*.css.map
@@ -113,8 +100,7 @@ exists public/*.css
 
 # Diff output files
 diff public/index.html stub/index.html
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.js stub/index.js
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/index.css stub/index.css
-
-# Check the build time doesn't breach the threshold
-perf_within_bounds
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.css stub/main.chunk.css
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.js stub/main.chunk.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.js stub/runtime~main.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.chunk.js stub/vendor.chunk.js
