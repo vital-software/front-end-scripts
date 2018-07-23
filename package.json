@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "5.0.0-alpha.4",
+  "version": "5.0.0",
   "description": "Vital Software front-end asset builder",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
