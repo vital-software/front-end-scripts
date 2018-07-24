@@ -57,8 +57,7 @@ module.exports = smp.wrap({
         publicPath: '/',
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: (info) =>
-            path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
     },
 
     optimization: {
@@ -138,26 +137,12 @@ module.exports = smp.wrap({
         // Support multiple path module lookup (i.e. app/sass module root support).
         modules: process.env.RESOLVE_MODULES
             ? ['node_modules']
-                .concat(
-                    process.env.RESOLVE_MODULES.split(',').map((string) =>
-                        string.trim()
-                    )
-                )
+                .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
                 .map(paths.resolveApp)
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: [
-            '.gql',
-            '.graphql',
-            '.mjs',
-            '.js',
-            '.json',
-            '.jsx',
-            '.flow',
-            '.css',
-            '.scss'
-        ]
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss']
     },
 
     module: {
@@ -224,10 +209,7 @@ module.exports = smp.wrap({
                                 loader: require.resolve('postcss-loader'),
                                 options: {
                                     config: {
-                                        path: path.join(
-                                            __dirname,
-                                            './postcss.config.js'
-                                        )
+                                        path: path.join(__dirname, './postcss.config.js')
                                     },
 
                                     // Necessary for external CSS imports to work
@@ -337,11 +319,7 @@ module.exports = smp.wrap({
             minify: true,
 
             // Don't precache licenses, sourcemaps (they're large) and build asset manifest:
-            staticFileGlobsIgnorePatterns: [
-                /\.LICENSE$/,
-                /\.map$/,
-                /asset-manifest\.json$/
-            ],
+            staticFileGlobsIgnorePatterns: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
 
             // Sets an HTML document to use as a fallback for URLs not found in the cache.
             navigateFallback: '/index.html'
