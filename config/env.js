@@ -52,7 +52,10 @@ function getClientEnvironment() {
             {
                 // Useful for determining whether we’re running in production mode.
                 // Most importantly, it switches React into the correct mode.
-                NODE_ENV: process.env.NODE_ENV || 'development'
+                NODE_ENV: process.env.NODE_ENV || 'development',
+
+                // Set 'process.env.RELEASE' value for Sentry artifacts
+                RELEASE: process.env.RELEASE || 'N/A'
             }
         )
     // Stringify all values so we can feed into Webpack DefinePlugin
