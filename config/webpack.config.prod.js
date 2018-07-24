@@ -74,7 +74,7 @@ module.exports = smp.wrap({
                         drop_console: true,
 
                         // remove inlining to patch https://github.com/mishoo/UglifyJS2/issues/2842
-                        inline: false
+                        inline: 1
                     },
 
                     mangle: {
