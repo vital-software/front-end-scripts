@@ -48,15 +48,10 @@ const saveQuestionEpic: * = (action$: any): * =>
         }: ReduxActionWithPayload<?DocSavePayload>): Promise<ReduxActionWithPayload<SavedPayload> | ReduxActionWithPayload<Error>> =>
             graphQl(SaveQuestion, payload)
                 .then(
-                    ({
-                        data: { updateCheckin }
-                    }: SaveResponse): ReduxActionWithPayload<SavedPayload> =>
+                    ({ data: { updateCheckin } }: SaveResponse): ReduxActionWithPayload<SavedPayload> =>
                         console.log('THING', updateCheckin)
                 )
-                .catch(
-                    (error: Error): ReduxActionWithPayload<Error> =>
-                        logError(error)
-                )
+                .catch((error: Error): ReduxActionWithPayload<Error> => logError(error))
     )
 
 export const epics: Epics = {
