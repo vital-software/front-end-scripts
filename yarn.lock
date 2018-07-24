@@ -310,6 +310,10 @@
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.5.0.tgz#6b8ad02c0177f1c0321c3749b2a2264f0f371aeb"
 
+"@vital-software/renovate-config@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vital-software/renovate-config/-/renovate-config-1.1.0.tgz#e503bc7014ae4eed3aa779000c6c7b13cda9739d"
+
 "@webassemblyjs/ast@1.5.12":
   version "1.5.12"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.12.tgz#a9acbcb3f25333c4edfa1fdf3186b1ccf64e6664"
