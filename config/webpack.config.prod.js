@@ -70,7 +70,10 @@ module.exports = smp.wrap({
 
                     compress: {
                         // Discard calls to console.* functions.
-                        drop_console: true
+                        drop_console: true,
+
+                        // remove inlining to patch https://github.com/mishoo/UglifyJS2/issues/2842
+                        inline: 1
                     },
 
                     mangle: {
