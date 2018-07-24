@@ -109,6 +109,9 @@ module.exports = smp.wrap({
                     // Removes unnecessary prefixes based on browser support.
                     autoprefixer: true,
 
+                    // Ensure Z-Index is maintained
+                    zindex: false,
+
                     // Ensure external source map file is used.
                     map: {
                         inline: false
