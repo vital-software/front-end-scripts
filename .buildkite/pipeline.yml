@@ -6,7 +6,7 @@ steps:
     agents:
       queue: docker-build
     plugins:
-      vital-software/docker-compose#master:
+      vital-software/docker-compose#vital-v1.8:
         build:            base
         image_repository: quay.io/vital/build-cache
         image-name:       ${COMMIT_TAG}
@@ -16,7 +16,7 @@ steps:
   - label:   ":eslint: Lint"
     command: yarn lint
     plugins:
-      vital-software/docker-compose#master:
+      vital-software/docker-compose#vital-v1.8:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml
@@ -25,7 +25,7 @@ steps:
   - label:   ":yarn: Simple e2e test"
     command: test/task/e2e-simple.sh
     plugins:
-      vital-software/docker-compose#master:
+      vital-software/docker-compose#vital-v1.8:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml
@@ -37,7 +37,7 @@ steps:
     branches: master
     command: semantic-release
     plugins:
-      vital-software/docker-compose#master:
+      vital-software/docker-compose#vital-v1.8:
         config:
           - docker-compose.yml
           - docker-compose.buildkite.yml
