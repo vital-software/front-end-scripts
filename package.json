@@ -92,7 +92,7 @@
         "@semantic-release/git": "6.0.1",
         "@vital-software/eslint-config": "1.5.0",
         "@vital-software/renovate-config": "1.1.0",
-        "babel-eslint": "8.2.5",
+        "babel-eslint": "8.2.6",
         "eslint": "5.0.1",
         "eslint-plugin-babel": "5.1.0",
         "eslint-plugin-compat": "2.4.0",
