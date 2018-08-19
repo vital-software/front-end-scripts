@@ -103,7 +103,7 @@
         "eslint-plugin-jsx-a11y": "6.1.1",
         "eslint-plugin-react": "7.10.0",
         "husky": "0.14.3",
-        "semantic-release": "15.9.8"
+        "semantic-release": "15.9.9"
     },
     "peerDependencies": {
         "webpack-hot-client": "^4.0.4"
