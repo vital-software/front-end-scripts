@@ -46,7 +46,7 @@
     "dependencies": {
         "@babel/core": "7.0.0",
         "babel-loader": "v8.0.0-beta.4",
-        "browserslist": "4.0.2",
+        "browserslist": "4.1.0",
         "case-sensitive-paths-webpack-plugin": "2.1.2",
         "chalk": "2.4.1",
         "connect-history-api-fallback": "1.5.0",
