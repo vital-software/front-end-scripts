@@ -1,5 +1,4 @@
 {
   "extends": ["@vital-software"],
-  "schedule": ["after 9am and before 11am on monday"],
   "reviewers": ["hally9k"]
 }
