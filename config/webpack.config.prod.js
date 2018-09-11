@@ -73,13 +73,19 @@ module.exports = smp.wrap({
                         drop_console: true,
 
                         // remove inlining to patch https://github.com/mishoo/UglifyJS2/issues/2842
-                        inline: 1
+                        inline: 1,
+
+                        // Keep classnames for react component stack traces
+                        keep_classnames: true
                     },
 
                     mangle: {
                         // Work around the Safari 10 loop iterator bug.
                         safari10: true,
-                        toplevel: true
+                        toplevel: true,
+
+                        // Keep classnames for react component stack traces
+                        keep_classnames: true
                     },
 
                     output: {
