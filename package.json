@@ -52,7 +52,7 @@
         "connect-history-api-fallback": "1.5.0",
         "cross-spawn": "6.0.5",
         "css-loader": "0.28.11",
-        "dotenv": "6.0.0",
+        "dotenv": "6.1.0",
         "dotenv-expand": "4.2.0",
         "file-loader": "1.1.11",
         "filesize": "3.6.1",
