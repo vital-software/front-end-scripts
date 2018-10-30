@@ -33,6 +33,8 @@ steps:
 
   - wait
 
+  - block: ":rocket: Publish!"
+
   - label: ":npm: Semantic release"
     branches: master
     command: semantic-release
