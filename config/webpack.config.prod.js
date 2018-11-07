@@ -1,7 +1,6 @@
 // Load in ENV values
 const getClientEnvironment = require('./env')
 const env = getClientEnvironment()
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -13,10 +12,8 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const webpack = require('webpack')
-
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
-
 // Configure file names to use hashing or not
 const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[chunkhash:8]'
 

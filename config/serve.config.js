@@ -7,7 +7,6 @@ const history = require('connect-history-api-fallback')
 const paths = require('./paths')
 const proxy = require('http-proxy-middleware')
 const Router = require('koa-router')
-
 // Create router definition
 const router = new Router()
 

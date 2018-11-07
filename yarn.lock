@@ -369,10 +369,10 @@
     "@shellscape/koa-send" "^4.1.0"
     debug "^2.6.8"
 
-"@vital-software/eslint-config@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.5.0.tgz#6b8ad02c0177f1c0321c3749b2a2264f0f371aeb"
-  integrity sha512-rilqUTu/A1Bqq0gjL1Gp7rXq2tfVPyigO1Bs7e6w00hfYcI1+q3Dyx2ExUmIGDgCtvLjWkxME7OTu7XLT5wK8g==
+"@vital-software/eslint-config@1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.6.3.tgz#e4c40e48e161810bc7c2d0b0f096259a6e947b71"
+  integrity sha512-mZ+YQ97sy6dJZnAQ/LvrE0ry3RoGHpVOzEIkITJyUmBHTVVeJ0/cMaIhKJZjrzqW60dMdYa/BP/h0ZrY/UaY/g==
 
 "@vital-software/renovate-config@1.1.4":
   version "1.1.4"

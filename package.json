@@ -90,7 +90,7 @@
     },
     "devDependencies": {
         "@semantic-release/git": "6.0.2",
-        "@vital-software/eslint-config": "1.5.0",
+        "@vital-software/eslint-config": "1.6.3",
         "@vital-software/renovate-config": "1.1.4",
         "babel-eslint": "8.2.6",
         "eslint": "5.8.0",

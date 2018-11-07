@@ -18,14 +18,11 @@ const fs = require('fs-extra')
 const webpack = require('webpack')
 const config = require('../config/webpack.config.prod')
 const paths = require('../config/paths')
-
 const FileSizeReporter = require('../helper/file-size-reporter')
 const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
-
 const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild
-
 // These sizes are pretty large. We'll warn for bundles exceeding them.
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
