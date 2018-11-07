@@ -1,7 +1,6 @@
 // Load in ENV values
 const getClientEnvironment = require('./env')
 const env = getClientEnvironment()
-
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
@@ -10,7 +9,6 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const WatchMissingNodeModulesPlugin = require('../helper/watch-missing-node-modules-plugin')
 const webpack = require('webpack')
-
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
 
