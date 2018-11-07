@@ -1,8 +1,14 @@
 {
   "extends": "@vital-software",
   "rules": {
-    "camelcase": ["error", {"properties": "never"}],
+    "camelcase": ["error", { "properties": "never" }],
     "no-console": "off",
     "no-magic-numbers": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "16.5",
+      "flowVersion": "0.85"
+    }
   }
 }
