@@ -1,4 +1,6 @@
-module.exports = {
+const CDN_URL = process.env.CDN_URL
+
+module.exports = ({ env }) => ({
     parser: 'postcss-scss',
     plugins: {
         'postcss-import': {},
@@ -16,6 +18,12 @@ module.exports = {
                 },
                 customProperties: false
             }
-        }
+        },
+        'postcss-url':
+            env === 'production' && CDN_URL
+                ? {
+                    url: ({ url }) => `${CDN_URL}${url}`
+                }
+                : false
     }
-}
+})

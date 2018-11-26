@@ -16,6 +16,8 @@ const webpack = require('webpack')
 const smp = new SpeedMeasurePlugin()
 // Configure file names to use hashing or not
 const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[chunkhash:8]'
+// Configure CDN or local urls
+const publicPath = process.env.CDN_URL ? process.env.CDN_URL : '/'
 
 /*
     This is the production configuration.
@@ -50,8 +52,8 @@ module.exports = smp.wrap({
         chunkFilename: `${fileName}.chunk.js`,
 
         // Webpack uses `publicPath` to determine where the app is being served from.
-        // We always serve from the root. This makes config easier.
-        publicPath: '/',
+        // We either serve from the root, or a CDN url. This makes config easier.
+        publicPath,
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
         devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
