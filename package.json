@@ -81,7 +81,7 @@
     "strip-ansi": "4.0.0",
     "style-loader": "0.21.0",
     "sw-precache-webpack-plugin": "0.11.5",
-    "thread-loader": "1.1.5",
+    "thread-loader": "1.2.0",
     "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "1.0.1",
     "webpack": "4.14.0",
