@@ -83,7 +83,7 @@
     "sw-precache-webpack-plugin": "0.11.5",
     "thread-loader": "1.1.5",
     "uglifyjs-webpack-plugin": "1.2.7",
-    "url-loader": "1.0.1",
+    "url-loader": "1.1.2",
     "webpack": "4.14.0",
     "webpack-manifest-plugin": "2.0.3",
     "webpack-serve": "1.0.4",
