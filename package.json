@@ -79,7 +79,7 @@
     "recursive-readdir": "2.2.2",
     "speed-measure-webpack-plugin": "1.2.3",
     "strip-ansi": "4.0.0",
-    "style-loader": "0.21.0",
+    "style-loader": "0.23.1",
     "sw-precache-webpack-plugin": "0.11.5",
     "thread-loader": "1.1.5",
     "uglifyjs-webpack-plugin": "1.2.7",
