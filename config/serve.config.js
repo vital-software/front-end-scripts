@@ -61,18 +61,20 @@ module.exports = (host, port) => ({
         // Just a note, the order of statements matters here.
 
         // Set up API proxy first
-        app.use(
-            convert(
-                proxy('/api', {
-                    headers: {
-                        host: process.env.API_PROXY_HOST
-                    },
-                    pathRewrite: { ['^/api']: '' },
-                    secure: false,
-                    target: process.env.API_PROXY_URL
-                })
+        if (process.env.API_PROXY_HOST && process.env.API_PROXY_URL) {
+            app.use(
+                convert(
+                    proxy('/api', {
+                        headers: {
+                            host: process.env.API_PROXY_HOST
+                        },
+                        pathRewrite: { ['^/api']: '' },
+                        secure: false,
+                        target: process.env.API_PROXY_URL
+                    })
+                )
             )
-        )
+        }
 
         // Router needs to be added in this order.
         app.use(router.routes())
