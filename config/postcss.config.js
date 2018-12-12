@@ -9,15 +9,12 @@ module.exports = ({ env }) => ({
         'postcss-remify': {},
         'postcss-nesting': {},
         'postcss-nested': {},
-        'postcss-cssnext': {
+        'postcss-color-function': {},
+        'postcss-preset-env': {
             features: {
-                autoprefixer: {
-                    flexbox: false,
-                    grid: false
-                    // remove: false // Enable for 10% performance improvement
-                },
-                customProperties: false
-            }
+                'custom-properties': false
+            },
+            stage: 1
         },
         'postcss-url':
             env === 'production' && CDN_URL
