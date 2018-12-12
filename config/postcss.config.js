@@ -13,7 +13,8 @@ module.exports = ({ env }) => ({
         'postcss-preset-env': {
             features: {
                 'custom-properties': false
-            }
+            },
+            stage: 1
         },
         'postcss-url':
             env === 'production' && CDN_URL
