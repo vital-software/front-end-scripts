@@ -48,7 +48,7 @@
     "vitalizer": "./bin/vitalizer.js"
   },
   "dependencies": {
-    "@babel/core": "7.1.6",
+    "@babel/core": "7.2.0",
     "babel-loader": "8.0.4",
     "browserslist": "4.3.4",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
@@ -86,8 +86,8 @@
     "strip-ansi": "5.0.0",
     "style-loader": "0.23.1",
     "sw-precache-webpack-plugin": "0.11.5",
+    "terser-webpack-plugin": "1.1.0",
     "thread-loader": "1.2.0",
-    "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "1.1.2",
     "webpack": "4.14.0",
     "webpack-manifest-plugin": "2.0.3",
