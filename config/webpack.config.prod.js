@@ -7,10 +7,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
@@ -62,22 +62,39 @@ module.exports = smp.wrap({
     optimization: {
         minimizer: [
             // JavaScript minfier
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    // Supported ECMAScript Version.
-                    ecma: 8,
-
+            new TerserPlugin({
+                terserOptions: {
+                    parse: {
+                        // we want terser to parse ecma 8 code. However, we don't want it
+                        // to apply any minfication steps that turns valid ecma 5 code
+                        // into invalid ecma 5 code. This is why the 'compress' and 'output'
+                        // sections only apply transformations that are ecma 5 safe
+                        // https://github.com/facebook/create-react-app/pull/4234
+                        ecma: 8
+                    },
                     compress: {
                         // Discard calls to console.* functions.
                         drop_console: true,
 
-                        // remove inlining to patch https://github.com/mishoo/UglifyJS2/issues/2842
-                        inline: 1,
+                        // Disabled because of an issue with Terser breaking valid code:
+                        // https://github.com/facebook/create-react-app/issues/5250
+                        // Pending futher investigation:
+                        // https://github.com/terser-js/terser/issues/120
+                        inline: 2,
 
                         // Keep classnames for react component stack traces
-                        keep_classnames: true
-                    },
+                        keep_classnames: true,
 
+                        ecma: 5,
+
+                        warnings: false,
+
+                        // Disabled because of an issue with Uglify breaking seemingly valid code:
+                        // https://github.com/facebook/create-react-app/issues/2376
+                        // Pending further investigation:
+                        // https://github.com/mishoo/UglifyJS2/issues/2011
+                        comparisons: false
+                    },
                     mangle: {
                         // Work around the Safari 10 loop iterator bug.
                         safari10: true,
@@ -86,9 +103,13 @@ module.exports = smp.wrap({
                         // Keep classnames for react component stack traces
                         keep_classnames: true
                     },
-
                     output: {
+                        ecma: 5,
+
+                        comments: false,
+
                         // Turned on because emoji and regex is not minified properly using default
+                        // https://github.com/facebook/create-react-app/issues/2488
                         ascii_only: true
                     }
                 },
