@@ -9,6 +9,7 @@ module.exports = ({ env }) => ({
         'postcss-remify': {},
         'postcss-nesting': {},
         'postcss-nested': {},
+        'postcss-color-function': {},
         'postcss-preset-env': {
             features: {
                 'custom-properties': false
