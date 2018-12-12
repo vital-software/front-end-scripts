@@ -37,8 +37,12 @@
   },
   "scripts": {
     "lint": "eslint \"{bin,config,helper,scripts}/**/*.js\" --quiet",
-    "precommit": "yarn lint",
     "test": "./test/task/local-test.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "bin": {
     "vitalizer": "./bin/vitalizer.js"
@@ -104,7 +108,7 @@
     "eslint-plugin-jest": "22.1.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
-    "husky": "0.14.3",
+    "husky": "1.2.0",
     "semantic-release": "15.12.3"
   },
   "peerDependencies": {
