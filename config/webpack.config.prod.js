@@ -82,8 +82,9 @@ module.exports = smp.wrap({
                         // https://github.com/terser-js/terser/issues/120
                         inline: 2,
 
-                        // Keep classnames for react component stack traces
+                        // Keep classnames & function names for react component stack traces
                         keep_classnames: true,
+                        keep_fnames: true,
 
                         ecma: 5,
 
@@ -100,8 +101,9 @@ module.exports = smp.wrap({
                         safari10: true,
                         toplevel: true,
 
-                        // Keep classnames for react component stack traces
-                        keep_classnames: true
+                        // Keep classnames & function names for react component stack traces
+                        keep_classnames: true,
+                        keep_fnames: true
                     },
                     output: {
                         ecma: 5,
