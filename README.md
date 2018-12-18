@@ -55,6 +55,7 @@ And set any of the following variables:
 | `CI`              | :large_orange_diamond: | :white_check_mark: | When set to `true`, Vitalizer treats warnings as failures in the build. Most CIs set this flag by default.                                                                          |
 | `DISABLE_HASH`.   | :x:                    | :white_check_mark: | When set to `true`, production assets are output as `[name].[ext]` rather than `[name][hash].[ext]`. Useful for debugging and test purposes.                                        |
 | `HOST`            | :white_check_mark:     |        :x:         | By default, the development web server binds to `localhost`. You may use this variable to specify a different host.                                                                 |
+| `INDEX_FILES`     | :white_check_mark:     | :white_check_mark: | Comma seperated list of HTML files to use. Defaults to `static/index.html`.                                                                                                         |
 | `PORT`            | :white_check_mark:     |        :x:         | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port. |
 | `RESOLVE_MODULES` | :white_check_mark:     | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`                                                                                           |
 
