@@ -4,13 +4,17 @@ const fs = require('fs')
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
+// Use custom defined HTML files, or default to 'static/index.html'
+const defaultIndex = 'static/index.html'
+const htmlFiles = process.env.INDEX_FILES ? process.env.INDEX_FILES.replace(/\s+/g, '').split(',') : [defaultIndex]
 
 module.exports = {
     dotenv: resolveApp('.env'),
     appPath: resolveApp('.'),
     appBuild: resolveApp('public'),
     appPublic: resolveApp('static'),
-    appHtml: resolveApp('static/index.html'),
+    appIndexHtml: resolveApp(defaultIndex),
+    appHtmlFiles: htmlFiles.map(resolveApp),
     appIndexJs: resolveApp('app/index.js'),
     appSrc: resolveApp('app'),
     appNodeModules: resolveApp('node_modules')

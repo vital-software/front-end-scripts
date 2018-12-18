@@ -18,7 +18,7 @@ const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appIndexHtml, paths.appIndexJs])) {
     process.exit(1)
 }
 

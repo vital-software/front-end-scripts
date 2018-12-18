@@ -193,10 +193,14 @@ module.exports = smp.wrap({
     },
 
     plugins: [
-        // Generates an `index.html` file with the <script> injected.
-        new HtmlWebpackPlugin({
-            template: paths.appHtml
-        }),
+        // Generates `index.html` files with the <script> injected.
+        ...paths.appHtmlFiles.map(
+            (filename) =>
+                new HtmlWebpackPlugin({
+                    filename: filename.replace('static', 'public'),
+                    template: filename
+                })
+        ),
 
         // Makes some environment variables available to the JS code.
         // It is absolutely essential that NODE_ENV was set to production here.

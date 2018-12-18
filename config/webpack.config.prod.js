@@ -18,6 +18,19 @@ const smp = new SpeedMeasurePlugin()
 const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[chunkhash:8]'
 // Configure CDN or local urls
 const publicPath = process.env.CDN_URL ? process.env.CDN_URL : '/'
+// HTML Minification
+const htmlMinifyOptions = {
+    collapseWhitespace: true,
+    removeComments: true,
+    removeRedundantAttributes: true,
+    useShortDoctype: true,
+    removeEmptyAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    keepClosingSlash: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true
+}
 
 /*
     This is the production configuration.
@@ -282,22 +295,15 @@ module.exports = smp.wrap({
     },
 
     plugins: [
-        // Generates an `index.html` file with the <script> injected.
-        new HtmlWebpackPlugin({
-            minify: {
-                collapseWhitespace: true,
-                removeComments: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true
-            },
-            template: paths.appHtml
-        }),
+        // Generates `index.html` files with the <script> injected.
+        ...paths.appHtmlFiles.map(
+            (filename) =>
+                new HtmlWebpackPlugin({
+                    filename: filename.replace('static', 'public'),
+                    minify: htmlMinifyOptions,
+                    template: filename
+                })
+        ),
 
         // Makes some environment variables available to the JS code.
         // It is absolutely essential that NODE_ENV was set to production here.
