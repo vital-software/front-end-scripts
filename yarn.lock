@@ -340,10 +340,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
-"@vital-software/eslint-config@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.7.0.tgz#02d1980d96a69f2679ff791de2907ca676bf9469"
-  integrity sha512-TvLvMCqSM7lESWAJF5S29Lfig1VUakmxnJIUUqDQVBkfatADWcsrGaMUDSH/odbMt1NruKFwNxKybwVYLwOREQ==
+"@vital-software/eslint-config@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.7.1.tgz#d66fcdec642cad0804e3445377cc41d85cef810c"
+  integrity sha512-JeoatrYKCqhy45Gmsibxgek/TaPaV/nzOFtA8oOBRLL+j5rH0HTVJZSu3s4N+XU8BqlT11dbrKWkSgx4iCQZ9g==
 
 "@vital-software/renovate-config@1.1.5":
   version "1.1.5"
