@@ -345,10 +345,10 @@
   resolved "https://registry.yarnpkg.com/@vital-software/eslint-config/-/eslint-config-1.7.1.tgz#d66fcdec642cad0804e3445377cc41d85cef810c"
   integrity sha512-JeoatrYKCqhy45Gmsibxgek/TaPaV/nzOFtA8oOBRLL+j5rH0HTVJZSu3s4N+XU8BqlT11dbrKWkSgx4iCQZ9g==
 
-"@vital-software/renovate-config@1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@vital-software/renovate-config/-/renovate-config-1.1.5.tgz#7beb467825312f5de171532ce1474fe47f817746"
-  integrity sha512-82W0gCMmpJM/+Ira/8sJ+7uqlROaHZfqo2+Rqo3fPgERlZCXW1XnwvlptIZ5EezI0l732JwZMnj1+fxRStM/8Q==
+"@vital-software/renovate-config@1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@vital-software/renovate-config/-/renovate-config-1.1.6.tgz#85037774f550c692b1954132136cd12af6c0a757"
+  integrity sha512-ZQS2aqVwRL5GMP8zfNmxVXLLWjhjTasPbMxraQJG7WIM+/ksHiJFvWlVmWbbwul4/mD8xoCKg92x/iqf6qBXLg==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
