@@ -5,7 +5,6 @@ const config = require('./webpack.config.dev')
 const convert = require('koa-connect')
 const history = require('connect-history-api-fallback')
 const paths = require('./paths')
-const proxy = require('http-proxy-middleware')
 const Router = require('koa-router')
 // Create router definition
 const router = new Router()
@@ -59,22 +58,6 @@ module.exports = (host, port) => ({
 
     add: (app, middleware) => {
         // Just a note, the order of statements matters here.
-
-        // Set up API proxy first
-        if (process.env.API_PROXY_HOST && process.env.API_PROXY_URL) {
-            app.use(
-                convert(
-                    proxy('/api', {
-                        headers: {
-                            host: process.env.API_PROXY_HOST
-                        },
-                        pathRewrite: { ['^/api']: '' },
-                        secure: false,
-                        target: process.env.API_PROXY_URL
-                    })
-                )
-            )
-        }
 
         // Router needs to be added in this order.
         app.use(router.routes())
