@@ -59,7 +59,7 @@
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
     "file-loader": "3.0.1",
-    "filesize": "3.6.1",
+    "filesize": "4.1.2",
     "fs-extra": "7.0.1",
     "graphql": "14.0.2",
     "graphql-tag": "2.10.0",
