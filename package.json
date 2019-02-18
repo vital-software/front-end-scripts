@@ -77,7 +77,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-remify": "1.0.1",
     "postcss-scss": "2.0.0",
-    "postcss-simple-vars": "5.0.1",
+    "postcss-simple-vars": "5.0.2",
     "postcss-strip-inline-comments": "0.1.5",
     "postcss-url": "8.0.0",
     "recursive-readdir": "2.2.2",
