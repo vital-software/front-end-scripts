@@ -222,6 +222,7 @@ module.exports = smp.wrap({
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
 
         // Custom format webpack stats output so it doesn't look shit.
-        new StylishWebpackPlugin()
+        new StylishWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 })
