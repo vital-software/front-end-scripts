@@ -88,7 +88,7 @@
     "terser-webpack-plugin": "1.2.1",
     "thread-loader": "1.2.0",
     "url-loader": "1.1.2",
-    "webpack": "4.28.3",
+    "webpack": "4.29.6",
     "webpack-manifest-plugin": "2.0.4",
     "webpack-serve": "1.0.4",
     "webpack-stylish": "0.1.8"
