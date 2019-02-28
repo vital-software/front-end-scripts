@@ -74,7 +74,7 @@
     "postcss-loader": "3.0.0",
     "postcss-nested": "4.1.1",
     "postcss-nesting": "7.0.0",
-    "postcss-preset-env": "6.5.0",
+    "postcss-preset-env": "6.6.0",
     "postcss-remify": "1.0.1",
     "postcss-scss": "2.0.0",
     "postcss-simple-vars": "5.0.1",
