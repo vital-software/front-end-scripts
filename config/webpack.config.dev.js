@@ -74,6 +74,7 @@ module.exports = smp.wrap({
 
         // These are the reasonable defaults supported by the Node ecosystem.
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss'],
+        // Alias react dom to allow hot loader to patch it for new react features: https://github.com/gaearon/react-hot-loader#react--dom
         alias: {
             'react-dom': '@hot-loader/react-dom'
         }
