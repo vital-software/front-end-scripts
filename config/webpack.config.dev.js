@@ -223,6 +223,8 @@ module.exports = smp.wrap({
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin(),
+
+        // Enable HMR
         new webpack.HotModuleReplacementPlugin()
     ]
 })

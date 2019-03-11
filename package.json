@@ -1,6 +1,6 @@
 {
   "name": "vitalizer",
-  "version": "6.3.0-alpha.1",
+  "version": "6.3.0-alpha.4",
   "description": "Vital Software front-end asset builder",
   "license": "MIT",
   "repository": "vital-software/vitalizer",
@@ -88,9 +88,9 @@
     "terser-webpack-plugin": "1.2.1",
     "thread-loader": "1.2.0",
     "url-loader": "1.1.2",
-    "webpack": "4.28.3",
+    "webpack": "4.29.6",
+    "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
-    "webpack-serve": "1.0.4",
     "webpack-stylish": "0.1.8"
   },
   "devDependencies": {
