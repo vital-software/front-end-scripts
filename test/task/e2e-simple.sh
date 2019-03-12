@@ -66,7 +66,7 @@ pid=$!
 # Wait for compilation to complete
 retries=0
 max_retries=30
-while ! grep -q 'Compiled successfully' $tmp_server_log
+while ! grep -q 'webpack v4' $tmp_server_log
 do
    echo $((++retries))
    if ((retries>max_retries))

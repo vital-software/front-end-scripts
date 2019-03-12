@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 docker run \
   --env CI=true \
   --env NPM_CONFIG_QUIET=true \
   --tty \
-  --volume ${PWD}/vitalizer/..:/var/vitalizer \
+  --volume "${PWD}"/vitalizer/..:/var/vitalizer \
   --workdir /var/vitalizer \
   --interactive \
   node:10 \
