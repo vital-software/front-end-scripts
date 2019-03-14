@@ -213,7 +213,7 @@ module.exports = smp.wrap({
                     // Process application JS with Babel.
                     // The preset includes JSX, Flow, and some ESnext features.
                     {
-                        test: /\.(flow|js|jsx|mjs)$/,
+                        test: /\.(flow|js|jsx|mjs|ts|tsx)$/,
                         include: paths.srcPaths,
                         exclude: [/[/\\\\]node_modules[/\\\\]/],
                         use: [
@@ -282,7 +282,7 @@ module.exports = smp.wrap({
                         // it's runtime that would otherwise be processed through "file" loader.
                         // Also exclude `html` and `json` extensions so they get processed
                         // by webpacks internal loaders.
-                        exclude: [/\.(flow|js|jsx|mjs)$/, /\.html$/, /\.json$/],
+                        exclude: [/\.(flow|js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
                             name: `[path]${fileName}.[ext]`
                         }

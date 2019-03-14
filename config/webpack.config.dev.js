@@ -184,7 +184,7 @@ module.exports = smp.wrap({
                         // it's runtime that would otherwise be processed through "file" loader.
                         // Also exclude `html` and `json` extensions so they get processed
                         // by webpacks internal loaders.
-                        exclude: [/\.(flow|js|jsx|mjs)$/, /\.html$/, /\.json$/],
+                        exclude: [/\.(flow|js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
                             name: '[path][name].[hash:8].[ext]'
                         }
