@@ -186,7 +186,7 @@ module.exports = smp.wrap({
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss']
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss', '.ts', '.tsx']
     },
 
     module: {
