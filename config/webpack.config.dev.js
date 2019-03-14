@@ -104,7 +104,7 @@ module.exports = smp.wrap({
                     // Process application JS with Babel.
                     // The preset includes JSX, Flow, and some ESnext features.
                     {
-                        test: /\.(flow|js|jsx|mjs)$/,
+                        test: /\.(flow|js|jsx|mjs|ts|tsx)$/,
                         include: paths.srcPaths,
                         exclude: [/[/\\\\]node_modules[/\\\\]/],
                         use: [
