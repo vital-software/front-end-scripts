@@ -89,7 +89,7 @@
     "thread-loader": "2.1.2",
     "url-loader": "1.1.2",
     "webpack": "4.29.6",
-    "webpack-dev-server": "3.2.1",
+    "webpack-dev-server": "3.3.1",
     "webpack-manifest-plugin": "2.0.4",
     "webpack-stylish": "0.1.8"
   },
