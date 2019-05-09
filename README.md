@@ -47,8 +47,8 @@ VARIABLE=name
 
 And set any of the following variables:
 
-| Variable | Development | Production | Usage |
-| :---------------- | :--------------------- | :----------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | |
+|Variable|Development|Production|Usage|
+|:----------------|:---------------------|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CDN_URL` | :x: | :white_check_mark: | When set, production assets are output as `[CDN_URL][asset]` rather than `[asset]`. Used to support an external CDN for assets. |
 | `CI` | :large_orange_diamond: | :white_check_mark: | When set to `true`, Vitalizer treats warnings as failures in the build. Most CIs set this flag by default. |
 | `DISABLE_HASH`. | :x: | :white_check_mark: | When set to `true`, production assets are output as `[name].[ext]` rather than `[name][hash].[ext]`. Useful for debugging and test purposes. |
