@@ -4,14 +4,17 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@hot-loader/react-dom": "^16.8.6",
     "normalize.css": "^8.0.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "react-hot-loader": "^4.8.0",
-    "react-redux": "^6.0.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "redux": "^4.0.1",
+    "react-redux": "7.0.3",
+    "react-router": "5.0.0",
+    "react-router-dom": "5.0.0",
+    "redux": "4.0.1",
+    "webpack": "^4.30.0",
+    "webpack-dev-server": "^3.3.1",
     "webpack-hot-client": "^4.1.1"
   }
 }
