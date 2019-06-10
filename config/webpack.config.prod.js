@@ -51,7 +51,7 @@ module.exports = smp.wrap({
     performance: false,
 
     // In production, we only want the app code.
-    entry: paths.appIndexJs,
+    entry: paths.appIndexTsx,
 
     output: {
         // The output directory as an absolute path.

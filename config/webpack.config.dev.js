@@ -24,7 +24,7 @@ module.exports = smp.wrap({
     devtool: 'cheap-module-source-map',
 
     entry: [
-        paths.appIndexJs
+        paths.appIndexTsx
         // We include the app code last so that if there is a runtime error during
         // initialization, it doesn't blow up Webpack Serve, and
         // changing JS code would still trigger a refresh.
