@@ -51,7 +51,7 @@ module.exports = smp.wrap({
     performance: false,
 
     // In production, we only want the app code.
-    entry: paths.appIndexJs,
+    entry: paths.appIndexTsx,
 
     output: {
         // The output directory as an absolute path.
@@ -186,7 +186,7 @@ module.exports = smp.wrap({
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss', '.ts', '.tsx']
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.ts', '.tsx']
     },
 
     module: {

@@ -24,7 +24,7 @@ module.exports = smp.wrap({
     devtool: 'cheap-module-source-map',
 
     entry: [
-        paths.appIndexJs
+        paths.appIndexTsx
         // We include the app code last so that if there is a runtime error during
         // initialization, it doesn't blow up Webpack Serve, and
         // changing JS code would still trigger a refresh.
@@ -73,7 +73,7 @@ module.exports = smp.wrap({
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.css', '.scss', '.ts', '.tsx'],
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.ts', '.tsx'],
         // Alias react dom to allow hot loader to patch it for new react features: https://github.com/gaearon/react-hot-loader#react--dom
         alias: {
             'react-dom': '@hot-loader/react-dom'

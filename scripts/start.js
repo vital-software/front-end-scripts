@@ -27,7 +27,7 @@ const compiler = webpack(webpackConfig)
 const devServer = new WebpackDevServer(compiler, devServerOptions)
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appIndexHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])) {
     process.exit(1)
 }
 
