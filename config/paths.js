@@ -15,7 +15,7 @@ module.exports = {
     appPublic: resolveApp('static'),
     appIndexHtml: resolveApp(defaultIndex),
     appHtmlFiles: htmlFiles.map(resolveApp),
-    appIndexJs: resolveApp('app/index.js'),
+    appIndexJs: resolveApp('app/index.tsx'),
     appSrc: resolveApp('app'),
     appNodeModules: resolveApp('node_modules')
 }
