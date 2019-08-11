@@ -237,6 +237,7 @@ module.exports = smp.wrap({
                     // By default we support CSS Modules with the extension .module.css
                     {
                         test: /\.(css|scss)$/,
+                        exclude: /\.module.css$/,
                         use: [
                             MiniCssExtractPlugin.loader,
                             {
@@ -260,6 +261,31 @@ module.exports = smp.wrap({
                                     // https://github.com/facebook/create-react-app/issues/2677
                                     ident: 'postcss',
 
+                                    sourceMap: true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        test: /\.module.css$/,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    importLoaders: 1,
+                                    sourceMap: true,
+                                    modules: true,
+                                    localIdentName: '[name]--[local]--[hash:base64:5]'
+                                }
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    config: {
+                                        path: path.join(__dirname, './postcss.config.js')
+                                    },
+                                    ident: 'postcss',
                                     sourceMap: true
                                 }
                             }
