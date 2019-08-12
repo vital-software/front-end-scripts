@@ -355,14 +355,8 @@ module.exports = smp.wrap({
         // the HTML & assets that are part of the Webpack build.
         new GenerateSW({
             importWorkboxFrom: 'local',
-            
-            cacheId: 'vitalizer-cache',
 
-            // By default, a cache-busting query parameter is appended to requests
-            // used to populate the caches, to ensure the responses are fresh.
-            // If a URL is already hashed by Webpack, then there is no concern
-            // about it being stale, and the cache-busting can be skipped.
-            dontCacheBustUrlsMatching: /\.\w{8}\./,
+            cacheId: 'vitalizer-cache',
 
             // Don't precache licenses, sourcemaps (they're large) and build asset manifest:
             exclude: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
