@@ -1,20 +1,20 @@
 {
   "license": "MIT",
   "dependencies": {
-    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-env": "7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@hot-loader/react-dom": "^16.8.6",
+    "@hot-loader/react-dom": "16.9.0-4.12.11",
     "normalize.css": "^8.0.1",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-hot-loader": "^4.8.0",
-    "react-redux": "7.0.3",
-    "react-router": "5.0.0",
-    "react-router-dom": "5.0.0",
-    "redux": "4.0.1",
-    "webpack": "^4.30.0",
-    "webpack-dev-server": "^3.3.1",
-    "webpack-hot-client": "^4.1.1"
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-hot-loader": "4.12.11",
+    "react-redux": "7.1.0",
+    "react-router": "5.0.1",
+    "react-router-dom": "5.0.1",
+    "redux": "4.0.4",
+    "webpack": "4.39.1",
+    "webpack-dev-server": "3.8.0",
+    "webpack-hot-client": "4.1.2"
   }
 }
