@@ -175,6 +175,7 @@ module.exports = smp.wrap({
                                 loader: 'style-loader',
                                 options: { sourceMap: true }
                             },
+                            'css-modules-typescript-loader',
                             {
                                 loader: 'css-loader',
                                 options: {
