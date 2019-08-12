@@ -139,8 +139,7 @@ module.exports = smp.wrap({
                         exclude: /\.module.css$/,
                         use: [
                             {
-                                loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
-                                options: { sourceMap: true }
+                                loader: 'style-loader' // Add CSS to HTML page (uses JavaScript)
                             },
                             {
                                 loader: require.resolve('css-loader'),
@@ -172,8 +171,7 @@ module.exports = smp.wrap({
                         test: /\.module.css$/,
                         use: [
                             {
-                                loader: 'style-loader',
-                                options: { sourceMap: true }
+                                loader: 'style-loader'
                             },
                             'css-modules-typescript-loader',
                             {

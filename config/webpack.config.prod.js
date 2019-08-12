@@ -1,6 +1,7 @@
 // Load in ENV values
 const getClientEnvironment = require('./env')
 const env = getClientEnvironment()
+const { GenerateSW } = require('workbox-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -9,7 +10,6 @@ const path = require('path')
 const paths = require('./paths')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 // Measure the speed of the build
@@ -353,37 +353,13 @@ module.exports = smp.wrap({
 
         // Generate a service worker script that will precache, and keep up to date,
         // the HTML & assets that are part of the Webpack build.
-        new SWPrecacheWebpackPlugin({
+        new GenerateSW({
+            importWorkboxFrom: 'local',
+
             cacheId: 'vitalizer-cache',
 
-            // By default, a cache-busting query parameter is appended to requests
-            // used to populate the caches, to ensure the responses are fresh.
-            // If a URL is already hashed by Webpack, then there is no concern
-            // about it being stale, and the cache-busting can be skipped.
-            dontCacheBustUrlsMatching: /\.\w{8}\./,
-
-            // Set custom filename.
-            filename: 'service-worker.js',
-
-            // Clean up logger output.
-            logger(message) {
-                if (message.indexOf('Total precache size is') === 0) {
-                    // This message occurs for every build and is a bit too noisy.
-                    return
-                }
-                if (message.indexOf('Skipping static resource') === 0) {
-                    // This message obscures real errors so we ignore it.
-                    // https://github.com/facebook/create-react-app/issues/2612
-                    return
-                }
-                console.log(message)
-            },
-
-            // Set to true to minify and uglify the generated service-worker.
-            minify: true,
-
             // Don't precache licenses, sourcemaps (they're large) and build asset manifest:
-            staticFileGlobsIgnorePatterns: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
+            exclude: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
 
             // Sets an HTML document to use as a fallback for URLs not found in the cache.
             navigateFallback: '/index.html'

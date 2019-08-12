@@ -1,14 +1,27 @@
 {
-  "extends": "@vital-software",
-  "rules": {
-    "camelcase": ["error", { "properties": "never" }],
-    "no-console": "off",
-    "no-magic-numbers": "off"
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "globals": {
+    "__dirname": true,
+    "process": true
   },
-  "settings": {
-    "react": {
-      "version": "16.5",
-      "flowVersion": "0.85"
-    }
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "no-console": "off",
+    "no-magic-numbers": "off",
+    "no-unused-vars": "error",
+    "no-undef": "error"
   }
 }
