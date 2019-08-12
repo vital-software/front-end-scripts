@@ -1,14 +1,15 @@
 {
-  "extends": "@vital-software",
+  "parser": "babel-eslint",
   "rules": {
-    "camelcase": ["error", { "properties": "never" }],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
     "no-console": "off",
     "no-magic-numbers": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "16.5",
-      "flowVersion": "0.85"
-    }
   }
 }
