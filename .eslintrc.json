@@ -1,5 +1,14 @@
 {
   "parser": "babel-eslint",
+  "globals": {
+    "__dirname": true,
+    "process": true
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
   "rules": {
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
@@ -10,6 +19,8 @@
       }
     ],
     "no-console": "off",
-    "no-magic-numbers": "off"
+    "no-magic-numbers": "off",
+    "no-unused-vars": "error",
+    "no-undef": "error"
   }
 }
