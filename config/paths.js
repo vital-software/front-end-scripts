@@ -9,7 +9,7 @@ const defaultIndex = 'static/index.html'
 const htmlFiles = process.env.INDEX_FILES ? process.env.INDEX_FILES.replace(/\s+/g, '').split(',') : [defaultIndex]
 
 module.exports = {
-    dotenv: resolveApp('.env'),
+    dotenv: resolveApp('.vitalizer'),
     appPath: resolveApp('.'),
     appBuild: resolveApp('public'),
     appPublic: resolveApp('static'),
