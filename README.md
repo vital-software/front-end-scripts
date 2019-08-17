@@ -40,7 +40,7 @@ vitalizer build
 
 ### Configuration
 
-To configure Vitalizer, create a file called `.env` in the root of your project:
+To configure Vitalizer, create a file called `.vitalizer` in the root of your project:
 
 ```
 VARIABLE=name
