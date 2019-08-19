@@ -77,6 +77,13 @@ module.exports = smp.wrap({
             // JavaScript minfier
             new TerserPlugin({
                 terserOptions: {
+                    // Keep classnames & function names for react component stack traces
+                    keep_classnames: true,
+                    keep_fnames: true,
+
+                    // Work around the Safari 10 loop iterator bug.
+                    safari10: true,
+                    
                     parse: {
                         // we want terser to parse ecma 8 code. However, we don't want it
                         // to apply any minfication steps that turns valid ecma 5 code
@@ -86,18 +93,11 @@ module.exports = smp.wrap({
                         ecma: 8
                     },
                     compress: {
-                        // Discard calls to console.* functions.
-                        drop_console: true,
-
                         // Disabled because of an issue with Terser breaking valid code:
                         // https://github.com/facebook/create-react-app/issues/5250
                         // Pending futher investigation:
                         // https://github.com/terser-js/terser/issues/120
                         inline: 2,
-
-                        // Keep classnames & function names for react component stack traces
-                        keep_classnames: true,
-                        keep_fnames: true,
 
                         ecma: 5,
 
@@ -109,15 +109,7 @@ module.exports = smp.wrap({
                         // https://github.com/mishoo/UglifyJS2/issues/2011
                         comparisons: false
                     },
-                    mangle: {
-                        // Work around the Safari 10 loop iterator bug.
-                        safari10: true,
-                        toplevel: true,
-
-                        // Keep classnames & function names for react component stack traces
-                        keep_classnames: true,
-                        keep_fnames: true
-                    },
+                    mangle: true,
                     output: {
                         ecma: 5,
 
