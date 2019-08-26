@@ -50,11 +50,14 @@ function getClientEnvironment() {
                 return env
             },
             {
+                // Set 'process.env.ENVIRONMENT' value for application use.
+                ENVIRONMENT: process.env.ENVIRONMENT || 'development',
+                
                 // Useful for determining whether we’re running in production mode.
                 // Most importantly, it switches React into the correct mode.
                 NODE_ENV: process.env.NODE_ENV || 'development',
 
-                // Set 'process.env.RELEASE' value for Sentry artifacts
+                // Set 'process.env.RELEASE' value for application use.
                 RELEASE: process.env.RELEASE || 'N/A'
             }
         )
