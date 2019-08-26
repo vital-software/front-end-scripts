@@ -44,7 +44,7 @@ module.exports = smp.wrap({
     bail: true,
 
     // We generate sourcemaps in production. This is slow but gives good results.
-    devtool: 'source-map',
+    devtool: 'nosources-source-map',
 
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter.
