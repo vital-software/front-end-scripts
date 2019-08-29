@@ -70,6 +70,8 @@ function getClientEnvironment() {
         }, {})
     }
 
+    console.log('Added the following ENV values', stringified)
+
     return { raw, stringified }
 }
 
