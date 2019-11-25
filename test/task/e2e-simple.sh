@@ -103,4 +103,4 @@ diff public/index.html stub/index.html
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.css stub/main.chunk.css
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/main.chunk.js stub/main.chunk.js
 diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/runtime~main.js stub/runtime~main.js
-diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendor.chunk.js stub/vendor.chunk.js
+diff --ignore-space-change --ignore-blank-lines --suppress-common-lines public/vendors~main.chunk.js stub/vendors~main.chunk.js
