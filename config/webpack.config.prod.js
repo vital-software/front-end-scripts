@@ -160,8 +160,7 @@ module.exports = smp.wrap({
             chunks(chunk) {
                 // exclude `polyfills`
                 return chunk.name !== 'polyfills'
-            },
-            name: 'vendor'
+            }
         },
 
         // Keep the runtime chunk seperated to enable long term caching
