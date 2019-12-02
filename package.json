@@ -95,12 +95,12 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "devDependencies": {
-    "@semantic-release/git": "7.0.16",
+    "@semantic-release/git": "7.0.18",
     "@vital-software/renovate-config": "1.1.6",
-    "babel-eslint": "10.0.2",
-    "eslint": "6.1.0",
-    "husky": "3.0.3",
-    "semantic-release": "15.13.19"
+    "babel-eslint": "10.0.3",
+    "eslint": "6.7.2",
+    "husky": "3.1.0",
+    "semantic-release": "15.13.31"
   },
   "peerDependencies": {
     "webpack-hot-client": "^4.0.4"
