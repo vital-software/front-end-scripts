@@ -56,7 +56,7 @@
     "connect-history-api-fallback": "1.6.0",
     "cross-spawn": "6.0.5",
     "css-loader": "3.2.0",
-    "css-modules-typescript-loader": "2.0.4",
+    "css-modules-typescript-loader": "4.0.0",
     "dotenv": "8.0.0",
     "dotenv-expand": "5.1.0",
     "file-loader": "4.2.0",
