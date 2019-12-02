@@ -121,17 +121,6 @@ module.exports = smp.wrap({
                     }
                 },
 
-                // Extract comments (i.e. licenses) to a separate file.
-                // https://github.com/webpack/webpack/commit/71933e979e51c533b432658d5e37917f9e71595a
-                extractComments: true,
-
-                // Use multi-process parallel running to improve the build speed
-                // Default number of concurrent runs: os.cpus().length - 1
-                parallel: true,
-
-                // Enable file caching
-                cache: true,
-
                 // Use source maps to map error message locations to module
                 sourceMap: true
             }),
