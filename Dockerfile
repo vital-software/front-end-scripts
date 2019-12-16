@@ -1,4 +1,4 @@
-FROM node:10
+FROM quay.io/vital/node:lts
 
 # Set timezone - required for any time related tests
 ENV TZ=Pacific/Auckland
