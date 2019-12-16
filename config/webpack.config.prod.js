@@ -109,7 +109,6 @@ module.exports = smp.wrap({
                         // https://github.com/mishoo/UglifyJS2/issues/2011
                         comparisons: false
                     },
-                    mangle: true,
                     output: {
                         ecma: 5,
 
