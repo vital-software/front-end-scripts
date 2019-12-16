@@ -76,7 +76,7 @@ module.exports = smp.wrap({
         minimizer: [
             // JavaScript minfier
             new TerserPlugin({
-                // terserOptions: {
+                terserOptions: {
                 //     parse: {},
                 //     compress: {},
                 //     mangle: true,
@@ -86,8 +86,8 @@ module.exports = smp.wrap({
                 //     output: {
                 //         comments: false
                 //     },
-                //     safari10: true
-                // },
+                    safari10: true
+                },
                 sourceMap: true
             }),
 
