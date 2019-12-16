@@ -86,8 +86,8 @@ module.exports = smp.wrap({
                     output: {
                         comments: false
                     },
+                    safari10: true
                 },
-                safari10: true,
                 sourceMap: true
             }),
 
