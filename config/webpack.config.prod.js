@@ -77,15 +77,6 @@ module.exports = smp.wrap({
             // JavaScript minfier
             new TerserPlugin({
                 terserOptions: {
-                //     parse: {},
-                //     compress: {},
-                //     mangle: true,
-                //     // Keep classnames & function names for React Component stack traces
-                //     keep_classnames: true,
-                //     keep_fnames: true,
-                //     output: {
-                //         comments: false
-                //     },
                     safari10: true
                 },
                 sourceMap: true
