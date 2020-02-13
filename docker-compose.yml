@@ -5,5 +5,5 @@ services:
     build:
       context: .
       args:
-        - NPM_TOKEN
+        - GITHUB_TOKEN
     image: quay.io/vital/build-cache:vitalizer-latest

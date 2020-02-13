@@ -1,9 +1,9 @@
 {
-  "name": "vitalizer",
+  "name": "@vital-software/vitalizer",
   "version": "8.3.0",
   "description": "Vital Software front-end asset builder",
   "license": "MIT",
-  "repository": "vital-software/vitalizer",
+  "repository": "git://github.com/vital-software/vitalizer.git",
   "homepage": "https://github.com/vital-software/vitalizer#readme",
   "author": "Te Riu Warren <te@vitaler.co",
   "bugs": {
@@ -23,6 +23,9 @@
     "hooks": {
       "pre-commit": "yarn lint"
     }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "bin": {
     "vitalizer": "./bin/vitalizer.js"
