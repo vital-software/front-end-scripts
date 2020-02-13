@@ -31,11 +31,6 @@ steps:
           - docker-compose.buildkite.yml
         run: base
 
-  - wait
-
-  - block: ":rocket: Publish!"
-    branches: master
-
   - label: ":npm: Semantic release"
     branches: master
     command: semantic-release
