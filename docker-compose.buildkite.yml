@@ -12,4 +12,4 @@ services:
       - BUILDKITE_PULL_REQUEST
       - BUILDKITE_REPO
       - GITHUB_TOKEN
-      - NPM_TOKEN
+      - NPM_TOKEN=$GITHUB_TOKEN
