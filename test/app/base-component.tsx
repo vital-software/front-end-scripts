@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import 'core.scss'
 import styles from './base-component.module.css'
 
+const optional = {
+    thing: undefined
+}
+
 interface BaseProps {
     children: React.ReactChildren;
 }
@@ -27,11 +31,12 @@ export default class Base extends Component<BaseProps> {
     render() {
         return (
             <div className="container">
+                {optional?.thing?.test ?? 'Hello!'}
                 {this.props.children}
                 <img src="/images/logo.svg" alt="Vital Logo" className="logo" width="18" height="18" />
                 <p className={styles.thing}>Yolo</p>
                 <Input />
             </div>
-        )
+        );
     }
 }

@@ -2,9 +2,12 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 
-[*.{babelrc,json,yml}]
+[*.{css,js,jsx,ts,tsx}]
+indent_size = 4
+
+[*.json]
 indent_size = 2
