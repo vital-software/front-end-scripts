@@ -2,18 +2,19 @@ env:
   COMMIT_TAG: vitalizer-${BUILDKITE_COMMIT}
 
 steps:
-  - label: ":docker: :quay: Build and push"
+  - name: ':docker: :quay: Build and push container to Quay'
+    key: create-image
     agents:
       queue: docker-build
     plugins:
       vital-software/docker-compose#vital-v1.8:
-        build:            base
+        build: base
         image_repository: quay.io/vital/build-cache
-        image-name:       ${COMMIT_TAG}
+        image-name: ${COMMIT_TAG}
 
-  - wait
-
-  - label:   ":eslint: Lint"
+  - name: ':eslint: Lint'
+    key: linting
+    depends_on: create-image
     command: yarn lint
     plugins:
       vital-software/docker-compose#vital-v1.8:
@@ -22,7 +23,9 @@ steps:
           - docker-compose.buildkite.yml
         run: base
 
-  - label:   ":yarn: Simple e2e test"
+  - name: ':yarn: Run Tests'
+    key: tests
+    depends_on: create-image
     command: test/task/e2e-simple.sh
     plugins:
       vital-software/docker-compose#vital-v1.8:
@@ -31,7 +34,10 @@ steps:
           - docker-compose.buildkite.yml
         run: base
 
-  - label: ":npm: Semantic release"
+  - name: ':npm: Semantic release'
+    depends_on:
+      - 'linting'
+      - 'tests'
     branches: master
     command: semantic-release
     timeout_in_minutes: 2
