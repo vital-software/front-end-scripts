@@ -34,7 +34,7 @@ steps:
           - docker-compose.buildkite.yml
         run: base
 
-  - name: ":npm: Semantic release"
+  - name: ":npm: :github: Release package to Github Registry"
     depends_on:
       - "linting"
       - "tests"
