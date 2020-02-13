@@ -4,15 +4,19 @@ Webpack development and bundling tool for Vital Software.
 
 ### Features
 
--   Hot reloading
--   Injected JS/CSS assets
--   Tree-shaking optimization
--   Cache busted production assets
--   Source map support
--   PostCSS (Autoprefixer, SCSS style syntax)
--   CSS Module support
--   cssnano minification
--   rem() function support
+- Hot reloading
+- Injected JS/CSS assets
+- Tree-shaking optimization
+- Cache busted production assets
+- Source map support
+- PostCSS (Autoprefixer, SCSS style syntax)
+- CSS Module support
+- cssnano minification
+- rem() function support
+
+### Contributing
+
+All changes that are pushed to the master branch are deployed via a Buildkite pipeline. The pipeline runs tests, builds a Docker image, builds the release artifacts for NPM, and the library itself to an NPM registry. Use the Commit Message as documented in our [Contributing Guide](https://github.com/vital-software/components/blob/master/CONTRIBUTING.md#npm-via-semantic-release) to trigger a release.
 
 ### Installing
 
