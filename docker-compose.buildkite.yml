@@ -11,8 +11,5 @@ services:
       - BUILDKITE_PROJECT_SLUG
       - BUILDKITE_PULL_REQUEST
       - BUILDKITE_REPO
-      - GH_ORG
-      - GH_TOKEN
-      - 'GIT_EMAIL=te+semantic-release@vitaler.co'
       - GITHUB_TOKEN
       - NPM_TOKEN
