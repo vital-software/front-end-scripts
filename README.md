@@ -1,4 +1,4 @@
-# Vitalizer [![Build status](https://badge.buildkite.com/06a3e85c8806f7f481e77bc9c9905f967c5c68dfd5aceb69c5.svg)](https://buildkite.com/vital/vitalizer) [![npm version](https://badge.fury.io/js/vitalizer.svg)](https://badge.fury.io/js/vitalizer)
+# Vitalizer [![Build status](https://badge.buildkite.com/06a3e85c8806f7f481e77bc9c9905f967c5c68dfd5aceb69c5.svg)](https://buildkite.com/vital/vitalizer)
 
 Webpack development and bundling tool for Vital.
 
