@@ -151,8 +151,9 @@ module.exports = smp.wrap({
                     // The preset includes JSX, Flow, and some ESnext features.
                     {
                         test: /\.(flow|js|jsx|mjs|ts|tsx)$/,
-                        include: paths.srcPaths,
-                        exclude: [/[/\\\\]node_modules[/\\\\]/],
+                        include: [paths.appSrc, paths.appComponentLibrary],
+                        // Allow the Component Library to be included
+                        exclude: [/node_modules\/(?!@vital-software\/components)/],
                         use: [
                             // This loader parallelizes code compilation, it is optional but
                             // improves compile time on larger projects
