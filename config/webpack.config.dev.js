@@ -124,7 +124,8 @@ module.exports = smp.wrap({
                                     // It enables caching results in ./node_modules/.cache/babel-loader/
                                     // directory for faster rebuilds.
                                     cacheDirectory: true,
-                                    highlightCode: true
+                                    highlightCode: true,
+                                    extends: paths.appBabelConfig
                                 }
                             }
                         ]

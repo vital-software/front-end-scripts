@@ -161,7 +161,8 @@ module.exports = smp.wrap({
                                 loader: require.resolve('babel-loader'),
                                 options: {
                                     compact: true,
-                                    highlightCode: true
+                                    highlightCode: true,
+                                    extends: paths.appBabelConfig
                                 }
                             }
                         ]

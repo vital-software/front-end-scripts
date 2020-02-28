@@ -18,7 +18,8 @@ module.exports = {
     appIndexTsx: resolveApp('app/index.tsx'),
     appSrc: resolveApp('app'),
     appNodeModules: resolveApp('node_modules'),
-    appComponentLibrary: resolveApp('node_modules/@vital-software/components')
+    appComponentLibrary: resolveApp('node_modules/@vital-software/components'),
+    appBabelConfig: resolveApp('.babelrc')
 }
 
 module.exports.resolveApp = resolveApp
