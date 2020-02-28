@@ -15,6 +15,7 @@ const webpack = require('webpack')
 const paths = require('../config/paths')
 const WebpackDevServer = require('webpack-dev-server')
 const webpackConfig = require('../config/webpack.config.dev')
+const { printComponentLibrary } = require('../helper/component-library')
 const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 const devServerOptions = require('../config/serve.config.js')
@@ -37,6 +38,7 @@ const HOST = process.env.HOST || '0.0.0.0'
 
 checkBrowsers(paths.appPath)
     .then(() => printBrowsers(paths.appPath))
+    .then(() => printComponentLibrary())
     .then(() =>
         devServer.listen(PORT, HOST, (err) => {
             if (err) {

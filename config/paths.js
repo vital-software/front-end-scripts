@@ -17,7 +17,8 @@ module.exports = {
     appHtmlFiles: htmlFiles.map(resolveApp),
     appIndexTsx: resolveApp('app/index.tsx'),
     appSrc: resolveApp('app'),
-    appNodeModules: resolveApp('node_modules')
+    appNodeModules: resolveApp('node_modules'),
+    appComponentLibrary: resolveApp('node_modules/@vital-software/components')
 }
 
 module.exports.resolveApp = resolveApp

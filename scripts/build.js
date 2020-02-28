@@ -19,6 +19,7 @@ const webpack = require('webpack')
 const config = require('../config/webpack.config.prod')
 const paths = require('../config/paths')
 const FileSizeReporter = require('../helper/file-size-reporter')
+const { printComponentLibrary } = require('../helper/component-library')
 const { checkBrowsers, printBrowsers } = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 const measureFileSizesBeforeBuild = FileSizeReporter.measureFileSizesBeforeBuild
@@ -40,6 +41,7 @@ if (!checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])) {
 }
 
 checkBrowsers(paths.appPath)
+    .then(() => printComponentLibrary())
     .then(() => {
         // First, read the current file sizes in build directory.
         // This lets us display how much they changed later.
