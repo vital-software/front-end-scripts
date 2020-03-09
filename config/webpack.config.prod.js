@@ -15,7 +15,7 @@ const webpack = require('webpack')
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
 // Configure file names to use hashing or not
-const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[chunkhash:8]'
+const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[hash:8]'
 // Configure CDN or local urls
 const publicPath = process.env.CDN_URL ? process.env.CDN_URL : '/'
 // HTML Minification
@@ -118,8 +118,8 @@ module.exports = smp.wrap({
         // Support multiple path module lookup (i.e. app/sass module root support).
         modules: process.env.RESOLVE_MODULES
             ? ['node_modules']
-                .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
-                .map(paths.resolveApp)
+                  .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
+                  .map(paths.resolveApp)
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
