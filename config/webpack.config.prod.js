@@ -15,7 +15,7 @@ const webpack = require('webpack')
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
 // Configure file names to use hashing or not
-const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[hash:8]'
+const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[contenthash:8]'
 // Configure CDN or local urls
 const publicPath = process.env.CDN_URL ? process.env.CDN_URL : '/'
 // HTML Minification
