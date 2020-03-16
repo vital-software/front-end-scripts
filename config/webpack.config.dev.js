@@ -67,7 +67,7 @@ module.exports = smp.wrap({
     resolve: {
         // Support multiple path module lookup (i.e. app/sass module root support).
         modules: process.env.RESOLVE_MODULES
-            ? ['node_modules']
+            ? ['../node_modules', 'node_modules']
                 .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
                 .map(paths.resolveApp)
             : ['node_modules'],
