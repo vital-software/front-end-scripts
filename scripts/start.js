@@ -36,7 +36,7 @@ const devServer = new WebpackDevServer(compiler, devServerOptions)
 
 // Locate HOST/PORT
 const PORT = parseInt(process.env.PORT, 10) || 3000
-const HOST = '0.0.0.0'
+const HOST = process.env.PORT || '0.0.0.0'
 
 const startServer = async () => {
     let fileCheck
