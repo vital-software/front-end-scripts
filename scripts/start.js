@@ -40,20 +40,20 @@ const HOST = process.env.PORT || '0.0.0.0'
 
 const startServer = async () => {
     let fileCheck
+    let browserCheck
+    let componentLibraryCheck
+
     try {
         fileCheck = await checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])
     } catch (e) {
         fileCheck = e.message
     }
 
-    let browserCheck
     try {
         browserCheck = await checkBrowsers(paths.appPath)
     } catch (e) {
         browserCheck = e.message
     }
-
-    let componentLibraryCheck
 
     try {
         componentLibraryCheck = await checkComponentLibrary()
@@ -67,15 +67,22 @@ const startServer = async () => {
         }
 
         console.log(
-            boxen(dedent(await generateStartMessage(browserCheck, componentLibraryCheck, fileCheck, PORT)), {
-                borderColor: '#329578',
-                padding: 1,
-            })
+            boxen(
+                dedent(
+                    await generateStartMessage(browserCheck, componentLibraryCheck, fileCheck, HOST, PORT, ip.address())
+                ),
+                {
+                    borderColor: '#329578',
+                    padding: 1,
+                }
+            )
         )
     })
 }
 
-const generateStartMessage = async (browserCheck, componentLibraryCheck, fileCheck, port) => {
+const generateStartMessage = async (browserCheck, componentLibraryCheck, fileCheck, host, port, ipAddress) => {
+    // This Table is for nicer alignment. Feels like I'm building a website 20 years ago.
+    // The chars property removes all the borders.
     const startMessage = new Table({
         colWidths: [4, 100],
         chars: {
@@ -99,29 +106,31 @@ const generateStartMessage = async (browserCheck, componentLibraryCheck, fileChe
 
     startMessage.push(['⛑', chalk.hex('#329578').bold('Vitalizer by Vital')])
     startMessage.push([])
+
     startMessage.push(['🗄', chalk.hex('#329578').bold('File Check')])
     startMessage.push(['', fileCheck])
-
     startMessage.push([])
+
     startMessage.push(['👩‍💻', chalk.hex('#329578').bold('Browser Support')])
     startMessage.push(['', chalk.hex('#2b76bf')(browserCheck)])
-
     startMessage.push([])
+
     startMessage.push(['🍔', chalk.hex('#329578').bold('Component Library Check')])
     startMessage.push(['', chalk.hex('#2b76bf')(componentLibraryCheck)])
-
     startMessage.push([])
+
     startMessage.push(['🚀', chalk.hex('#329578').bold('Development Web Server')])
+
     startMessage.push([
         '',
         chalk.hex('#2b76bf')(
-            `You can access this application from a browser on this machine at: http://localhost:${port}`
+            `You can access this application from a browser on this machine at: http://${host}:${port}`
         ),
     ])
 
     startMessage.push([])
 
-    startMessage.push(['', chalk.hex('#2b76bf')(`From a device on you LAN at: http://${ip.address()}:${port}`)])
+    startMessage.push(['', chalk.hex('#2b76bf')(`From a device on you LAN at: http://${ipAddress}:${port}`)])
 
     startMessage.push([])
 
@@ -130,7 +139,7 @@ const generateStartMessage = async (browserCheck, componentLibraryCheck, fileChe
     startMessage.push([])
 
     try {
-        startMessage.push(['', await QRCode.toString(`http://${ip.address()}:${PORT}`, { type: 'terminal' })])
+        startMessage.push(['', await QRCode.toString(`http://${ipAddress}:${PORT}`, { type: 'terminal' })])
     } catch (e) {
         startMessage.push(['', 'Error generating QR code'])
     }
