@@ -1,6 +1,6 @@
 const fs = require('fs')
-const path = require('path')
 const chalk = require('chalk')
+const path = require('path')
 
 function checkRequiredFiles(files) {
     let currentFilePath
@@ -11,16 +11,15 @@ function checkRequiredFiles(files) {
             fs.accessSync(filePath, fs.F_OK)
         })
 
-        return true
+        return Promise.resolve(`${chalk.hex('#2b76bf')('All required files found')}.`)
     } catch (err) {
-        const dirName = path.dirname(currentFilePath)
-        const fileName = path.basename(currentFilePath)
-
-        console.log(chalk.red('Could not find a required file.'))
-        console.log(chalk.red('  Name: ') + chalk.cyan(fileName))
-        console.log(chalk.red('  Searched in: ') + chalk.cyan(dirName))
-
-        return false
+        return Promise.reject(
+            new Error(
+                chalk.hex('#d04216')(
+                    `Cannout find file: ${path.dirname(currentFilePath)}/${path.basename(currentFilePath)}`
+                )
+            )
+        )
     }
 }
 
