@@ -39,9 +39,7 @@ const PORT = parseInt(process.env.PORT, 10) || 3000
 const HOST = process.env.PORT || '0.0.0.0'
 
 const startServer = async () => {
-    let fileCheck
-    let browserCheck
-    let componentLibraryCheck
+    let fileCheck, browserCheck, componentLibraryCheck
 
     try {
         fileCheck = await checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])
