@@ -26,6 +26,7 @@ const checkComponentLibrary = require('../helper/component-library')
 const checkBrowsers = require('../helper/browsers')
 const checkRequiredFiles = require('../helper/check-required-files')
 const devServerOptions = require('../config/serve.config.js')
+const colours = require('../config/colours')
 
 // Add the HMR entry points to the webpackConfig.
 WebpackDevServer.addDevServerEntrypoints(webpackConfig, devServerOptions)
@@ -70,7 +71,7 @@ const startServer = async () => {
                     await generateStartMessage(browserCheck, componentLibraryCheck, fileCheck, HOST, PORT, ip.address())
                 ),
                 {
-                    borderColor: '#329578',
+                    borderColor: colours.border,
                     padding: 1,
                 }
             )
@@ -102,37 +103,37 @@ const generateStartMessage = async (browserCheck, componentLibraryCheck, fileChe
         },
     })
 
-    startMessage.push(['⛑', chalk.hex('#329578').bold('Vitalizer by Vital')])
+    startMessage.push(['⛑', chalk.hex(colours.heading).bold('Vitalizer by Vital')])
     startMessage.push([])
 
-    startMessage.push(['🗄', chalk.hex('#329578').bold('File Check')])
+    startMessage.push(['🗄', chalk.hex(colours.heading).bold('File Check')])
     startMessage.push(['', fileCheck])
     startMessage.push([])
 
-    startMessage.push(['👩‍💻', chalk.hex('#329578').bold('Browser Support')])
-    startMessage.push(['', chalk.hex('#2b76bf')(browserCheck)])
+    startMessage.push(['👩‍💻', chalk.hex(colours.heading).bold('Browser Support')])
+    startMessage.push(['', browserCheck])
     startMessage.push([])
 
-    startMessage.push(['🍔', chalk.hex('#329578').bold('Component Library Check')])
-    startMessage.push(['', chalk.hex('#2b76bf')(componentLibraryCheck)])
+    startMessage.push(['🍔', chalk.hex(colours.heading).bold('Component Library Check')])
+    startMessage.push(['', componentLibraryCheck])
     startMessage.push([])
 
-    startMessage.push(['🚀', chalk.hex('#329578').bold('Development Web Server')])
+    startMessage.push(['🚀', chalk.hex(colours.heading).bold('Development Web Server')])
 
     startMessage.push([
         '',
-        chalk.hex('#2b76bf')(
+        chalk.hex(colours.text)(
             `You can access this application from a browser on this machine at: http://${host}:${port}`
         ),
     ])
 
     startMessage.push([])
 
-    startMessage.push(['', chalk.hex('#2b76bf')(`From a device on you LAN at: http://${ipAddress}:${port}`)])
+    startMessage.push(['', chalk.hex(colours.text)(`From a device on you LAN at: http://${ipAddress}:${port}`)])
 
     startMessage.push([])
 
-    startMessage.push(['', chalk.hex('#2b76bf')('Or by using this handy QR Code:')])
+    startMessage.push(['', chalk.hex(colours.text)('Or by using this handy QR Code:')])
 
     startMessage.push([])
 
