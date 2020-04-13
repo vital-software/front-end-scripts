@@ -34,7 +34,7 @@ if (!checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])) {
 
 // Locate HOST/PORT
 const PORT = parseInt(process.env.PORT, 10) || 3000
-const HOST = process.env.HOST || '0.0.0.0'
+const HOST = '0.0.0.0'
 
 checkBrowsers(paths.appPath)
     .then(() => printBrowsers(paths.appPath))
