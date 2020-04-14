@@ -1,16 +1,17 @@
 const chalk = require('chalk')
 const fs = require('fs')
 const paths = require('../config/paths')
+const colours = require('../config/colours')
 
-// Print out if the Component Library exists
-function printComponentLibrary() {
+// Check if the Component Library exists
+function checkComponentLibrary() {
     const hasComponentLibrary = fs.existsSync(paths.appComponentLibrary)
 
     if (hasComponentLibrary) {
-        console.log(chalk.magenta('Vital Component Library detected and transpiling!'))
+        return Promise.resolve(`${chalk.hex(colours.text)('Vital Component Library detected and transpiling!')}.`)
     } else {
-        console.log(chalk.red('Component Library not detected!'))
+        return Promise.reject(new Error(chalk.hex(colours.error)('Component Library not detected!')))
     }
 }
 
-module.exports = { printComponentLibrary }
+module.exports = checkComponentLibrary
