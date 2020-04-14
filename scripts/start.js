@@ -127,20 +127,22 @@ const generateStartMessage = async (browserCheck, componentLibraryCheck, fileChe
         ),
     ])
 
-    startMessage.push([])
+    if (host != 'localhost') {
+        startMessage.push([])
 
-    startMessage.push(['', chalk.hex(colours.text)(`From a device on you LAN at: http://${ipAddress}:${port}`)])
+        startMessage.push(['', chalk.hex(colours.text)(`From a device on you LAN at: http://${ipAddress}:${port}`)])
 
-    startMessage.push([])
+        startMessage.push([])
 
-    startMessage.push(['', chalk.hex(colours.text)('Or by using this handy QR Code:')])
+        startMessage.push(['', chalk.hex(colours.text)('Or by using this handy QR Code:')])
 
-    startMessage.push([])
+        startMessage.push([])
 
-    try {
-        startMessage.push(['', await QRCode.toString(`http://${ipAddress}:${PORT}`, { type: 'terminal' })])
-    } catch (e) {
-        startMessage.push(['', 'Error generating QR code'])
+        try {
+            startMessage.push(['', await QRCode.toString(`http://${ipAddress}:${PORT}`, { type: 'terminal' })])
+        } catch (e) {
+            startMessage.push(['', 'Error generating QR code'])
+        }
     }
 
     return startMessage.toString()
