@@ -29,11 +29,31 @@ const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
 
 const start = async () => {
-    try {
-        await checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])
-        await checkBrowsers(paths.appPath)
-        await checkComponentLibrary()
+    let fileCheck, browserCheck, componentLibraryCheck
 
+    try {
+        fileCheck = await checkRequiredFiles([paths.appIndexHtml, paths.appIndexTsx])
+    } catch (e) {
+        fileCheck = e.message
+    }
+
+    try {
+        browserCheck = await checkBrowsers(paths.appPath)
+    } catch (e) {
+        browserCheck = e.message
+    }
+
+    try {
+        componentLibraryCheck = await checkComponentLibrary()
+    } catch (e) {
+        componentLibraryCheck = e.message
+    }
+
+    console.log(fileCheck)
+    console.log(browserCheck)
+    console.log(componentLibraryCheck)
+
+    try {
         // First, read the current file sizes in build directory.
         // This lets us display how much they changed later.
         const fileSizes = await measureFileSizesBeforeBuild(paths.appBuild)
