@@ -12,7 +12,7 @@ function checkRequiredFiles(files) {
             fs.accessSync(filePath, fs.F_OK)
         })
 
-        return Promise.resolve(`${chalk.hex(colours.text)('All required files found')}.`)
+        return Promise.resolve(`${chalk.hex(colours.text)('All required files found.')}`)
     } catch (err) {
         return Promise.reject(
             new Error(
