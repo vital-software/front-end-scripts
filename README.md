@@ -62,6 +62,8 @@ And set any of the following variables:
 | `PORT`            | :white_check_mark:     | :x:                | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port. |
 | `RESOLVE_MODULES` | :white_check_mark:     | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`                                                                                           |
 
+We also support overriding the **Webpack Dev Server** settings by creating a `serve.config.dev.js` file in your project root, and using [applicable Webpack Dev Server config syntax](https://webpack.js.org/configuration/dev-server/).
+
 #### Expanding Environment Variables In .env
 
 Expand variables already on your machine for use in your `.env` file (using [dotenv-expand](https://github.com/motdotla/dotenv-expand)).
