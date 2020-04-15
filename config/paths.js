@@ -9,17 +9,19 @@ const defaultIndex = 'static/index.html'
 const htmlFiles = process.env.INDEX_FILES ? process.env.INDEX_FILES.replace(/\s+/g, '').split(',') : [defaultIndex]
 
 module.exports = {
-    dotenv: resolveApp('.vitalizer'),
-    appPath: resolveApp('.'),
+    appBabelConfig: resolveApp('.babelrc'),
     appBuild: resolveApp('public'),
-    appPublic: resolveApp('static'),
-    appIndexHtml: resolveApp(defaultIndex),
-    appHtmlFiles: htmlFiles.map(resolveApp),
-    appIndexTsx: resolveApp('app/index.tsx'),
-    appSrc: resolveApp('app'),
-    appNodeModules: resolveApp('node_modules'),
     appComponentLibrary: resolveApp('node_modules/@vital-software/components'),
-    appBabelConfig: resolveApp('.babelrc')
+    appHtmlFiles: htmlFiles.map(resolveApp),
+    appIndexHtml: resolveApp(defaultIndex),
+    appIndexTsx: resolveApp('app/index.tsx'),
+    appNodeModules: resolveApp('node_modules'),
+    appPath: resolveApp('.'),
+    appPublic: resolveApp('static'),
+    appSrc: resolveApp('app'),
+    appDevServerConfig: resolveApp('serve.config.dev.js'),
+    appWebpackDevConfig: resolveApp('webpack.config.dev.js'),
+    dotenv: resolveApp('.vitalizer'),
 }
 
 module.exports.resolveApp = resolveApp
