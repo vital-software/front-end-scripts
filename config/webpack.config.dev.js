@@ -93,12 +93,27 @@ module.exports = smp.wrap({
                     // "url" loader works just like "file" loader but it also embeds
                     // assets smaller than specified size as data URLs to avoid requests.
                     {
-                        test: /\.(gif|jpe?g|png|svg|webp)$/,
+                        test: /\.(gif|jpe?g|png|webp)$/,
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000, // Byte limit for URL loader conversion
                             name: 'static/media/[name].[hash:8].[ext]'
                         }
+                    },
+
+                    {
+                        test: /\.svg$/,
+                        use: [
+                            {
+                                loader: require.resolve('babel-loader'),
+                            },
+                            {
+                                loader: require.resolve('react-svg-loader'),
+                                options: {
+                                    jsx: true, // true outputs JSX tags
+                                },
+                            },
+                        ],
                     },
 
                     // Process application JS with Babel.
