@@ -24,7 +24,7 @@ module.exports = smp.wrap({
     devtool: 'cheap-module-source-map',
 
     entry: [
-        paths.appIndexTsx
+        paths.appIndexTsx,
         // We include the app code last so that if there is a runtime error during
         // initialization, it doesn't blow up Webpack Serve, and
         // changing JS code would still trigger a refresh.
@@ -47,7 +47,7 @@ module.exports = smp.wrap({
         publicPath: '/',
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     },
 
     optimization: {
@@ -56,28 +56,28 @@ module.exports = smp.wrap({
         // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
         splitChunks: {
             chunks: 'all',
-            name: 'vendors'
+            name: 'vendors',
         },
 
         // Keep the runtime chunk seperated to enable long term caching
         // https://twitter.com/wSokra/status/969679223278505985
-        runtimeChunk: true
+        runtimeChunk: true,
     },
 
     resolve: {
         // Support multiple path module lookup (i.e. app/sass module root support).
         modules: process.env.RESOLVE_MODULES
             ? ['../node_modules', 'node_modules']
-                .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
-                .map(paths.resolveApp)
+                  .concat(process.env.RESOLVE_MODULES.split(',').map((string) => string.trim()))
+                  .map(paths.resolveApp)
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
         extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.ts', '.tsx'],
         // Alias react dom to allow hot loader to patch it for new react features: https://github.com/gaearon/react-hot-loader#react--dom
         alias: {
-            'react-dom': '@hot-loader/react-dom'
-        }
+            'react-dom': '@hot-loader/react-dom',
+        },
     },
 
     module: {
@@ -97,8 +97,8 @@ module.exports = smp.wrap({
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000, // Byte limit for URL loader conversion
-                            name: 'static/media/[name].[hash:8].[ext]'
-                        }
+                            name: 'static/media/[name].[hash:8].[ext]',
+                        },
                     },
 
                     {
@@ -129,8 +129,8 @@ module.exports = smp.wrap({
                             {
                                 loader: require.resolve('thread-loader'),
                                 options: {
-                                    poolTimeout: Infinity // keep workers alive for more effective watch mode
-                                }
+                                    poolTimeout: Infinity, // keep workers alive for more effective watch mode
+                                },
                             },
                             {
                                 loader: require.resolve('babel-loader'),
@@ -140,10 +140,10 @@ module.exports = smp.wrap({
                                     // directory for faster rebuilds.
                                     cacheDirectory: true,
                                     highlightCode: true,
-                                    extends: paths.appBabelConfig
-                                }
-                            }
-                        ]
+                                    extends: paths.appBabelConfig,
+                                },
+                            },
+                        ],
                     },
 
                     // "postcss" loader applies autoprefixer to our CSS.
@@ -156,14 +156,14 @@ module.exports = smp.wrap({
                         exclude: /\.module.css$/,
                         use: [
                             {
-                                loader: 'style-loader' // Add CSS to HTML page (uses JavaScript)
+                                loader: 'style-loader', // Add CSS to HTML page (uses JavaScript)
                             },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    sourceMap: true
-                                }
+                                    sourceMap: true,
+                                },
                             },
                             {
                                 // Options for PostCSS as we reference these options twice
@@ -172,23 +172,23 @@ module.exports = smp.wrap({
                                 loader: require.resolve('postcss-loader'),
                                 options: {
                                     config: {
-                                        path: path.join(__dirname, './postcss.config.js')
+                                        path: path.join(__dirname, './postcss.config.js'),
                                     },
 
                                     // Necessary for external CSS imports to work
                                     // https://github.com/facebook/create-react-app/issues/2677
                                     ident: 'postcss',
 
-                                    sourceMap: true
-                                }
-                            }
-                        ]
+                                    sourceMap: true,
+                                },
+                            },
+                        ],
                     },
                     {
                         test: /\.module.css$/,
                         use: [
                             {
-                                loader: 'style-loader'
+                                loader: 'style-loader',
                             },
                             'css-modules-typescript-loader',
                             {
@@ -197,27 +197,27 @@ module.exports = smp.wrap({
                                     importLoaders: 1,
                                     sourceMap: true,
                                     modules: {
-                                        localIdentName: '[name]--[local]--[hash:base64:5]'
-                                    }
-                                }
+                                        localIdentName: '[name]--[local]--[hash:base64:5]',
+                                    },
+                                },
                             },
                             {
                                 loader: 'postcss-loader',
                                 options: {
                                     config: {
-                                        path: path.join(__dirname, './postcss.config.js')
+                                        path: path.join(__dirname, './postcss.config.js'),
                                     },
                                     ident: 'postcss',
-                                    sourceMap: true
-                                }
-                            }
-                        ]
+                                    sourceMap: true,
+                                },
+                            },
+                        ],
                     },
 
                     // The GraphQL loader preprocesses GraphQL queries in .graphql files.
                     {
                         test: /\.(graphql)$/,
-                        loader: 'graphql-tag/loader'
+                        loader: 'graphql-tag/loader',
                     },
 
                     // "file" loader makes sure assets end up in the `build` folder.
@@ -232,14 +232,14 @@ module.exports = smp.wrap({
                         // by webpacks internal loaders.
                         exclude: [/\.(flow|js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
-                            name: '[path][name].[hash:8].[ext]'
-                        }
-                    }
+                            name: '[path][name].[hash:8].[ext]',
+                        },
+                    },
                     // ** STOP ** Are you adding a new loader?
                     // Make sure to add the new loader(s) before the "file" loader.
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
 
     plugins: [
@@ -248,7 +248,7 @@ module.exports = smp.wrap({
             (filename) =>
                 new HtmlWebpackPlugin({
                     filename: filename.replace('static', 'public'),
-                    template: filename
+                    template: filename,
                 })
         ),
 
@@ -272,6 +272,6 @@ module.exports = smp.wrap({
         new StylishWebpackPlugin(),
 
         // Enable HMR
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 })

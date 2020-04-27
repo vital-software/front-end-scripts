@@ -29,7 +29,7 @@ const htmlMinifyOptions = {
     keepClosingSlash: true,
     minifyJS: true,
     minifyCSS: true,
-    minifyURLs: true
+    minifyURLs: true,
 }
 
 /*
@@ -69,7 +69,7 @@ module.exports = smp.wrap({
         publicPath,
 
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+        devtoolModuleFilenameTemplate: (info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     },
 
     optimization: {
@@ -77,9 +77,9 @@ module.exports = smp.wrap({
             // JavaScript minfier
             new TerserPlugin({
                 terserOptions: {
-                    safari10: true
+                    safari10: true,
                 },
-                sourceMap: true
+                sourceMap: true,
             }),
 
             // CSS Minifier (uses cssnano)
@@ -93,10 +93,10 @@ module.exports = smp.wrap({
 
                     // Ensure external source map file is used.
                     map: {
-                        inline: false
-                    }
-                }
-            })
+                        inline: false,
+                    },
+                },
+            }),
         ],
 
         // Automatically split vendor and commons
@@ -106,12 +106,12 @@ module.exports = smp.wrap({
             chunks(chunk) {
                 // exclude `polyfills`
                 return chunk.name !== 'polyfills'
-            }
+            },
         },
 
         // Keep the runtime chunk seperated to enable long term caching
         // https://twitter.com/wSokra/status/969679223278505985
-        runtimeChunk: true
+        runtimeChunk: true,
     },
 
     resolve: {
@@ -123,7 +123,7 @@ module.exports = smp.wrap({
             : ['node_modules'],
 
         // These are the reasonable defaults supported by the Node ecosystem.
-        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.ts', '.tsx']
+        extensions: ['.gql', '.graphql', '.mjs', '.js', '.json', '.jsx', '.flow', '.ts', '.tsx'],
     },
 
     module: {
@@ -143,8 +143,8 @@ module.exports = smp.wrap({
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000, // Byte limit for URL loader conversion
-                            name: `[path]${fileName}.[ext]`
-                        }
+                            name: `[path]${fileName}.[ext]`,
+                        },
                     },
 
                     {
@@ -178,10 +178,10 @@ module.exports = smp.wrap({
                                 options: {
                                     compact: true,
                                     highlightCode: true,
-                                    extends: paths.appBabelConfig
-                                }
-                            }
-                        ]
+                                    extends: paths.appBabelConfig,
+                                },
+                            },
+                        ],
                     },
 
                     // "postcss" loader applies autoprefixer to our CSS.
@@ -198,8 +198,8 @@ module.exports = smp.wrap({
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    sourceMap: true
-                                }
+                                    sourceMap: true,
+                                },
                             },
                             {
                                 // Options for PostCSS as we reference these options twice
@@ -208,17 +208,17 @@ module.exports = smp.wrap({
                                 loader: require.resolve('postcss-loader'),
                                 options: {
                                     config: {
-                                        path: path.join(__dirname, './postcss.config.js')
+                                        path: path.join(__dirname, './postcss.config.js'),
                                     },
 
                                     // Necessary for external CSS imports to work
                                     // https://github.com/facebook/create-react-app/issues/2677
                                     ident: 'postcss',
 
-                                    sourceMap: true
-                                }
-                            }
-                        ]
+                                    sourceMap: true,
+                                },
+                            },
+                        ],
                     },
                     {
                         test: /\.module.css$/,
@@ -231,27 +231,27 @@ module.exports = smp.wrap({
                                     importLoaders: 1,
                                     sourceMap: true,
                                     modules: {
-                                        localIdentName: '[name]--[local]--[hash:base64:5]'
-                                    }
-                                }
+                                        localIdentName: '[name]--[local]--[hash:base64:5]',
+                                    },
+                                },
                             },
                             {
                                 loader: 'postcss-loader',
                                 options: {
                                     config: {
-                                        path: path.join(__dirname, './postcss.config.js')
+                                        path: path.join(__dirname, './postcss.config.js'),
                                     },
                                     ident: 'postcss',
-                                    sourceMap: true
-                                }
-                            }
-                        ]
+                                    sourceMap: true,
+                                },
+                            },
+                        ],
                     },
 
                     // The GraphQL loader preprocesses GraphQL queries in .graphql files.
                     {
                         test: /\.(graphql)$/,
-                        loader: 'graphql-tag/loader'
+                        loader: 'graphql-tag/loader',
                     },
 
                     // "file" loader makes sure assets end up in the `build` folder.
@@ -266,14 +266,14 @@ module.exports = smp.wrap({
                         // by webpacks internal loaders.
                         exclude: [/\.(flow|js|jsx|ts|tsx|mjs)$/, /\.html$/, /\.json$/],
                         options: {
-                            name: `[path]${fileName}.[ext]`
-                        }
-                    }
+                            name: `[path]${fileName}.[ext]`,
+                        },
+                    },
                     // ** STOP ** Are you adding a new loader?
                     // Make sure to add the new loader(s) before the "file" loader.
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
 
     plugins: [
@@ -283,7 +283,7 @@ module.exports = smp.wrap({
                 new HtmlWebpackPlugin({
                     filename: filename.replace('static', 'public'),
                     minify: htmlMinifyOptions,
-                    template: filename
+                    template: filename,
                 })
         ),
 
@@ -296,14 +296,14 @@ module.exports = smp.wrap({
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             filename: `${fileName}.css`,
-            chunkFilename: `${fileName}.chunk.css`
+            chunkFilename: `${fileName}.chunk.css`,
         }),
 
         // Generate a manifest file which contains a mapping of all asset filenames
         // to their corresponding output file so that tools can pick it up without
         // having to parse `index.html`.
         new ManifestPlugin({
-            fileName: 'asset-manifest.json'
+            fileName: 'asset-manifest.json',
         }),
 
         // Generate a service worker script that will precache, and keep up to date,
@@ -317,10 +317,10 @@ module.exports = smp.wrap({
             exclude: [/\.LICENSE$/, /\.map$/, /asset-manifest\.json$/],
 
             // Sets an HTML document to use as a fallback for URLs not found in the cache.
-            navigateFallback: '/index.html'
+            navigateFallback: '/index.html',
         }),
 
         // Custom format webpack stats output so it doesn't look shit.
-        new StylishWebpackPlugin()
-    ]
+        new StylishWebpackPlugin(),
+    ],
 })
