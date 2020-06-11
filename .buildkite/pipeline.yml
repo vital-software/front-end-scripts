@@ -38,7 +38,7 @@ steps:
     depends_on:
       - "linting"
       - "tests"
-    branches: master
+    branches: master next next-major beta alpha
     command: semantic-release
     timeout_in_minutes: 2
     plugins:
