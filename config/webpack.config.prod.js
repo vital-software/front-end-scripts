@@ -1,6 +1,7 @@
 // Load in ENV values
 const getClientEnvironment = require('./env')
 const env = getClientEnvironment()
+const BundleAnalyzerPlugin = require('@bundle-analyzer/webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
@@ -322,5 +323,9 @@ module.exports = smp.wrap({
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin(),
-    ],
+    ].concat(
+        process.env.BUNDLE_ANALYZER_TOKEN
+            ? [new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })]
+            : []
+    ),
 })

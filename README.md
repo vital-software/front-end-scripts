@@ -13,6 +13,7 @@ Webpack development and bundling tool for Vital.
 - CSS Module support
 - cssnano minification
 - rem() function support
+- Bundle Analyzer support
 
 ### Contributing
 
@@ -61,6 +62,7 @@ And set any of the following variables:
 | `INDEX_FILES`     | :white_check_mark:     | :white_check_mark: | Comma seperated list of HTML files to use. Defaults to `static/index.html`.                                                                                                         |
 | `PORT`            | :white_check_mark:     | :x:                | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port. |
 | `RESOLVE_MODULES` | :white_check_mark:     | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`                                                                                           |
+| `BUNDLE_ANALYZER_TOKEN ` | n/a | :x: | If specified, on build webpack will upload a summary of production bundle sizes to bundle-analyzer |
 
 We also support overriding the **Webpack Dev Server** settings by creating a `serve.config.dev.js` file in your project root, and using [applicable Webpack Dev Server config syntax](https://webpack.js.org/configuration/dev-server/).
 
