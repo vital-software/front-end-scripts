@@ -324,23 +324,24 @@ module.exports = smp.wrap({
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin(),
-    ].concat(
-        process.env.BUNDLE_ANALYZER_TOKEN
-            ? [new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })]
-            : []
-    )        .concat(
-        process.env.WEBPACK_STATS
-            ? [
-                new StatsWriterPlugin({
-                    filename: '../stats.json',
-                    fields: null,
-                    stats: {
-                        maxModules: Infinity,
-                        source: false,
-                    },
-                }),
-            ]
-            : []
-    )
-    ,
+    ]
+        .concat(
+            process.env.BUNDLE_ANALYZER_TOKEN
+                ? [new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })]
+                : []
+        )
+        .concat(
+            process.env.WEBPACK_STATS
+                ? [
+                      new StatsWriterPlugin({
+                          filename: '../stats.json',
+                          fields: null,
+                          stats: {
+                              maxModules: Infinity,
+                              source: false,
+                          },
+                      }),
+                  ]
+                : []
+        ),
 })
