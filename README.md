@@ -62,7 +62,8 @@ And set any of the following variables:
 | `INDEX_FILES`     | :white_check_mark:     | :white_check_mark: | Comma seperated list of HTML files to use. Defaults to `static/index.html`.                                                                                                         |
 | `PORT`            | :white_check_mark:     | :x:                | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port. |
 | `RESOLVE_MODULES` | :white_check_mark:     | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`                                                                                           |
-| `BUNDLE_ANALYZER_TOKEN ` | n/a | :x: | If specified, on build webpack will upload a summary of production bundle sizes to bundle-analyzer |
+| `BUNDLE_ANALYZER_TOKEN` | n/a | :x: | If specified, on build webpack will upload a summary of production bundle sizes to bundle-analyzer |
+| `WEBPACK_STATS` | n/a | :x: | When set to any value, on build webpack will write build statistics JSON to stats.json in the output directory |
 
 We also support overriding the **Webpack Dev Server** settings by creating a `serve.config.dev.js` file in your project root, and using [applicable Webpack Dev Server config syntax](https://webpack.js.org/configuration/dev-server/).
 

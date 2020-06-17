@@ -10,6 +10,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const paths = require('./paths')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const { StatsWriterPlugin } = require('webpack-stats-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
@@ -323,9 +324,24 @@ module.exports = smp.wrap({
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin(),
-    ].concat(
-        process.env.BUNDLE_ANALYZER_TOKEN
-            ? [new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })]
-            : []
-    ),
+    ]
+        .concat(
+            process.env.BUNDLE_ANALYZER_TOKEN
+                ? [new BundleAnalyzerPlugin({ token: process.env.BUNDLE_ANALYZER_TOKEN })]
+                : []
+        )
+        .concat(
+            process.env.WEBPACK_STATS
+                ? [
+                      new StatsWriterPlugin({
+                          filename: '../stats.json',
+                          fields: null,
+                          stats: {
+                              maxModules: Infinity,
+                              source: false,
+                          },
+                      }),
+                  ]
+                : []
+        ),
 })

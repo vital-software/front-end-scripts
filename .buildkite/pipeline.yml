@@ -1,5 +1,7 @@
 env:
-  COMMIT_TAG: vitalizer-${BUILDKITE_COMMIT}
+  BUILDKITE_PLUGIN_DOCKER_COMPOSE_CONFIG_0: "docker-compose.yml"
+  BUILDKITE_PLUGIN_DOCKER_COMPOSE_CONFIG_1: "docker-compose.buildkite.yml"
+  BUILDKITE_PLUGIN_DOCKER_COMPOSE_IMAGE_REPOSITORY: "quay.io/vital/build-cache"
 
 steps:
   - name: ":docker: :quay: Build and push container to Quay"
@@ -7,32 +9,25 @@ steps:
     agents:
       queue: docker-build
     plugins:
-      vital-software/docker-compose#vital-v1.8:
-        build: base
-        image_repository: quay.io/vital/build-cache
-        image-name: ${COMMIT_TAG}
+      - docker-compose#v3.3.0:
+          build: base
+          image-name: "vitalizer-${BUILDKITE_COMMIT}-${BUILDKITE_BUILD_NUMBER}"
 
   - name: ":eslint: Lint"
     key: linting
     depends_on: create-image
     command: yarn lint
     plugins:
-      vital-software/docker-compose#vital-v1.8:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
+      - docker-compose#v3.3.0:
+          run: base
 
   - name: ":yarn: Run Tests"
     key: tests
     depends_on: create-image
     command: test/task/e2e-simple.sh
     plugins:
-      vital-software/docker-compose#vital-v1.8:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
+      - docker-compose#v3.3.0:
+          run: base
 
   - name: ":npm: :github: Release package to Github Registry"
     depends_on:
@@ -42,8 +37,5 @@ steps:
     command: semantic-release
     timeout_in_minutes: 2
     plugins:
-      vital-software/docker-compose#vital-v1.8:
-        config:
-          - docker-compose.yml
-          - docker-compose.buildkite.yml
-        run: base
+      - docker-compose#v3.3.0:
+          run: base
