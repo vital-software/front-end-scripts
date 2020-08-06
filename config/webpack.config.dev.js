@@ -244,10 +244,10 @@ module.exports = smp.wrap({
 
     plugins: [
         // Generates `index.html` files with the <script> injected.
-        ...paths.appHtmlFiles.map(
+        ...paths.htmlFiles.map(
             (filename) =>
                 new HtmlWebpackPlugin({
-                    filename: filename.replace('static', 'public'),
+                    filename: filename.replace('static/', ''),
                     template: filename,
                 })
         ),

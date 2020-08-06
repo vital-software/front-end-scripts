@@ -14,12 +14,16 @@ const { StatsWriterPlugin } = require('webpack-stats-plugin')
 const StylishWebpackPlugin = require('webpack-stylish')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
+
 // Measure the speed of the build
 const smp = new SpeedMeasurePlugin()
+
 // Configure file names to use hashing or not
 const fileName = process.env.DISABLE_HASH ? '[name]' : '[name].[contenthash:8]'
+
 // Configure CDN or local urls
 const publicPath = process.env.CDN_URL ? process.env.CDN_URL : '/'
+
 // HTML Minification
 const htmlMinifyOptions = {
     collapseWhitespace: true,
@@ -280,10 +284,10 @@ module.exports = smp.wrap({
 
     plugins: [
         // Generates `index.html` files with the <script> injected.
-        ...paths.appHtmlFiles.map(
+        ...paths.htmlFiles.map(
             (filename) =>
                 new HtmlWebpackPlugin({
-                    filename: filename.replace('static', 'public'),
+                    filename: filename.replace('static/', ''),
                     minify: htmlMinifyOptions,
                     template: filename,
                 })
