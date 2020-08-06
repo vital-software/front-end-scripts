@@ -10,9 +10,12 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 const defaultIndex = 'static/index.html'
 const htmlFiles = process.env.INDEX_FILES ? process.env.INDEX_FILES.replace(/\s+/g, '').split(',') : [defaultIndex]
 
+// Use custom defined build output folder, or default to 'public'
+const buildDirectoryFolderName = process.env.BUILD_DIR ? process.env.BUILD_DIR : 'public'
+
 module.exports = {
     appBabelConfig: resolveApp('.babelrc'),
-    appBuild: resolveApp('public'),
+    appBuild: resolveApp(buildDirectoryFolderName),
     appComponentLibrary: resolveApp('node_modules/@vital-software/components'),
     appIndexHtml: resolveApp(defaultIndex),
     appIndexTsx: resolveApp('app/index.tsx'),
