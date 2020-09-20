@@ -237,7 +237,7 @@ module.exports = smp.wrap({
                                     importLoaders: 1,
                                     sourceMap: true,
                                     modules: {
-                                        localIdentName: '[name]--[local]--[hash:base64:5]',
+                                        localIdentName: '[hash:base64:3]',
                                     },
                                 },
                             },
