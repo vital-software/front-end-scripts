@@ -236,7 +236,7 @@ module.exports = smp.wrap({
                                     importLoaders: 1,
                                     sourceMap: true,
                                     modules: {
-                                        localIdentName: '[hash:base64:3]',
+                                        localIdentName: '[hash:base64:4]',
                                     },
                                 },
                             },
@@ -327,19 +327,18 @@ module.exports = smp.wrap({
 
         // Custom format webpack stats output so it doesn't look shit.
         new StylishWebpackPlugin(),
-    ]
-        .concat(
-            process.env.WEBPACK_STATS
-                ? [
-                      new StatsWriterPlugin({
-                          filename: '../stats.json',
-                          fields: null,
-                          stats: {
-                              maxModules: Infinity,
-                              source: false,
-                          },
-                      }),
-                  ]
-                : []
-        ),
+    ].concat(
+        process.env.WEBPACK_STATS
+            ? [
+                  new StatsWriterPlugin({
+                      filename: '../stats.json',
+                      fields: null,
+                      stats: {
+                          maxModules: Infinity,
+                          source: false,
+                      },
+                  }),
+              ]
+            : []
+    ),
 })
