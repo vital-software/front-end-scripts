@@ -61,11 +61,11 @@ And set any of the following variables:
 | `CI`                    | :large_orange_diamond: | :white_check_mark: | When set to `true`, Vitalizer treats warnings as failures in the build. Most CIs set this flag by default.                                                                          |
 | `DISABLE_HASH`.         | :x:                    | :white_check_mark: | When set to `true`, production assets are output as `[name].[ext]` rather than `[name][hash].[ext]`. Useful for debugging and test purposes.                                        |
 | `HOST`                  | :white_check_mark:     | :x:                | By default, the development web server binds to `localhost`. You may use this variable to specify a different host.                                                                 |
+| `HTTPS`                 | :white_check_mark:     | :x:                | When set to true, will enable https on the dev server. The certificate will be self signed, so will show a warning in the browser. Defaults to `false`                              |
 | `INDEX_FILES`           | :white_check_mark:     | :white_check_mark: | Comma seperated list of HTML files to use. Defaults to `static/index.html`.html`.                                                                                                   |
 | `PORT`                  | :white_check_mark:     | :x:                | By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port. |
 | `RESOLVE_MODULES`       | :white_check_mark:     | :white_check_mark: | Comma seperated list of module roots to use other than `node_modules`. i.e. `app, static`                                                                                           |
-
-| `WEBPACK_STATS` | n/a | :x: | When set to any value, on build webpack will write build statistics JSON to stats.json in the output directory |
+| `WEBPACK_STATS`         | n/a                    | :x:                | When set to any value, on build webpack will write build statistics JSON to stats.json in the output directory                                                                      |
 
 We also support overriding the **Webpack Dev Server** settings by creating a `serve.config.dev.js` file in your project root, and using [applicable Webpack Dev Server config syntax](https://webpack.js.org/configuration/dev-server/).
 

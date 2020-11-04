@@ -13,10 +13,10 @@ module.exports = {
     hot: true,
     // Allow serving externally
     host: '0.0.0.0',
-    // Disable HTTPS and HTTP/2 - Traefik proxy terminates SSL
-    https: false,
+    // Enable https
+    https: process.env.HTTPS === 'true' ? true : false,
     // Hide the webpack bundle information
     noInfo: true,
     // Match public path with output path
-    publicPath: '/'
+    publicPath: '/',
 }
