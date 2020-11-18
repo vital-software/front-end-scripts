@@ -90,7 +90,7 @@
     "eslint": "6.8.0",
     "husky": "4.2.3",
     "prettier": "2.0.5",
-    "semantic-release": "17.0.3"
+    "semantic-release": "17.2.3"
   },
   "peerDependencies": {
     "webpack-hot-client": "^4.0.4"
